@@ -1,0 +1,20 @@
+<section class="latest-publications" id="publications">
+  <div class="container">
+    <h2 class="section-title">Latest Publications</h2>
+    <div class="card-row">
+      {{ range first 3 (sort (where .Site.RegularPages "Section" "publications") "Date" "desc") }}
+      <a href="{{ if .Params.doi }}{{ .Params.doi }}{{ else }}{{ .RelPermalink }}{{ end }}" class="pub-card" {{ if .Params.doi }}target="_blank" rel="noopener"{{ end }}>
+        <div class="pub-body">
+          <span class="pub-year">{{ .Date.Format "2006" }}</span>
+          <h3 class="pub-title">{{ .Title }}</h3>
+          {{ if .Params.authors }}<p class="pub-authors">{{ .Params.authors }}</p>{{ end }}
+          {{ if .Params.journal }}<p class="pub-journal">{{ .Params.journal }}</p>{{ end }}
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    <div class="section-view-all">
+      <a href="{{ "publications/" | relURL }}" class="btn-view-all">View all publications &rarr;</a>
+    </div>
+  </div>
+</section>

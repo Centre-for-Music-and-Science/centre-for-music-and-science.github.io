@@ -1,0 +1,10 @@
+---
+title: "Arild Stenberg"
+role: "Senior Research Associate"
+email: ""
+image: ""
+weight: 4
+website: ""
+---
+
+Arild Stenberg is Senior Research Associate for the Leverhulme-funded project *Score design for music reading: Cognitive and artistic perspectives*. Arild previously completed his PhD at the Faculty of Music, University of Cambridge, in 2019, supervised by Prof. Cross (music) and Prof. Sarah Hawkins (linguistics).

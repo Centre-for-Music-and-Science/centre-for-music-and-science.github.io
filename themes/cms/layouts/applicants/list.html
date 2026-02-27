@@ -1,0 +1,52 @@
+{{ define "main" }}
+<div class="applicants-page">
+  <div class="container">
+    <h1 class="page-title">Prospective Applicants</h1>
+    <div class="applicants-layout">
+      <nav class="applicants-sidebar">
+        {{ range sort .RegularPages "Params.weight" }}
+        <button class="applicants-nav-btn" data-target="{{ .File.ContentBaseName }}">
+          {{ .Title }}
+        </button>
+        {{ end }}
+      </nav>
+      <div class="applicants-panels">
+        {{ range sort .RegularPages "Params.weight" }}
+        <div class="applicants-panel" id="panel-{{ .File.ContentBaseName }}">
+          {{ .Content }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    <div class="applicants-back">
+      <a href="{{ .Site.Home.RelPermalink }}">&larr; Back to home</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var buttons = document.querySelectorAll('.applicants-nav-btn');
+  var panels = document.querySelectorAll('.applicants-panel');
+
+  function activate(target) {
+    buttons.forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-target') === target);
+    });
+    panels.forEach(function(panel) {
+      panel.classList.toggle('active', panel.id === 'panel-' + target);
+    });
+  }
+
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      activate(this.getAttribute('data-target'));
+    });
+  });
+
+  if (buttons.length > 0) {
+    activate(buttons[0].getAttribute('data-target'));
+  }
+})();
+</script>
+{{ end }}

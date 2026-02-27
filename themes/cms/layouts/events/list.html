@@ -1,0 +1,18 @@
+{{ define "main" }}
+<section class="events-list-page">
+  <div class="container">
+    <h1 class="page-title">All Events</h1>
+    <div class="events-timeline">
+      {{ range sort .Pages "Date" "desc" }}
+      <a href="{{ .RelPermalink }}" class="event-list-item">
+        <time class="event-list-date">{{ .Date.Format "2 Jan 2006" }}</time>
+        <div class="event-list-body">
+          <h2 class="event-list-title">{{ .Title }}</h2>
+          {{ if .Params.summary }}<p class="event-list-summary">{{ .Params.summary }}</p>{{ end }}
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

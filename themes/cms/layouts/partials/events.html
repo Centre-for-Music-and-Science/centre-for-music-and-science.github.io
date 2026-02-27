@@ -1,0 +1,30 @@
+<section class="latest-events" id="events">
+  <div class="container">
+    <h2 class="section-title">Latest Events</h2>
+    <div class="card-row">
+      {{ range first 3 (sort (where .Site.RegularPages "Section" "events") "Date" "desc") }}
+      <a href="{{ if .Params.externalUrl }}{{ .Params.externalUrl }}{{ else }}{{ .RelPermalink }}{{ end }}" class="event-card">
+        {{ if .Params.image }}
+        <div class="card-image">
+          <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+        </div>
+        {{ else }}
+        <div class="card-image card-image-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+        {{ end }}
+        <div class="card-body">
+          <span class="card-date">{{ .Date.Format "2 Jan 2006" }}</span>
+          <h3 class="card-title">{{ .Title }}</h3>
+          {{ if .Params.summary }}<p class="card-summary">{{ .Params.summary }}</p>{{ end }}
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    <div class="section-view-all">
+      <a href="{{ "events/" | relURL }}" class="btn-view-all">View all events &rarr;</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+<section class="hero" id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <img src="{{ "images/logos/cambridge_full_official.png" | relURL }}" alt="University of Cambridge" class="hero-cambridge-logo">
+    <h1 class="hero-title">{{ .Site.Params.heroTitle }}</h1>
+    <p class="hero-subtitle">{{ .Site.Params.heroSubtitle }}</p>
+  </div>
+  <div class="hero-scroll-indicator">
+    <span>Scroll</span>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>

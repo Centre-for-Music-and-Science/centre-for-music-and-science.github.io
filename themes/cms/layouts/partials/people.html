@@ -1,0 +1,24 @@
+<section class="people-section" id="people">
+  <div class="container">
+    <h2 class="section-title">People</h2>
+    <div class="people-grid">
+      {{ range sort (where .Site.RegularPages "Section" "people") "Params.weight" }}
+      <a href="{{ .RelPermalink }}" class="person-card">
+        <div class="person-photo">
+          {{ if .Params.image }}
+          <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+          {{ else }}
+          <div class="person-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          {{ end }}
+        </div>
+        <h3 class="person-name">{{ .Title }}</h3>
+        <p class="person-role">{{ .Params.role }}</p>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>

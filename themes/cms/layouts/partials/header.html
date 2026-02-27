@@ -1,0 +1,21 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a href="{{ .Site.Home.RelPermalink }}" class="site-logo">
+      <img src="{{ "images/logos/cms_logo.jpg" | relURL }}" alt="CMS Logo" class="logo-img">
+      <span class="logo-text">Centre for Music and Science</span>
+    </a>
+    <nav class="site-nav">
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="{{ .Site.Home.RelPermalink }}#research">Research</a></li>
+        <li><a href="{{ .Site.Home.RelPermalink }}#events">Events</a></li>
+        <li><a href="{{ .Site.Home.RelPermalink }}#publications">Publications</a></li>
+        <li><a href="{{ .Site.Home.RelPermalink }}#people">People</a></li>
+        <li><a href="{{ "facilities/" | relURL }}">Facilities</a></li>
+        <li><a href="{{ "applicants/" | relURL }}">Applicants</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

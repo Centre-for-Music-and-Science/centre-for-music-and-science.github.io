@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="facilities-page">
+  <div class="container">
+    <h1 class="page-title">Facilities</h1>
+    <p class="facilities-intro">{{ .Params.description }}</p>
+    <div class="facilities-content">
+      {{ range .Params.rooms }}
+      <div class="facility-room">
+        <h2>{{ .name }}</h2>
+        {{ if .image }}
+        <img src="{{ .image | relURL }}" alt="{{ .name }}">
+        {{ end }}
+        <div class="facility-description">
+          {{ .description | markdownify }}
+        </div>
+        {{ if .subrooms }}
+          {{ range .subrooms }}
+          <h3>{{ .name }}</h3>
+          {{ if .image }}
+          <img src="{{ .image | relURL }}" alt="{{ .name }}">
+          {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    <div class="facilities-back">
+      <a href="{{ .Site.Home.RelPermalink }}">&larr; Back to home</a>
+    </div>
+  </div>
+</div>
+{{ end }}

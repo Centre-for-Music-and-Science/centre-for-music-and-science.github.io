@@ -1,0 +1,43 @@
+{{ define "main" }}
+<section class="publications-list-page">
+  <div class="container-wide">
+    <h1 class="page-title">Publications</h1>
+
+    {{ $pubs := sort .Pages "Date" "desc" }}
+
+    {{ $years := slice }}
+    {{ range $pubs }}
+      {{ $y := .Date.Format "2006" }}
+      {{ if not (in $years $y) }}
+        {{ $years = $years | append $y }}
+      {{ end }}
+    {{ end }}
+
+    {{ range $i, $year := $years }}
+    <div class="pub-year-block {{ if eq (mod $i 2) 1 }}pub-year-block-alt{{ end }}">
+      <div class="pub-year-inner">
+        <h2 class="pub-year-heading">
+          {{ $year }}
+          {{ range $pubs }}{{ if and (eq (.Date.Format "2006") $year) .Params.inpress }} (In Press){{ end }}{{ end }}
+        </h2>
+        <ul class="pub-year-list">
+          {{ range $pubs }}
+          {{ if eq (.Date.Format "2006") $year }}
+          <li class="pub-year-item">
+            <span class="pub-item-authors">{{ .Params.authors }}</span>
+            {{ if .Params.doi }}
+            <a href="{{ .Params.doi }}" target="_blank" rel="noopener" class="pub-item-title">{{ .Title }}</a>
+            {{ else }}
+            <span class="pub-item-title">{{ .Title }}</span>
+            {{ end }}
+            {{ if .Params.journal }}<span class="pub-item-journal">{{ .Params.journal }}</span>{{ end }}
+          </li>
+          {{ end }}
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

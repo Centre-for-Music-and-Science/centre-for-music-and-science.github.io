@@ -1,0 +1,54 @@
+<section class="research-themes" id="research">
+  <div class="container">
+    <h2 class="section-title">Our Research</h2>
+    <p class="section-intro">{{ .Site.Params.themesIntro }}</p>
+
+    {{ $themes := where .Site.RegularPages "Section" "themes" }}
+    {{ $projects := where .Site.RegularPages "Section" "projects" }}
+
+    <div class="tabs">
+      <div class="tab-bar" role="tablist">
+        {{ range $i, $theme := sort $themes "Params.weight" }}
+        <button class="tab-btn{{ if eq $i 0 }} active{{ end }}"
+                role="tab"
+                aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"
+                aria-controls="panel-{{ $theme.File.ContentBaseName }}"
+                data-tab="{{ $theme.File.ContentBaseName }}">
+          {{ $theme.Title }}
+        </button>
+        {{ end }}
+      </div>
+
+      {{ range $i, $theme := sort $themes "Params.weight" }}
+      <div class="tab-panel{{ if eq $i 0 }} active{{ end }}"
+           id="panel-{{ $theme.File.ContentBaseName }}"
+           role="tabpanel"
+           aria-hidden="{{ if eq $i 0 }}false{{ else }}true{{ end }}">
+        <div class="theme-layout">
+          <div class="theme-description">
+            <p>{{ $theme.Params.description }}</p>
+          </div>
+          <div class="theme-projects">
+            {{ range $theme.Params.projects }}
+              {{ $slug := . }}
+              {{ range $projects }}
+                {{ if eq .File.ContentBaseName $slug }}
+                <a href="{{ .RelPermalink }}" class="project-card">
+                  {{ if .Params.image }}
+                  <div class="project-image">
+                    <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+                  </div>
+                  {{ end }}
+                  <span class="project-label">Research project</span>
+                  <span class="project-title">{{ .Title }} <span class="arrow">&rarr;</span></span>
+                </a>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
