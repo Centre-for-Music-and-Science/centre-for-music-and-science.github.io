@@ -1,0 +1,18 @@
+{{ if .Site.Data.discover }}
+<section class="discover-section" id="discover">
+  <div class="container">
+    <h2 class="section-title">Discover more</h2>
+    <div class="discover-grid">
+      {{ range .Site.Data.discover }}
+        {{ $vid := replaceRE `.*(?:youtube\.com/watch\?v=|youtu\.be/)([^&?]+).*` "$1" .url }}
+        <div class="discover-card">
+          <div class="discover-card-video">
+            <iframe src="https://www.youtube.com/embed/{{ $vid }}" title="{{ .title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <h3 class="discover-card-title">{{ .title }}</h3>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

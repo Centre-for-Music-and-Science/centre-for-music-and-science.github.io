@@ -1,6 +1,6 @@
 ---
 title: "Cultural Evolution of Music"
-theme: "computational-creativity"
+theme: "algorithm-modelling"
 summary: "Large-scale iterated singing experiments revealing the transmission mechanisms that shape how music evolves across generations."
 image: ""
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Computational Modelling of Musical Style"
-theme: "computational-creativity"
+theme: "algorithm-modelling"
 summary: "Using machine learning to deconstruct and model stylistic features in musical performance, with applications to jazz piano."
 image: ""
 ---

@@ -1,6 +1,6 @@
 ---
 title: "GlobalMood: Cross-Cultural Music Emotion Recognition"
-theme: "music-big-data-ai"
+theme: "computing-cultural-taste"
 summary: "A cross-cultural benchmark for music emotion recognition, collecting descriptors across diverse languages and musical traditions."
 image: ""
 ---
