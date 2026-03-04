@@ -1,7 +1,7 @@
 ---
 title: "Katya Ness"
 role: "PhD Student"
-email: ""
+email: "kn428@cam.ac.uk"
 image: "/images/people/katya-ness.jpg"
 weight: 10
 category: phd

@@ -1,7 +1,7 @@
 ---
 title: "Joshua Frank"
 role: "PhD Student"
-email: ""
+email: "jbf43@cam.ac.uk"
 image: "/images/people/joshua-frank.jpg"
 weight: 12
 category: phd

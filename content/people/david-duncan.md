@@ -1,7 +1,7 @@
 ---
 title: "Dr David Duncan"
 role: "Research Assistant"
-email: ""
+email: "dtd25@cam.ac.uk"
 image: "/images/people/david-duncan.jpg"
 weight: 5
 category: postdoc

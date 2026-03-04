@@ -1,7 +1,7 @@
 ---
 title: "Dr Arild Stenberg"
 role: "Senior Research Associate"
-email: ""
+email: "as446@cam.ac.uk"
 image: "/images/people/arild-stenberg.jpg"
 weight: 4
 category: postdoc

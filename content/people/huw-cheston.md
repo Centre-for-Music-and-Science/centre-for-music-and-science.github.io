@@ -1,7 +1,7 @@
 ---
 title: "Huw Cheston"
 role: "PhD Student"
-email: ""
+email: "hwc31@cam.ac.uk"
 image: "/images/people/huw-cheston.jpg"
 weight: 9
 category: phd

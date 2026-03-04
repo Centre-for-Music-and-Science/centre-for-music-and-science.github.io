@@ -1,6 +1,11 @@
 {{ define "main" }}
 <article class="event-detail-page">
   <div class="container">
+    {{ if .Params.image }}
+    <div class="event-detail-image">
+      <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+    </div>
+    {{ end }}
     <div class="event-detail-header">
       <time class="event-detail-date">{{ .Date.Format "2 January 2006" }}</time>
       <h1>{{ .Title }}</h1>

@@ -59,6 +59,17 @@
       </div>
     </div>
     {{ end }}
+
+    {{ if .Site.Data.past_members }}
+    <div class="people-category">
+      <h2 class="people-category-heading">Past members</h2>
+      <ul class="past-members-list">
+        {{ range .Site.Data.past_members }}
+        <li><strong>{{ .name }}</strong> <span class="past-member-info">({{ .info }})</span></li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
   </div>
 </section>
 {{ end }}

@@ -1,11 +1,11 @@
 ---
 title: "Dr Harin Lee"
 role: "Postdoc"
-email: ""
+email: "hl744@cam.ac.uk"
 image: "/images/people/harin-lee.png"
 weight: 3
 category: postdoc
-website: ""
+website: "https://harinlee.info/"
 ---
 
 Harin Lee is a multidisciplinary researcher combining large-scale data analysis with cross-cultural experiments to study the psychological foundations of music cognition and musical diversity worldwide. His research includes field experiments with Tsimané villagers in the Bolivian Amazon and developing human-in-the-loop online paradigms to investigate cultural evolution in artificial worlds.

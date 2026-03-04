@@ -157,43 +157,9 @@ img {
   display: block;
 }
 
-.spectral-overlay {
+.spectral-player-top {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  text-align: center;
-  color: #fff;
-  padding: 80px 24px 0;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(26,35,50,0.7) 0%, transparent 100%);
-}
-
-.hero-logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(32px, 6vw, 64px);
-}
-
-.hero-cms-logo {
-  height: clamp(50px, 8vw, 90px);
-  width: auto;
-  opacity: 0.92;
-  filter: drop-shadow(0 2px 16px rgba(0,0,0,0.5));
-}
-
-.hero-cambridge-logo {
-  height: clamp(28px, 4vw, 44px);
-  width: auto;
-  opacity: 1;
-  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
-}
-
-.spectral-player-wrapper {
-  position: absolute;
-  bottom: 28px;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -201,6 +167,33 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 8px;
+}
+
+.hero-logos-bottom {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 clamp(24px, 5vw, 64px);
+  pointer-events: none;
+}
+
+.hero-cms-logo {
+  height: clamp(40px, 6vw, 72px);
+  width: auto;
+  opacity: 0.8;
+  filter: drop-shadow(0 2px 16px rgba(0,0,0,0.5));
+}
+
+.hero-cambridge-logo {
+  height: clamp(24px, 3.5vw, 40px);
+  width: auto;
+  opacity: 1;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
 }
 
 .hero-play-hint {
@@ -338,6 +331,9 @@ img {
 }
 
 .tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: none;
   border: none;
   padding: 14px 24px;
@@ -374,6 +370,17 @@ img {
 
 .tab-btn.active::after {
   transform: scaleX(1);
+}
+
+.tab-icon {
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.tab-btn:hover .tab-icon,
+.tab-btn.active .tab-icon {
+  opacity: 1;
 }
 
 .tab-panel {
@@ -670,6 +677,26 @@ img {
   letter-spacing: 0.02em;
 }
 
+.past-members-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 2;
+  column-gap: 40px;
+}
+
+.past-members-list li {
+  padding: 6px 0;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.past-member-info {
+  font-weight: 400;
+  color: var(--color-text-light);
+  font-size: 0.85rem;
+}
+
 .people-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -873,6 +900,22 @@ img {
 /* ===== Event Detail Page ===== */
 .event-detail-page {
   padding: 120px 0 80px;
+}
+
+.event-detail-page .container {
+  max-width: 800px;
+}
+
+.event-detail-image {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.event-detail-image img {
+  max-width: 360px;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .event-detail-header {
