@@ -10,7 +10,7 @@ publications:
 media:
   - type: "image"
     src: "/images/projects/mood_regulation.png"
-    caption: "Text to be filled"
+    caption: "Overview of music mood regulation strategies and their interaction with audio features"
 ---
 
 Music is widely used for facilitating different mood regulation strategies, yet little is known about how they interact with specific musical features and individual differences to shape the experience and effectiveness of the regulation process. The role of technology in governing and mediating these processes also remains underexplored.

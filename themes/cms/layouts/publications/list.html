@@ -34,9 +34,11 @@
         <a href="{{ .Params.featured.doi }}" target="_blank" rel="noopener" class="fpub-link">Read the paper &rarr;</a>
         {{ end }}
       </div>
+      {{ with .Params.featured.image }}
       <div class="fpub-img-wrap">
-        <img src="{{ .Params.featured.image | relURL }}" alt="{{ .Params.featured.title }}" class="fpub-img">
+        <img src="{{ (strings.TrimPrefix "/" .) | relURL }}" alt="{{ $.Params.featured.title }}" class="fpub-img">
       </div>
+      {{ end }}
     </div>
   </div>
   {{ end }}

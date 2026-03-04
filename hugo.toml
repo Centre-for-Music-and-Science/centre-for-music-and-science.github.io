@@ -5,7 +5,6 @@ theme = 'cms'
 
 [params]
   description = "The Centre for Music and Science (CMS) supports both teaching and research into the science of music at the University of Cambridge."
-  heroImage = "/images/hero.jpg"
   heroTitle = "Centre for Music and Science"
   heroSubtitle = "University of Cambridge"
   themesIntro = "Our research spans multiple disciplines, combining computational, cognitive, and empirical approaches to understand music and its role in human life."

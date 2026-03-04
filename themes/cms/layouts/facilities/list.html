@@ -8,7 +8,7 @@
       <div class="facility-room">
         <h2>{{ .name }}</h2>
         {{ if .image }}
-        <img src="{{ .image | relURL }}" alt="{{ .name }}">
+        <img src="{{ (strings.TrimPrefix "/" .image) | relURL }}" alt="{{ .name }}">
         {{ end }}
         <div class="facility-description">
           {{ .description | markdownify }}
@@ -17,7 +17,7 @@
           {{ range .subrooms }}
           <h3>{{ .name }}</h3>
           {{ if .image }}
-          <img src="{{ .image | relURL }}" alt="{{ .name }}">
+          <img src="{{ (strings.TrimPrefix "/" .image) | relURL }}" alt="{{ .name }}">
           {{ end }}
           {{ end }}
         {{ end }}

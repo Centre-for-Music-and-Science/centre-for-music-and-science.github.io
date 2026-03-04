@@ -4,7 +4,7 @@
     <h1 class="page-title">All Events</h1>
     <div class="events-timeline">
       {{ range sort .Pages "Date" "desc" }}
-      <a href="{{ .RelPermalink }}" class="event-list-item">
+      <a href="{{ if .Params.externalUrl }}{{ .Params.externalUrl }}{{ else }}{{ .RelPermalink }}{{ end }}" class="event-list-item"{{ if .Params.externalUrl }} target="_blank" rel="noopener"{{ end }}>
         <time class="event-list-date">{{ .Date.Format "2 Jan 2006" }}</time>
         <div class="event-list-body">
           <h2 class="event-list-title">{{ .Title }}</h2>

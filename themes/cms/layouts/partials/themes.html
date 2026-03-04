@@ -31,7 +31,7 @@
            aria-hidden="{{ if eq $i 0 }}false{{ else }}true{{ end }}">
         <div class="theme-layout">
           <div class="theme-description">
-            <p>{{ $theme.Params.description }}</p>
+            {{ with $theme.Params.description }}<p>{{ . }}</p>{{ end }}
           </div>
           <div class="theme-projects">
             {{ range $theme.Params.projects }}

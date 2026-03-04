@@ -1,6 +1,6 @@
 ---
 title: "Computational Modelling of Melodic Memory"
-theme: "music-cognition"
+theme: "algorithm-modelling"
 summary: "Building computational models that capture the time-course of melodic memory formation and recall."
 ---
 

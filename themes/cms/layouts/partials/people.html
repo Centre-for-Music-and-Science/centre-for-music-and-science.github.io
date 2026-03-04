@@ -19,7 +19,7 @@
           {{ end }}
         </div>
         <h3 class="person-name">{{ .Title }}</h3>
-        <p class="person-role">{{ .Params.role }}</p>
+        {{ with .Params.role }}<p class="person-role">{{ . }}</p>{{ end }}
       </a>
       {{ end }}
     </div>

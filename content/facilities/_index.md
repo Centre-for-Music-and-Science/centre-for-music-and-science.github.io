@@ -11,13 +11,13 @@ rooms:
       The two spaces can be booked together and patched into each other in a traditional control room/studio configuration, as well as patched into the Concert Hall and Recital Room depending on the user's needs. For electroacoustic composers the 8-channel playback rig in Studio 1 mirrors the 8-channel system recently installed in the Recital Room.
     subrooms:
       - name: "Studio 1"
-        image: "images/facilities/studio1.jpg"
+        image: "/images/facilities/studio1.jpg"
       - name: "Studio 2"
-        image: "images/facilities/studio2.jpg"
+        image: "/images/facilities/studio2.jpg"
   - name: "Computer Room"
-    image: "images/facilities/computer-room.jpg"
+    image: "/images/facilities/computer-room.jpg"
     description: "The Computer Room contains 11 Apple iMacs, each with a MIDI keyboard. Each iMac runs Sibelius, Microsoft Office and Logic Pro, as well as a wide range of freeware."
   - name: "Research Room"
-    image: "images/facilities/research-room.jpg"
+    image: "/images/facilities/research-room.jpg"
     description: "The Research Room contains a collection of additional Windows and Macintosh machines running a variety of specialist software for audio analysis, video editing, composition, and architectural acoustic simulation. It also contains a sound-proofed booth for running auditory experiments."
 ---

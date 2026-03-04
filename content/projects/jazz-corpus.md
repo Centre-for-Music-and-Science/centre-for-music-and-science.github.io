@@ -1,6 +1,6 @@
 ---
 title: "Jazz Trio Database"
-theme: "computing-cultural-taste"
+theme: "big-data"
 summary: "Automated annotation of jazz piano trio recordings using audio source separation and machine learning."
 ---
 
