@@ -2,13 +2,16 @@
 title: "Song Emotions"
 theme: "music-cognition"
 summary: "Investigating how combined emotional cues in songs—acoustic features, lyrics, and their interactions—evoke emotions, and how individual differences shape these perceptions."
-image: ""
 people:
   - "lok-yan-lam"
   - "harin-lee"
   - "peter-harrison"
 publications:
   - "lee-globalmood"
+media:
+  - type: "image"
+    src: "/images/projects/song_emotion.png"
+    caption: "Emotion space across 5 languages introduced in GlobalMood study"
 ---
 
 Most of us would agree that an upbeat song written on a major scale with lyrics about friendship makes us feel happy (e.g. one of the pop songs most rated as inducing 'joy' is "Wannabe" by Spice Girls, according to the EMMA website). This is not surprising, given that a large body of research in music psychology has established that a fast tempo, major modality, and positive lyrics are associated with positive emotions. But how do songs make us feel when their constituent elements convey different, or even conflicting emotions — for instance, a fast rhythmic drum base and a bright major melody, paired with lyrics about a painful breakup? Do we feel a linear sum of these emotions, or do the combination of different emotional cues in a song evoke complex emotions beyond this sum? How do individual differences like personalities, musical genre preferences, cultural backgrounds play a role in how we feel emotions from these cues?

@@ -53,6 +53,22 @@
         <div class="project-detail-body">
           {{ .Content }}
         </div>
+        {{ if .Params.media }}
+        <div class="project-media">
+          {{ range .Params.media }}
+          <figure class="project-media-item">
+            {{ if eq .type "video" }}
+            <video controls playsinline>
+              <source src="{{ (strings.TrimPrefix "/" .src) | relURL }}" type="video/mp4">
+            </video>
+            {{ else }}
+            <img src="{{ (strings.TrimPrefix "/" .src) | relURL }}" alt="{{ .caption }}">
+            {{ end }}
+            {{ if .caption }}<figcaption>{{ .caption }}</figcaption>{{ end }}
+          </figure>
+          {{ end }}
+        </div>
+        {{ end }}
         {{ if .Params.publications }}
         <div class="project-publications">
           <h2 class="project-publications-heading">Published work</h2>

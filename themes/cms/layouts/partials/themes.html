@@ -34,13 +34,19 @@
               {{ range $projects }}
                 {{ if eq .File.ContentBaseName $slug }}
                 <a href="{{ .RelPermalink }}" class="project-card">
-                  {{ if .Params.image }}
-                  <div class="project-image">
-                    <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+                  {{ if .Params.media }}
+                    {{ range first 1 .Params.media }}
+                      {{ if eq .type "image" }}
+                  <div class="project-card-thumb">
+                    <img src="{{ (strings.TrimPrefix "/" .src) | relURL }}" alt="">
                   </div>
+                      {{ end }}
+                    {{ end }}
                   {{ end }}
-                  <span class="project-label">Research project</span>
-                  <span class="project-title">{{ .Title }} <span class="arrow">&rarr;</span></span>
+                  <div class="project-card-text">
+                    <span class="project-label">Research project</span>
+                    <span class="project-title">{{ .Title }} <span class="arrow">&rarr;</span></span>
+                  </div>
                 </a>
                 {{ end }}
               {{ end }}

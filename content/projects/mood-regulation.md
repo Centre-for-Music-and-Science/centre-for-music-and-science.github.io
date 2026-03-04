@@ -2,12 +2,15 @@
 title: "Music Mood Regulation"
 theme: "music-cognition"
 summary: "Combining audio feature analysis and psychological research to understand how music supports mood regulation strategies and how individual differences shape the experience."
-image: ""
 people:
   - "catherine-tan"
   - "peter-harrison"
 publications:
   - "tan-mood-regulation"
+media:
+  - type: "image"
+    src: "/images/projects/mood_regulation.png"
+    caption: "Text to be filled"
 ---
 
 Music is widely used for facilitating different mood regulation strategies, yet little is known about how they interact with specific musical features and individual differences to shape the experience and effectiveness of the regulation process. The role of technology in governing and mediating these processes also remains underexplored.

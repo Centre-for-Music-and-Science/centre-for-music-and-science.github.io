@@ -1,0 +1,24 @@
+{{ define "main" }}
+<section class="datasets-list-page">
+  <div class="container">
+    <h1 class="page-title">Datasets</h1>
+    <p class="section-intro">Released datasets from the lab with published work.</p>
+    <div class="datasets-grid">
+      {{ range sort .RegularPages "Params.weight" }}
+      <a href="{{ .RelPermalink }}" class="dataset-card">
+        {{ if .Params.image }}
+        <div class="dataset-card-image">
+          <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+        </div>
+        {{ end }}
+        <div class="dataset-card-body">
+          <h2 class="dataset-card-title">{{ .Title }}</h2>
+          {{ if .Params.summary }}<p class="dataset-card-summary">{{ .Params.summary }}</p>{{ end }}
+          <span class="dataset-card-link">View dataset <span class="arrow">&rarr;</span></span>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
