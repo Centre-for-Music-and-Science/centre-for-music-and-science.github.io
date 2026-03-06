@@ -1,28 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const buttons = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.tab-panel');
+  document.querySelectorAll('.tabs').forEach(function (tabGroup) {
+    var buttons = tabGroup.querySelectorAll('.tab-btn');
+    var panels = tabGroup.querySelectorAll('.tab-panel');
 
-  buttons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var target = btn.getAttribute('data-tab');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = btn.getAttribute('data-tab');
 
-      buttons.forEach(function (b) {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
+        buttons.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(function (p) {
+          p.classList.remove('active');
+          p.setAttribute('aria-hidden', 'true');
+        });
+
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        var panel = document.getElementById('panel-' + target);
+        if (panel) {
+          panel.classList.add('active');
+          panel.setAttribute('aria-hidden', 'false');
+        }
       });
-      panels.forEach(function (p) {
-        p.classList.remove('active');
-        p.setAttribute('aria-hidden', 'true');
-      });
-
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-
-      var panel = document.getElementById('panel-' + target);
-      if (panel) {
-        panel.classList.add('active');
-        panel.setAttribute('aria-hidden', 'false');
-      }
     });
   });
 

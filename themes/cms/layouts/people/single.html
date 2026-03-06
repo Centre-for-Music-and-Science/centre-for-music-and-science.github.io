@@ -15,6 +15,8 @@
       </div>
       <h1 class="person-page-name">{{ .Title }}</h1>
       {{ with .Params.role }}<p class="person-page-role">{{ . }}</p>{{ end }}
+      {{ if eq .Params.group "mcc" }}<a href="{{ "groups/mcc/" | relURL }}" class="person-group-tag person-group-tag--mcc">Music Cognition &amp; Culture</a>
+      {{ else if eq .Params.group "mls" }}<a href="{{ "groups/mls/" | relURL }}" class="person-group-tag person-group-tag--mls">Music, Language &amp; Society</a>{{ end }}
       {{ if .Params.email }}
       <p class="person-page-email"><a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a></p>
       {{ end }}

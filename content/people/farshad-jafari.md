@@ -5,6 +5,7 @@ email: "fj303@cam.ac.uk"
 image: "/images/people/farshad-jafari.jpg"
 weight: 14
 category: phd
+group: "mcc"
 website: ""
 ---
 

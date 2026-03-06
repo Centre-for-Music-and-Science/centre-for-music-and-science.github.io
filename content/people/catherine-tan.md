@@ -5,6 +5,7 @@ email: ""
 image: "/images/people/catherine-tan.jpg"
 weight: 16
 category: phd
+group: "mcc"
 website: ""
 ---
 

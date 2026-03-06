@@ -1,14 +1,16 @@
 ---
-title: "Computational Modelling of Melodic Memory"
-theme: "algorithm-modelling"
+title: "Memory"
+theme: "cognition"
 summary: "Building computational models that capture the time-course of melodic memory formation and recall."
 people: 
     - "david-whyatt"
     - "peter-harrison"
 publications:
     - "whyatt-melody-features"
+thumbnail: "/images/projects/memory.png"
 ---
 
+## Computational Modelling of Melodic Memory
 This project develops computational models of how listeners form and retain memories of melodies. By combining behavioural experiments with information-theoretic modelling, we investigate how statistical regularities in music interact with cognitive constraints to shape melodic memory. The work has implications for understanding both music cognition and broader memory processes.
 
 Our work so far has been concerned with collecting and organising the vast range of different computational representations of melodies. By producing granular, interpretable features for our computational models, we can make inferences as to which aspects of melody are memorable on what time-courses, and begin to develop our understanding of how melodies are represented cognitively. Our taxonomy of features is available as an [<u>open-source Python package</u>](https://github.com/dmwhyatt/melody-features/).

@@ -5,6 +5,7 @@ email: "dmw56@cam.ac.uk"
 image: "/images/people/david-whyatt.jpg"
 weight: 13
 category: phd
+group: "mcc"
 website: ""
 ---
 

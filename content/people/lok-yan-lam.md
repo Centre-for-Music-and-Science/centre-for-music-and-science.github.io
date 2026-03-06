@@ -5,6 +5,7 @@ email: "lyl31@cam.ac.uk"
 image: "/images/people/lok-yan-lam.jpg"
 weight: 15
 category: phd
+group: "mcc"
 website: ""
 ---
 

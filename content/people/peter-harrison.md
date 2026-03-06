@@ -5,6 +5,7 @@ email: "pmch2@cam.ac.uk"
 image: "/images/people/peter-harrison.jpg"
 weight: 1
 category: director
+group: "mcc"
 website: "https://scholar.google.ch/citations?user=NWh30ioAAAAJ"
 ---
 

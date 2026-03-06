@@ -5,6 +5,7 @@ email: "kje34@cam.ac.uk"
 image: "/images/people/katelyn-emerson.jpg"
 weight: 11
 category: phd
+group: "mcc"
 website: ""
 ---
 

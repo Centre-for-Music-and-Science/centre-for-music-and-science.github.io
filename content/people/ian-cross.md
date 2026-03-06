@@ -5,6 +5,7 @@ email: "ic108@cam.ac.uk"
 image: "/images/people/ian-cross.jpg"
 weight: 2
 category: emeritus
+group: "mls"
 website: "http://www.mus.cam.ac.uk/directory/ian-cross"
 ---
 
