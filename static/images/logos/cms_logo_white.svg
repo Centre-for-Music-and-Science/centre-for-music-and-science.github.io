@@ -11,7 +11,7 @@
       }
 
       .cls-3 {
-        font-family: Geneva, Geneva;
+        font-family: 'Gill Sans MT', 'Gill Sans', Calibri, sans-serif;
         font-size: 46.04px;
       }
     </style>
