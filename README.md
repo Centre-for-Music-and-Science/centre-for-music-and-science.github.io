@@ -1,6 +1,6 @@
 # Centre for Music and Science — Website
 
-The website for the [Centre for Music and Science](https://centre-for-music-and-science.github.io/website/) at the University of Cambridge, built with [Hugo](https://gohugo.io/).
+The website for the [Centre for Music and Science](https://centre-for-music-and-science.github.io) at the University of Cambridge, built with [Hugo](https://gohugo.io/).
 
 ## Prerequisites
 
