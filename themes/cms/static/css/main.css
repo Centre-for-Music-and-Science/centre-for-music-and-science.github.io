@@ -42,6 +42,9 @@ a {
 .single-page .content a,
 .list-page .content a,
 .person-page-bio a,
+.person-page-email a,
+.person-page-website a,
+.person-page-google-scholar a,
 .group-detail-body a,
 .dataset-detail-body a,
 .event-detail-content a,
@@ -55,6 +58,9 @@ a {
 .single-page .content a:hover,
 .list-page .content a:hover,
 .person-page-bio a:hover,
+.person-page-email a:hover,
+.person-page-website a:hover,
+.person-page-google-scholar a:hover,
 .group-detail-body a:hover,
 .dataset-detail-body a:hover,
 .event-detail-content a:hover,
@@ -1412,16 +1418,9 @@ a.pub-item-title:hover {
   margin-bottom: 8px;
 }
 
-.person-page-email a,
-.person-page-website a {
-  color: var(--color-accent);
-  font-size: 0.95rem;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
 .person-page-email,
-.person-page-website {
+.person-page-website,
+.person-page-google-scholar {
   margin-bottom: 4px;
 }
 

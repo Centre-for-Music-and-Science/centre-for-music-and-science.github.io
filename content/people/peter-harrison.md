@@ -6,7 +6,7 @@ image: "/images/people/peter-harrison.jpg"
 weight: 1
 category: director
 group: "mcc"
-website: "https://scholar.google.ch/citations?user=NWh30ioAAAAJ"
+google_scholar: "https://scholar.google.ch/citations?user=NWh30ioAAAAJ"
 ---
 
 I am an Associate Professor in the Faculty of Music, Director of the Centre for Music and Science, and Director of Studies in Music at Churchill College. Previously I worked as a researcher at the Max Planck Institute for Empirical Aesthetics and as a data science consultant for the music research startup SoundOut.

@@ -7,7 +7,7 @@ theme = 'cms'
   description = "The Centre for Music and Science (CMS) supports both teaching and research into the science of music at the University of Cambridge."
   heroTitle = "Centre for Music and Science"
   heroSubtitle = "University of Cambridge"
-  themesIntro = "Our research spans multiple disciplines, combining computational, cognitive, and empirical approaches to understand music and its role in human life. The Centre for Music and Science (CMS) is divided into two working groups: Music Cognition and Culture Group and Music, Language, and Society Group."
+  themesIntro = "The Centre for Music and Science (CMS) is divided into two working groups: the Music Cognition and Culture Group and the Music, Language, and Society Group."
 
 buildFuture = true
 

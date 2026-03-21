@@ -23,6 +23,9 @@
       {{ if .Params.website }}
       <p class="person-page-website"><a href="{{ .Params.website }}" target="_blank" rel="noopener">Personal website &rarr;</a></p>
       {{ end }}
+      {{ if .Params.google_scholar }}
+      <p class="person-page-google-scholar"><a href="{{ .Params.google_scholar }}" target="_blank" rel="noopener">Google Scholar &rarr;</a></p>
+      {{ end }}
     </div>
     {{ if .Content }}
     <div class="person-page-bio">
