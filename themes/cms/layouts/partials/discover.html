@@ -7,7 +7,7 @@
         {{ $vid := replaceRE `.*(?:youtube\.com/watch\?v=|youtu\.be/)([^&?]+).*` "$1" .url }}
         <div class="discover-card">
           <div class="discover-card-video">
-            <iframe src="https://www.youtube.com/embed/{{ $vid }}" title="{{ .title }}" style="border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/{{ $vid }}" title="{{ .title }}" style="border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <h3 class="discover-card-title">{{ .title }}</h3>
         </div>
