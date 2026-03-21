@@ -382,9 +382,10 @@
     var blendTarget = infoPanelOpen ? 1 : 0;
     cameraBlend += (blendTarget - cameraBlend) * (1 - Math.exp(-CAMERA_BLEND_SPEED * dt));
 
-    var idleX = Math.sin(elapsed * 0.08) * 2.5;
-    var idleY = 6.0 + Math.sin(elapsed * 0.05) * 1.5;
-    var idleZ = 10.0 + Math.cos(elapsed * 0.06) * 2.0;
+    var phase0 = 0.175 * 4;
+    var idleX = Math.sin(elapsed * 0.08 + phase0) * 3.5;
+    var idleY = 9.0 + Math.sin(elapsed * 0.05 + phase0) * 1.5;
+    var idleZ = 8.0 + Math.cos(elapsed * 0.06 + phase0) * 2.0;
 
     var detailX = 0;
     var detailY = 8;
@@ -395,7 +396,7 @@
     camera.position.z = idleZ + (detailZ - idleZ) * cameraBlend;
 
     var lookX = 0 + 0.25 * cameraBlend;
-    var lookY = 0.5 + (0.2 - 0.5) * cameraBlend;
+    var lookY = -0.5 + (0.2 - (-0.5)) * cameraBlend;
     camera.lookAt(lookX, lookY, -2);
 
     renderer.render(scene, camera);
