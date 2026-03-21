@@ -1,5 +1,5 @@
 ---
-title: "Dr Satinder Gill"
+title: "Satinder Gill"
 role: "Affiliated Researcher"
 email: "spg12@cam.ac.uk"
 image: "/images/people/satinder-gill.jpg"

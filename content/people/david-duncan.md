@@ -1,5 +1,5 @@
 ---
-title: "Dr David Duncan"
+title: "David Duncan"
 role: "Research Assistant"
 email: "dtd25@cam.ac.uk"
 image: "/images/people/david-duncan.jpg"

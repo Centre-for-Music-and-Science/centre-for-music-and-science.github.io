@@ -1,5 +1,5 @@
 ---
-title: "Dr Ivan Jimenez"
+title: "Ivan Jimenez"
 role: "Affiliate Researcher"
 email: "ivan.jimenez.rodriguez@uniarts.fi"
 image: "/images/people/Ivan_Jimenez.jpg"

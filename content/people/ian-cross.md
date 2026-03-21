@@ -1,5 +1,5 @@
 ---
-title: "Prof Ian Cross"
+title: "Ian Cross"
 role: "Emeritus Professor"
 email: "ic108@cam.ac.uk"
 image: "/images/people/ian-cross.jpg"

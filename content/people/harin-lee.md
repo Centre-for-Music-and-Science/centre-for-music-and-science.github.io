@@ -1,5 +1,5 @@
 ---
-title: "Dr Harin Lee"
+title: "Harin Lee"
 role: "Postdoc"
 email: "hl744@cam.ac.uk"
 image: "/images/people/harin-lee.png"
