@@ -6,6 +6,12 @@
 
   var SPECTRAL_BASE = (document.querySelector('meta[name="spectral-base-url"]') || {}).content || 'data/';
   var AUDIO_BASE = (document.querySelector('meta[name="audio-base-url"]') || {}).content || 'audio/';
+  var queryParams = new URLSearchParams(window.location.search);
+  var spectralOverride = queryParams.get('spectral');
+  var debug2D = queryParams.get('debug2d') === '1';
+  var height3D = queryParams.get('height3d') !== '0';
+  var freqTopHigh = queryParams.get('freqTopHigh') !== '0';
+  var vividMode = queryParams.get('vivid') === '1';
 
   var TRACKS = [
     {
@@ -19,6 +25,11 @@
         deep: [0.05, 0.08, 0.18],
         mid:  [0.1, 0.5, 0.7],
         bright: [0.85, 0.95, 1.0]
+      },
+      vividColors: {
+        deep: [0.01, 0.02, 0.08],
+        mid: [0.05, 0.55, 0.95],
+        bright: [1.0, 0.85, 0.2]
       }
     },
     {
@@ -32,16 +43,26 @@
         deep: [0.18, 0.04, 0.06],
         mid:  [0.7, 0.12, 0.15],
         bright: [1.0, 0.75, 0.7]
+      },
+      vividColors: {
+        deep: [0.03, 0.0, 0.06],
+        mid: [0.85, 0.1, 0.2],
+        bright: [1.0, 0.88, 0.25]
       }
     }
   ];
 
   var currentTrackIdx = 0;
   var scene, camera, renderer, mesh, clock;
+  var ORTHO_FRUSTUM_SIZE = 12;
+  var DEBUG_2D_FRUSTUM_SIZE = 14;
+  var DEBUG_2D_CAMERA_POS = new THREE.Vector3(0, 16, 0);
+  var DEBUG_2D_LOOK_AT = new THREE.Vector3(0, 0, 0);
+  var DEBUG_3D_CAMERA_POS = new THREE.Vector3(0, 12, 4);
+  var DEBUG_3D_LOOK_AT = new THREE.Vector3(0, 0.4, -2);
   var spectralData = null;
   var currentPositionMs = 0;
   var isPlaying = false;
-  var idleReady = false;
 
   var VISIBLE_SECONDS = 10;
   var TERRAIN_WIDTH = 20;
@@ -69,11 +90,28 @@
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0x1a2332);
-    scene.fog = new THREE.FogExp2(0x1a2332, 0.035);
+    scene.fog = debug2D ? null : new THREE.FogExp2(0x1a2332, 0.035);
 
-    camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-    camera.position.set(0, 6, 8);
-    camera.lookAt(0, 0, -2);
+    var aspect = canvas.clientWidth / canvas.clientHeight;
+    var frustumSize = debug2D ? DEBUG_2D_FRUSTUM_SIZE : ORTHO_FRUSTUM_SIZE;
+    camera = new THREE.OrthographicCamera(
+      -frustumSize * aspect / 2,
+      frustumSize * aspect / 2,
+      frustumSize / 2,
+      -frustumSize / 2,
+      0.1,
+      100
+    );
+    if (debug2D && !height3D) {
+      camera.position.copy(DEBUG_2D_CAMERA_POS);
+      camera.lookAt(DEBUG_2D_LOOK_AT);
+    } else if (debug2D && height3D) {
+      camera.position.copy(DEBUG_3D_CAMERA_POS);
+      camera.lookAt(DEBUG_3D_LOOK_AT);
+    } else {
+      camera.position.set(0, 14, 0.5);
+      camera.lookAt(0, 0.2, -2);
+    }
 
     renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
@@ -95,10 +133,14 @@
   function bindHeroInfoPanel() {
     var infoBtn = document.getElementById('hero-info-btn');
     var infoPanel = document.getElementById('hero-info-panel');
+    var watermark = document.querySelector('.hero-lab-logo-watermark');
     if (!infoBtn || !infoPanel) return;
 
     function setOpen(open) {
       infoBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (watermark) {
+        watermark.style.display = open ? 'none' : '';
+      }
       if (open) {
         infoPanel.removeAttribute('hidden');
       } else {
@@ -128,7 +170,12 @@
   function onResize() {
     var w = canvas.parentElement.clientWidth;
     var h = canvas.parentElement.clientHeight;
-    camera.aspect = w / h;
+    var aspect = w / h;
+    var frustumSize = debug2D ? DEBUG_2D_FRUSTUM_SIZE : ORTHO_FRUSTUM_SIZE;
+    camera.left = -frustumSize * aspect / 2;
+    camera.right = frustumSize * aspect / 2;
+    camera.top = frustumSize / 2;
+    camera.bottom = -frustumSize / 2;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
   }
@@ -149,7 +196,7 @@
     audio.src = AUDIO_BASE + track.audioFile;
     audio.load();
 
-    var dataUrl = SPECTRAL_BASE + track.dataFile;
+    var dataUrl = spectralOverride ? (spectralOverride.match(/^https?:\/\//) ? spectralOverride : SPECTRAL_BASE + spectralOverride) : SPECTRAL_BASE + track.dataFile;
     if (spectralCache[dataUrl]) {
       spectralData = spectralCache[dataUrl];
       rebuildTerrain();
@@ -167,13 +214,20 @@
     }
   }
 
-  function makeFragmentShader(colors) {
+  function makeFragmentShader(colors, vivid) {
     var d = colors.deep, m = colors.mid, b = colors.bright;
+    var floor = vivid ? 0.10 : 0.00;
+    var ceil = vivid ? 0.92 : 1.00;
+    var gamma = vivid ? 0.75 : 1.00;
+    var edgeBase = vivid ? 0.75 : 0.40;
+    var edgeGain = vivid ? 0.25 : 0.60;
     return [
       'varying float vHeight;',
       'varying vec2 vUv;',
       'void main() {',
       '  float h = clamp(vHeight / ' + HEIGHT_SCALE.toFixed(1) + ', 0.0, 1.0);',
+      '  h = clamp((h - ' + floor.toFixed(2) + ') / (' + ceil.toFixed(2) + ' - ' + floor.toFixed(2) + '), 0.0, 1.0);',
+      '  h = pow(h, ' + gamma.toFixed(2) + ');',
       '  vec3 deepC = vec3(' + d[0].toFixed(3) + ', ' + d[1].toFixed(3) + ', ' + d[2].toFixed(3) + ');',
       '  vec3 midC  = vec3(' + m[0].toFixed(3) + ', ' + m[1].toFixed(3) + ', ' + m[2].toFixed(3) + ');',
       '  vec3 brightC = vec3(' + b[0].toFixed(3) + ', ' + b[1].toFixed(3) + ', ' + b[2].toFixed(3) + ');',
@@ -181,7 +235,7 @@
       '    ? mix(deepC, midC, h * 2.0)',
       '    : mix(midC, brightC, (h - 0.5) * 2.0);',
       '  float edge = smoothstep(0.0, 0.08, vUv.x) * smoothstep(0.0, 0.08, 1.0 - vUv.x);',
-      '  gl_FragColor = vec4(color * (0.4 + 0.6 * edge), 1.0);',
+      '  gl_FragColor = vec4(color * (' + edgeBase.toFixed(2) + ' + ' + edgeGain.toFixed(2) + ' * edge), 1.0);',
       '}'
     ].join('\n');
   }
@@ -214,7 +268,8 @@
     currentHeights = new Float32Array(vertCount);
 
     var track = TRACKS[currentTrackIdx];
-    var fragShader = makeFragmentShader(track.colors);
+    var palette = vividMode && track.vividColors ? track.vividColors : track.colors;
+    var fragShader = makeFragmentShader(palette, vividMode);
 
     mesh = new THREE.Mesh(geometry, new THREE.ShaderMaterial({
       vertexShader: vertexShader,
@@ -223,14 +278,13 @@
     }));
     scene.add(mesh);
 
-    var midMs = (spectralData.duration * 1000) * 0.4;
-    computeTargetHeights(midMs);
+    currentPositionMs = audio ? (audio.currentTime * 1000) : 0;
+    computeTargetHeights(currentPositionMs);
     for (var i = 0; i < vertCount; i++) {
       currentHeights[i] = targetHeights[i];
     }
     applyHeights(currentHeights);
     mesh.geometry.computeVertexNormals();
-    idleReady = true;
   }
 
   function sampleAmplitude(frameIdx, freqIdx, totalFrames) {
@@ -246,25 +300,20 @@
     var fps = spectralData.fps;
     var totalFrames = spectralData.nFrames;
     var exactFrame = (positionMs / 1000) * fps;
-    var frameA = Math.floor(exactFrame);
-    var frameB = frameA + 1;
-    var t = exactFrame - frameA;
+    var nearestFrame = Math.round(exactFrame);
 
     var cols = timeSegs + 1;
     var rows = freqSegs + 1;
-    var halfWindow = Math.floor(timeSegs / 2);
-    var startA = frameA - halfWindow;
-    var startB = frameB - halfWindow;
+    var start = nearestFrame;
 
     for (var col = 0; col < cols; col++) {
-      var fA = startA + col;
-      var fB = startB + col;
+      var f = start + col;
       for (var row = 0; row < rows; row++) {
         var idx = row * cols + col;
-        var freqIdx = Math.min(row, spectralData.nMels - 1);
-        var ampA = sampleAmplitude(fA, freqIdx, totalFrames);
-        var ampB = sampleAmplitude(fB, freqIdx, totalFrames);
-        targetHeights[idx] = (ampA + (ampB - ampA) * t) * HEIGHT_SCALE;
+        var srcRow = freqTopHigh ? (spectralData.nMels - 1 - row) : row;
+        var freqIdx = Math.min(Math.max(srcRow, 0), spectralData.nMels - 1);
+        var amp = sampleAmplitude(f, freqIdx, totalFrames);
+        targetHeights[idx] = amp * HEIGHT_SCALE;
       }
     }
   }
@@ -308,47 +357,49 @@
     var dt = Math.min(clock.getDelta(), 0.05);
     var elapsed = clock.getElapsedTime();
 
-    var zoomTarget = isPlaying ? 1 : 0;
-    zoomFactor += (zoomTarget - zoomFactor) * (1 - Math.exp(-ZOOM_SPEED * dt));
+    var zoomTarget = 0;
+    if (debug2D) {
+      zoomFactor = 0;
+    } else {
+      zoomFactor += (zoomTarget - zoomFactor) * (1 - Math.exp(-ZOOM_SPEED * dt));
+    }
 
-    if (isPlaying && audio) {
+    if (audio) {
       currentPositionMs = audio.currentTime * 1000;
-      computeTargetHeights(currentPositionMs);
-    } else if (!idleReady) {
-      var midMs = (spectralData.duration * 1000) * 0.4;
-      computeTargetHeights(midMs);
-      for (var i = 0; i < currentHeights.length; i++) {
-        currentHeights[i] = targetHeights[i];
-      }
+    }
+    computeTargetHeights(currentPositionMs);
+
+    var changed = lerpHeights(dt);
+    if (changed) {
       applyHeights(currentHeights);
-      mesh.geometry.computeVertexNormals();
-      idleReady = true;
-    }
-
-    if (isPlaying) {
-      var changed = lerpHeights(dt);
-      if (changed) {
-        applyHeights(currentHeights);
-        normalTimer += dt;
-        if (normalTimer >= NORMAL_INTERVAL) {
-          mesh.geometry.computeVertexNormals();
-          normalTimer = 0;
-        }
+      normalTimer += dt;
+      if (normalTimer >= NORMAL_INTERVAL) {
+        mesh.geometry.computeVertexNormals();
+        normalTimer = 0;
       }
     }
 
-    var idleX = Math.sin(elapsed * 0.08) * 2.5;
-    var idleY = 6 + Math.sin(elapsed * 0.05) * 1.5;
-    var idleZ = 10 + Math.cos(elapsed * 0.06) * 2.0;
 
-    var playX = Math.sin(elapsed * 0.06) * 0.5;
-    var playY = 4.5 + Math.sin(elapsed * 0.09) * 0.3;
-    var playZ = 6;
+    if (debug2D && !height3D) {
+      camera.position.copy(DEBUG_2D_CAMERA_POS);
+      camera.lookAt(DEBUG_2D_LOOK_AT);
+    } else if (debug2D && height3D) {
+      camera.position.copy(DEBUG_3D_CAMERA_POS);
+      camera.lookAt(DEBUG_3D_LOOK_AT);
+    } else {
+      var idleX = Math.sin(elapsed * 0.08) * 1.6;
+      var idleY = 13.8 + Math.sin(elapsed * 0.05) * 0.6;
+      var idleZ = 1.0 + Math.cos(elapsed * 0.06) * 0.4;
 
-    camera.position.x = idleX + (playX - idleX) * zoomFactor;
-    camera.position.y = idleY + (playY - idleY) * zoomFactor;
-    camera.position.z = idleZ + (playZ - idleZ) * zoomFactor;
-    camera.lookAt(0, 0.5, -2);
+      var playX = Math.sin(elapsed * 0.06) * 0.5;
+      var playY = 12.0 + Math.sin(elapsed * 0.09) * 0.2;
+      var playZ = -0.2;
+
+      camera.position.x = idleX + (playX - idleX) * zoomFactor;
+      camera.position.y = idleY + (playY - idleY) * zoomFactor;
+      camera.position.z = idleZ + (playZ - idleZ) * zoomFactor;
+      camera.lookAt(0, 0.2, -2);
+    }
 
     renderer.render(scene, camera);
   }
@@ -375,7 +426,6 @@
     var wasPlaying = isPlaying;
     audio.pause();
     isPlaying = false;
-    idleReady = false;
     loadTrack(idx);
     if (wasPlaying) {
       audio.addEventListener('canplay', function onCanPlay() {
@@ -412,13 +462,11 @@
 
     audio.addEventListener('pause', function () {
       isPlaying = false;
-      idleReady = false;
       updatePlayerUI();
     });
 
     audio.addEventListener('ended', function () {
       isPlaying = false;
-      idleReady = false;
       if (btnRing) btnRing.style.setProperty('--progress', 0);
       updatePlayerUI();
     });
