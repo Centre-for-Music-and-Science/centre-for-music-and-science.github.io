@@ -1,14 +1,18 @@
 ---
 title: "Facilities"
-description: "The purpose-built CMS building houses two Studios, a Computer Room, and a Research Room."
+description: "The purpose-built CMS building houses a Recording Studio, a Computer Room, and a Research Room."
 rooms:
   - name: "Studios"
     description: |
-      The Faculty operates a fully-equipped studio within our Centre for Music and Science which is available to students and staff at the Faculty of Music following an induction provided by the CMS Technical Specialist, Dr Myles Eastwood (mjfe2).
+      The Faculty operates a fully-equipped Recording Studio within our Centre for Music and Science which is available to students and staff at the Faculty of Music following an induction provided by the CMS Technical Specialist, Dr Myles Eastwood (mjfe2).
 
       The facility comprises two isolated spaces, Studios 1 and 2, which can be booked for any audio-related activity, from electro-acoustic composition to psychology experiments. A wide selection of software, high-quality playback systems (in stereo and various surround configurations), and numerous bits of hardware ranging from user-friendly portable recorders to industry-standard microphones, is provided.
 
       The two spaces can be booked together and patched into each other in a traditional control room/studio configuration, as well as patched into the Concert Hall and Recital Room depending on the user's needs. For electroacoustic composers the 8-channel playback rig in Studio 1 mirrors the 8-channel system recently installed in the Recital Room.
+
+      The Recording Studio currently hosts the Faculty's Electronic Music Studio, led by Marta Gentilucci. For more information about the Electronic Music Studio, visit [Electroacoustic Music Day](https://www.electroacousticday.com/).
+
+
     subrooms:
       - name: "Studio 1"
         image: "/images/facilities/studio1.jpg"
