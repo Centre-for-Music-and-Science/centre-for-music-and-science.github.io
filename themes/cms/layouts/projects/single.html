@@ -64,7 +64,9 @@
               <a href="{{ if $pub.Params.doi }}{{ $pub.Params.doi }}{{ else }}{{ $pub.RelPermalink }}{{ end }}" {{ if $pub.Params.doi }}target="_blank" rel="noopener"{{ end }}>
                 <span class="project-pub-title">{{ $pub.Title }}</span>
                 {{ if $pub.Params.authors }}<span class="project-pub-authors">{{ $pub.Params.authors }}</span>{{ end }}
-                {{ if $pub.Params.journal }}<span class="project-pub-journal">{{ $pub.Params.journal }} ({{ $pub.Date.Format "2006" }})</span>{{ end }}
+                {{ if $pub.Params.journal }}
+                <span class="project-pub-journal">{{ $pub.Params.journal }}{{ if $pub.Params.inpress }} (In Press){{ else }} ({{ $pub.Date.Format "2006" }}){{ end }}</span>
+                {{ end }}
               </a>
             </li>
               {{ end }}

@@ -56,10 +56,7 @@
   {{ range $i, $year := $years }}
   <div class="pub-year-block {{ if eq (mod $i 2) 1 }}pub-year-block-alt{{ end }}">
     <div class="pub-year-inner">
-      <h2 class="pub-year-heading">
-        {{ $year }}
-        {{ range $pubs }}{{ if and (eq (.Date.Format "2006") $year) .Params.inpress }} (In Press){{ end }}{{ end }}
-      </h2>
+      <h2 class="pub-year-heading">{{ $year }}</h2>
       <ul class="pub-year-list">
         {{ range $pubs }}
         {{ if eq (.Date.Format "2006") $year }}
@@ -70,7 +67,12 @@
           {{ else }}
           <span class="pub-item-title">{{ .Title }}</span>
           {{ end }}
-          {{ if .Params.journal }}<span class="pub-item-journal">{{ .Params.journal }}</span>{{ end }}
+          {{ if or .Params.journal .Params.inpress }}
+          <span class="pub-item-journal">
+            {{- with .Params.journal }}{{ . }}{{ end -}}
+            {{- if .Params.inpress }}{{ if .Params.journal }} {{ end }}(In Press){{ end -}}
+          </span>
+          {{ end }}
         </li>
         {{ end }}
         {{ end }}

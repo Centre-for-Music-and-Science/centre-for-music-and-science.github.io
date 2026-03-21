@@ -8,7 +8,12 @@
           <span class="pub-year">{{ .Date.Format "2006" }}</span>
           <h3 class="pub-title">{{ .Title }}</h3>
           {{ if .Params.authors }}<p class="pub-authors">{{ .Params.authors }}</p>{{ end }}
-          {{ if .Params.journal }}<p class="pub-journal">{{ .Params.journal }}</p>{{ end }}
+          {{ if or .Params.journal .Params.inpress }}
+          <p class="pub-journal">
+            {{- with .Params.journal }}{{ . }}{{ end -}}
+            {{- if .Params.inpress }}{{ if .Params.journal }} {{ end }}(In Press){{ end -}}
+          </p>
+          {{ end }}
         </div>
       </a>
       {{ end }}
