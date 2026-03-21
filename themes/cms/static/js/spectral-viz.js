@@ -33,6 +33,19 @@
         mid: [0.85, 0.1, 0.2],
         bright: [1.0, 0.88, 0.25]
       }
+    },
+    {
+      title: 'Cello Suite No. 1',
+      artist: 'Fournier (1961) \u2022 Bach',
+      audioFile: 'bach-cello-suite-1.mp3',
+      dataFile: 'bach-cello-suite-1-spectral.json',
+      ringColor: '#d4a855',
+      theme: 'gold',
+      colors: {
+        deep: [0.102, 0.137, 0.196],
+        mid: [0.75, 0.55, 0.15],
+        bright: [1.0, 0.92, 0.6]
+      }
     }
   ];
 
@@ -196,8 +209,6 @@
     var floor = 0.10;
     var ceil = 0.92;
     var gamma = 0.75;
-    var edgeBase = 0.75;
-    var edgeGain = 0.25;
     return [
       'varying float vHeight;',
       'varying vec2 vUv;',
@@ -211,8 +222,7 @@
       '  vec3 color = h < 0.5',
       '    ? mix(deepC, midC, h * 2.0)',
       '    : mix(midC, brightC, (h - 0.5) * 2.0);',
-      '  float edge = smoothstep(0.0, 0.08, vUv.x) * smoothstep(0.0, 0.08, 1.0 - vUv.x);',
-      '  gl_FragColor = vec4(color * (' + edgeBase.toFixed(2) + ' + ' + edgeGain.toFixed(2) + ' * edge), 1.0);',
+      '  gl_FragColor = vec4(color, 1.0);',
       '}'
     ].join('\n');
   }

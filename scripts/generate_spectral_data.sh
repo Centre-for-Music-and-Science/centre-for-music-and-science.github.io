@@ -29,3 +29,7 @@ python scripts/generate_spectrogram.py static/audio/berghain.mp3 \
 python scripts/generate_spectrogram.py static/audio/fever.mp3 \
   "${COMMON_ARGS[@]}" \
   --output static/data/fever-spectral.json
+
+python scripts/generate_spectrogram.py static/audio/bach-cello-suite-1.mp3 \
+  "${COMMON_ARGS[@]}" \
+  --output static/data/bach-cello-suite-1-spectral.json
