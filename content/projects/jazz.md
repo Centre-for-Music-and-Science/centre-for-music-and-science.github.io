@@ -7,6 +7,7 @@ thumbnail: "/images/projects/jazz.png"
 ---
 
 ## Computational Jazz Research
+
 Despite being one of the most influential musical traditions of the last century, jazz has received surprisingly little scientific study — largely because improvisation makes it difficult to analyse and because most jazz performances aren't written down.
 
 This research project tackled these challenges by building a large collection of annotated jazz recordings and using computational methods to understand what makes jazz distinctive. We created a database of 45 hours of jazz performances and used it to:

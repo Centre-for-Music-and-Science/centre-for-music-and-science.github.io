@@ -46,3 +46,10 @@ JSON file, and a JS track definition.
 
 4. **Update `scripts/generate_spectral_data.sh`** so the track is included
    when bulk-regenerating all spectral data.
+
+## Publication BibTeX encoding
+
+- Use Unicode characters directly in publication `bibtex` fields.
+  - Example: `Müllensiefen`, `Fouché`, `Pérez-Acosta`.
+- Do not use LaTeX accent escapes like `{\"u}`, `{\c{C}}`, or `{\'e}` in
+  newly added entries.

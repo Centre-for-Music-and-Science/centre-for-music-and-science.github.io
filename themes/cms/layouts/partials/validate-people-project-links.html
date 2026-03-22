@@ -1,0 +1,6 @@
+{{- $peoplePages := where site.RegularPages "Section" "people" -}}
+{{- range $peoplePages -}}
+  {{- if isset .Params "projects" -}}
+    {{- errorf "People-project ownership error: remove %q front matter from %s. Define person-project links only in content/projects/*.md using the 'people' array." "projects" .File.Path -}}
+  {{- end -}}
+{{- end -}}

@@ -1,7 +1,8 @@
 {{- $page := .page -}}
 {{- $entityType := .entity_type -}}
 {{- $allProjects := default (where $page.Site.RegularPages "Section" "projects") .all_projects -}}
-{{- $projectSlugs := default (slice) $page.Params.projects -}}
+{{- $projectSlugs := slice -}}
+{{- $personSlugs := slice -}}
 
 {{- if eq $entityType "group" -}}
   {{- $members := default (slice) .members -}}
@@ -9,10 +10,28 @@
     {{- $members = partial "resolve-group-members.html" (dict "page" $page) -}}
   {{- end -}}
   {{- range $members -}}
-    {{- range (default (slice) .Params.projects) -}}
-      {{- if not (in $projectSlugs .) -}}
-        {{- $projectSlugs = $projectSlugs | append . -}}
+    {{- $memberSlug := .File.ContentBaseName -}}
+    {{- if not (in $personSlugs $memberSlug) -}}
+      {{- $personSlugs = $personSlugs | append $memberSlug -}}
+    {{- end -}}
+  {{- end -}}
+{{- else if eq $entityType "person" -}}
+  {{- $personSlug := $page.File.ContentBaseName -}}
+  {{- $personSlugs = $personSlugs | append $personSlug -}}
+{{- end -}}
+
+{{- if gt (len $personSlugs) 0 -}}
+  {{- range $allProjects -}}
+    {{- $projectSlug := .File.ContentBaseName -}}
+    {{- $taggedPeople := default (slice) .Params.people -}}
+    {{- $matchesEntity := false -}}
+    {{- range $personSlugs -}}
+      {{- if in $taggedPeople . -}}
+        {{- $matchesEntity = true -}}
       {{- end -}}
+    {{- end -}}
+    {{- if and $matchesEntity (not (in $projectSlugs $projectSlug)) -}}
+      {{- $projectSlugs = $projectSlugs | append $projectSlug -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

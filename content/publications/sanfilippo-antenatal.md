@@ -3,7 +3,7 @@ title: Expression of antenatal symptoms of common mental disorders in The Gambia
   the UK
 date: 2023-01-01
 # generated from bibtex; do not edit manually
-authors: Sanfilippo, K. R. M., Glover, V., Cornelius, V., {Amiel Castro}, R. T., McConnell,
+authors: Sanfilippo, K. R. M., Glover, V., Cornelius, V., Amiel Castro, R. T., McConnell,
   B., Darboe, B., Huma, H. B., Ceesay, H., Ramchandani, P., Cross, I., & Stewart,
   L.
 journal: BMJ Open
@@ -40,13 +40,13 @@ bibtex: |-
     doi = {10.1136/bmjopen-2022-066807}
   }
 # generated from bibtex; do not edit manually
-citation_apa: Sanfilippo, K. R. M., Glover, V., Cornelius, V., {Amiel Castro}, R.
-  T., McConnell, B., Darboe, B., Huma, H. B., Ceesay, H., Ramchandani, P., Cross,
-  I., & Stewart, L. (2023). Expression of antenatal symptoms of common mental disorders
+citation_apa: Sanfilippo, K. R. M., Glover, V., Cornelius, V., Amiel Castro, R. T.,
+  McConnell, B., Darboe, B., Huma, H. B., Ceesay, H., Ramchandani, P., Cross, I.,
+  & Stewart, L. (2023). Expression of antenatal symptoms of common mental disorders
   in The Gambia and the UK. <em>BMJ Open</em>. https://doi.org/10.1136/bmjopen-2022-066807
 citation_mla: Sanfilippo, K. R. M., et al.. “Expression of Antenatal Symptoms of Common
   Mental Disorders in The Gambia and the UK”. <em>BMJ Open</em>, 2023, https://doi.org/10.1136/bmjopen-2022-066807.
-citation_chicago: Sanfilippo, K. R. M., V. Glover, V. Cornelius, R. T. {Amiel Castro},
+citation_chicago: Sanfilippo, K. R. M., V. Glover, V. Cornelius, R. T. Amiel Castro,
   B. McConnell, B. Darboe, H. B. Huma, et al.. 2023. “Expression of Antenatal Symptoms
   of Common Mental Disorders in The Gambia and the UK”. <em>BMJ Open</em>. https://doi.org/10.1136/bmjopen-2022-066807.
 citation_ieee: '[1] K. R. M. Sanfilippo, “Expression of antenatal symptoms of common

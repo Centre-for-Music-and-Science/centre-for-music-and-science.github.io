@@ -2,7 +2,7 @@
 title: Handedness and musicality in secondary school students
 date: 2023-01-01
 # generated from bibtex; do not edit manually
-authors: Anstee, L., M{\"u}llensiefen, D., & Harrison, P. M. C.
+authors: Anstee, L., Müllensiefen, D., & Harrison, P. M. C.
 journal: Music Perception
 doi: https://doi.org/10.1525/mp.2023.40.5.373
 abstract: 'This article investigates the relationship between handedness and abilities
@@ -24,20 +24,20 @@ abstract: 'This article investigates the relationship between handedness and abi
   as well as highlighting changing dexterity as an area for future research.'
 bibtex: |-
   @article{anstee-handedness,
-    author = {Anstee, L. and M{\"u}llensiefen, D. and Harrison, P. M. C.},
+    author = {Anstee, L. and Müllensiefen, D. and Harrison, P. M. C.},
     title = {Handedness and musicality in secondary school students},
     journal = {Music Perception},
     year = {2023},
     doi = {10.1525/mp.2023.40.5.373}
   }
 # generated from bibtex; do not edit manually
-citation_apa: Anstee, L., M{\"u}llensiefen, D., & Harrison, P. M. C. (2023). Handedness
+citation_apa: Anstee, L., Müllensiefen, D., & Harrison, P. M. C. (2023). Handedness
   and musicality in secondary school students. <em>Music Perception</em>. https://doi.org/10.1525/mp.2023.40.5.373
 citation_mla: Anstee, L., et al.. “Handedness and Musicality in Secondary School Students”.
   <em>Music Perception</em>, 2023, https://doi.org/10.1525/mp.2023.40.5.373.
-citation_chicago: Anstee, L., D. M{\"u}llensiefen, and P. M. C. Harrison. 2023. “Handedness
+citation_chicago: Anstee, L., D. Müllensiefen, and P. M. C. Harrison. 2023. “Handedness
   and Musicality in Secondary School Students”. <em>Music Perception</em>. https://doi.org/10.1525/mp.2023.40.5.373.
-citation_ieee: '[1] L. Anstee, D. M{\"u}llensiefenand P. M. C. Harrison, “Handedness
-  and musicality in secondary school students”, <em>Music Perception</em>, 2023, doi:
+citation_ieee: '[1] L. Anstee, D. Müllensiefenand P. M. C. Harrison, “Handedness and
+  musicality in secondary school students”, <em>Music Perception</em>, 2023, doi:
   10.1525/mp.2023.40.5.373.'
 ---

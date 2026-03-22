@@ -130,6 +130,31 @@ class PublicationCitationTests(unittest.TestCase):
             "https://doi.org/10.1000/example",
         )
 
+    def test_normalize_citeproc_html_decodes_latex_accents(self):
+        citation_html = (
+            "Eitel, M., Ruth, N., Harrison, P. M. C., Frieler, K., "
+            '& M{\\"u}llensiefen, D. (2020). <em>Journal</em>.'
+        )
+        out = normalize_citeproc_html(citation_html)
+        self.assertIn("Mullensiefen", out.replace("ü", "u"))
+        self.assertIn("Müllensiefen", out)
+
+    def test_normalize_citeproc_html_decodes_acute_accents(self):
+        citation_html = "Fouch{\\'e}, S. (2020). <em>Journal</em>."
+        out = normalize_citeproc_html(citation_html)
+        self.assertEqual(out, "Fouché, S. (2020). <em>Journal</em>.")
+
+    def test_normalize_citeproc_html_strips_name_protection_braces(self):
+        citation_html = (
+            "{Di Bernardi Luft}, C., {Van Buren}, K. (2020). "
+            "<em>Journal</em>."
+        )
+        out = normalize_citeproc_html(citation_html)
+        self.assertEqual(
+            out,
+            "Di Bernardi Luft, C., Van Buren, K. (2020). <em>Journal</em>.",
+        )
+
     def test_extract_publication_venue_uses_journal_or_booktitle(self):
         self.assertEqual(
             extract_publication_venue({"journal": "Music Perception"}),
@@ -174,6 +199,7 @@ class PublicationCitationTests(unittest.TestCase):
             out.count("# generated from bibtex; do not edit manually"),
             1,
         )
+
 
 if __name__ == "__main__":
     unittest.main()

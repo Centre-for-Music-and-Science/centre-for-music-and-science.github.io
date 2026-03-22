@@ -1,5 +1,7 @@
 ---
 title: Consonance in the carillon
+projects:
+- consonance
 date: 2024-01-01
 # generated from bibtex; do not edit manually
 authors: Harrison, P. M. C., & MacConnachie, J.

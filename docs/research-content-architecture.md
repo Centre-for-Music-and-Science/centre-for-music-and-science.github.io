@@ -47,20 +47,25 @@ People/publications/datasets are aggregated by reverse lookup tags.
 
 People:
 
-- `people.projects`
+- `projects.people` (project ownership; single source of truth for person-project links)
 - `people.methods`
-- `people.groups`
+- `people.group` / `people.groups`
 
 Publications:
 
 - `publications.projects`
 - `publications.methods`
-- `publications.groups`
+
+Group publication relation model:
+
+- Groups do not directly own publication links.
+- Group publication lists are inherited from group members.
+- Publication records should not use `publications.groups` for group-page linking.
 
 Publication ownership rules:
 
 - Publication links are publication-owned only.
-- Parent entity records (`projects`, `methods`, `groups`) must not define `publications`.
+- Parent entity records (`projects`, `methods`) must not define `publications`.
 - Build fails if parent-side `publications` fields are present.
 
 Datasets:
@@ -114,3 +119,11 @@ Sections are omitted when data is absent:
 - no leader image => omit that block
 
 No empty placeholder headings should be rendered.
+
+## Author matching source of truth
+
+Author-name decoration and person-profile mapping are intentionally aligned:
+
+- `data/lab_authors.yaml` defines canonical lab author strings used for bolding.
+- `data/lab_author_profiles.yaml` maps canonical `bibtex` strings to person slugs.
+- Publication-to-person inference only links authors that appear in both datasets.

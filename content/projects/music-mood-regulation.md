@@ -1,5 +1,5 @@
 ---
-title: "Music for Mood Regulation"
+title: "Music for mood regulation"
 people:
   - "catherine-tan"
   - "peter-harrison"

@@ -43,23 +43,6 @@
           </div>
         </section>
         {{ end }}
-        {{ $featuredPublications := slice }}
-        {{ range .Params.featured_publications }}
-          {{ $pub := $.Site.GetPage (path.Join "/publications" .) }}
-          {{ if $pub }}
-            {{ $featuredPublications = $featuredPublications | append $pub }}
-          {{ end }}
-        {{ end }}
-        {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
-        {{ $memberSlugs := slice }}
-        {{ range $members }}
-          {{ $slug := .File.ContentBaseName }}
-          {{ if not (in $memberSlugs $slug) }}
-            {{ $memberSlugs = $memberSlugs | append $slug }}
-          {{ end }}
-        {{ end }}
-        {{ $groupPublications := partial "resolve-publications-for-people.html" (dict "page" . "people_slugs" $memberSlugs) }}
-        {{ partial "related-publications-section.html" (dict "page" . "heading" "Publications" "publications" $groupPublications "featured" $featuredPublications) }}
       </div>
     </div>
   </div>

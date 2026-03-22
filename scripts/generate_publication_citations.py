@@ -7,6 +7,7 @@ import argparse
 import datetime as dt
 import html
 import re
+import unicodedata
 from pathlib import Path
 from typing import Dict
 from typing import Tuple
@@ -69,6 +70,22 @@ ENTRY_TYPE_MAP = {
     "phdthesis": "thesis",
     "techreport": "report",
     "misc": "article",
+}
+LATEX_COMBINING_ACCENTS = {
+    '"': "\u0308",
+    "'": "\u0301",
+    "`": "\u0300",
+    "^": "\u0302",
+    "~": "\u0303",
+    "=": "\u0304",
+    ".": "\u0307",
+    "u": "\u0306",
+    "v": "\u030C",
+    "H": "\u030B",
+    "c": "\u0327",
+    "k": "\u0328",
+    "r": "\u030A",
+    "b": "\u0331",
 }
 
 
@@ -145,6 +162,30 @@ def normalize_terminal_title_punctuation(citation_html: str) -> str:
     )
 
 
+def decode_latex_accents(text: str) -> str:
+    """Decode common LaTeX accent macros into Unicode characters."""
+
+    def repl(match: re.Match[str]) -> str:
+        accent = match.group(1)
+        letter = match.group(2)
+        combining = LATEX_COMBINING_ACCENTS.get(accent)
+        if not combining:
+            return match.group(0)
+        return unicodedata.normalize("NFC", f"{letter}{combining}")
+
+    # Handle variants: {\"u}, {\"{u}}, \"u, \"{u}
+    patterns = (
+        r"\{\\([\"'`^~=.uvHckrb])\{([A-Za-z])\}\}",
+        r"\{\\([\"'`^~=.uvHckrb])([A-Za-z])\}",
+        r"\\([\"'`^~=.uvHckrb])\{([A-Za-z])\}",
+        r"\\([\"'`^~=.uvHckrb])([A-Za-z])",
+    )
+    out = text
+    for pattern in patterns:
+        out = re.sub(pattern, repl, out)
+    return out
+
+
 def normalize_citeproc_html(citation_html: str) -> str:
     """Normalize citeproc HTML output for front matter storage."""
     citation_html = html.unescape(citation_html)
@@ -158,6 +199,9 @@ def normalize_citeproc_html(citation_html: str) -> str:
     )
     citation_html = citation_html.replace("<b>", "").replace("</b>", "")
     citation_html = citation_html.replace("\xa0", " ")
+    citation_html = decode_latex_accents(citation_html)
+    # BibTeX name-protection braces can leak into citeproc output.
+    citation_html = citation_html.replace("{", "").replace("}", "")
     citation_html = re.sub(r"\bURL:\s*(https?://\S+)", r"\1", citation_html)
     citation_html = re.sub(r"([A-Z])\.\.", r"\1.", citation_html)
     citation_html = re.sub(r"(?<=\.)and\b", " and", citation_html)

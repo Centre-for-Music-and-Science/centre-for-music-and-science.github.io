@@ -25,8 +25,8 @@ No other dependencies are required. The theme is included in the repository unde
 Clone the repository and start the dev server:
 
 ```bash
-git clone https://github.com/centre-for-music-and-science/website.git
-cd website
+git clone https://github.com/Centre-for-Music-and-Science/centre-for-music-and-science.github.io.git
+cd centre-for-music-and-science.github.io
 hugo server -D
 ```
 

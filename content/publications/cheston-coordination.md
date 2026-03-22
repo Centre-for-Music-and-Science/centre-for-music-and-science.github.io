@@ -3,7 +3,7 @@ title: Trade-offs in coordination strategies for duet jazz performances subject 
   network delay and jitter
 date: 2024-01-01
 projects:
-  - jazz
+- jazz
 # generated from bibtex; do not edit manually
 authors: Cheston, H., Cross, I., & Harrison, P. M. C.
 journal: Music Perception

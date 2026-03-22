@@ -2,7 +2,7 @@
 title: What music do people use for mood regulation?
 date: 2026-01-01
 projects:
-  - music-mood-regulation
+- music-mood-regulation
 # generated from bibtex; do not edit manually
 authors: Tan, C., & Harrison, P. M. C.
 journal: Psychology of Music
