@@ -14,7 +14,12 @@
       <div class="featured-pub-body">
         <p class="featured-pub-citation">{{ partial "publication-citation.html" . }}</p>
         {{ with .Params.description }}<p class="featured-pub-description">{{ . }}</p>{{ end }}
-        <a href="{{ if .Params.doi }}{{ .Params.doi }}{{ else }}{{ .RelPermalink }}{{ end }}" class="featured-pub-link" {{ if .Params.doi }}target="_blank" rel="noopener"{{ end }}>Read publication <span class="arrow">&rarr;</span></a>
+        {{ $linkData := partial "publication-link-data.html" . }}
+        {{ $href := index $linkData "href" }}
+        {{ $external := index $linkData "external" }}
+        {{ if $href }}
+        <a href="{{ $href }}" class="featured-pub-link" {{ if $external }}target="_blank" rel="noopener"{{ end }}>Read publication <span class="arrow">&rarr;</span></a>
+        {{ end }}
       </div>
     </article>
     {{ end }}

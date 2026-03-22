@@ -1,0 +1,15 @@
+{{ $pub := . }}
+{{ $href := "" }}
+{{ $external := false }}
+
+{{ if not (default false $pub.Params.stub_only) }}
+  {{ $href = $pub.RelPermalink }}
+{{ else if $pub.Params.doi }}
+  {{ $href = $pub.Params.doi }}
+  {{ $external = true }}
+{{ end }}
+
+{{ return (dict
+  "href" $href
+  "external" $external
+) }}

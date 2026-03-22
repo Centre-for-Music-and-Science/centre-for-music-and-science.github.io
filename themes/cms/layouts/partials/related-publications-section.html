@@ -33,15 +33,12 @@
       {{ if not (in $featured .) }}
       {{ $pub := . }}
       {{ partial "publication-require-bibtex.html" $pub }}
-      {{ $href := "" }}
-      {{ if $pub.Params.doi }}
-        {{ $href = $pub.Params.doi }}
-      {{ else if not (default false $pub.Params.stub_only) }}
-        {{ $href = $pub.RelPermalink }}
-      {{ end }}
+      {{ $linkData := partial "publication-link-data.html" $pub }}
+      {{ $href := index $linkData "href" }}
+      {{ $external := index $linkData "external" }}
       <li>
         {{ if $href }}
-        <a href="{{ $href }}" {{ if $pub.Params.doi }}target="_blank" rel="noopener"{{ end }}>
+        <a href="{{ $href }}" {{ if $external }}target="_blank" rel="noopener"{{ end }}>
           {{ if $pub.Params.authors }}<span class="project-pub-authors">{{ partial "bold-lab-authors" (dict "authors" $pub.Params.authors "labAuthors" $page.Site.Data.lab_authors) }}</span>{{ end }}
           <span class="project-pub-title">{{ $pub.Title }}</span>
           {{ if or $pub.Params.journal $pub.Params.inpress }}
