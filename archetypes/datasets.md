@@ -6,7 +6,6 @@ stub_only: false
 summary: ""
 image: ""
 repo: ""
-topics: []
 projects: []
 methods: []
 groups: []

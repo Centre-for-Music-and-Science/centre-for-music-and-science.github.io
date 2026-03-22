@@ -1,6 +1,5 @@
 ---
 title: "Memory"
-theme: "cognition"
 summary: "Building computational models that capture the time-course of melodic memory formation and recall."
 people: 
     - "david-whyatt"

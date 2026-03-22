@@ -2,8 +2,6 @@
 title: Modeling individual differences in chord pleasantness judgments
 date: 2026-01-01
 stub_only: false
-topics:
-- consonance
 projects:
 - consonance
 bibtex: |-

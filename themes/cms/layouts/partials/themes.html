@@ -3,7 +3,6 @@
     <p class="section-intro">{{ .Site.Params.themesIntro }}</p>
 
     {{ $allThemes := sort (where .Site.RegularPages "Section" "themes") "Params.weight" }}
-    {{ $allTopics := where .Site.RegularPages "Section" "topics" }}
     {{ $allProjects := where .Site.RegularPages "Section" "projects" }}
     {{ $allMethods := sort (where .Site.RegularPages "Section" "methods") "Params.weight" }}
 
@@ -36,29 +35,9 @@
               {{ with $theme.Params.description }}<p>{{ . }}</p>{{ end }}
             </div>
             <div class="theme-projects">
-              {{ $themeSlug := $theme.File.ContentBaseName }}
-              {{ $themeTopics := slice }}
-              {{ range $allTopics }}
-                {{ if eq .Params.theme $themeSlug }}
-                  {{ $themeTopics = $themeTopics | append . }}
-                {{ end }}
-              {{ end }}
-              {{ $themeTopics = sort $themeTopics "Params.weight" }}
-
-              {{ if gt (len $themeTopics) 0 }}
-                {{ range $themeTopics }}
-                  {{ partial "research-item-card.html" (dict "page" . "label" "Research topic") }}
-                {{ end }}
-              {{ else }}
-                {{/* Compatibility mode while migrating to dedicated topics records. */}}
-                {{ range $theme.Params.projects }}
-                  {{ $slug := . }}
-                  {{ range $allProjects }}
-                    {{ if eq .File.ContentBaseName $slug }}
-                    {{ partial "research-item-card.html" (dict "page" . "label" "Research topic") }}
-                    {{ end }}
-                  {{ end }}
-                {{ end }}
+              {{ $themeProjects := partial "resolve-project-pages.html" (dict "slugs" (default (slice) $theme.Params.projects) "allProjects" $allProjects) }}
+              {{ range sort $themeProjects "Params.weight" }}
+                {{ partial "research-item-card.html" (dict "page" . "label" "Project") }}
               {{ end }}
             </div>
           </div>

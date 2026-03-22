@@ -1,0 +1,32 @@
+{{- $allProjects := where site.RegularPages "Section" "projects" -}}
+{{- $allThemes := where site.RegularPages "Section" "themes" -}}
+
+{{- $projectSlugs := slice -}}
+{{- range $allProjects -}}
+  {{- $projectSlugs = $projectSlugs | append .File.ContentBaseName -}}
+{{- end -}}
+
+{{- $referencedProjectSlugs := slice -}}
+{{- range $allThemes -}}
+  {{- range (default (slice) .Params.projects) -}}
+    {{- $referencedProjectSlugs = $referencedProjectSlugs | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- range $allProjects -}}
+  {{- range (default (slice) .Params.projects) -}}
+    {{- $referencedProjectSlugs = $referencedProjectSlugs | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $referencedProjectSlugs = uniq $referencedProjectSlugs -}}
+
+{{- range $referencedProjectSlugs -}}
+  {{- if not (in $projectSlugs .) -}}
+    {{- errorf "Project hierarchy error: project slug %q is referenced in a parent projects list but no corresponding content/projects record exists." . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range $projectSlugs -}}
+  {{- if not (in $referencedProjectSlugs .) -}}
+    {{- errorf "Project hierarchy error: project %q is orphaned. Every project must be listed in either themes.*.projects or projects.*.projects." . -}}
+  {{- end -}}
+{{- end -}}

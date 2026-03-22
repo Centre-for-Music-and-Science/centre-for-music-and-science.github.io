@@ -3,56 +3,19 @@
   <div class="container">
     <div class="project-detail-layout">
       <nav class="project-detail-sidebar" aria-label="Project">
-        {{ $topics := sort (where .Site.RegularPages "Section" "topics") "Params.weight" }}
+        {{ $themes := sort (where .Site.RegularPages "Section" "themes") "Params.weight" }}
         {{ $projects := where .Site.RegularPages "Section" "projects" }}
         {{ $current := . }}
-        {{ $topicDriven := false }}
-        {{ range $topics }}
-          {{ $topicSlug := .File.ContentBaseName }}
-          {{ $topicProjects := slice }}
-          {{ range $projects }}
-              {{ if eq .Params.topic $topicSlug }}
-              {{ $topicProjects = $topicProjects | append . }}
-            {{ end }}
-          {{ end }}
-          {{ $visibleTopicProjects := where $topicProjects "Params.stub_only" "ne" true }}
-          {{ if gt (len $visibleTopicProjects) 0 }}
-            {{ $topicDriven = true }}
+        {{ range $themes }}
+          {{ $themeProjects := partial "resolve-project-pages.html" (dict "slugs" (default (slice) .Params.projects) "allProjects" $projects) }}
+          {{ $visibleThemeProjects := where $themeProjects "Params.stub_only" "ne" true }}
+          {{ if gt (len $visibleThemeProjects) 0 }}
         <div class="project-sidebar-group">
-          <details class="project-sidebar-details"{{ if eq $current.Params.topic $topicSlug }} open{{ end }}>
+          <details class="project-sidebar-details" open>
             <summary class="project-sidebar-theme">{{ .Title }}</summary>
-            <ul class="project-sidebar-list">
-              {{ range sort $visibleTopicProjects "Params.weight" }}
-              <li>
-                {{ partial "project-sidebar-item-link.html" (dict "item" . "active" (eq . $current)) }}
-              </li>
-              {{ end }}
-            </ul>
+            {{ partial "project-sidebar-tree-items.html" (dict "slugs" (default (slice) .Params.projects) "allProjects" $projects "current" $current) }}
           </details>
         </div>
-          {{ end }}
-        {{ end }}
-        {{ if not $topicDriven }}
-          {{/* Compatibility sidebar while existing records still use themes.projects. */}}
-          {{ $themes := sort (where .Site.RegularPages "Section" "themes") "Params.weight" }}
-          {{ range $themes }}
-            {{ $themeProjectSlugs := .Params.projects }}
-            {{ $themeProjects := where $projects "File.ContentBaseName" "in" $themeProjectSlugs }}
-            {{ $visibleThemeProjects := where $themeProjects "Params.stub_only" "ne" true }}
-            {{ if $visibleThemeProjects }}
-          <div class="project-sidebar-group">
-            <details class="project-sidebar-details"{{ if in $visibleThemeProjects $current }} open{{ end }}>
-              <summary class="project-sidebar-theme">{{ .Title }}</summary>
-              <ul class="project-sidebar-list">
-                {{ range $visibleThemeProjects }}
-                <li>
-                  {{ partial "project-sidebar-item-link.html" (dict "item" . "active" (eq . $current)) }}
-                </li>
-                {{ end }}
-              </ul>
-            </details>
-          </div>
-            {{ end }}
           {{ end }}
         {{ end }}
       </nav>
@@ -98,6 +61,17 @@
         <div class="project-detail-body">
           {{ .Content }}
         </div>
+        {{ $childProjects := partial "resolve-project-pages.html" (dict "slugs" (default (slice) .Params.projects) "allProjects" (where .Site.RegularPages "Section" "projects")) }}
+        {{ if gt (len $childProjects) 0 }}
+        <section class="project-publications">
+          <h2 class="project-publications-heading">Projects</h2>
+          <div class="theme-projects">
+            {{ range sort $childProjects "Params.weight" }}
+              {{ partial "research-item-card.html" (dict "page" . "label" "Project") }}
+            {{ end }}
+          </div>
+        </section>
+        {{ end }}
         {{ $featuredPublications := slice }}
         {{ range .Params.featured_publications }}
           {{ $pub := $.Site.GetPage (path.Join "/publications" .) }}

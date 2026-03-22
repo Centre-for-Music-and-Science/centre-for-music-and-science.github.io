@@ -1,6 +1,5 @@
 ---
 title: "Organ"
-theme: "culture"
 summary: "Creating multimodal datasets to study expert performances of musical scores, focusing on organ repertoire."
 people: 
   - "katelyn-emerson"

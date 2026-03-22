@@ -1,6 +1,5 @@
 ---
 title: "Pop"
-theme: "culture"
 stub_only: true
 people:
   - "harin-lee"

@@ -1,0 +1,12 @@
+{{- $slugs := default (slice) .slugs -}}
+{{- $allProjects := default (where site.RegularPages "Section" "projects") .allProjects -}}
+{{- $resolved := slice -}}
+{{- range $slugs -}}
+  {{- $slug := . -}}
+  {{- range $allProjects -}}
+    {{- if eq .File.ContentBaseName $slug -}}
+      {{- $resolved = $resolved | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $resolved -}}

@@ -6,7 +6,6 @@ This guide describes how to create and maintain records in the refactored resear
 
 Use Hugo archetypes:
 
-- `hugo new topics/<slug>.md`
 - `hugo new projects/<slug>.md`
 - `hugo new methods/<slug>.md`
 - `hugo new groups/<slug>.md`
@@ -20,14 +19,19 @@ Each archetype includes a `stub_only` field comment.
 
 ## Relationship workflow
 
-Set parent references on child records:
+Set project hierarchy on parent records:
 
-- topic: set `theme`
-- project: set `topic`
+- theme: set `projects`
+- project: set `projects` for child projects
 
 Set reverse-lookup tags on people/publications/datasets so pages can build related lists automatically:
 
-- `topics`, `projects`, `methods`, `groups`
+- `projects`, `methods`, `groups`
+
+Build-time guards:
+
+- every project must be listed in `themes.*.projects` or `projects.*.projects`
+- parent `projects` lists must only reference existing project slugs
 
 ## Publications workflow
 
@@ -70,3 +74,4 @@ Dataset pages automatically gather related publications from this field.
 - Missing relation list: verify reverse tags include the current entity slug.
 - Missing featured card: verify the featured slug exists and matches publication slug.
 - Wrong citation: verify `bibtex` and rerun citation generation.
+- Build fails with hierarchy error: check `themes.*.projects` and `projects.*.projects` for missing or orphaned slugs.

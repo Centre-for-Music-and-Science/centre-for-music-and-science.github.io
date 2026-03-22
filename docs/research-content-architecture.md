@@ -5,8 +5,7 @@ This document is the canonical source of truth for the research content model.
 ## Entity model
 
 - Themes: top-level research areas.
-- Topics: children of themes.
-- Projects: children of topics.
+- Projects: children of themes or other projects.
 - Methods: standalone method records.
 - Groups: organisational group records.
 - Publications: bibliographic records with optional detail pages.
@@ -14,18 +13,22 @@ This document is the canonical source of truth for the research content model.
 
 ## Hierarchy ownership
 
-Hierarchy is child-owned:
+Hierarchy is parent-owned:
 
-- `topic.theme` points to a theme slug.
-- `project.topic` points to a topic slug.
+- `theme.projects` lists child project slugs.
+- `project.projects` lists child project slugs.
 
-Templates should derive hierarchy from these fields, not parent-maintained slug lists.
+Templates should derive hierarchy from these parent lists.
+
+Build-time rules:
+
+- every slug in `theme.projects` and `project.projects` must resolve to a project record
+- every project must be referenced by either a theme or another project
 
 ## Stub state contract
 
 The `stub_only` field is mandatory on:
 
-- topics
 - projects
 - methods
 - groups
@@ -44,21 +47,18 @@ People/publications/datasets are aggregated by reverse lookup tags.
 
 People:
 
-- `people.topics`
 - `people.projects`
 - `people.methods`
 - `people.groups`
 
 Publications:
 
-- `publications.topics`
 - `publications.projects`
 - `publications.methods`
 - `publications.groups`
 
 Datasets:
 
-- `datasets.topics`
 - `datasets.projects`
 - `datasets.methods`
 - `datasets.groups`
@@ -73,7 +73,6 @@ Dataset pages should reverse-query publication records by `datasets`.
 
 Featured publications are parent-owned:
 
-- `topics.featured_publications`
 - `projects.featured_publications`
 - `methods.featured_publications`
 - `groups.featured_publications`
