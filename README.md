@@ -18,7 +18,12 @@ sudo dpkg -i hugo.deb
 hugo version
 ```
 
-No other dependencies are required. The theme is included in the repository under `themes/cms/`.
+For site development only, no other dependencies are required. The theme is included in the repository under `themes/cms/`.
+
+Optional for maintenance scripts and tests:
+
+- Python 3.10+
+- `venv` module (usually bundled with Python)
 
 ## Local development
 
@@ -30,12 +35,12 @@ cd centre-for-music-and-science.github.io
 hugo server -D
 ```
 
-The site will be available at **http://localhost:1313/**. The server watches for file changes and reloads automatically.
+The site will be available at **<http://localhost:1313/>**. The server watches for file changes and reloads automatically.
 
 Useful flags:
 
 | Flag | Description |
-|------|-------------|
+| ---- | ----------- |
 | `-D` | Include draft content |
 | `--buildFuture` | Include future-dated content (enabled by default in `hugo.toml`) |
 | `--disableFastRender` | Full rebuild on every change (slower but avoids stale state) |
@@ -43,19 +48,23 @@ Useful flags:
 
 ## Project structure
 
-```
+```text
 .
 ├── content/             # Markdown content
 │   ├── people/          # Lab members
 │   ├── projects/        # Research projects
 │   ├── themes/          # Research theme groupings
 │   ├── publications/    # Publication entries
-│   ├── events/          # Events
+│   ├── groups/          # Research groups
+│   ├── methods/         # Methods pages
+│   ├── news/            # News posts
 │   ├── datasets/        # Dataset pages
 │   ├── facilities/      # Facilities info
 │   └── applicants/      # Applicant info (PhD, MPhil, etc.)
 ├── data/                # YAML data files (lab authors, past members, videos)
 ├── static/              # Static assets (images, audio, JSON)
+├── scripts/             # Publication + spectrogram maintenance scripts
+├── tests/               # Python tests for maintenance tooling
 ├── themes/cms/          # Custom Hugo theme
 │   ├── layouts/         # HTML templates
 │   └── static/          # Theme CSS and JS
@@ -67,17 +76,34 @@ Useful flags:
 
 ### New publication
 
-Create a file in `content/publications/`:
+Create a file in `content/publications/` with a `bibtex` entry:
 
 ```yaml
 ---
 title: "Paper Title"
 date: 2026-01-15
-authors: "Author, A., Author, B., & Author, C."
-journal: "Journal Name, 12(3), 100–115."
-doi: "https://doi.org/10.xxxx/xxxxx"
+stub_only: false
+projects:
+  - "project-slug"
+bibtex: |-
+  @article{paperkey2026,
+    author = {Author, A. and Author, B. and Author, C.},
+    title = {Paper title},
+    journal = {Journal Name},
+    year = {2026},
+    doi = {10.xxxx/xxxxx}
+  }
 ---
 ```
+
+Then run:
+
+```bash
+python scripts/generate_publication_citations.py
+python scripts/fetch_publication_abstracts.py
+```
+
+These scripts populate generated citation fields (`citation_apa`, `citation_mla`, etc.), `authors`, `journal`, `doi`, and (where available) `abstract`.
 
 ### New person
 
@@ -120,7 +146,6 @@ Create a file in `content/projects/` and add its slug to the relevant theme file
 ```yaml
 ---
 title: "Project Title"
-theme: "music-cognition"   # must match a theme filename
 people:
   - "person-slug"
 publications:
@@ -132,6 +157,19 @@ media:
 ---
 
 Project body text.
+```
+
+After creating the project file, add its slug to the `projects` list in either `content/themes/cognition.md` or `content/themes/culture.md` so it appears under the right theme.
+
+## Python tooling and tests
+
+To run repository maintenance scripts and tests:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r scripts/requirements.txt
+pytest tests
 ```
 
 ## Production build
