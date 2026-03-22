@@ -1,0 +1,47 @@
+{{ $page := .page }}
+{{ $relationKey := .relation_key }}
+{{ $relationSlug := .relation_slug }}
+{{ $heading := .heading | default "Publications" }}
+{{ $fallbackSlugs := .fallback_slugs | default (slice) }}
+{{ $featured := .featured | default (slice) }}
+{{ $footerLink := .footer_link | default "" }}
+{{ $footerText := .footer_text | default "" }}
+{{ $footerClass := .footer_class | default "project-detail-back" }}
+
+{{ $allPublications := where $page.Site.RegularPages "Section" "publications" }}
+{{ $relatedPublications := slice }}
+{{ range $allPublications }}
+  {{ if in (default (slice) (index .Params $relationKey)) $relationSlug }}
+    {{ $relatedPublications = $relatedPublications | append . }}
+  {{ end }}
+{{ end }}
+
+{{ if and (eq (len $relatedPublications) 0) (gt (len $fallbackSlugs) 0) }}
+  {{ range $fallbackSlugs }}
+    {{ $pub := $page.Site.GetPage (path.Join "/publications" .) }}
+    {{ if $pub }}
+      {{ $relatedPublications = $relatedPublications | append $pub }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if gt (len $relatedPublications) 0 }}
+<section class="project-publications">
+  <h2 class="project-publications-heading">{{ $heading }}</h2>
+  <ul class="project-publications-list">
+    {{ range sort $relatedPublications "Date" "desc" }}
+      {{ if not (in $featured .) }}
+      <li>
+        {{ partial "publication-citation-link.html" (dict "pub" .) }}
+      </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+  {{ if and $footerLink $footerText }}
+  <div class="{{ $footerClass }}">
+    <a href="{{ $footerLink }}">{{ $footerText }}</a>
+  </div>
+  {{ end }}
+</section>
+{{ end }}
+

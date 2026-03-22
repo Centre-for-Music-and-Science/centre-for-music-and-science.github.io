@@ -1,0 +1,23 @@
+{{ $featured := .featured }}
+{{ if gt (len $featured) 0 }}
+<section class="featured-pubs">
+  <h2 class="project-publications-heading">Featured publications</h2>
+  <div class="featured-pubs-grid">
+    {{ range $featured }}
+    <article class="featured-pub-card">
+      {{ with .Params.image }}
+      <div class="featured-pub-image-wrap">
+        <img src="{{ (strings.TrimPrefix "/" .) | relURL }}" alt="{{ $.page.Title }} featured publication" class="featured-pub-image">
+      </div>
+      {{ end }}
+      <div class="featured-pub-body">
+        <p class="featured-pub-citation">{{ partial "publication-citation.html" . }}</p>
+        {{ with .Params.description }}<p class="featured-pub-description">{{ . }}</p>{{ end }}
+        <a href="{{ if .Params.doi }}{{ .Params.doi }}{{ else }}{{ .RelPermalink }}{{ end }}" class="featured-pub-link" {{ if .Params.doi }}target="_blank" rel="noopener"{{ end }}>Read publication <span class="arrow">&rarr;</span></a>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+

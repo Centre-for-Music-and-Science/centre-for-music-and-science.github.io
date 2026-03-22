@@ -1,0 +1,13 @@
+{{- $pub := . -}}
+{{- if $pub.Params.citation_apa -}}
+  {{- $pub.Params.citation_apa | safeHTML -}}
+{{- else -}}
+  {{- with $pub.Params.authors -}}{{ . }}{{ end -}}
+  {{- if and $pub.Params.authors $pub.Date -}} {{ end -}}
+  {{- with $pub.Date -}}({{ .Format "2006" }}).{{ end -}}
+  {{- if $pub.Date }} {{ end -}}
+  {{- $pub.Title -}}.
+  {{- if $pub.Params.journal }} <em>{{ $pub.Params.journal }}</em>.{{ end -}}
+  {{- if and (not $pub.Params.journal) $pub.Params.inpress }} (In press).{{ end -}}
+{{- end -}}
+

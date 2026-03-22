@@ -551,6 +551,10 @@ img {
   margin-bottom: 0;
 }
 
+.research-group--all {
+  margin-bottom: 0;
+}
+
 .tab-bar-logo {
   display: flex;
   align-items: flex-end;
@@ -736,6 +740,22 @@ img {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
+.project-card--stub {
+  opacity: 0.82;
+  cursor: default;
+}
+
+.project-card--stub:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.stub-label {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
 .project-card-thumb {
   flex-shrink: 0;
   width: 120px;
@@ -783,6 +803,78 @@ img {
 
 .project-card:hover .arrow {
   transform: translateX(4px);
+}
+
+/* ===== Research groups on homepage ===== */
+.research-groups-home {
+  padding: var(--section-padding);
+  background: var(--color-card-bg);
+}
+
+.research-groups-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.research-group-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  padding: 22px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.research-group-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.research-group-card--stub:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.research-group-card-logo {
+  margin-bottom: 14px;
+}
+
+.research-group-card-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.research-group-card-title {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.research-group-card-summary {
+  color: var(--color-text-light);
+  margin-bottom: 10px;
+}
+
+.research-group-card-leads {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.research-group-card-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--color-accent);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+@media (max-width: 860px) {
+  .research-groups-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ===== Events & Publications Cards ===== */
@@ -927,6 +1019,11 @@ img {
 .pub-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.pub-card--stub:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 .pub-body {
@@ -1857,11 +1954,15 @@ a.pub-item-title:hover {
   margin-bottom: 16px;
 }
 
-.project-publications-list a {
+.project-publications-list a,
+.project-publications-list .project-publication-citation {
   display: block;
   padding: 16px;
   border: 1px solid var(--color-border);
   border-radius: 8px;
+}
+
+.project-publications-list a {
   text-decoration: none;
   transition: background 0.15s, border-color 0.15s;
 }
@@ -1869,6 +1970,11 @@ a.pub-item-title:hover {
 .project-publications-list a:hover {
   background: var(--color-card-bg);
   border-color: var(--color-accent);
+}
+
+.project-publication-citation {
+  line-height: 1.7;
+  color: var(--color-text-light);
 }
 
 .project-pub-title {
@@ -1892,6 +1998,60 @@ a.pub-item-title:hover {
   color: var(--color-text-muted);
   font-style: italic;
   margin-top: 2px;
+}
+
+.featured-pubs {
+  margin-top: 40px;
+}
+
+.featured-pubs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.featured-pub-card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.featured-pub-image-wrap {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.featured-pub-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-pub-body {
+  padding: 16px;
+}
+
+.featured-pub-citation {
+  line-height: 1.7;
+  color: var(--color-text-light);
+  margin-bottom: 10px;
+}
+
+.featured-pub-description {
+  font-size: 0.92rem;
+  color: var(--color-text-light);
+  margin-bottom: 12px;
+}
+
+.featured-pub-link {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.featured-pub-link:hover {
+  text-decoration: underline;
 }
 
 .project-detail-back {
@@ -1924,6 +2084,10 @@ a.pub-item-title:hover {
 
   .project-sidebar-group {
     min-width: 200px;
+  }
+
+  .featured-pubs-grid {
+    grid-template-columns: 1fr;
   }
 }
 

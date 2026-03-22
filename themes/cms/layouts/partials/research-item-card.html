@@ -1,0 +1,30 @@
+{{ $item := .page }}
+{{ $label := .label | default "Item" }}
+{{ $thumb := $item.Params.thumbnail | default $item.Params.leader_image }}
+{{ $isStub := default false $item.Params.stub_only }}
+{{ if $isStub }}
+<div class="project-card project-card--stub" aria-disabled="true">
+  {{ if $thumb }}
+  <div class="project-card-thumb">
+    <img src="{{ (strings.TrimPrefix "/" $thumb) | relURL }}" alt="">
+  </div>
+  {{ end }}
+  <div class="project-card-text">
+    <span class="project-label">{{ $label }}</span>
+    <span class="project-title">{{ $item.Title }} <span class="stub-label">(Coming soon)</span></span>
+  </div>
+</div>
+{{ else }}
+<a href="{{ $item.RelPermalink }}" class="project-card">
+  {{ if $thumb }}
+  <div class="project-card-thumb">
+    <img src="{{ (strings.TrimPrefix "/" $thumb) | relURL }}" alt="">
+  </div>
+  {{ end }}
+  <div class="project-card-text">
+    <span class="project-label">{{ $label }}</span>
+    <span class="project-title">{{ $item.Title }} <span class="arrow">&rarr;</span></span>
+  </div>
+</a>
+{{ end }}
+

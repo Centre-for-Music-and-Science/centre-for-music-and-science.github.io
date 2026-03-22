@@ -1,0 +1,46 @@
+{{ define "main" }}
+<article class="project-detail-page">
+  <div class="container">
+    <div class="project-detail-content">
+      <h1 class="project-detail-title">{{ .Title }}</h1>
+      <p class="project-publication-citation">{{ partial "publication-citation.html" . }}</p>
+      {{ with .Params.abstract }}<p class="project-detail-summary">{{ . }}</p>{{ end }}
+      {{ if .Params.doi }}
+      <p><a href="{{ .Params.doi }}" target="_blank" rel="noopener">Read via DOI &rarr;</a></p>
+      {{ end }}
+      <div class="project-detail-body">
+        {{ .Content }}
+      </div>
+
+      {{ $datasetSlugs := default (slice) .Params.datasets }}
+      {{ $datasets := slice }}
+      {{ range $datasetSlugs }}
+        {{ $dataset := $.Site.GetPage (path.Join "/datasets" .) }}
+        {{ if $dataset }}
+          {{ $datasets = $datasets | append $dataset }}
+        {{ end }}
+      {{ end }}
+      {{ if gt (len $datasets) 0 }}
+      <section class="project-publications">
+        <h2 class="project-publications-heading">Related datasets</h2>
+        <ul class="project-publications-list">
+          {{ range $datasets }}
+          <li>
+            <a href="{{ .RelPermalink }}">
+              <span class="project-pub-title">{{ .Title }}</span>
+              {{ with .Params.summary }}<span class="project-pub-authors">{{ . }}</span>{{ end }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </section>
+      {{ end }}
+
+      <div class="project-detail-back">
+        <a href="{{ "publications/" | relURL }}">&larr; Back to publications</a>
+      </div>
+    </div>
+  </div>
+</article>
+{{ end }}
+

@@ -16,18 +16,27 @@
       View on GitHub
     </a>
     {{ end }}
-    {{ if .Params.publication }}
-      {{ $pub := .Site.GetPage (path.Join "/publications" .Params.publication) }}
-      {{ if $pub }}
-    <div class="dataset-publication">
-      <h3>Associated publication</h3>
-      <a href="{{ if $pub.Params.doi }}{{ $pub.Params.doi }}{{ else }}{{ $pub.RelPermalink }}{{ end }}" {{ if $pub.Params.doi }}target="_blank" rel="noopener"{{ end }} class="dataset-pub-link">
-        <span class="project-pub-title">{{ $pub.Title }}</span>
-        {{ if $pub.Params.authors }}<span class="project-pub-authors">{{ $pub.Params.authors }}</span>{{ end }}
-        {{ if $pub.Params.journal }}<span class="project-pub-journal">{{ $pub.Params.journal }} ({{ $pub.Date.Format "2006" }})</span>{{ end }}
-      </a>
-    </div>
+    {{ $datasetSlug := .File.ContentBaseName }}
+    {{ $associatedPubs := slice }}
+    {{ $allPubs := where .Site.RegularPages "Section" "publications" }}
+    {{ range $allPubs }}
+      {{ if in (default (slice) .Params.datasets) $datasetSlug }}
+        {{ $associatedPubs = $associatedPubs | append . }}
       {{ end }}
+    {{ end }}
+    {{ if and (eq (len $associatedPubs) 0) .Params.publication }}
+      {{ $legacyPub := .Site.GetPage (path.Join "/publications" .Params.publication) }}
+      {{ if $legacyPub }}
+        {{ $associatedPubs = $associatedPubs | append $legacyPub }}
+      {{ end }}
+    {{ end }}
+    {{ if gt (len $associatedPubs) 0 }}
+    <div class="dataset-publication">
+      <h3>Associated publications</h3>
+      {{ range sort $associatedPubs "Date" "desc" }}
+      {{ partial "publication-citation-link.html" (dict "pub" . "link_class" "dataset-pub-link") }}
+      {{ end }}
+    </div>
     {{ end }}
     <div class="dataset-detail-body">
       {{ .Content }}

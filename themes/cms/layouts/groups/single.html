@@ -7,11 +7,23 @@
     </div>
     {{ end }}
     <h1 class="group-detail-title">{{ .Title }}</h1>
+    {{ with .Params.summary }}<p class="project-detail-summary">{{ . }}</p>{{ end }}
+    {{ with .Params.leader_image }}
+    <div class="dataset-detail-hero">
+      <img src="{{ (strings.TrimPrefix "/" .) | relURL }}" alt="{{ $.Title }}">
+    </div>
+    {{ end }}
     <div class="group-detail-body">
       {{ .Content }}
     </div>
     {{ $groupSlug := .File.ContentBaseName }}
-    {{ $members := sort (where (where .Site.RegularPages "Section" "people") "Params.group" $groupSlug) "Params.weight" }}
+    {{ $members := slice }}
+    {{ range (where .Site.RegularPages "Section" "people") }}
+      {{ if or (eq .Params.group $groupSlug) (in (default (slice) .Params.groups) $groupSlug) }}
+        {{ $members = $members | append . }}
+      {{ end }}
+    {{ end }}
+    {{ $members = sort $members "Params.weight" }}
     {{ if $members }}
     <div class="group-members">
       <h2 class="group-members-heading">Members</h2>
@@ -36,6 +48,15 @@
       </div>
     </div>
     {{ end }}
+    {{ $featuredPublications := slice }}
+    {{ range .Params.featured_publications }}
+      {{ $pub := $.Site.GetPage (path.Join "/publications" .) }}
+      {{ if $pub }}
+        {{ $featuredPublications = $featuredPublications | append $pub }}
+      {{ end }}
+    {{ end }}
+    {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
+    {{ partial "related-publications-section.html" (dict "page" . "relation_key" "groups" "relation_slug" $groupSlug "featured" $featuredPublications "footer_link" ((printf "publications/?group=%s" $groupSlug) | relURL) "footer_text" "View all group publications ->" "footer_class" "group-detail-back") }}
     <div class="group-detail-back">
       <a href="{{ .Site.Home.RelPermalink }}#research">&larr; Back to research</a>
     </div>

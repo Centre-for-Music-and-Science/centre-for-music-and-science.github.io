@@ -19,7 +19,7 @@
 <section class="publications-list-page">
   <div class="container-wide">
     <h1 class="page-title">Publications</h1>
-    <p class="pub-list-legend"><strong>Bold</strong> indicates authors from the lab; <em>*</em> indicates shared first authorship.</p>
+    <p class="pub-list-legend">Publications are shown in APA style. Use DOI links when available.</p>
   </div>
 
   {{ if .Params.featured }}
@@ -61,18 +61,7 @@
         {{ range $pubs }}
         {{ if eq (.Date.Format "2006") $year }}
         <li class="pub-year-item">
-          <span class="pub-item-authors">{{ partial "bold-lab-authors" (dict "authors" .Params.authors "labAuthors" $.Site.Data.lab_authors) }}</span>
-          {{ if .Params.doi }}
-          <a href="{{ .Params.doi }}" target="_blank" rel="noopener" class="pub-item-title">{{ .Title }}</a>
-          {{ else }}
-          <span class="pub-item-title">{{ .Title }}</span>
-          {{ end }}
-          {{ if or .Params.journal .Params.inpress }}
-          <span class="pub-item-journal">
-            {{- with .Params.journal }}{{ . }}{{ end -}}
-            {{- if .Params.inpress }}{{ if .Params.journal }} {{ end }}(In Press){{ end -}}
-          </span>
-          {{ end }}
+          {{ partial "publication-citation-link.html" (dict "pub" . "link_class" "pub-item-title" "citation_class" "pub-item-citation" "non_link_tag" "span" "non_link_class" "pub-item-title") }}
         </li>
         {{ end }}
         {{ end }}

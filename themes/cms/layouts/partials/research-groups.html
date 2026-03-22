@@ -1,0 +1,34 @@
+<section class="research-groups-home" id="groups">
+  <div class="container">
+    <h2 class="section-title">Research Groups</h2>
+    <div class="research-groups-grid">
+      {{ $groups := sort (where .Site.RegularPages "Section" "groups") "Params.weight" }}
+      {{ range $groups }}
+        {{ $isStub := default false .Params.stub_only }}
+          {{ $tag := "div" }}
+          {{ $groupTitle := .Title }}
+          {{ if not $isStub }}
+            {{ $tag = "a" }}
+          {{ end }}
+          <{{ $tag }}{{ if not $isStub }} href="{{ .RelPermalink }}"{{ end }} class="research-group-card{{ if $isStub }} research-group-card--stub{{ end }}">
+            {{ with .Params.logo }}
+            <div class="research-group-card-logo">
+              <img src="{{ (strings.TrimPrefix "/" .) | relURL }}" alt="{{ $groupTitle }}">
+            </div>
+            {{ end }}
+            <h3 class="research-group-card-title">{{ .Title }}</h3>
+            {{ with .Params.summary }}<p class="research-group-card-summary">{{ . }}</p>{{ end }}
+            {{ with .Params.leads }}
+            <p class="research-group-card-leads"><strong>Leads:</strong> {{ delimit . ", " }}</p>
+            {{ end }}
+            {{ if $isStub }}
+            <span class="research-group-card-link">Details coming soon</span>
+            {{ else }}
+            <span class="research-group-card-link">See more <span class="arrow">&rarr;</span></span>
+            {{ end }}
+          </{{ $tag }}>
+      {{ end }}
+    </div>
+  </div>
+</section>
+

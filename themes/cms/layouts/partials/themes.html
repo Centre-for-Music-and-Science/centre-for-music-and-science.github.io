@@ -3,35 +3,31 @@
     <h2 class="section-title">Our Research</h2>
     <p class="section-intro">{{ .Site.Params.themesIntro }}</p>
 
-    {{ $allThemes := where .Site.RegularPages "Section" "themes" }}
-    {{ $projects := where .Site.RegularPages "Section" "projects" }}
+    {{ $allThemes := sort (where .Site.RegularPages "Section" "themes") "Params.weight" }}
+    {{ $allTopics := where .Site.RegularPages "Section" "topics" }}
+    {{ $allProjects := where .Site.RegularPages "Section" "projects" }}
 
-    {{/* ===== MCC Group ===== */}}
-    {{ $mccThemes := sort (where $allThemes "Params.group" "mcc") "Params.weight" }}
-    {{ if $mccThemes }}
-    <div class="research-group research-group--mcc">
-      <div class="tabs" data-tab-group="mcc">
+    {{ if $allThemes }}
+    <div class="research-group research-group--all">
+      <div class="tabs" data-tab-group="research">
         <div class="tab-bar" role="tablist">
-          <div class="tab-bar-logo">
-            <a href="{{ "groups/mcc/" | relURL }}">
-              <img src="{{ "images/logos/mcc_logo.png" | relURL }}" alt="Music Cognition & Culture Group">
-            </a>
-          </div>
-          {{ range $i, $theme := $mccThemes }}
+          {{ range $i, $theme := $allThemes }}
           <button class="tab-btn{{ if eq $i 0 }} active{{ end }}"
                   role="tab"
                   aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"
                   aria-controls="panel-{{ $theme.File.ContentBaseName }}"
                   data-tab="{{ $theme.File.ContentBaseName }}">
-            {{ if eq $theme.Params.icon "brain" }}<svg class="tab-icon" width="18" height="18" viewBox="0 0 1083 1280" fill="#124191" stroke="none"><path d="M4190 12790 c-880 -54 -1871 -364 -2513 -787 -355 -234 -719 -630 -1022 -1113 -467 -743 -647 -1371 -649 -2255 -2 -721 109 -1241 449 -2100 102 -258 138 -345 377 -905 510 -1192 703 -1668 777 -1910 79 -260 114 -401 103 -412 -7 -7 -4 -16 7 -27 11 -11 31 -81 54 -192 130 -617 187 -1217 174 -1854 -8 -390 -33 -710 -86 -1095 -10 -74 -17 -136 -16 -138 5 -5 5329 18 5334 24 3 2 11 129 18 282 20 448 30 496 133 651 183 272 318 330 966 406 1266 151 1675 309 1818 704 78 216 80 553 8 1218 l-8 72 79 113 c93 131 132 212 146 296 12 72 0 131 -34 176 -32 42 -31 57 2 97 22 26 28 44 31 97 5 78 -3 121 -73 362 -78 269 -105 405 -120 605 -7 100 10 255 34 311 30 66 116 122 295 191 202 78 284 134 327 220 20 41 23 63 23 153 0 118 -8 144 -76 244 -83 122 -341 426 -716 842 -363 404 -470 540 -513 654 -24 63 -39 392 -39 858 -1 467 -15 918 -35 1064 -34 256 -168 668 -326 997 -166 346 -335 593 -579 845 -393 406 -905 713 -1640 984 -494 182 -907 270 -1475 312 -186 14 -1051 21 -1235 10z" transform="translate(0,1280) scale(0.1,-0.1)"/></svg>
-            {{ else if eq $theme.Params.icon "globe" }}<svg class="tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#124191" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            {{ if eq $theme.Params.icon "brain" }}<svg class="tab-icon" width="18" height="18" viewBox="0 0 1083 1280" fill="currentColor" stroke="none"><path d="M4190 12790 c-880 -54 -1871 -364 -2513 -787 -355 -234 -719 -630 -1022 -1113 -467 -743 -647 -1371 -649 -2255 -2 -721 109 -1241 449 -2100 102 -258 138 -345 377 -905 510 -1192 703 -1668 777 -1910 79 -260 114 -401 103 -412 -7 -7 -4 -16 7 -27 11 -11 31 -81 54 -192 130 -617 187 -1217 174 -1854 -8 -390 -33 -710 -86 -1095 -10 -74 -17 -136 -16 -138 5 -5 5329 18 5334 24 3 2 11 129 18 282 20 448 30 496 133 651 183 272 318 330 966 406 1266 151 1675 309 1818 704 78 216 80 553 8 1218 l-8 72 79 113 c93 131 132 212 146 296 12 72 0 131 -34 176 -32 42 -31 57 2 97 22 26 28 44 31 97 5 78 -3 121 -73 362 -78 269 -105 405 -120 605 -7 100 10 255 34 311 30 66 116 122 295 191 202 78 284 134 327 220 20 41 23 63 23 153 0 118 -8 144 -76 244 -83 122 -341 426 -716 842 -363 404 -470 540 -513 654 -24 63 -39 392 -39 858 -1 467 -15 918 -35 1064 -34 256 -168 668 -326 997 -166 346 -335 593 -579 845 -393 406 -905 713 -1640 984 -494 182 -907 270 -1475 312 -186 14 -1051 21 -1235 10z" transform="translate(0,1280) scale(0.1,-0.1)"/></svg>
+            {{ else if eq $theme.Params.icon "globe" }}<svg class="tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            {{ else if eq $theme.Params.icon "score" }}<svg class="tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M4 14h16"/><circle cx="10" cy="11.5" r="1.5" fill="currentColor" stroke="none"/><circle cx="15" cy="16.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            {{ else if eq $theme.Params.icon "interaction" }}<svg class="tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="16" r="4"/><path d="M11.5 11.5l1 1"/></svg>
             {{ end }}
             {{ $theme.Title }}
           </button>
           {{ end }}
         </div>
 
-        {{ range $i, $theme := $mccThemes }}
+        {{ range $i, $theme := $allThemes }}
         <div class="tab-panel{{ if eq $i 0 }} active{{ end }}"
              id="panel-{{ $theme.File.ContentBaseName }}"
              role="tabpanel"
@@ -40,93 +36,32 @@
             <div class="theme-description">
               {{ with $theme.Params.description }}<p>{{ . }}</p>{{ end }}
             </div>
-            {{ if $theme.Params.projects }}
             <div class="theme-projects">
-              {{ range $theme.Params.projects }}
-                {{ $slug := . }}
-                {{ range $projects }}
-                  {{ if eq .File.ContentBaseName $slug }}
-                  <a href="{{ .RelPermalink }}" class="project-card">
-                    {{ if .Params.thumbnail }}
-                    <div class="project-card-thumb">
-                      <img src="{{ (strings.TrimPrefix "/" .Params.thumbnail) | relURL }}" alt="">
-                    </div>
+              {{ $themeSlug := $theme.File.ContentBaseName }}
+              {{ $themeTopics := slice }}
+              {{ range $allTopics }}
+                {{ if eq .Params.theme $themeSlug }}
+                  {{ $themeTopics = $themeTopics | append . }}
+                {{ end }}
+              {{ end }}
+              {{ $themeTopics = sort $themeTopics "Params.weight" }}
+
+              {{ if gt (len $themeTopics) 0 }}
+                {{ range $themeTopics }}
+                  {{ partial "research-item-card.html" (dict "page" . "label" "Research topic") }}
+                {{ end }}
+              {{ else }}
+                {{/* Compatibility mode while migrating to dedicated topics records. */}}
+                {{ range $theme.Params.projects }}
+                  {{ $slug := . }}
+                  {{ range $allProjects }}
+                    {{ if eq .File.ContentBaseName $slug }}
+                    {{ partial "research-item-card.html" (dict "page" . "label" "Research topic") }}
                     {{ end }}
-                    <div class="project-card-text">
-                      <span class="project-label">Research topic</span>
-                      <span class="project-title">{{ .Title }} <span class="arrow">&rarr;</span></span>
-                    </div>
-                  </a>
                   {{ end }}
                 {{ end }}
               {{ end }}
             </div>
-            {{ end }}
-            <a href="{{ "groups/mcc/" | relURL }}" class="theme-group-link theme-group-link--mcc">Find out more about the Music Cognition &amp; Culture Group <span class="arrow">&rarr;</span></a>
-          </div>
-        </div>
-        {{ end }}
-      </div>
-    </div>
-    {{ end }}
-
-    {{/* ===== MLS Group ===== */}}
-    {{ $mlsThemes := sort (where $allThemes "Params.group" "mls") "Params.weight" }}
-    {{ if $mlsThemes }}
-    <div class="research-group research-group--mls">
-      <div class="tabs tabs--mls" data-tab-group="mls">
-        <div class="tab-bar" role="tablist">
-          <div class="tab-bar-logo">
-            <a href="{{ "groups/mls/" | relURL }}">
-              <img src="{{ "images/logos/mls_logo.png" | relURL }}" alt="Music, Language & Society Group">
-            </a>
-          </div>
-          {{ range $i, $theme := $mlsThemes }}
-          <button class="tab-btn{{ if eq $i 0 }} active{{ end }}"
-                  role="tab"
-                  aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"
-                  aria-controls="panel-{{ $theme.File.ContentBaseName }}"
-                  data-tab="{{ $theme.File.ContentBaseName }}">
-            {{ if eq $theme.Params.icon "score" }}<svg class="tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b72037" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M4 14h16"/><circle cx="10" cy="11.5" r="1.5" fill="#b72037" stroke="none"/><circle cx="15" cy="16.5" r="1.5" fill="#b72037" stroke="none"/></svg>
-            {{ else if eq $theme.Params.icon "interaction" }}<svg class="tab-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#b72037" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4"/><circle cx="16" cy="16" r="4"/><path d="M11.5 11.5l1 1"/></svg>
-            {{ end }}
-            {{ $theme.Title }}
-          </button>
-          {{ end }}
-        </div>
-
-        {{ range $i, $theme := $mlsThemes }}
-        <div class="tab-panel{{ if eq $i 0 }} active{{ end }}"
-             id="panel-{{ $theme.File.ContentBaseName }}"
-             role="tabpanel"
-             aria-hidden="{{ if eq $i 0 }}false{{ else }}true{{ end }}">
-          <div class="theme-layout">
-            <div class="theme-description">
-              {{ with $theme.Params.description }}<p>{{ . }}</p>{{ end }}
-            </div>
-            {{ if $theme.Params.projects }}
-            <div class="theme-projects">
-              {{ range $theme.Params.projects }}
-                {{ $slug := . }}
-                {{ range $projects }}
-                  {{ if eq .File.ContentBaseName $slug }}
-                  <a href="{{ .RelPermalink }}" class="project-card">
-                    {{ if .Params.thumbnail }}
-                    <div class="project-card-thumb">
-                      <img src="{{ (strings.TrimPrefix "/" .Params.thumbnail) | relURL }}" alt="">
-                    </div>
-                    {{ end }}
-                    <div class="project-card-text">
-                      <span class="project-label">Research project</span>
-                      <span class="project-title">{{ .Title }} <span class="arrow">&rarr;</span></span>
-                    </div>
-                  </a>
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            </div>
-            {{ end }}
-            <a href="{{ "groups/mls/" | relURL }}" class="theme-group-link theme-group-link--mls">Find out more about the Music, Language &amp; Society Group <span class="arrow">&rarr;</span></a>
           </div>
         </div>
         {{ end }}

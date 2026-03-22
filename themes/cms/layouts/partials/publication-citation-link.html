@@ -1,0 +1,19 @@
+{{ $pub := .pub }}
+{{ $linkClass := .link_class | default "" }}
+{{ $nonLinkTag := .non_link_tag | default "div" }}
+{{ $nonLinkClass := .non_link_class | default "" }}
+{{ $citationClass := .citation_class | default "project-publication-citation" }}
+{{ $href := "" }}
+{{ if $pub.Params.doi }}
+  {{ $href = $pub.Params.doi }}
+{{ else if not (default false $pub.Params.stub_only) }}
+  {{ $href = $pub.RelPermalink }}
+{{ end }}
+{{ if $href }}
+<a href="{{ $href }}"{{ if $linkClass }} class="{{ $linkClass }}"{{ end }}{{ if $pub.Params.doi }} target="_blank" rel="noopener"{{ end }}>
+  <span class="{{ $citationClass }}">{{ partial "publication-citation.html" $pub }}</span>
+</a>
+{{ else }}
+<{{ $nonLinkTag }} class="{{ if $nonLinkClass }}{{ $nonLinkClass }} {{ end }}{{ $citationClass }}">{{ partial "publication-citation.html" $pub }}</{{ $nonLinkTag }}>
+{{ end }}
+
