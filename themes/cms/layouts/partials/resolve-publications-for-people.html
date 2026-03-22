@@ -1,0 +1,20 @@
+{{- $page := .page -}}
+{{- $peopleSlugs := uniq (default (slice) .people_slugs) -}}
+{{- $allPublications := default (where $page.Site.RegularPages "Section" "publications") .all_publications -}}
+{{- $related := slice -}}
+
+{{- range $allPublications -}}
+  {{- $publication := . -}}
+  {{- $publicationPeople := partial "resolve-publication-person-slugs.html" (dict "publication" $publication "profiles" $page.Site.Data.lab_author_profiles) -}}
+  {{- $matches := false -}}
+  {{- range $peopleSlugs -}}
+    {{- if in $publicationPeople . -}}
+      {{- $matches = true -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $matches -}}
+    {{- $related = $related | append $publication -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return (sort $related "Date" "desc") -}}

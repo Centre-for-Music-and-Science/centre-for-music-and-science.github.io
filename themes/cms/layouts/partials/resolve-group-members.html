@@ -1,0 +1,10 @@
+{{- $page := .page -}}
+{{- $groupSlug := default $page.File.ContentBaseName .group_slug -}}
+{{- $allPeople := default (where $page.Site.RegularPages "Section" "people") .all_people -}}
+{{- $members := slice -}}
+{{- range $allPeople -}}
+  {{- if or (eq .Params.group $groupSlug) (in (default (slice) .Params.groups) $groupSlug) -}}
+    {{- $members = $members | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- return (sort $members "Params.weight") -}}

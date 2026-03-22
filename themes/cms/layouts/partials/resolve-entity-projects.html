@@ -1,0 +1,22 @@
+{{- $page := .page -}}
+{{- $entityType := .entity_type -}}
+{{- $allProjects := default (where $page.Site.RegularPages "Section" "projects") .all_projects -}}
+{{- $projectSlugs := default (slice) $page.Params.projects -}}
+
+{{- if eq $entityType "group" -}}
+  {{- $members := default (slice) .members -}}
+  {{- if eq (len $members) 0 -}}
+    {{- $members = partial "resolve-group-members.html" (dict "page" $page) -}}
+  {{- end -}}
+  {{- range $members -}}
+    {{- range (default (slice) .Params.projects) -}}
+      {{- if not (in $projectSlugs .) -}}
+        {{- $projectSlugs = $projectSlugs | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $effectiveSlugs := partial "resolve-effective-project-slugs.html" (dict "slugs" $projectSlugs "allProjects" $allProjects) -}}
+{{- $resolvedPages := partial "resolve-project-pages.html" (dict "slugs" $effectiveSlugs "allProjects" $allProjects) -}}
+{{- return (sort $resolvedPages "Params.weight") -}}

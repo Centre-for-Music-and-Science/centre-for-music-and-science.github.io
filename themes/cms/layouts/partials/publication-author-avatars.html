@@ -9,8 +9,10 @@
 {{ end }}
 {{ $authorProfiles := slice }}
 {{ $authorsText := default "" $pub.Params.authors }}
+{{ $labAuthors := default (slice) $site.Data.lab_authors }}
 {{ range (default (slice) $site.Data.lab_author_profiles) }}
-  {{ if and $authorsText (in $authorsText .citation) }}
+  {{ $canonical := default "" .bibtex }}
+  {{ if and $authorsText $canonical (in $labAuthors $canonical) (in $authorsText $canonical) }}
     {{ $person := $site.GetPage (path.Join "/people" .slug) }}
     {{ if and $person (not (in $authorProfiles $person)) }}
       {{ $authorProfiles = $authorProfiles | append $person }}

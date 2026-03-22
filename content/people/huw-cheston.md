@@ -1,10 +1,10 @@
 ---
 title: "Huw Cheston"
-role: "Affiliate Researcher"
+role: "Postdoctoral Researcher"
 email: ""
-image: ""
+image: "/images/people/huw-cheston.jpg"
 weight: 18
-category: affiliate
+category: postdoc
 group: "mcc"
 website: ""
 projects:

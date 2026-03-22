@@ -1,0 +1,24 @@
+{{- $profiles := default (slice) site.Data.lab_author_profiles -}}
+{{- $seenSlugs := slice -}}
+{{- $seenBibtex := slice -}}
+
+{{- range $profiles -}}
+  {{- if not .slug -}}
+    {{- errorf "Lab author profile error: each entry in data/lab_author_profiles.yaml must include a non-empty 'slug' value." -}}
+  {{- end -}}
+  {{- if not .bibtex -}}
+    {{- errorf "Lab author profile error: entry for slug %q is missing required 'bibtex' canonical author string." .slug -}}
+  {{- end -}}
+  {{- if in $seenSlugs .slug -}}
+    {{- errorf "Lab author profile error: duplicate slug %q in data/lab_author_profiles.yaml." .slug -}}
+  {{- end -}}
+  {{- if in $seenBibtex .bibtex -}}
+    {{- errorf "Lab author profile error: duplicate canonical bibtex author string %q in data/lab_author_profiles.yaml." .bibtex -}}
+  {{- end -}}
+  {{- $seenSlugs = $seenSlugs | append .slug -}}
+  {{- $seenBibtex = $seenBibtex | append .bibtex -}}
+  {{- $person := site.GetPage (path.Join "/people" .slug) -}}
+  {{- if not $person -}}
+    {{- errorf "Lab author profile error: slug %q in data/lab_author_profiles.yaml does not resolve to content/people/%s.md." .slug .slug -}}
+  {{- end -}}
+{{- end -}}

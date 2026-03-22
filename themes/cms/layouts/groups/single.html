@@ -20,37 +20,28 @@
         <div class="group-detail-body">
           {{ .Content }}
         </div>
-        {{ $groupSlug := .File.ContentBaseName }}
-        {{ $members := slice }}
-        {{ range (where .Site.RegularPages "Section" "people") }}
-          {{ if or (eq .Params.group $groupSlug) (in (default (slice) .Params.groups) $groupSlug) }}
-            {{ $members = $members | append . }}
-          {{ end }}
-        {{ end }}
-        {{ $members = sort $members "Params.weight" }}
+        {{ $members := partial "resolve-group-members.html" (dict "page" .) }}
         {{ if $members }}
         <div class="group-members">
           <h2 class="group-members-heading">Members</h2>
           <div class="people-grid">
             {{ range $members }}
-            <a href="{{ .RelPermalink }}" class="person-card">
-              <div class="person-photo">
-                {{ if .Params.image }}
-                <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
-                {{ else }}
-                <div class="person-placeholder">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-                  </svg>
-                </div>
-                {{ end }}
-              </div>
-              <h3 class="person-name">{{ .Title }}</h3>
-              {{ with .Params.role }}<p class="person-role">{{ . }}</p>{{ end }}
-            </a>
+            {{ partial "person-card.html" (dict "person" .) }}
             {{ end }}
           </div>
         </div>
+        {{ end }}
+        {{ $allProjects := where .Site.RegularPages "Section" "projects" }}
+        {{ $groupProjects := partial "resolve-entity-projects.html" (dict "page" . "entity_type" "group" "all_projects" $allProjects "members" $members) }}
+        {{ if gt (len $groupProjects) 0 }}
+        <section class="project-publications">
+          <h2 class="project-publications-heading">Projects</h2>
+          <div class="theme-projects">
+            {{ range $groupProjects }}
+              {{ partial "research-item-card.html" (dict "page" . "label" "Project") }}
+            {{ end }}
+          </div>
+        </section>
         {{ end }}
         {{ $featuredPublications := slice }}
         {{ range .Params.featured_publications }}
@@ -60,7 +51,15 @@
           {{ end }}
         {{ end }}
         {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
-        {{ partial "related-publications-section.html" (dict "page" . "relation_key" "groups" "relation_slug" $groupSlug "featured" $featuredPublications "footer_link" ((printf "publications/?group=%s" $groupSlug) | relURL) "footer_text" "View all group publications ->" "footer_class" "group-detail-back") }}
+        {{ $memberSlugs := slice }}
+        {{ range $members }}
+          {{ $slug := .File.ContentBaseName }}
+          {{ if not (in $memberSlugs $slug) }}
+            {{ $memberSlugs = $memberSlugs | append $slug }}
+          {{ end }}
+        {{ end }}
+        {{ $groupPublications := partial "resolve-publications-for-people.html" (dict "page" . "people_slugs" $memberSlugs) }}
+        {{ partial "related-publications-section.html" (dict "page" . "heading" "Publications" "publications" $groupPublications "featured" $featuredPublications) }}
       </div>
     </div>
   </div>

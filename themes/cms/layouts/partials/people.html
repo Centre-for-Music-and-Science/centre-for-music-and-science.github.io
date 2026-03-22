@@ -8,21 +8,7 @@
       {{ $nonAffiliates := where $shown "Params.category" "ne" "affiliate" }}
       {{ $ordered := sort $nonAffiliates "Params.weight" | append (sort $affiliates "Params.weight") }}
       {{ range $ordered }}
-      <a href="{{ .RelPermalink }}" class="person-card">
-        <div class="person-photo">
-          {{ if .Params.image }}
-          <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
-          {{ else }}
-          <div class="person-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          {{ end }}
-        </div>
-        <h3 class="person-name">{{ .Title }}</h3>
-        {{ with .Params.role }}<p class="person-role">{{ . }}</p>{{ end }}
-      </a>
+      {{ partial "person-card.html" (dict "person" .) }}
       {{ end }}
     </div>
     <div class="section-view-all">

@@ -7,6 +7,7 @@
 {{ $footerLink := .footer_link | default "" }}
 {{ $footerText := .footer_text | default "" }}
 {{ $footerClass := .footer_class | default "project-detail-back" }}
+{{ $providedPublications := .publications | default (slice) }}
 
 {{ if and (eq (len $relationSlugs) 0) $relationSlug }}
   {{ $relationSlugs = $relationSlugs | append $relationSlug }}
@@ -14,16 +15,20 @@
 
 {{ $allPublications := where $page.Site.RegularPages "Section" "publications" }}
 {{ $relatedPublications := slice }}
-{{ range $allPublications }}
-  {{ $publicationRelations := default (slice) (index .Params $relationKey) }}
-  {{ $matches := false }}
-  {{ range $relationSlugs }}
-    {{ if in $publicationRelations . }}
-      {{ $matches = true }}
+{{ if gt (len $providedPublications) 0 }}
+  {{ $relatedPublications = $providedPublications }}
+{{ else }}
+  {{ range $allPublications }}
+    {{ $publicationRelations := default (slice) (index .Params $relationKey) }}
+    {{ $matches := false }}
+    {{ range $relationSlugs }}
+      {{ if in $publicationRelations . }}
+        {{ $matches = true }}
+      {{ end }}
     {{ end }}
-  {{ end }}
-  {{ if $matches }}
-    {{ $relatedPublications = $relatedPublications | append . }}
+    {{ if $matches }}
+      {{ $relatedPublications = $relatedPublications | append . }}
+    {{ end }}
   {{ end }}
 {{ end }}
 

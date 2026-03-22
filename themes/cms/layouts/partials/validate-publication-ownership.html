@@ -1,4 +1,4 @@
-{{- $entitySections := slice "projects" "methods" "groups" -}}
+{{- $entitySections := slice "projects" "methods" -}}
 {{- range $entitySections -}}
   {{- $section := . -}}
   {{- $pages := where site.RegularPages "Section" $section -}}

@@ -37,6 +37,21 @@
           {{ .Content }}
         </div>
         {{ end }}
+        {{ $allProjects := where .Site.RegularPages "Section" "projects" }}
+        {{ $personProjects := partial "resolve-entity-projects.html" (dict "page" . "entity_type" "person" "all_projects" $allProjects) }}
+        {{ if gt (len $personProjects) 0 }}
+        <section class="project-publications">
+          <h2 class="project-publications-heading">Projects</h2>
+          <div class="theme-projects">
+            {{ range $personProjects }}
+              {{ partial "research-item-card.html" (dict "page" . "label" "Project") }}
+            {{ end }}
+          </div>
+        </section>
+        {{ end }}
+        {{ $personSlug := .File.ContentBaseName }}
+        {{ $personPublications := partial "resolve-publications-for-people.html" (dict "page" . "people_slugs" (slice $personSlug)) }}
+        {{ partial "related-publications-section.html" (dict "page" . "heading" "Publications" "publications" $personPublications) }}
       </div>
     </div>
   </div>

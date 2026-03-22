@@ -1,0 +1,35 @@
+{{- $allProjects := default (where site.RegularPages "Section" "projects") .allProjects -}}
+{{- $inputSlugs := uniq (default (slice) .slugs) -}}
+{{- $effective := $inputSlugs -}}
+{{- $passCount := len $allProjects -}}
+
+{{- if and (gt $passCount 0) (gt (len $effective) 0) -}}
+  {{- range seq $passCount -}}
+    {{- range $allProjects -}}
+      {{- $parentSlug := .File.ContentBaseName -}}
+      {{- $childSlugs := default (slice) .Params.projects -}}
+      {{- if gt (len $childSlugs) 0 -}}
+        {{- $allChildrenPresent := true -}}
+        {{- range $childSlugs -}}
+          {{- if not (in $effective .) -}}
+            {{- $allChildrenPresent = false -}}
+          {{- end -}}
+        {{- end -}}
+        {{- if $allChildrenPresent -}}
+          {{- $next := slice -}}
+          {{- range $effective -}}
+            {{- if not (in $childSlugs .) -}}
+              {{- $next = $next | append . -}}
+            {{- end -}}
+          {{- end -}}
+          {{- if not (in $next $parentSlug) -}}
+            {{- $next = $next | append $parentSlug -}}
+          {{- end -}}
+          {{- $effective = uniq $next -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $effective -}}
