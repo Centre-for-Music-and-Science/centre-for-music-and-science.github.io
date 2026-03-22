@@ -1,6 +1,6 @@
 <section class="people-section" id="people">
   <div class="container">
-    <h2 class="section-title">People</h2>
+    <h2 class="section-title">Team</h2>
     <div class="people-grid">
       {{ $people := where .Site.RegularPages "Section" "people" }}
       {{ $shown := where $people "Params.category" "ne" "alumni" }}
@@ -28,5 +28,6 @@
     <div class="section-view-all">
       <a href="{{ "people/" | relURL }}" class="btn-view-all">View all people &rarr;</a>
     </div>
+    {{ partial "research-groups.html" (dict "page" . "embedded" true) }}
   </div>
 </section>

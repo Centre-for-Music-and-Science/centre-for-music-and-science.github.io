@@ -1,6 +1,6 @@
 <section class="latest-events" id="news">
   <div class="container">
-    <h2 class="section-title">News</h2>
+    <h2 class="section-title">Other News</h2>
     {{ $events := first 3 (sort (where .Site.RegularPages "Section" "news") "Date" "desc") }}
     <div class="events-grid">
       {{ with index $events 0 }}

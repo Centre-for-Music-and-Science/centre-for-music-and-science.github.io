@@ -1,8 +1,16 @@
-<section class="research-groups-home" id="groups">
-  <div class="container">
-    <h2 class="section-title">Research Groups</h2>
+{{ $page := . }}
+{{ $embedded := false }}
+{{ with .page }}{{ $page = . }}{{ end }}
+{{ with .embedded }}{{ $embedded = . }}{{ end }}
+{{ $showHeading := not $embedded }}
+
+<div class="research-groups-home{{ if $embedded }} research-groups-home--embedded{{ end }}" id="groups">
+  {{ if $showHeading }}
+  <h2 class="section-title">Research Groups</h2>
+  {{ end }}
+  <p class="section-intro">Our team is organised into two research groups:</p>
     <div class="research-groups-grid">
-      {{ $groups := sort (where .Site.RegularPages "Section" "groups") "Params.weight" }}
+      {{ $groups := sort (where $page.Site.RegularPages "Section" "groups") "Params.weight" }}
       {{ range $groups }}
         {{ $isStub := default false .Params.stub_only }}
         {{ $groupTitle := .Title }}
@@ -33,6 +41,5 @@
         {{ end }}
       {{ end }}
     </div>
-  </div>
-</section>
+</div>
 

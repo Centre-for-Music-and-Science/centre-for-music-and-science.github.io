@@ -1,5 +1,6 @@
 <section class="research-themes" id="research">
   <div class="container">
+    <h2 class="section-title">Research</h2>
     <p class="section-intro">{{ .Site.Params.themesIntro }}</p>
 
     {{ $allThemes := sort (where .Site.RegularPages "Section" "themes") "Params.weight" }}

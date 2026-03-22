@@ -492,7 +492,7 @@ img {
   gap: 0;
   margin-bottom: 40px;
   overflow-x: auto;
-  overflow-visible: visible;
+  overflow-y: visible;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
@@ -865,6 +865,12 @@ img {
 .research-groups-home {
   padding: var(--section-padding);
   background: var(--color-card-bg);
+}
+
+.research-groups-home--embedded {
+  margin-top: 48px;
+  padding: 0;
+  background: transparent;
 }
 
 .research-groups-grid {
