@@ -1,14 +1,16 @@
 import unittest
 
 from scripts.generate_publication_citations import build_front_matter_text
-from scripts.generate_publication_citations import extract_authors_from_apa_citation
+from scripts.generate_publication_citations import (
+    extract_authors_from_apa_citation,
+)
 from scripts.generate_publication_citations import extract_publication_venue
 from scripts.generate_publication_citations import inject_autogen_comments
+from scripts.generate_publication_citations import normalize_citeproc_html
 from scripts.generate_publication_citations import normalize_doi
-from scripts.generate_publication_citations import normalize_pybtex_html
 from scripts.generate_publication_citations import parse_bibtex_fields
 from scripts.generate_publication_citations import publication_link
-from scripts.generate_publication_citations import render_apa_citation
+from scripts.generate_publication_citations import render_csl_citation
 
 
 class PublicationCitationTests(unittest.TestCase):
@@ -29,13 +31,13 @@ class PublicationCitationTests(unittest.TestCase):
         self.assertEqual(fields["doi"], "10.1037/aca0000836")
         self.assertIn("Modeling individual differences", fields["title"])
 
-    def test_normalize_pybtex_html_decodes_and_flattens_output(self):
+    def test_normalize_citeproc_html_decodes_and_flattens_output(self):
         citation_html = (
             "Frank, J., &amp; Harrison, P.&nbsp;M.&nbsp;C. (2026). "
             "<em>Journal</em>. <a href=\"https://doi.org/10.1000/example\">"
             "doi:10.1000/example</a>"
         )
-        out = normalize_pybtex_html(citation_html)
+        out = normalize_citeproc_html(citation_html)
         self.assertEqual(
             out,
             "Frank, J., & Harrison, P. M. C. (2026). <em>Journal</em>. "
@@ -49,11 +51,13 @@ class PublicationCitationTests(unittest.TestCase):
             "Frank, J., & Harrison, P. M. C.",
         )
 
-    def test_render_apa_citation_includes_journal_and_doi(self):
+    def test_render_csl_citation_apa_includes_journal_and_doi(self):
         bibtex = """
         @article{frank2026,
           author = {Frank, Joshua and Harrison, Peter M. C.},
-          title = {Modeling individual differences in chord pleasantness judgments},
+          title = {
+            Modeling individual differences in chord pleasantness judgments
+          },
           journal = {Psychology of Aesthetics, Creativity, and the Arts},
           volume = {20},
           number = {1},
@@ -62,7 +66,14 @@ class PublicationCitationTests(unittest.TestCase):
           year = {2026}
         }
         """
-        citation = render_apa_citation(bibtex)
+        fields = parse_bibtex_fields(bibtex)
+        citation = render_csl_citation(
+            bibtex=bibtex,
+            csl_style="apa",
+            link=publication_link(fields),
+            inpress=False,
+            year=fields["year"],
+        )
         self.assertIn("Frank, J., & Harrison, P. M. C. (2026).", citation)
         self.assertIn(
             "<em>Psychology of Aesthetics, Creativity, and the Arts</em>",
@@ -90,16 +101,18 @@ class PublicationCitationTests(unittest.TestCase):
 
     def test_publication_link_falls_back_to_url(self):
         self.assertEqual(
-            publication_link({"url": "https://www.aes.org/e-lib/browse.cfm?elib=1"}),
+            publication_link(
+                {"url": "https://www.aes.org/e-lib/browse.cfm?elib=1"}
+            ),
             "https://www.aes.org/e-lib/browse.cfm?elib=1",
         )
 
-    def test_normalize_pybtex_html_flattens_url_field_anchor(self):
+    def test_normalize_citeproc_html_flattens_url_field_anchor(self):
         citation_html = (
             "Doe, J. (2022). <em>Proceedings</em>. "
             'URL: <a href="https://example.com/x">https://example.com/x</a>'
         )
-        out = normalize_pybtex_html(citation_html)
+        out = normalize_citeproc_html(citation_html)
         self.assertEqual(
             out,
             "Doe, J. (2022). <em>Proceedings</em>. https://example.com/x",

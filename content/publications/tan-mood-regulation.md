@@ -33,11 +33,11 @@ bibtex: |-
   }
 # generated from bibtex; do not edit manually
 citation_apa: Tan, C., & Harrison, P. M. C. (2026). What music do people use for mood
-  regulation?. <em>Psychology of Music</em>. Forthcoming. https://doi.org/10.31234/osf.io/t4w5d_v1
-citation_mla: Tan, C. and P. M. C. Harrison. “What Music Do People Use for Mood Regulation?”.
+  regulation? <em>Psychology of Music</em>. Forthcoming. https://doi.org/10.31234/osf.io/t4w5d_v1
+citation_mla: Tan, C. and P. M. C. Harrison. “What Music Do People Use for Mood Regulation?”
   <em>Psychology of Music</em>, 2026, https://doi.org/10.31234/osf.io/t4w5d_v1.
 citation_chicago: Tan, C., and P. M. C. Harrison. 2026. “What Music Do People Use
-  for Mood Regulation?”. <em>Psychology of Music</em>. https://doi.org/10.31234/osf.io/t4w5d_v1.
+  for Mood Regulation?” <em>Psychology of Music</em>. https://doi.org/10.31234/osf.io/t4w5d_v1.
 citation_ieee: '[1] C. Tan and P. M. C. Harrison, “What music do people use for mood
   regulation?”, <em>Psychology of Music</em>, 2026, Forthcoming, doi: 10.31234/osf.io/t4w5d_v1.'
 ---

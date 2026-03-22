@@ -124,7 +124,7 @@ def normalize_doi(doi_value: str) -> str:
 
 
 def publication_link(fields: Dict[str, str]) -> str:
-    """Resolve the outbound link for a publication (DOI preferred, else explicit URL)."""
+    """Resolve publication link, preferring DOI over explicit URL."""
     doi_raw = fields.get("doi", "").strip().strip("{}")
     url_raw = fields.get("url", "").strip().strip("{}")
     if doi_raw.startswith("10."):
@@ -136,15 +136,33 @@ def publication_link(fields: Dict[str, str]) -> str:
     return normalize_doi(doi_raw)
 
 
+def normalize_terminal_title_punctuation(citation_html: str) -> str:
+    """Drop redundant periods after terminal ?/! punctuation."""
+    return re.sub(
+        r"([?!])((?:[\"'”]|</em>|</i>)*)\.(?=\s|$)",
+        r"\1\2",
+        citation_html,
+    )
+
+
 def normalize_citeproc_html(citation_html: str) -> str:
     """Normalize citeproc HTML output for front matter storage."""
     citation_html = html.unescape(citation_html)
-    citation_html = citation_html.replace("<i>", "<em>").replace("</i>", "</em>")
+    citation_html = re.sub(
+        r'<a[^>]*href="([^"]+)"[^>]*>.*?</a>',
+        r"\1",
+        citation_html,
+    )
+    citation_html = citation_html.replace("<i>", "<em>").replace(
+        "</i>", "</em>"
+    )
     citation_html = citation_html.replace("<b>", "").replace("</b>", "")
     citation_html = citation_html.replace("\xa0", " ")
+    citation_html = re.sub(r"\bURL:\s*(https?://\S+)", r"\1", citation_html)
     citation_html = re.sub(r"([A-Z])\.\.", r"\1.", citation_html)
     citation_html = re.sub(r"(?<=\.)and\b", " and", citation_html)
     citation_html = re.sub(r"^\[(\d+)\](?=\S)", r"[\1] ", citation_html)
+    citation_html = normalize_terminal_title_punctuation(citation_html)
     citation_html = re.sub(r"\s+", " ", citation_html).strip()
     return citation_html
 
