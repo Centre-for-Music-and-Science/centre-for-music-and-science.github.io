@@ -6,6 +6,21 @@ date: 2024-01-01
 authors: Marjieh, R., Harrison, P. M. C., Lee, H., Deligiannaki, F., & Jacoby, N.
 journal: Nature Communications
 doi: https://doi.org/10.1038/s41467-024-45812-z
+abstract: The phenomenon of musical consonance is an essential feature in diverse
+  musical styles. The traditional belief, supported by centuries of Western music
+  theory and psychological studies, is that consonance derives from simple (harmonic)
+  frequency ratios between tones and is insensitive to timbre. Here we show through
+  five large-scale behavioral studies, comprising 235,440 human judgments from US
+  and South Korean populations, that harmonic consonance preferences can be reshaped
+  by timbral manipulations, even as far as to induce preferences for inharmonic intervals.
+  We show how such effects may suggest perceptual origins for diverse scale systems
+  ranging from the gamelan’s slendro scale to the tuning of Western mean-tone and
+  equal-tempered scales. Through computational modeling we show that these timbral
+  manipulations dissociate competing psychoacoustic mechanisms underlying consonance,
+  and we derive an updated computational model combining liking of harmonicity, disliking
+  of fast beats (roughness), and liking of slow beats. Altogether, this work showcases
+  how large-scale behavioral experiments can inform classical questions in auditory
+  perception.
 bibtex: |-
   @article{marjieh-timbral,
     author = {Marjieh, R. and Harrison, P. M. C. and Lee, H. and Deligiannaki, F. and Jacoby, N.},

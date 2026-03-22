@@ -1,5 +1,7 @@
+beautifulsoup4>=4.12
 librosa
 numpy
 pyyaml
+requests>=2.28
 pybtex==0.25.1
 pybtex-apa-style==1.3

@@ -5,6 +5,17 @@ date: 2022-01-01
 authors: Cross, I.
 journal: Animation
 doi: https://doi.org/10.1177/17468477221114596
+abstract: Skazka Skazok/Tale of Tales (Yuri Norstein, 1979) has delighted and puzzled
+  audiences and critics ever since its release. It presents a series of beautifully-animated
+  episodes that seem to make narrative sense at the micro-level and that appear to
+  fit together as a whole, but leaves the audience bemused as to why this should be
+  so. The article discusses the history and context of the film, arguing that the
+  ways in which sound and, particularly, music are deployed in relation to its visual
+  elements provide powerful clues and cues as to the film’s over-arching narrative
+  significances. Close analysis of the film’s music, sound and visuals reveals teleological
+  underpinnings that are realized by means of alignment and re-alignment of music
+  and image, leading to a new understanding of how the film and its success can be
+  interpreted.
 bibtex: |-
   @article{cross-tale-of-tales,
     author = {Cross, I.},

@@ -152,7 +152,7 @@ def build_front_matter_text(data: Dict) -> str:
         data,
         Dumper=PublicationDumper,
         sort_keys=False,
-        allow_unicode=False,
+        allow_unicode=True,
     ).strip()
     yaml_text = inject_autogen_comments(yaml_text)
     return f"---\n{yaml_text}\n---\n"

@@ -65,20 +65,18 @@
         <li class="pub-year-item">
           <span class="pub-item-authors">{{ partial "bold-lab-authors" (dict "authors" .Params.authors "labAuthors" $.Site.Data.lab_authors) }}</span>
           {{ $href := "" }}
-          {{ if .Params.doi }}
-            {{ $href = .Params.doi }}
-          {{ else if not (default false .Params.stub_only) }}
+          {{ if not (default false .Params.stub_only) }}
             {{ $href = .RelPermalink }}
           {{ end }}
           {{ if $href }}
-          <a href="{{ $href }}" {{ if .Params.doi }}target="_blank" rel="noopener"{{ end }} class="pub-item-title">{{ .Title }}</a>
+          <a href="{{ $href }}" class="pub-item-title">{{ .Title }}</a>
           {{ else }}
           <span class="pub-item-title">{{ .Title }}</span>
           {{ end }}
           {{ if or .Params.journal .Params.inpress }}
           <span class="pub-item-journal">
             {{- with .Params.journal }}{{ . }}{{ end -}}
-            {{- if .Params.inpress }}{{ if .Params.journal }} {{ end }}(In Press){{ else if and .Params.journal .Date }} ({{ .Date.Format "2006" }}){{ end -}}
+            {{- if .Params.inpress }}{{ if .Params.journal }} {{ end }}(In Press){{ end -}}
           </span>
           {{ end }}
         </li>

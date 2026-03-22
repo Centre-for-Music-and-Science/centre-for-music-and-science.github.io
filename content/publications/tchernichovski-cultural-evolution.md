@@ -5,6 +5,19 @@ date: 2025-01-01
 authors: Tchernichovski, O., Globerson, E., Harrison, P. M. C., & Jacoby, N.
 journal: arXiv
 doi: https://doi.org/10.48550/arXiv.2502.16694
+abstract: When is it beneficial to constrain creativity? Creativity thrives with freedom,
+  but when people collaborate to create artifacts, there is tension between giving
+  individuals freedom to revise, and protecting prior achievements. To test how imposing
+  constraints may affect collective creativity, we performed cultural evolution experiments
+  where participants collaborated to create melodies and images in chains. With melodies,
+  we found that limiting step size (number of musical notes that can be changed) improved
+  pleasantness ratings for created tunes. Similar results were observed in cohorts
+  of musicians, and with different selection regimes. In contrast, limiting step size
+  in creating images consistently reduced pleasantness. These conflicting findings
+  suggest that in domains such as music, where artifacts can be easily damaged, and
+  where evolutionary outcomes are hard to foresee, collective creativity may benefit
+  from imposing small step sizes. We discuss parallels with search algorithms and
+  the evolution of conservative birdsong cultures.
 bibtex: |-
   @article{tchernichovski-cultural-evolution,
     author = {Tchernichovski, O. and Globerson, E. and Harrison, P. M. C. and Jacoby, N.},

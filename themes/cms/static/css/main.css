@@ -70,6 +70,7 @@ a {
 .dataset-detail-body a,
 .event-detail-content a,
 .project-detail-body a,
+.project-detail-summary a,
 .facility-description a {
   color: var(--color-accent);
   text-decoration: underline;
@@ -86,6 +87,7 @@ a {
 .dataset-detail-body a:hover,
 .event-detail-content a:hover,
 .project-detail-body a:hover,
+.project-detail-summary a:hover,
 .facility-description a:hover {
   color: var(--color-text);
 }
@@ -1887,6 +1889,28 @@ a.pub-item-title:hover {
   padding: 20px 24px;
   border-radius: 8px;
   border-left: 3px solid var(--color-border);
+}
+
+/* markdownify emits <p>/<ul>; global * reset removes margins — restore prose rhythm */
+.project-detail-summary p {
+  margin-bottom: 16px;
+}
+
+.project-detail-summary p:last-child {
+  margin-bottom: 0;
+}
+
+.project-detail-summary ul,
+.project-detail-summary ol {
+  margin: 0 0 16px 24px;
+}
+
+.project-detail-summary li {
+  margin-bottom: 8px;
+}
+
+.project-detail-summary li:last-child {
+  margin-bottom: 0;
 }
 
 .project-detail-body {

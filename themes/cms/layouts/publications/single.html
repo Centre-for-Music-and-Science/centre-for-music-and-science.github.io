@@ -20,7 +20,7 @@
       {{ with .Params.abstract }}
       <section class="project-publications">
         <h2 class="project-publications-heading">Abstract</h2>
-        <p class="project-detail-summary">{{ . }}</p>
+        <div class="project-detail-summary">{{ . | markdownify }}</div>
       </section>
       {{ end }}
 
