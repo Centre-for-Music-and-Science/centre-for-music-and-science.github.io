@@ -55,6 +55,8 @@
 
   var spectralCache = {};
   var infoPanelOpen = false;
+  var heroInfoPanelSetOpen = null;
+  var postEndedResetTimeout = null;
   var cameraBlend = 0;
   var CAMERA_BLEND_SPEED = 3.0;
 
@@ -117,6 +119,8 @@
         infoPanel.setAttribute('hidden', '');
       }
     }
+
+    heroInfoPanelSetOpen = setOpen;
 
     infoBtn.addEventListener('click', function (e) {
       e.stopPropagation();
@@ -435,6 +439,10 @@
     }
 
     audio.addEventListener('play', function () {
+      if (postEndedResetTimeout) {
+        clearTimeout(postEndedResetTimeout);
+        postEndedResetTimeout = null;
+      }
       isPlaying = true;
       updatePlayerUI();
     });
@@ -448,6 +456,15 @@
       isPlaying = false;
       if (btnRing) btnRing.style.setProperty('--progress', 0);
       updatePlayerUI();
+      if (postEndedResetTimeout) {
+        clearTimeout(postEndedResetTimeout);
+      }
+      postEndedResetTimeout = setTimeout(function () {
+        postEndedResetTimeout = null;
+        if (heroInfoPanelSetOpen) {
+          heroInfoPanelSetOpen(false);
+        }
+      }, 1000);
     });
 
     audio.addEventListener('timeupdate', function () {
