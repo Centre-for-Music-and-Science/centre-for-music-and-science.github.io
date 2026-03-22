@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import html
 import re
 from pathlib import Path
 from typing import Dict
@@ -14,6 +15,15 @@ try:
 except ImportError as exc:  # pragma: no cover - import guard for CLI usage.
     raise ImportError(
         "PyYAML is required. Install it with: pip install pyyaml"
+    ) from exc
+
+try:
+    from pybtex.database import parse_string
+    from pybtex.plugin import find_plugin
+except ImportError as exc:  # pragma: no cover - import guard for CLI usage.
+    raise ImportError(
+        "pybtex and pybtex-apa-style are required. "
+        "Install them with: pip install pybtex pybtex-apa-style"
     ) from exc
 
 
@@ -62,42 +72,6 @@ def parse_bibtex_fields(bibtex: str) -> Dict[str, str]:
     return fields
 
 
-def format_author(author: str) -> str:
-    """Format one BibTeX author name in APA style."""
-    author = author.strip()
-    if "," in author:
-        last, given = [part.strip() for part in author.split(",", 1)]
-    else:
-        parts = author.split()
-        if len(parts) < 2:
-            return author
-        last = parts[-1]
-        given = " ".join(parts[:-1])
-
-    initials = []
-    for token in given.replace("-", " ").split():
-        if token:
-            initials.append(f"{token[0].upper()}.")
-    initials_str = " ".join(initials)
-    return f"{last}, {initials_str}".strip()
-
-
-def format_authors_apa(authors_raw: str) -> str:
-    """Format a BibTeX author list to APA author string."""
-    authors = [
-        format_author(author)
-        for author in authors_raw.split(" and ")
-        if author.strip()
-    ]
-    if not authors:
-        return ""
-    if len(authors) == 1:
-        return authors[0]
-    if len(authors) == 2:
-        return f"{authors[0]}, & {authors[1]}"
-    return f"{', '.join(authors[:-1])}, & {authors[-1]}"
-
-
 def normalize_doi(doi_value: str) -> str:
     """Normalize a DOI to https://doi.org/... format."""
     if not doi_value:
@@ -110,36 +84,37 @@ def normalize_doi(doi_value: str) -> str:
     return f"https://doi.org/{doi_value}" if doi_value else ""
 
 
-def render_apa_citation(fields: Dict[str, str]) -> str:
-    """Render a best-effort APA citation from parsed BibTeX fields."""
-    authors = format_authors_apa(fields.get("author", ""))
-    year = fields.get("year", "n.d.")
-    title = fields.get("title", "").replace("{", "").replace("}", "").strip()
-    journal = fields.get("journal", fields.get("booktitle", "")).strip()
-    volume = fields.get("volume", "").strip()
-    number = fields.get("number", "").strip()
-    pages = fields.get("pages", "").replace("--", "-").strip()
-    doi = normalize_doi(fields.get("doi", ""))
+def normalize_pybtex_html(citation_html: str) -> str:
+    """Normalize pybtex HTML output for front matter storage."""
+    citation_html = html.unescape(citation_html)
+    citation_html = citation_html.replace("\xa0", " ")
+    citation_html = re.sub(
+        r'<a\s+href="(https?://doi\.org/[^"]+)">[^<]*</a>',
+        r"\1",
+        citation_html,
+        flags=re.IGNORECASE,
+    )
+    citation_html = re.sub(r"\s+", " ", citation_html).strip()
+    return citation_html
 
-    parts = []
-    if authors:
-        parts.append(authors)
-    parts.append(f"({year}).")
-    if title:
-        parts.append(f"{title}.")
-    if journal:
-        journal_part = f"<em>{journal}</em>"
-        if volume:
-            journal_part += f", {volume}"
-            if number:
-                journal_part += f"({number})"
-        if pages:
-            journal_part += f", {pages}"
-        journal_part += "."
-        parts.append(journal_part)
-    if doi:
-        parts.append(doi)
-    return " ".join(parts).strip()
+
+def extract_authors_from_apa_citation(citation_apa: str) -> str:
+    """Extract the author block from an APA citation string."""
+    match = re.match(r"^(.*?)\s+\((?:n\.d\.|\d{4}[a-z]?)\)\.", citation_apa)
+    return match.group(1).strip() if match else ""
+
+
+def render_apa_citation(
+    bibtex: str,
+) -> str:
+    """Render an APA citation from BibTeX via pybtex."""
+    bibliography = parse_string(bibtex, "bibtex")
+    style = find_plugin("pybtex.style.formatting", "apa")()
+    backend = find_plugin("pybtex.backends", "html")()
+    entries = list(style.format_bibliography(bibliography))
+    if not entries:
+        raise ValueError("No bibliography entry found in BibTeX.")
+    return normalize_pybtex_html(entries[0].text.render(backend))
 
 
 def extract_publication_venue(fields: Dict[str, str]) -> str:
@@ -187,11 +162,9 @@ def update_publication_file(path: Path) -> bool:
         return False
 
     fields = parse_bibtex_fields(bibtex)
-    if not fields:
-        return False
-
-    front_matter["citation_apa"] = render_apa_citation(fields)
-    front_matter["authors"] = format_authors_apa(fields.get("author", ""))
+    citation_apa = render_apa_citation(bibtex)
+    front_matter["citation_apa"] = citation_apa
+    front_matter["authors"] = extract_authors_from_apa_citation(citation_apa)
     venue = extract_publication_venue(fields)
     if venue:
         front_matter["journal"] = venue

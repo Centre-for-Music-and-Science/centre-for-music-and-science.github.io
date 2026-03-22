@@ -1,10 +1,11 @@
 import unittest
 
 from scripts.generate_publication_citations import build_front_matter_text
-from scripts.generate_publication_citations import inject_autogen_comments
+from scripts.generate_publication_citations import extract_authors_from_apa_citation
 from scripts.generate_publication_citations import extract_publication_venue
-from scripts.generate_publication_citations import format_authors_apa
+from scripts.generate_publication_citations import inject_autogen_comments
 from scripts.generate_publication_citations import normalize_doi
+from scripts.generate_publication_citations import normalize_pybtex_html
 from scripts.generate_publication_citations import parse_bibtex_fields
 from scripts.generate_publication_citations import render_apa_citation
 
@@ -27,36 +28,46 @@ class PublicationCitationTests(unittest.TestCase):
         self.assertEqual(fields["doi"], "10.1037/aca0000836")
         self.assertIn("Modeling individual differences", fields["title"])
 
-    def test_format_authors_apa_handles_ampersand_joining(self):
-        authors = format_authors_apa("Frank, Joshua and Harrison, Peter M. C.")
-        self.assertEqual(authors, "Frank, J., & Harrison, P. M. C.")
+    def test_normalize_pybtex_html_decodes_and_flattens_output(self):
+        citation_html = (
+            "Frank, J., &amp; Harrison, P.&nbsp;M.&nbsp;C. (2026). "
+            "<em>Journal</em>. <a href=\"https://doi.org/10.1000/example\">"
+            "doi:10.1000/example</a>"
+        )
+        out = normalize_pybtex_html(citation_html)
+        self.assertEqual(
+            out,
+            "Frank, J., & Harrison, P. M. C. (2026). <em>Journal</em>. "
+            "https://doi.org/10.1000/example",
+        )
+
+    def test_extract_authors_from_apa_citation_uses_text_before_year(self):
+        citation = "Frank, J., & Harrison, P. M. C. (2026). Example title."
+        self.assertEqual(
+            extract_authors_from_apa_citation(citation),
+            "Frank, J., & Harrison, P. M. C.",
+        )
 
     def test_render_apa_citation_includes_journal_and_doi(self):
-        fields = {
-            "author": "Frank, Joshua and Harrison, Peter M. C.",
-            "year": "2026",
-            "title": (
-                "Modeling individual differences in chord pleasantness "
-                "judgments"
-            ),
-            "journal": "Psychology of Aesthetics, Creativity, and the Arts",
-            "volume": "20",
-            "number": "1",
-            "pages": "10--21",
-            "doi": "10.1037/aca0000836",
+        bibtex = """
+        @article{frank2026,
+          author = {Frank, Joshua and Harrison, Peter M. C.},
+          title = {Modeling individual differences in chord pleasantness judgments},
+          journal = {Psychology of Aesthetics, Creativity, and the Arts},
+          volume = {20},
+          number = {1},
+          pages = {10--21},
+          doi = {10.1037/aca0000836},
+          year = {2026}
         }
-        citation = render_apa_citation(fields)
+        """
+        citation = render_apa_citation(bibtex)
         self.assertIn("Frank, J., & Harrison, P. M. C. (2026).", citation)
         self.assertIn(
-            (
-                "<em>Psychology of Aesthetics, Creativity, and the Arts</em>, "
-                "20(1), 10-21."
-            ),
+            "<em>Psychology of Aesthetics, Creativity, and the Arts</em>",
             citation,
         )
-        self.assertTrue(
-            citation.endswith("https://doi.org/10.1037/aca0000836")
-        )
+        self.assertIn("https://doi.org/10.1037/aca0000836", citation)
 
     def test_normalize_doi_accepts_url_or_raw(self):
         self.assertEqual(

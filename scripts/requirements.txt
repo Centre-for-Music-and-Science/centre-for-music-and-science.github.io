@@ -1,3 +1,5 @@
 librosa
 numpy
 pyyaml
+pybtex==0.25.1
+pybtex-apa-style==1.3
