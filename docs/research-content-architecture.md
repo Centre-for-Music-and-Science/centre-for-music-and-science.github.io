@@ -88,11 +88,13 @@ Rendering rules:
 
 Publication metadata source of truth:
 
-- `bibtex` is authoritative for citation metadata.
+- `bibtex` is authoritative for citation metadata and required for publication records.
 
 Generated fields (do not edit manually):
 
 - `citation_apa`
+- `authors` (display line for list formatting)
+- `journal` (display venue for list formatting)
 - `doi` (derived from BibTeX when available)
 
 Publication pages are optional and controlled by content readiness.

@@ -1,0 +1,5 @@
+{{ $pub := . }}
+{{ if not $pub.Params.bibtex }}
+  {{ errorf "Publication '%s' is missing required 'bibtex' field (%s)" $pub.Title $pub.File.Path }}
+{{ end }}
+

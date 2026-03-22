@@ -9,10 +9,6 @@ methods: []
 groups: []
 datasets: []
 bibtex: ""
-# generated from bibtex; do not edit manually
-citation_apa: ""
-# generated from bibtex; do not edit manually
-doi: ""
 abstract: ""
 description: ""
 image: ""

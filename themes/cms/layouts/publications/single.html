@@ -2,6 +2,7 @@
 <article class="project-detail-page">
   <div class="container">
     <div class="project-detail-content">
+      {{ partial "publication-require-bibtex.html" . }}
       <h1 class="project-detail-title">{{ .Title }}</h1>
       <div class="project-title-meta">
         {{ if .Params.authors }}<span class="project-pub-authors">{{ partial "bold-lab-authors" (dict "authors" .Params.authors "labAuthors" .Site.Data.lab_authors) }}</span>{{ end }}

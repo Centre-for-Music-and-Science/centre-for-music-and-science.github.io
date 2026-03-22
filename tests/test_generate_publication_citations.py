@@ -1,5 +1,7 @@
 import unittest
 
+from scripts.generate_publication_citations import build_front_matter_text
+from scripts.generate_publication_citations import inject_autogen_comments
 from scripts.generate_publication_citations import extract_publication_venue
 from scripts.generate_publication_citations import format_authors_apa
 from scripts.generate_publication_citations import normalize_doi
@@ -74,6 +76,41 @@ class PublicationCitationTests(unittest.TestCase):
         self.assertEqual(
             extract_publication_venue({"booktitle": "Proceedings of ISMIR"}),
             "Proceedings of ISMIR",
+        )
+
+    def test_build_front_matter_formats_bibtex_and_marks_generated_fields(
+        self,
+    ):
+        front_matter = {
+            "title": "Example",
+            "bibtex": (
+                "@article{example,\n"
+                "  author = {Doe, Jane},\n"
+                "  year = {2026}\n"
+                "}"
+            ),
+            "citation_apa": "Doe, J. (2026). Example.",
+            "authors": "Doe, J.",
+            "journal": "Journal",
+            "doi": "https://doi.org/10.1000/example",
+        }
+        output = build_front_matter_text(front_matter)
+        self.assertIn("bibtex: |", output)
+        self.assertIn("  @article{example,", output)
+        self.assertIn("# generated from bibtex; do not edit manually", output)
+
+    def test_inject_autogen_comments_keeps_single_comment_block(self):
+        yaml_text = (
+            "title: Example\n"
+            "citation_apa: Citation\n"
+            "authors: Doe\n"
+            "journal: Journal\n"
+            "doi: https://doi.org/x\n"
+        )
+        out = inject_autogen_comments(yaml_text)
+        self.assertEqual(
+            out.count("# generated from bibtex; do not edit manually"),
+            1,
         )
 
 

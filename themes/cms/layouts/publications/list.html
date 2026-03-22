@@ -43,6 +43,9 @@
   {{ end }}
 
   {{ $pubs := sort .Pages "Date" "desc" }}
+  {{ range $pubs }}
+    {{ partial "publication-require-bibtex.html" . }}
+  {{ end }}
 
   {{ $years := slice }}
   {{ range $pubs }}

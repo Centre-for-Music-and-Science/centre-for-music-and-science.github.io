@@ -32,6 +32,7 @@
     {{ range sort $relatedPublications "Date" "desc" }}
       {{ if not (in $featured .) }}
       {{ $pub := . }}
+      {{ partial "publication-require-bibtex.html" $pub }}
       {{ $href := "" }}
       {{ if $pub.Params.doi }}
         {{ $href = $pub.Params.doi }}

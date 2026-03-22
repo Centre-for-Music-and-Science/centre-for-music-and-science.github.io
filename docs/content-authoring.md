@@ -31,14 +31,22 @@ Set reverse-lookup tags on people/publications/datasets so pages can build relat
 
 ## Publications workflow
 
-1. Add `bibtex` to the publication record.
+1. Add `bibtex` to the publication record (**required**).
 2. Run the citation generation script (to be wired into build workflow).
-3. Commit generated `citation_apa` and `doi`.
+3. Commit generated `citation_apa`, `authors`, `journal`, and `doi`.
+
+Build-time guard:
+
+- publication templates fail the build if `bibtex` is missing.
 
 Do not manually edit:
 
 - `citation_apa`
+- `authors` (when generated from BibTeX)
+- `journal` (when generated from BibTeX)
 - `doi` (when generated from BibTeX)
+- These fields are written with inline comments in front matter to indicate
+  that they are auto-generated.
 
 ## Featured publications
 

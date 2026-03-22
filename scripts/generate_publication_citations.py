@@ -19,6 +19,26 @@ except ImportError as exc:  # pragma: no cover - import guard for CLI usage.
 
 FRONT_MATTER_RE = re.compile(r"\A---\n(.*?)\n---\n?", re.DOTALL)
 FIELD_RE = re.compile(r"(\w+)\s*=\s*\{([^{}]*)\}|(\w+)\s*=\s*\"([^\"]*)\"")
+AUTOGEN_COMMENT = "# generated from bibtex; do not edit manually"
+AUTOGEN_FIELDS = ("citation_apa", "authors", "journal", "doi")
+
+
+class PublicationDumper(yaml.SafeDumper):
+    """YAML dumper with readable multiline string formatting."""
+
+
+def str_presenter(dumper, data):
+    """Render multiline strings as YAML block scalars."""
+    if "\n" in data:
+        return dumper.represent_scalar(
+            "tag:yaml.org,2002:str",
+            data,
+            style="|",
+        )
+    return dumper.represent_scalar("tag:yaml.org,2002:str", data)
+
+
+PublicationDumper.add_representer(str, str_presenter)
 
 
 def split_front_matter(content: str) -> Tuple[Dict, str]:
@@ -129,12 +149,33 @@ def extract_publication_venue(fields: Dict[str, str]) -> str:
 
 def build_front_matter_text(data: Dict) -> str:
     """Serialize YAML front matter with stable key order."""
-    yaml_text = yaml.safe_dump(
+    yaml_text = yaml.dump(
         data,
+        Dumper=PublicationDumper,
         sort_keys=False,
         allow_unicode=False,
     ).strip()
+    yaml_text = inject_autogen_comments(yaml_text)
     return f"---\n{yaml_text}\n---\n"
+
+
+def inject_autogen_comments(yaml_text: str) -> str:
+    """Insert generated-field warning comments in serialized front matter."""
+    out_lines = []
+    in_autogen_block = False
+    for line in yaml_text.splitlines():
+        stripped = line.lstrip()
+        is_top_level = not line.startswith(" ")
+        if is_top_level and ":" in stripped:
+            key = stripped.split(":", 1)[0]
+            if key in AUTOGEN_FIELDS:
+                if not in_autogen_block:
+                    out_lines.append(AUTOGEN_COMMENT)
+                in_autogen_block = True
+            else:
+                in_autogen_block = False
+        out_lines.append(line)
+    return "\n".join(out_lines)
 
 
 def update_publication_file(path: Path) -> bool:

@@ -3,6 +3,7 @@
     <h2 class="section-title">Recent Publications</h2>
     <div class="card-row">
       {{ range first 3 (sort (where .Site.RegularPages "Section" "publications") "Date" "desc") }}
+      {{ partial "publication-require-bibtex.html" . }}
       {{ $href := "" }}
       {{ if .Params.doi }}
         {{ $href = .Params.doi }}

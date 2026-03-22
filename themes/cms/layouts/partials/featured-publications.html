@@ -4,6 +4,7 @@
   <h2 class="project-publications-heading">Featured publications</h2>
   <div class="featured-pubs-grid">
     {{ range $featured }}
+    {{ partial "publication-require-bibtex.html" . }}
     <article class="featured-pub-card">
       {{ with .Params.image }}
       <div class="featured-pub-image-wrap">

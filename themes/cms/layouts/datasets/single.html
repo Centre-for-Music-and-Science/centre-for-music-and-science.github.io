@@ -34,6 +34,7 @@
     <div class="dataset-publication">
       <h3>Associated publications</h3>
       {{ range sort $associatedPubs "Date" "desc" }}
+      {{ partial "publication-require-bibtex.html" . }}
       {{ partial "publication-citation-link.html" (dict "pub" . "link_class" "dataset-pub-link") }}
       {{ end }}
     </div>
