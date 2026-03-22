@@ -1,6 +1,5 @@
 ---
-title: "Song Emotions"
-summary: "Understanding how acoustic and lyrical cues combine to shape perceived and evoked emotions in songs."
+title: "Deconstructing emotional expression in pop music"
 people:
   - "lok-yan-lam"
   - "harin-lee"

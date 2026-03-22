@@ -1,20 +1,24 @@
 {{ define "main" }}
 <article class="event-detail-page">
   <div class="container">
-    {{ if .Params.image }}
-    <div class="event-detail-image">
-      <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
-    </div>
-    {{ end }}
-    <div class="event-detail-header">
-      <time class="event-detail-date">{{ .Date.Format "2 January 2006" }}</time>
-      <h1>{{ .Title }}</h1>
-    </div>
-    <div class="event-detail-content">
-      {{ .Content }}
-    </div>
-    <div class="event-detail-back">
-      <a href="{{ "news/" | relURL }}">&larr; Back to all news</a>
+    <div class="detail-back-layout">
+      <aside class="detail-back-rail">
+        {{ partial "back-link.html" (dict "href" ("news/" | relURL)) }}
+      </aside>
+      <div>
+        {{ if .Params.image }}
+        <div class="event-detail-image">
+          <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+        </div>
+        {{ end }}
+        <div class="event-detail-header">
+          <time class="event-detail-date">{{ .Date.Format "2 January 2006" }}</time>
+          <h1>{{ .Title }}</h1>
+        </div>
+        <div class="event-detail-content">
+          {{ .Content }}
+        </div>
+      </div>
     </div>
   </div>
 </article>

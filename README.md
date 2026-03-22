@@ -121,7 +121,6 @@ Create a file in `content/projects/` and add its slug to the relevant theme file
 ---
 title: "Project Title"
 theme: "music-cognition"   # must match a theme filename
-summary: "One-line summary."
 people:
   - "person-slug"
 publications:

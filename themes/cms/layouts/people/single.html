@@ -1,39 +1,43 @@
 {{ define "main" }}
 <article class="person-page">
   <div class="container">
-    <div class="person-page-header">
-      <div class="person-page-photo">
-        {{ if .Params.image }}
-        <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
-        {{ else }}
-        <div class="person-placeholder person-placeholder-large">
-          <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
+    <div class="detail-back-layout">
+      <aside class="detail-back-rail">
+        {{ partial "back-link.html" (dict "href" (printf "%s#people" .Site.Home.RelPermalink)) }}
+      </aside>
+      <div>
+        <div class="person-page-header">
+          <div class="person-page-photo">
+            {{ if .Params.image }}
+            <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+            {{ else }}
+            <div class="person-placeholder person-placeholder-large">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            {{ end }}
+          </div>
+          <h1 class="person-page-name">{{ .Title }}</h1>
+          {{ with .Params.role }}<p class="person-page-role">{{ . }}</p>{{ end }}
+          {{ if eq .Params.group "mcc" }}<a href="{{ "groups/mcc/" | relURL }}" class="person-group-tag person-group-tag--mcc">Music Cognition &amp; Culture</a>
+          {{ else if eq .Params.group "mls" }}<a href="{{ "groups/mls/" | relURL }}" class="person-group-tag person-group-tag--mls">Music, Language &amp; Society</a>{{ end }}
+          {{ if .Params.email }}
+          <p class="person-page-email"><a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a></p>
+          {{ end }}
+          {{ if .Params.website }}
+          <p class="person-page-website"><a href="{{ .Params.website }}" target="_blank" rel="noopener">Personal website &rarr;</a></p>
+          {{ end }}
+          {{ if .Params.google_scholar }}
+          <p class="person-page-google-scholar"><a href="{{ .Params.google_scholar }}" target="_blank" rel="noopener">Google Scholar &rarr;</a></p>
+          {{ end }}
+        </div>
+        {{ if .Content }}
+        <div class="person-page-bio">
+          {{ .Content }}
         </div>
         {{ end }}
       </div>
-      <h1 class="person-page-name">{{ .Title }}</h1>
-      {{ with .Params.role }}<p class="person-page-role">{{ . }}</p>{{ end }}
-      {{ if eq .Params.group "mcc" }}<a href="{{ "groups/mcc/" | relURL }}" class="person-group-tag person-group-tag--mcc">Music Cognition &amp; Culture</a>
-      {{ else if eq .Params.group "mls" }}<a href="{{ "groups/mls/" | relURL }}" class="person-group-tag person-group-tag--mls">Music, Language &amp; Society</a>{{ end }}
-      {{ if .Params.email }}
-      <p class="person-page-email"><a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a></p>
-      {{ end }}
-      {{ if .Params.website }}
-      <p class="person-page-website"><a href="{{ .Params.website }}" target="_blank" rel="noopener">Personal website &rarr;</a></p>
-      {{ end }}
-      {{ if .Params.google_scholar }}
-      <p class="person-page-google-scholar"><a href="{{ .Params.google_scholar }}" target="_blank" rel="noopener">Google Scholar &rarr;</a></p>
-      {{ end }}
-    </div>
-    {{ if .Content }}
-    <div class="person-page-bio">
-      {{ .Content }}
-    </div>
-    {{ end }}
-    <div class="person-page-back">
-      <a href="{{ .Site.Home.RelPermalink }}#people">&larr; Back to all people</a>
     </div>
   </div>
 </article>

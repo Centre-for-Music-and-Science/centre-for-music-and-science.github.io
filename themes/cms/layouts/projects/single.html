@@ -3,6 +3,7 @@
   <div class="container">
     <div class="project-detail-layout">
       <nav class="project-detail-sidebar" aria-label="Project">
+        {{ partial "back-link.html" (dict "href" (printf "%s#research" .Site.Home.RelPermalink)) }}
         {{ $themes := sort (where .Site.RegularPages "Section" "themes") "Params.weight" }}
         {{ $projects := where .Site.RegularPages "Section" "projects" }}
         {{ $current := . }}
@@ -55,9 +56,6 @@
           {{ end }}
         </div>
         {{ end }}
-        {{ if .Params.summary }}
-        <p class="project-detail-summary">{{ .Params.summary }}</p>
-        {{ end }}
         <div class="project-detail-body">
           {{ .Content }}
         </div>
@@ -80,10 +78,16 @@
           {{ end }}
         {{ end }}
         {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
-        {{ partial "related-publications-section.html" (dict "page" . "relation_key" "projects" "relation_slug" $projectSlug "featured" $featuredPublications) }}
-        <div class="project-detail-back">
-          <a href="{{ .Site.Home.RelPermalink }}#research">&larr; Back to research</a>
-        </div>
+        {{ $projectRelationSlugs := slice $projectSlug }}
+        {{ $descendantProjectSlugsRaw := partial "collect-descendant-project-slugs.html" (dict "slug" $projectSlug "allProjects" (where .Site.RegularPages "Section" "projects")) }}
+        {{ if ne $descendantProjectSlugsRaw "" }}
+          {{ range (split $descendantProjectSlugsRaw "\n") }}
+            {{ if and (ne . "") (not (in $projectRelationSlugs .)) }}
+              {{ $projectRelationSlugs = $projectRelationSlugs | append . }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ partial "related-publications-section.html" (dict "page" . "relation_key" "projects" "relation_slugs" $projectRelationSlugs "featured" $featuredPublications) }}
       </div>
     </div>
   </div>

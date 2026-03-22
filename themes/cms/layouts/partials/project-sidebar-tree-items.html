@@ -2,17 +2,22 @@
 {{- $allProjects := .allProjects -}}
 {{- $current := .current -}}
 {{- $listClass := default "project-sidebar-list" .listClass -}}
+{{- $visited := default (slice) .visited -}}
 {{- $projects := partial "resolve-project-pages.html" (dict "slugs" $slugs "allProjects" $allProjects) -}}
 {{- $visibleProjects := where $projects "Params.stub_only" "ne" true -}}
 
 {{- if gt (len $visibleProjects) 0 -}}
 <ul class="{{ $listClass }}">
   {{- range sort $visibleProjects "Params.weight" -}}
-  <li>
-    {{ partial "project-sidebar-item-link.html" (dict "item" . "active" (eq . $current)) }}
-    {{- $childSlugs := default (slice) .Params.projects -}}
-    {{ partial "project-sidebar-tree-items.html" (dict "slugs" $childSlugs "allProjects" $allProjects "current" $current "listClass" "project-sidebar-list") }}
-  </li>
+  {{- $itemSlug := .File.ContentBaseName -}}
+  {{- if not (in $visited $itemSlug) -}}
+    <li>
+      {{ partial "project-sidebar-item-link.html" (dict "item" . "active" (eq . $current)) }}
+      {{- $childSlugs := default (slice) .Params.projects -}}
+      {{- $nextVisited := $visited | append $itemSlug -}}
+      {{ partial "project-sidebar-tree-items.html" (dict "slugs" $childSlugs "allProjects" $allProjects "current" $current "listClass" "project-sidebar-list" "visited" $nextVisited) }}
+    </li>
+  {{- end -}}
   {{- end -}}
 </ul>
 {{- end -}}

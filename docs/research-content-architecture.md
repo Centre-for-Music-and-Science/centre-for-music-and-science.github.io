@@ -111,6 +111,6 @@ Sections are omitted when data is absent:
 - no related people => omit people section
 - no related publications => omit publications section
 - no featured publications => omit featured block
-- no summary/leader image => omit those blocks
+- no leader image => omit that block
 
 No empty placeholder headings should be rendered.

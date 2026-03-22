@@ -1,28 +1,35 @@
 {{ define "main" }}
 <article class="project-detail-page">
   <div class="container">
-    <div class="project-detail-content">
+    <div class="detail-back-layout">
+      <aside class="detail-back-rail">
+        {{ partial "back-link.html" (dict "href" ("publications/" | relURL)) }}
+      </aside>
+      <div class="project-detail-content">
       {{ partial "publication-require-bibtex.html" . }}
       <h1 class="project-detail-title">{{ .Title }}</h1>
-      <div class="project-title-meta">
-        {{ if .Params.authors }}<span class="project-pub-authors">{{ partial "bold-lab-authors" (dict "authors" .Params.authors "labAuthors" .Site.Data.lab_authors) }}</span>{{ end }}
-        {{ if or .Params.journal .Params.inpress }}
-        <span class="project-pub-journal">
-          {{- with .Params.journal }}{{ . }}{{ end -}}
-          {{- if .Params.inpress }}{{ if .Params.journal }} {{ end }}(Forthcoming){{ else if and .Params.journal .Date }} ({{ .Date.Format "2006" }}){{ end -}}
-        </span>
-        {{ end }}
-        <div class="project-pub-links-row">
-          {{ if .Params.doi }}
-          <span class="project-pub-doi-line"><a href="{{ .Params.doi }}" target="_blank" rel="noopener" class="project-pub-doi">{{ .Params.doi }}</a></span>
-          {{ end }}
-          <span class="project-pub-cite-wrap">
-            <button type="button" class="project-pub-cite-btn" aria-expanded="false" aria-controls="pub-citation-panel" id="pub-cite-trigger">Cite</button>
-            <div id="pub-citation-panel" class="project-pub-cite-panel" role="region" aria-label="Citations" hidden>
-              {{ partial "publication-cite-tabs.html" . }}
-            </div>
+      <div class="publication-header">
+        <div class="project-title-meta">
+          {{ if .Params.authors }}<span class="project-pub-authors">{{ partial "bold-lab-authors" (dict "authors" .Params.authors "labAuthors" .Site.Data.lab_authors) }}</span>{{ end }}
+          {{ if or .Params.journal .Params.inpress }}
+          <span class="project-pub-journal">
+            {{- with .Params.journal }}{{ . }}{{ end -}}
+            {{- if .Params.inpress }}{{ if .Params.journal }} {{ end }}(Forthcoming){{ else if and .Params.journal .Date }} ({{ .Date.Format "2006" }}){{ end -}}
           </span>
+          {{ end }}
+          <div class="project-pub-links-row">
+            {{ if .Params.doi }}
+            <span class="project-pub-doi-line"><a href="{{ .Params.doi }}" target="_blank" rel="noopener" class="project-pub-doi">{{ .Params.doi }}</a></span>
+            {{ end }}
+            <span class="project-pub-cite-wrap">
+              <button type="button" class="project-pub-cite-btn" aria-expanded="false" aria-controls="pub-citation-panel" id="pub-cite-trigger">Cite</button>
+              <div id="pub-citation-panel" class="project-pub-cite-panel" role="region" aria-label="Citations" hidden>
+                {{ partial "publication-cite-tabs.html" . }}
+              </div>
+            </span>
+          </div>
         </div>
+        {{ partial "publication-author-avatars.html" (dict "pub" . "site" .Site) }}
       </div>
 
       {{ with .Params.abstract }}
@@ -60,8 +67,6 @@
       </section>
       {{ end }}
 
-      <div class="project-detail-back">
-        <a href="{{ "publications/" | relURL }}">&larr; Back to publications</a>
       </div>
     </div>
   </div>

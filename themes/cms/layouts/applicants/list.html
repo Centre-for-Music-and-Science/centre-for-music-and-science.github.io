@@ -1,6 +1,9 @@
 {{ define "main" }}
 <div class="applicants-page">
   <div class="container">
+    <div class="page-back-top">
+      {{ partial "back-link.html" (dict "href" .Site.Home.RelPermalink) }}
+    </div>
     <div class="applicants-mailing-block">
       <p class="applicants-mailing-text">Follow us to be kept up to date with upcoming talks and events.</p>
       <a href="https://lists.cam.ac.uk/sympa/subscribe/mus-cms-news?previous_action=info" target="_blank" rel="noopener" class="applicants-mailing-btn">Join the mailing list</a>
@@ -21,9 +24,6 @@
         </div>
         {{ end }}
       </div>
-    </div>
-    <div class="applicants-back">
-      <a href="{{ .Site.Home.RelPermalink }}">&larr; Back to home</a>
     </div>
   </div>
 </div>

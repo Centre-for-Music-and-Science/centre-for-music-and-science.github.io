@@ -1,6 +1,5 @@
 ---
-title: "Music Mood Regulation"
-summary: "Studying how people use music to regulate mood, and how musical features, individual differences, and technology shape outcomes."
+title: "Music for Mood Regulation"
 people:
   - "catherine-tan"
   - "peter-harrison"

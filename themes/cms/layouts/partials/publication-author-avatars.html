@@ -1,0 +1,44 @@
+{{ $pub := .pub }}
+{{ $site := .site | default site }}
+{{ $wrapperClass := .wrapperClass | default "publication-author-photos" }}
+{{ $avatarClass := .avatarClass | default "publication-author-photo" }}
+{{ $label := .label | default "Lab author profiles" }}
+{{ $linkProfiles := true }}
+{{ if isset . "linkProfiles" }}
+  {{ $linkProfiles = .linkProfiles }}
+{{ end }}
+{{ $authorProfiles := slice }}
+{{ $authorsText := default "" $pub.Params.authors }}
+{{ range (default (slice) $site.Data.lab_author_profiles) }}
+  {{ if and $authorsText (in $authorsText .citation) }}
+    {{ $person := $site.GetPage (path.Join "/people" .slug) }}
+    {{ if and $person (not (in $authorProfiles $person)) }}
+      {{ $authorProfiles = $authorProfiles | append $person }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ if gt (len $authorProfiles) 0 }}
+<div class="{{ $wrapperClass }}" aria-label="{{ $label }}">
+  {{ range $authorProfiles }}
+  {{ if $linkProfiles }}
+  <a href="{{ .RelPermalink }}" class="{{ $avatarClass }}" title="{{ .Title }}">
+  {{ else }}
+  <span class="{{ $avatarClass }}" aria-label="{{ .Title }}">
+  {{ end }}
+    {{ if .Params.image }}
+    <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+    {{ else }}
+    <div class="project-person-placeholder">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+      </svg>
+    </div>
+    {{ end }}
+  {{ if $linkProfiles }}
+  </a>
+  {{ else }}
+  </span>
+  {{ end }}
+  {{ end }}
+</div>
+{{ end }}

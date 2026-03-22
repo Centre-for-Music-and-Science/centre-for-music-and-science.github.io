@@ -1,49 +1,53 @@
 {{ define "main" }}
 <article class="dataset-detail-page">
   <div class="container">
-    {{ if .Params.image }}
-    <div class="dataset-detail-hero">
-      <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
-    </div>
-    {{ end }}
-    <h1 class="dataset-detail-title">{{ .Title }}</h1>
-    {{ if .Params.summary }}
-    <p class="dataset-detail-summary">{{ .Params.summary }}</p>
-    {{ end }}
-    {{ if .Params.repo }}
-    <a href="{{ .Params.repo }}" target="_blank" rel="noopener" class="dataset-repo-btn">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      View on GitHub
-    </a>
-    {{ end }}
-    {{ $datasetSlug := .File.ContentBaseName }}
-    {{ $associatedPubs := slice }}
-    {{ $allPubs := where .Site.RegularPages "Section" "publications" }}
-    {{ range $allPubs }}
-      {{ if in (default (slice) .Params.datasets) $datasetSlug }}
-        {{ $associatedPubs = $associatedPubs | append . }}
-      {{ end }}
-    {{ end }}
-    {{ if and (eq (len $associatedPubs) 0) .Params.publication }}
-      {{ $legacyPub := .Site.GetPage (path.Join "/publications" .Params.publication) }}
-      {{ if $legacyPub }}
-        {{ $associatedPubs = $associatedPubs | append $legacyPub }}
-      {{ end }}
-    {{ end }}
-    {{ if gt (len $associatedPubs) 0 }}
-    <div class="dataset-publication">
-      <h3>Associated publications</h3>
-      {{ range sort $associatedPubs "Date" "desc" }}
-      {{ partial "publication-require-bibtex.html" . }}
-      {{ partial "publication-citation-link.html" (dict "pub" . "link_class" "dataset-pub-link") }}
-      {{ end }}
-    </div>
-    {{ end }}
-    <div class="dataset-detail-body">
-      {{ .Content }}
-    </div>
-    <div class="dataset-detail-back">
-      <a href="{{ "datasets/" | relURL }}">&larr; Back to all datasets</a>
+    <div class="detail-back-layout">
+      <aside class="detail-back-rail">
+        {{ partial "back-link.html" (dict "href" ("datasets/" | relURL)) }}
+      </aside>
+      <div>
+        {{ if .Params.image }}
+        <div class="dataset-detail-hero">
+          <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+        </div>
+        {{ end }}
+        <h1 class="dataset-detail-title">{{ .Title }}</h1>
+        {{ if .Params.summary }}
+        <p class="dataset-detail-summary">{{ .Params.summary }}</p>
+        {{ end }}
+        {{ if .Params.repo }}
+        <a href="{{ .Params.repo }}" target="_blank" rel="noopener" class="dataset-repo-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+        {{ end }}
+        {{ $datasetSlug := .File.ContentBaseName }}
+        {{ $associatedPubs := slice }}
+        {{ $allPubs := where .Site.RegularPages "Section" "publications" }}
+        {{ range $allPubs }}
+          {{ if in (default (slice) .Params.datasets) $datasetSlug }}
+            {{ $associatedPubs = $associatedPubs | append . }}
+          {{ end }}
+        {{ end }}
+        {{ if and (eq (len $associatedPubs) 0) .Params.publication }}
+          {{ $legacyPub := .Site.GetPage (path.Join "/publications" .Params.publication) }}
+          {{ if $legacyPub }}
+            {{ $associatedPubs = $associatedPubs | append $legacyPub }}
+          {{ end }}
+        {{ end }}
+        {{ if gt (len $associatedPubs) 0 }}
+        <div class="dataset-publication">
+          <h3>Associated publications</h3>
+          {{ range sort $associatedPubs "Date" "desc" }}
+          {{ partial "publication-require-bibtex.html" . }}
+          {{ partial "publication-citation-link.html" (dict "pub" . "link_class" "dataset-pub-link") }}
+          {{ end }}
+        </div>
+        {{ end }}
+        <div class="dataset-detail-body">
+          {{ .Content }}
+        </div>
+      </div>
     </div>
   </div>
 </article>

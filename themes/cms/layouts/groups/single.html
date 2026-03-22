@@ -1,64 +1,68 @@
 {{ define "main" }}
 <article class="group-detail-page">
   <div class="container">
-    {{ if .Params.logo }}
-    <div class="group-detail-logo">
-      <img src="{{ (strings.TrimPrefix "/" .Params.logo) | relURL }}" alt="{{ .Title }}">
-    </div>
-    {{ end }}
-    <h1 class="group-detail-title">{{ .Title }}</h1>
-    {{ with .Params.summary }}<p class="project-detail-summary">{{ . }}</p>{{ end }}
-    {{ with .Params.leader_image }}
-    <div class="dataset-detail-hero">
-      <img src="{{ (strings.TrimPrefix "/" .) | relURL }}" alt="{{ $.Title }}">
-    </div>
-    {{ end }}
-    <div class="group-detail-body">
-      {{ .Content }}
-    </div>
-    {{ $groupSlug := .File.ContentBaseName }}
-    {{ $members := slice }}
-    {{ range (where .Site.RegularPages "Section" "people") }}
-      {{ if or (eq .Params.group $groupSlug) (in (default (slice) .Params.groups) $groupSlug) }}
-        {{ $members = $members | append . }}
-      {{ end }}
-    {{ end }}
-    {{ $members = sort $members "Params.weight" }}
-    {{ if $members }}
-    <div class="group-members">
-      <h2 class="group-members-heading">Members</h2>
-      <div class="people-grid">
-        {{ range $members }}
-        <a href="{{ .RelPermalink }}" class="person-card">
-          <div class="person-photo">
-            {{ if .Params.image }}
-            <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
-            {{ else }}
-            <div class="person-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-              </svg>
-            </div>
+    <div class="detail-back-layout">
+      <aside class="detail-back-rail">
+        {{ partial "back-link.html" (dict "href" (printf "%s#research" .Site.Home.RelPermalink)) }}
+      </aside>
+      <div>
+        {{ if .Params.logo }}
+        <div class="group-detail-logo">
+          <img src="{{ (strings.TrimPrefix "/" .Params.logo) | relURL }}" alt="{{ .Title }}">
+        </div>
+        {{ end }}
+        <h1 class="group-detail-title">{{ .Title }}</h1>
+        {{ with .Params.summary }}<p class="project-detail-summary">{{ . }}</p>{{ end }}
+        {{ with .Params.leader_image }}
+        <div class="dataset-detail-hero">
+          <img src="{{ (strings.TrimPrefix "/" .) | relURL }}" alt="{{ $.Title }}">
+        </div>
+        {{ end }}
+        <div class="group-detail-body">
+          {{ .Content }}
+        </div>
+        {{ $groupSlug := .File.ContentBaseName }}
+        {{ $members := slice }}
+        {{ range (where .Site.RegularPages "Section" "people") }}
+          {{ if or (eq .Params.group $groupSlug) (in (default (slice) .Params.groups) $groupSlug) }}
+            {{ $members = $members | append . }}
+          {{ end }}
+        {{ end }}
+        {{ $members = sort $members "Params.weight" }}
+        {{ if $members }}
+        <div class="group-members">
+          <h2 class="group-members-heading">Members</h2>
+          <div class="people-grid">
+            {{ range $members }}
+            <a href="{{ .RelPermalink }}" class="person-card">
+              <div class="person-photo">
+                {{ if .Params.image }}
+                <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+                {{ else }}
+                <div class="person-placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </div>
+                {{ end }}
+              </div>
+              <h3 class="person-name">{{ .Title }}</h3>
+              {{ with .Params.role }}<p class="person-role">{{ . }}</p>{{ end }}
+            </a>
             {{ end }}
           </div>
-          <h3 class="person-name">{{ .Title }}</h3>
-          {{ with .Params.role }}<p class="person-role">{{ . }}</p>{{ end }}
-        </a>
+        </div>
         {{ end }}
+        {{ $featuredPublications := slice }}
+        {{ range .Params.featured_publications }}
+          {{ $pub := $.Site.GetPage (path.Join "/publications" .) }}
+          {{ if $pub }}
+            {{ $featuredPublications = $featuredPublications | append $pub }}
+          {{ end }}
+        {{ end }}
+        {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
+        {{ partial "related-publications-section.html" (dict "page" . "relation_key" "groups" "relation_slug" $groupSlug "featured" $featuredPublications "footer_link" ((printf "publications/?group=%s" $groupSlug) | relURL) "footer_text" "View all group publications ->" "footer_class" "group-detail-back") }}
       </div>
-    </div>
-    {{ end }}
-    {{ $featuredPublications := slice }}
-    {{ range .Params.featured_publications }}
-      {{ $pub := $.Site.GetPage (path.Join "/publications" .) }}
-      {{ if $pub }}
-        {{ $featuredPublications = $featuredPublications | append $pub }}
-      {{ end }}
-    {{ end }}
-    {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
-    {{ partial "related-publications-section.html" (dict "page" . "relation_key" "groups" "relation_slug" $groupSlug "featured" $featuredPublications "footer_link" ((printf "publications/?group=%s" $groupSlug) | relURL) "footer_text" "View all group publications ->" "footer_class" "group-detail-back") }}
-    <div class="group-detail-back">
-      <a href="{{ .Site.Home.RelPermalink }}#research">&larr; Back to research</a>
     </div>
   </div>
 </article>

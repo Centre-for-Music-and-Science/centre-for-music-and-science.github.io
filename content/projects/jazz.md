@@ -1,6 +1,5 @@
 ---
 title: "Jazz"
-summary: "Building large-scale annotated jazz corpora and using computational methods to study musical style, rhythm, coordination, and generative modelling in improvised music."
 people:
   - "huw-cheston"
   - "peter-harrison"

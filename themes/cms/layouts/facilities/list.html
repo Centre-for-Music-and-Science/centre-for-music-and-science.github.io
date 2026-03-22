@@ -1,6 +1,9 @@
 {{ define "main" }}
 <div class="facilities-page">
   <div class="container">
+    <div class="page-back-top">
+      {{ partial "back-link.html" (dict "href" .Site.Home.RelPermalink) }}
+    </div>
     <h1 class="page-title">Facilities</h1>
     <p class="facilities-intro">{{ .Params.description }}</p>
     <div class="facilities-content">
@@ -23,9 +26,6 @@
         {{ end }}
       </div>
       {{ end }}
-    </div>
-    <div class="facilities-back">
-      <a href="{{ .Site.Home.RelPermalink }}">&larr; Back to home</a>
     </div>
   </div>
 </div>

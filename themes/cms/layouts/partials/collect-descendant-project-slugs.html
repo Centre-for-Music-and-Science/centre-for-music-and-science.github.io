@@ -1,0 +1,34 @@
+{{- $slug := .slug -}}
+{{- $allProjects := default (where site.RegularPages "Section" "projects") .allProjects -}}
+{{- $visited := default (slice) .visited -}}
+{{- $descendants := slice -}}
+{{- if not (in $visited $slug) -}}
+  {{- $visited = $visited | append $slug -}}
+  {{- $current := false -}}
+  {{- range $allProjects -}}
+    {{- if eq .File.ContentBaseName $slug -}}
+      {{- $current = . -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if $current -}}
+    {{- range (default (slice) $current.Params.projects) -}}
+      {{- $childSlug := . -}}
+      {{- if not (in $visited $childSlug) -}}
+        {{- if not (in $descendants $childSlug) -}}
+          {{- $descendants = $descendants | append $childSlug -}}
+        {{- end -}}
+        {{- $nestedRaw := partial "collect-descendant-project-slugs.html" (dict "slug" $childSlug "allProjects" $allProjects "visited" $visited) -}}
+        {{- if ne $nestedRaw "" -}}
+          {{- range (split $nestedRaw "\n") -}}
+            {{- if and (ne . "") (not (in $descendants .)) -}}
+              {{- $descendants = $descendants | append . -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- delimit $descendants "\n" -}}

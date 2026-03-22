@@ -1,16 +1,28 @@
 {{ $page := .page }}
 {{ $relationKey := .relation_key }}
 {{ $relationSlug := .relation_slug }}
+{{ $relationSlugs := .relation_slugs | default (slice) }}
 {{ $heading := .heading | default "Publications" }}
 {{ $featured := .featured | default (slice) }}
 {{ $footerLink := .footer_link | default "" }}
 {{ $footerText := .footer_text | default "" }}
 {{ $footerClass := .footer_class | default "project-detail-back" }}
 
+{{ if and (eq (len $relationSlugs) 0) $relationSlug }}
+  {{ $relationSlugs = $relationSlugs | append $relationSlug }}
+{{ end }}
+
 {{ $allPublications := where $page.Site.RegularPages "Section" "publications" }}
 {{ $relatedPublications := slice }}
 {{ range $allPublications }}
-  {{ if in (default (slice) (index .Params $relationKey)) $relationSlug }}
+  {{ $publicationRelations := default (slice) (index .Params $relationKey) }}
+  {{ $matches := false }}
+  {{ range $relationSlugs }}
+    {{ if in $publicationRelations . }}
+      {{ $matches = true }}
+    {{ end }}
+  {{ end }}
+  {{ if $matches }}
     {{ $relatedPublications = $relatedPublications | append . }}
   {{ end }}
 {{ end }}

@@ -1,6 +1,5 @@
 ---
 title: "Consonance"
-summary: "Investigating how timbral, psychoacoustic, and cultural factors shape consonance preferences worldwide."
 people:
   - "joshua-frank"
   - "harin-lee"

@@ -1,6 +1,5 @@
 ---
 title: "Score Reading"
-summary: "How musicians read and interpret notation, and how score design shapes cognitive and perceptual processes in performance."
 people:
   - "ian-cross"
   - "arild-stenberg"

@@ -1,0 +1,4 @@
+{{- $href := .href -}}
+{{- $label := .label | default "Back" -}}
+{{- $class := .class | default "back-link" -}}
+<a class="{{ $class }}" href="{{ $href }}" onclick="if (window.history.length > 1) { window.history.back(); return false; }">&larr; {{ $label }}</a>

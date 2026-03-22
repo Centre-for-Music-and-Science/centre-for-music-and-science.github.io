@@ -8,3 +8,22 @@
     {{- end -}}
   {{- end -}}
 {{- end -}}
+
+{{- $projectPages := where site.RegularPages "Section" "projects" -}}
+{{- $projectSlugs := slice -}}
+{{- range $projectPages -}}
+  {{- $projectSlugs = $projectSlugs | append .File.ContentBaseName -}}
+{{- end -}}
+{{- $sortedProjectSlugs := sort $projectSlugs -}}
+{{- $availableProjectList := delimit $sortedProjectSlugs ", " -}}
+
+{{- $publicationPages := where site.RegularPages "Section" "publications" -}}
+{{- range $publicationPages -}}
+  {{- $publicationPage := . -}}
+  {{- $publicationProjectSlugs := default (slice) .Params.projects -}}
+  {{- range $publicationProjectSlugs -}}
+    {{- if not (in $projectSlugs .) -}}
+      {{- errorf "Publication ownership error: publication %s links to unknown project slug %q in publications.projects. Available projects: %s" $publicationPage.File.Path . $availableProjectList -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
