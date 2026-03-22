@@ -15,15 +15,16 @@
               {{ $topicProjects = $topicProjects | append . }}
             {{ end }}
           {{ end }}
-          {{ if gt (len $topicProjects) 0 }}
+          {{ $visibleTopicProjects := where $topicProjects "Params.stub_only" "ne" true }}
+          {{ if gt (len $visibleTopicProjects) 0 }}
             {{ $topicDriven = true }}
         <div class="project-sidebar-group">
           <details class="project-sidebar-details"{{ if eq $current.Params.topic $topicSlug }} open{{ end }}>
             <summary class="project-sidebar-theme">{{ .Title }}</summary>
             <ul class="project-sidebar-list">
-              {{ range sort $topicProjects "Params.weight" }}
+              {{ range sort $visibleTopicProjects "Params.weight" }}
               <li>
-                <a href="{{ .RelPermalink }}" class="project-sidebar-link{{ if eq . $current }} active{{ end }}">{{ .Title }}</a>
+                {{ partial "project-sidebar-item-link.html" (dict "item" . "active" (eq . $current)) }}
               </li>
               {{ end }}
             </ul>
@@ -37,14 +38,15 @@
           {{ range $themes }}
             {{ $themeProjectSlugs := .Params.projects }}
             {{ $themeProjects := where $projects "File.ContentBaseName" "in" $themeProjectSlugs }}
-            {{ if $themeProjects }}
+            {{ $visibleThemeProjects := where $themeProjects "Params.stub_only" "ne" true }}
+            {{ if $visibleThemeProjects }}
           <div class="project-sidebar-group">
-            <details class="project-sidebar-details"{{ if in $themeProjects $current }} open{{ end }}>
+            <details class="project-sidebar-details"{{ if in $visibleThemeProjects $current }} open{{ end }}>
               <summary class="project-sidebar-theme">{{ .Title }}</summary>
               <ul class="project-sidebar-list">
-                {{ range $themeProjects }}
+                {{ range $visibleThemeProjects }}
                 <li>
-                  <a href="{{ .RelPermalink }}" class="project-sidebar-link{{ if eq . $current }} active{{ end }}">{{ .Title }}</a>
+                  {{ partial "project-sidebar-item-link.html" (dict "item" . "active" (eq . $current)) }}
                 </li>
                 {{ end }}
               </ul>

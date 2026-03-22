@@ -1,0 +1,8 @@
+{{ $item := .item }}
+{{ $isStub := default false $item.Params.stub_only }}
+{{ $active := default false .active }}
+{{ if $isStub }}
+<span class="project-sidebar-link project-sidebar-link--stub{{ if $active }} active{{ end }}">{{ $item.Title }}</span>
+{{ else }}
+<a href="{{ $item.RelPermalink }}" class="project-sidebar-link{{ if $active }} active{{ end }}">{{ $item.Title }}</a>
+{{ end }}
