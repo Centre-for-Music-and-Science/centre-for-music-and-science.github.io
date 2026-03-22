@@ -4,11 +4,6 @@ summary: "Building large-scale annotated jazz corpora and using computational me
 people:
   - "huw-cheston"
   - "peter-harrison"
-publications:
-  - "cheston-jazz-piano"
-  - "cheston-jazz-trio"
-  - "cheston-rhythmic-qualities"
-  - "cheston-coordination"
 thumbnail: "/images/projects/jazz.png"
 ---
 

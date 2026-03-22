@@ -4,8 +4,6 @@ summary: "Studying how people use music to regulate mood, and how musical featur
 people:
   - "catherine-tan"
   - "peter-harrison"
-publications:
-  - "tan-mood-regulation"
 thumbnail: "/images/projects/emotion.png"
 ---
 

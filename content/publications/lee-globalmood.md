@@ -1,6 +1,8 @@
 ---
 title: 'GlobalMood: A cross-cultural benchmark for music emotion recognition'
 date: 2025-01-01
+projects:
+  - song-emotions
 # generated from bibtex; do not edit manually
 authors: Lee, H., Çelen, E., Harrison, P. M. C., Anglada-Tort, M., van Rijn, P., Park,
   M., Schönwiesner, M., & Jacoby, N.

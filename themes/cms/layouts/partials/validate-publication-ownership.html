@@ -1,0 +1,10 @@
+{{- $entitySections := slice "projects" "methods" "groups" -}}
+{{- range $entitySections -}}
+  {{- $section := . -}}
+  {{- $pages := where site.RegularPages "Section" $section -}}
+  {{- range $pages -}}
+    {{- if isset .Params "publications" -}}
+      {{- errorf "Publication ownership error: remove %q front matter from %s. Define links only in content/publications/*.md using '%s' arrays." "publications" .File.Path $section -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

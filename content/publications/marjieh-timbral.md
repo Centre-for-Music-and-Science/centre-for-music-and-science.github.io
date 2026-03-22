@@ -2,6 +2,8 @@
 title: Timbral effects on consonance disentangle psychoacoustic mechanisms and suggest
   perceptual origins for musical scales
 date: 2024-01-01
+projects:
+  - consonance
 # generated from bibtex; do not edit manually
 authors: Marjieh, R., Harrison, P. M. C., Lee, H., Deligiannaki, F., & Jacoby, N.
 journal: Nature Communications

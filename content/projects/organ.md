@@ -4,8 +4,6 @@ summary: "Creating multimodal datasets to study expert performances of musical s
 people: 
   - "katelyn-emerson"
   - "peter-harrison"
-publications:
-  - "emerson-multimodal"
 thumbnail: "/images/projects/organ.jpeg"
 ---
 ## Multimodal Organ Performance

@@ -57,6 +57,12 @@ Publications:
 - `publications.methods`
 - `publications.groups`
 
+Publication ownership rules:
+
+- Publication links are publication-owned only.
+- Parent entity records (`projects`, `methods`, `groups`) must not define `publications`.
+- Build fails if parent-side `publications` fields are present.
+
 Datasets:
 
 - `datasets.projects`

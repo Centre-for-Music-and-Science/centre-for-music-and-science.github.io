@@ -4,8 +4,6 @@ summary: "Building computational models that capture the time-course of melodic 
 people: 
     - "david-whyatt"
     - "peter-harrison"
-publications:
-    - "whyatt-melody-features"
 thumbnail: "/images/projects/memory.png"
 ---
 

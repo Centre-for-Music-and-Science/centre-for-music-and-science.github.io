@@ -1,6 +1,8 @@
 ---
 title: Deconstructing jazz piano style using machine learning
 date: 2025-01-01
+projects:
+  - jazz
 # generated from bibtex; do not edit manually
 authors: Cheston, H., Bance, R., & Harrison, P. M. C.
 journal: arXiv

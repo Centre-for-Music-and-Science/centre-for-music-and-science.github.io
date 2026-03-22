@@ -5,9 +5,6 @@ people:
   - "joshua-frank"
   - "harin-lee"
   - "peter-harrison"
-publications:
-  - "frank-chord-pleasantness"
-  - "marjieh-timbral"
 thumbnail: "/images/projects/chord_preference.png"
 ---
 

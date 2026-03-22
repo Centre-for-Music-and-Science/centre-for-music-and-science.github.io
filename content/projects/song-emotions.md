@@ -5,8 +5,6 @@ people:
   - "lok-yan-lam"
   - "harin-lee"
   - "peter-harrison"
-publications:
-  - "lee-globalmood"
 thumbnail: "/images/projects/emotion.png"
 ---
 

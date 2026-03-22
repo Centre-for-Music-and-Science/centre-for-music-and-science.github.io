@@ -80,7 +80,7 @@
           {{ end }}
         {{ end }}
         {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
-        {{ partial "related-publications-section.html" (dict "page" . "relation_key" "projects" "relation_slug" $projectSlug "fallback_slugs" .Params.publications "featured" $featuredPublications) }}
+        {{ partial "related-publications-section.html" (dict "page" . "relation_key" "projects" "relation_slug" $projectSlug "featured" $featuredPublications) }}
         <div class="project-detail-back">
           <a href="{{ .Site.Home.RelPermalink }}#research">&larr; Back to research</a>
         </div>

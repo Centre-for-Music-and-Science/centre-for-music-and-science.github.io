@@ -38,10 +38,15 @@ Build-time guards:
 1. Add `bibtex` to the publication record (**required**).
 2. Run the citation generation script (to be wired into build workflow).
 3. Commit generated `citation_apa`, `authors`, `journal`, and `doi`.
+4. Set publication ownership links on the publication record itself:
+   - `projects: [project-slug, ...]`
+   - `methods: [method-slug, ...]`
+   - `groups: [group-slug, ...]`
 
 Build-time guard:
 
 - publication templates fail the build if `bibtex` is missing.
+- project/method/group records fail the build if they define a `publications` field.
 
 Do not manually edit:
 
@@ -59,6 +64,8 @@ Add featured publication slugs on the parent record:
 - `featured_publications`
 
 Featured publications render first as cards; the remaining related publications render as an APA citation list.
+
+Do not add `publications` arrays to project/method/group records. Publication pages are the sole source of relation ownership.
 
 ## Dataset linkage
 

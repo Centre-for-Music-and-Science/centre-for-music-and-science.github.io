@@ -2,6 +2,8 @@
 title: Rhythmic qualities of jazz improvisation predict performer identity and style
   in source-separated audio recordings
 date: 2024-01-01
+projects:
+  - jazz
 # generated from bibtex; do not edit manually
 authors: Cheston, H., Schlichting, J. L., Cross, I., & Harrison, P. M. C.
 journal: Royal Society Open Science
