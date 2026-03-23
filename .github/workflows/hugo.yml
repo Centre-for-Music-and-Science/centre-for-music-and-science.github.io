@@ -64,7 +64,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
         with:
-          name: pr-preview-site-${{ github.event.number }}
+          name: pr-preview-site-${{ github.event.pull_request.number }}
           path: ./public
           retention-days: 7
       - name: Add pull request preview instructions
@@ -73,7 +73,7 @@ jobs:
           {
             echo "## Pull request preview artifact"
             echo
-            echo "Download the \`pr-preview-site-${{ github.event.number }}\` artifact from this run and open \`index.html\` locally to preview the built site."
+            echo "Download the \`pr-preview-site-${{ github.event.pull_request.number }}\` artifact from this run and open \`index.html\` locally to preview the built site."
           } >> "$GITHUB_STEP_SUMMARY"
 
   deploy:
