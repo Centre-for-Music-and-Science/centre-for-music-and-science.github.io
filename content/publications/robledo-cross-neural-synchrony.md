@@ -29,4 +29,5 @@ citation_ieee: '[1] J.-P. Robledo, I. Cross, M. Phillips, J. Kearneyand J. Taylo
   “Interpersonal neural synchrony in joint music-making and conversation: toward an
   integrative Marr-level account”, <em>PsyArXiv</em>, 2025, doi: 10.31234/osf.io/udwpb_v1.'
 authors: Robledo, J.-P., Cross, I., Phillips, M., Kearney, J., & Taylor, J.
+link: https://doi.org/10.31234/osf.io/udwpb_v1
 ---

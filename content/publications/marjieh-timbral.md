@@ -4,6 +4,8 @@ title: Timbral effects on consonance disentangle psychoacoustic mechanisms and s
 date: 2024-01-01
 projects:
 - consonance
+methods:
+- large-scale-online-experiments
 # generated from bibtex; do not edit manually
 authors: Marjieh, R., Harrison, P. M. C., Lee, H., Deligiannaki, F., & Jacoby, N.
 journal: Nature Communications
@@ -46,4 +48,5 @@ citation_ieee: '[1] R. Marjieh, P. M. C. Harrison, H. Lee, F. Deligiannakiand N.
   “Timbral effects on consonance disentangle psychoacoustic mechanisms and suggest
   perceptual origins for musical scales”, <em>Nature Communications</em>, 2024, doi:
   10.1038/s41467-024-45812-z.'
+link: https://doi.org/10.1038/s41467-024-45812-z
 ---

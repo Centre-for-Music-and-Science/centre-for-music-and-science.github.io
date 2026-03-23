@@ -35,4 +35,5 @@ citation_chicago: Yu, C. G., A. F. Blackwell, and I. Cross. 2023. “Perception 
 citation_ieee: '[1] C. G. Yu, A. F. Blackwelland I. Cross, “Perception of rhythmic
   agency for conversational labeling”, <em>Human-Computer Interaction</em>, 2023,
   doi: 10.1080/07370024.2021.1877541.'
+link: https://doi.org/10.1080/07370024.2021.1877541
 ---

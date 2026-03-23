@@ -50,7 +50,7 @@
         {{ end }}
       {{ end }}
       {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
-      {{ partial "related-publications-section.html" (dict "page" . "relation_key" "methods" "relation_slug" $methodSlug "featured" $featuredPublications) }}
+      {{ partial "related-publications-section.html" (dict "page" . "relation_key" "methods" "relation_slug" $methodSlug "heading" "Related Publications" "featured" $featuredPublications) }}
     </div>
   </div>
 </article>

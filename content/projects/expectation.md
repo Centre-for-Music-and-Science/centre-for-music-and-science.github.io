@@ -5,7 +5,7 @@ people:
   - "lok-yan-lam"
   - "isaac-sebenius"
 stub_only: false
-thumbnail: "/images/projects/expectation.jpg"
+thumbnail: "/images/projects/expectation.png"
 ---
 
 As we listen to music, our brain constantly generates expectations for what might happen next.

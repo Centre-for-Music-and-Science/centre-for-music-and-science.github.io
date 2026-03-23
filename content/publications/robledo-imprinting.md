@@ -43,4 +43,5 @@ citation_chicago: 'Robledo, J.-P., I. Cross, L. Boada-Bayona, and N. Demogeot. 2
 citation_ieee: '[1] J.-P. Robledo, I. Cross, L. Boada-Bayonaand N. Demogeot, “Back
   to basics: A re-evaluation of the relevance of imprinting in the genesis of Bowlby''s
   attachment theory”, <em>Frontiers in Psychology</em>, 2022, doi: 10.3389/fpsyg.2022.1033746.'
+link: https://doi.org/10.3389/fpsyg.2022.1033746
 ---

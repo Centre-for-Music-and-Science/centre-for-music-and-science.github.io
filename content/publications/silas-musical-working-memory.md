@@ -48,4 +48,5 @@ citation_ieee: '[1] S. Silas, D. Müllensiefen, R. Gelding, K. Frielerand P. M. 
   Harrison, “The associations between music training, musical working memory, and
   visuospatial working memory: an opportunity for causal modeling”, <em>Music Perception</em>,
   2022, doi: 10.1525/mp.2022.39.4.401.'
+link: https://doi.org/10.1525/mp.2022.39.4.401
 ---

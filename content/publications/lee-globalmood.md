@@ -49,4 +49,5 @@ citation_chicago: 'Lee, H., E. Çelen, P. M. C. Harrison, M. Anglada-Tort, P. va
 citation_ieee: '[1] H. Lee, “GlobalMood: A cross-cultural benchmark for music emotion
   recognition”, <em>International Society for Music Information Retrieval Conference</em>,
   2025, doi: 10.48550/arXiv.2505.09539.'
+link: https://doi.org/10.48550/arXiv.2505.09539
 ---

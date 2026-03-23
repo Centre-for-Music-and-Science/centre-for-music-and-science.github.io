@@ -49,4 +49,5 @@ citation_ieee: '[1] M. Eitel, N. Ruth, P. M. C. Harrison, K. Frielerand D. Müll
   “Perception of chord sequences modeled with prediction by partial matching, voice-leading
   distance, and spectral pitch-class similarity”, <em>Music & Science</em>, 2024,
   doi: 10.1177/20592043241257654.'
+link: https://doi.org/10.1177/20592043241257654
 ---

@@ -58,4 +58,5 @@ citation_chicago: 'Spiro, N., K. R. M. Sanfilippo, B. B. McConnell, G. Pike-Rown
 citation_ieee: '[1] N. Spiro, “Perspectives on musical care throughout the life course:
   Introducing the Musical Care International Network”, <em>Musicae Scientiae</em>,
   2023, doi: 10.1177/20592043231200553.'
+link: https://doi.org/10.1177/20592043231200553
 ---

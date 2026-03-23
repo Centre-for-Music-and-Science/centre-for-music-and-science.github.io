@@ -47,4 +47,5 @@ citation_ieee: '[1] H. Cheston, J. L. Schlichting, I. Crossand P. M. C. Harrison
   “Rhythmic qualities of jazz improvisation predict performer identity and style in
   source-separated audio recordings”, <em>Royal Society Open Science</em>, 2024, doi:
   10.1098/rsos.240920.'
+link: https://doi.org/10.1098/rsos.240920
 ---

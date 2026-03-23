@@ -16,7 +16,6 @@ bibtex: |-
   }
 # generated from bibtex; do not edit manually
 journal: The Music Performer's Lived Experiences
-doi: ''
 citation_apa: Cross, I., & Spiro, N. (2025). Intersubjectivity in performance. In
   <em>The Music Performer's Lived Experiences</em>.
 citation_mla: Cross, I. and N. Spiro. “Intersubjectivity in Performance”. <em>The

@@ -45,4 +45,5 @@ citation_ieee: '[1] P. M. C. Harrison, R. Bianco, M. Chaitand M. T. Pearce, “P
   A computational model of auditory prediction with memory decay”, <em>PLoS Computational
   Biology</em>, 2020, doi: 10.1371/journal.pcbi.1008304.'
 authors: Harrison, P. M. C., Bianco, R., Chait, M., & Pearce, M. T.
+link: https://doi.org/10.1371/journal.pcbi.1008304
 ---

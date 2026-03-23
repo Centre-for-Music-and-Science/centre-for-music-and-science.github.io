@@ -6,7 +6,6 @@ projects:
 # generated from bibtex; do not edit manually
 authors: Whyatt, D. M., & Harrison, P. M. C.
 journal: 'Conference: Digital Music Research Network 20'
-doi: https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-20-Abstracts-15-Dec.pdf
 abstract: |
   We introduce *melody-features*, an open-source Python package designed to consolidate 7 of the leading computational melody analysis toolboxes into a single common resource. In particular, we reimplement or wrap the following toolboxes:
 
@@ -43,5 +42,6 @@ citation_chicago: 'Whyatt, D. M., and P. M. C. Harrison. 2025. “Melody-feature
 citation_ieee: '[1] D. M. Whyatt and P. M. C. Harrison, “melody-features: A Python
   Package for Symbolic Melody Analysis”, <em>Conference: Digital Music Research Network
   20</em>, 2025, [Online]. Available: https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-20-Abstracts-15-Dec.pdf'
+link: https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-20-Abstracts-15-Dec.pdf
 ---
 

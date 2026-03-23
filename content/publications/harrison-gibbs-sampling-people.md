@@ -28,7 +28,7 @@ abstract: A core problem in cognitive science and machine learning is to underst
   implications.
 bibtex: |-
   @inproceedings{NEURIPS2020_7880d722,
-    author = {Harrison, Peter and Marjieh, Raja and Adolfi, Federico and van Rijn, Pol and Anglada-Tort, Manuel and Tchernichovski, Ofer and Larrouy-Maestri, Pauline and Jacoby, Nori},
+    author = {Harrison, Peter M. C. and Marjieh, Raja and Adolfi, Federico and van Rijn, Pol and Anglada-Tort, Manuel and Tchernichovski, Ofer and Larrouy-Maestri, Pauline and Jacoby, Nori},
     booktitle = {Advances in Neural Information Processing Systems},
     editor = {H. Larochelle and M. Ranzato and R. Hadsell and M.F. Balcan and H. Lin},
     pages = {10659--10671},
@@ -40,18 +40,18 @@ bibtex: |-
   }
 # generated from bibtex; do not edit manually
 journal: Advances in Neural Information Processing Systems
-citation_apa: Harrison, P., Marjieh, R., Adolfi, F., van Rijn, P., Anglada-Tort, M.,
-  Tchernichovski, O., Larrouy-Maestri, P., & Jacoby, N. (2020). Gibbs Sampling with
-  People. <em>Advances in Neural Information Processing Systems</em>. https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf
-citation_mla: Harrison, P., et al.. “Gibbs Sampling with People”. <em>Advances in
-  Neural Information Processing Systems</em>, 2020, https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf.
-citation_chicago: Harrison, Peter, Raja Marjieh, Federico Adolfi, Pol van Rijn, Manuel
-  Anglada-Tort, Ofer Tchernichovski, Pauline Larrouy-Maestri, and Nori Jacoby. 2020.
-  “Gibbs Sampling with People”. In <em>Advances in Neural Information Processing Systems</em>.
-  https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf.
-citation_ieee: '[1] P. Harrison, “Gibbs Sampling with People”, 2020. [Online]. Available:
-  https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf'
-authors: Harrison, P., Marjieh, R., Adolfi, F., van Rijn, P., Anglada-Tort, M., Tchernichovski,
-  O., Larrouy-Maestri, P., & Jacoby, N.
+citation_apa: Harrison, P. M. C., Marjieh, R., Adolfi, F., van Rijn, P., Anglada-Tort,
+  M., Tchernichovski, O., Larrouy-Maestri, P., & Jacoby, N. (2020). Gibbs Sampling
+  with People. <em>Advances in Neural Information Processing Systems</em>. https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf
+citation_mla: Harrison, P. M. C., et al.. “Gibbs Sampling with People”. <em>Advances
+  in Neural Information Processing Systems</em>, 2020, https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf.
+citation_chicago: Harrison, Peter M. C., Raja Marjieh, Federico Adolfi, Pol van Rijn,
+  Manuel Anglada-Tort, Ofer Tchernichovski, Pauline Larrouy-Maestri, and Nori Jacoby.
+  2020. “Gibbs Sampling with People”. In <em>Advances in Neural Information Processing
+  Systems</em>. https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf.
+citation_ieee: '[1] P. M. C. Harrison, “Gibbs Sampling with People”, 2020. [Online].
+  Available: https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf'
+authors: Harrison, P. M. C., Marjieh, R., Adolfi, F., van Rijn, P., Anglada-Tort,
+  M., Tchernichovski, O., Larrouy-Maestri, P., & Jacoby, N.
 link: https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf
 ---

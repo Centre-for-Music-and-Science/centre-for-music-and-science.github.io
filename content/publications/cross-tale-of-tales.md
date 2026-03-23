@@ -33,4 +33,5 @@ citation_chicago: 'Cross, I. 2022. “Music, Memory and Narrative: The Art of Te
   in Tale of Tales”. <em>Animation</em>. https://doi.org/10.1177/17468477221114596.'
 citation_ieee: '[1] I. Cross, “Music, memory and narrative: The art of telling in
   Tale of Tales”, <em>Animation</em>, 2022, doi: 10.1177/17468477221114596.'
+link: https://doi.org/10.1177/17468477221114596
 ---

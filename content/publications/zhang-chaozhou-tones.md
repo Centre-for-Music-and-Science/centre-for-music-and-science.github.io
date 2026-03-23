@@ -38,4 +38,5 @@ citation_chicago: 'Zhang, X. 2024. “Tones Shape Notes: The Realisation of Lexi
   Tones in Chaozhou Songs”. <em>Psychology of Music</em>. https://doi.org/10.1177/03057356231221958.'
 citation_ieee: '[1] X. Zhang, “Tones shape notes: The realisation of lexical tones
   in Chaozhou songs”, <em>Psychology of Music</em>, 2024, doi: 10.1177/03057356231221958.'
+link: https://doi.org/10.1177/03057356231221958
 ---

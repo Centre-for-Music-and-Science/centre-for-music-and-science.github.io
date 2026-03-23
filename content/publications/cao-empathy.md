@@ -31,4 +31,5 @@ citation_chicago: 'Cao, E. L., C. D. Blinderman, and I. Cross. 2022. “Reconsid
 citation_ieee: '[1] E. L. Cao, C. D. Blindermanand I. Cross, “Reconsidering empathy:
   An interpersonal approach and participatory arts in the medical humanities”, <em>The
   Medical/Health Humanities-Politics, Programs, and Pedagogies</em>, 2022, doi: 10.1007/978-3-031-19227-2_8.'
+link: https://doi.org/10.1007/978-3-031-19227-2_8
 ---

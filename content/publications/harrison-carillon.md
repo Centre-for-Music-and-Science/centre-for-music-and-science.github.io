@@ -41,4 +41,5 @@ citation_chicago: Harrison, P. M. C., and J. MacConnachie. 2024. “Consonance i
   Carillon”. <em>Journal of the Acoustical Society of America</em>. https://doi.org/10.1121/10.0028167.
 citation_ieee: '[1] P. M. C. Harrison and J. MacConnachie, “Consonance in the carillon”,
   <em>Journal of the Acoustical Society of America</em>, 2024, doi: 10.1121/10.0028167.'
+link: https://doi.org/10.1121/10.0028167
 ---

@@ -3,6 +3,8 @@ title: Multimodal datasets for studying expert performances of musical scores
 date: 2025-01-01
 projects:
 - organ
+methods:
+- multimodal-datasets
 # generated from bibtex; do not edit manually
 authors: Emerson, K., & Harrison, P. M. C.
 journal: Transactions of the International Society for Music Information Retrieval
@@ -51,4 +53,5 @@ citation_chicago: Emerson, K., and P. M. C. Harrison. 2025. “Multimodal Datase
 citation_ieee: '[1] K. Emerson and P. M. C. Harrison, “Multimodal datasets for studying
   expert performances of musical scores”, <em>Transactions of the International Society
   for Music Information Retrieval</em>, 2025, doi: 10.5334/tismir.230.'
+link: https://doi.org/10.5334/tismir.230
 ---

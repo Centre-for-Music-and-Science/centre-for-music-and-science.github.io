@@ -48,4 +48,5 @@ citation_chicago: Zioga, I., P. M. C. Harrison, M. Pearce, J. Bhattacharya, and 
 citation_ieee: '[1] I. Zioga, P. M. C. Harrison, M. Pearce, J. Bhattacharyaand C.
   Di Bernardi Luft, “The association between liking, learning and creativity in music”,
   <em>Scientific Reports</em>, 2024, doi: 10.1038/s41598-024-70027-z.'
+link: https://doi.org/10.1038/s41598-024-70027-z
 ---

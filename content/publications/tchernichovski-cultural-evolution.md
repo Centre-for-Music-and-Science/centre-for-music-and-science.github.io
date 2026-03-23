@@ -36,4 +36,5 @@ citation_chicago: Tchernichovski, O., E. Globerson, P. M. C. Harrison, and N. Ja
 citation_ieee: '[1] O. Tchernichovski, E. Globerson, P. M. C. Harrisonand N. Jacoby,
   “How constraints on editing affects cultural evolution”, <em>arXiv</em>, 2025, doi:
   10.48550/arXiv.2502.16694.'
+link: https://doi.org/10.48550/arXiv.2502.16694
 ---

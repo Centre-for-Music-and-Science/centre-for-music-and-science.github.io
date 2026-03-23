@@ -42,4 +42,5 @@ citation_chicago: Jimenez, I., T. Kuusi, J. Ojala, and P. M. C. Harrison. 2025. 
 citation_ieee: '[1] I. Jimenez, T. Kuusi, J. Ojalaand P. M. C. Harrison, “The effect
   of chord duration on the relative salience of chord-type and voicing changes”, <em>Psychology
   of Music</em>, 2025, doi: 10.1177/03057356241247533.'
+link: https://doi.org/10.1177/03057356241247533
 ---

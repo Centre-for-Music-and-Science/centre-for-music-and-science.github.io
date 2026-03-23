@@ -39,4 +39,5 @@ citation_chicago: Wilkie, H., and P. M. C. Harrison. 2025. “Reverberation Time
   Musical Emotion in Recorded Music Listening”. <em>Music Perception</em>. https://doi.org/10.1525/mp.2025.2333445.
 citation_ieee: '[1] H. Wilkie and P. M. C. Harrison, “Reverberation time and musical
   emotion in recorded music listening”, <em>Music Perception</em>, 2025, doi: 10.1525/mp.2025.2333445.'
+link: https://doi.org/10.1525/mp.2025.2333445
 ---

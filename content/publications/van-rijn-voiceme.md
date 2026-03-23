@@ -40,4 +40,5 @@ citation_chicago: 'van Rijn, P., S. Mertes, D. Schiller, P. Dura, H. Siuzdak, P.
   in TTS”. <em>Interspeech 2022</em>. https://doi.org/10.21437/interspeech.2022-10855.'
 citation_ieee: '[1] P. van Rijn, “VoiceMe: Personalized voice generation in TTS”,
   <em>Interspeech 2022</em>, 2022, doi: 10.21437/interspeech.2022-10855.'
+link: https://doi.org/10.21437/interspeech.2022-10855
 ---

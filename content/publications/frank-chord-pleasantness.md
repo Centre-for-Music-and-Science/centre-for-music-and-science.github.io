@@ -49,4 +49,5 @@ citation_chicago: Frank, J., and P. M. C. Harrison. 2026. “Modeling Individual
 citation_ieee: '[1] J. Frank and P. M. C. Harrison, “Modeling individual differences
   in chord pleasantness judgments”, <em>Psychology of Aesthetics, Creativity, and
   the Arts</em>, 2026, doi: 10.1037/aca0000836.'
+link: https://doi.org/10.1037/aca0000836
 ---

@@ -30,4 +30,5 @@ citation_chicago: Zhang, X., and I. Cross. 2024. “Singers' Realizations of Lin
   Tone in Chaozhou Song”. <em>Ethnomusicology</em>. https://doi.org/10.5406/21567417.68.2.06.
 citation_ieee: '[1] X. Zhang and I. Cross, “Singers'' realizations of linguistic tone
   in Chaozhou song”, <em>Ethnomusicology</em>, 2024, doi: 10.5406/21567417.68.2.06.'
+link: https://doi.org/10.5406/21567417.68.2.06
 ---

@@ -47,4 +47,5 @@ citation_chicago: 'Anglada-Tort, M., P. M. C. Harrison, and N. Jacoby. 2022. “
 citation_ieee: '[1] M. Anglada-Tort, P. M. C. Harrisonand N. Jacoby, “REPP: A robust
   cross-platform solution for online sensorimotor synchronization experiments”, <em>Behavior
   Research Methods</em>, 2022, doi: 10.3758/s13428-021-01722-2.'
+link: https://doi.org/10.3758/s13428-021-01722-2
 ---

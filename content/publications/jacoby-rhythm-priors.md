@@ -36,4 +36,5 @@ citation_chicago: Jacoby, N., R. Polak, J. A. Grahn, D. J. Cameron, K. M. Lee, R
 citation_ieee: '[1] N. Jacoby, “Commonality and variation in mental representations
   of music revealed by a cross-cultural comparison of rhythm priors in 15 countries”,
   <em>Nature Human Behaviour</em>, 2024, doi: 10.1038/s41562-023-01800-9.'
+link: https://doi.org/10.1038/s41562-023-01800-9
 ---

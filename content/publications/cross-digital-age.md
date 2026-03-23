@@ -42,4 +42,5 @@ citation_chicago: 'Cross, I. 2023. “Music in the Digital Age: Commodity, Commu
   Communion”. <em>AI & Society</em>. https://doi.org/10.1007/s00146-023-01670-9.'
 citation_ieee: '[1] I. Cross, “Music in the digital age: commodity, community, communion”,
   <em>AI & Society</em>, 2023, doi: 10.1007/s00146-023-01670-9.'
+link: https://doi.org/10.1007/s00146-023-01670-9
 ---

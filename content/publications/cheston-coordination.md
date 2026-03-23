@@ -4,6 +4,8 @@ title: Trade-offs in coordination strategies for duet jazz performances subject 
 date: 2024-01-01
 projects:
 - jazz
+methods:
+- multimodal-datasets
 # generated from bibtex; do not edit manually
 authors: Cheston, H., Cross, I., & Harrison, P. M. C.
 journal: Music Perception
@@ -46,4 +48,5 @@ citation_chicago: Cheston, H., I. Cross, and P. M. C. Harrison. 2024. “Trade-o
 citation_ieee: '[1] H. Cheston, I. Crossand P. M. C. Harrison, “Trade-offs in coordination
   strategies for duet jazz performances subject to network delay and jitter”, <em>Music
   Perception</em>, 2024, doi: 10.1525/mp.2024.42.1.48.'
+link: https://doi.org/10.1525/mp.2024.42.1.48
 ---

@@ -44,4 +44,5 @@ citation_chicago: 'Cross, I. 2023. “Sharing Uncertainty: Music in Humanistic a
   Understandings”. <em>Musicae Scientiae</em>. https://doi.org/10.1177/10298649231197388.'
 citation_ieee: '[1] I. Cross, “Sharing uncertainty: Music in humanistic and scientific
   understandings”, <em>Musicae Scientiae</em>, 2023, doi: 10.1177/10298649231197388.'
+link: https://doi.org/10.1177/10298649231197388
 ---

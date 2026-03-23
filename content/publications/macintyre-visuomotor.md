@@ -47,4 +47,5 @@ citation_chicago: MacIntyre, A. D., H. Y. J. Lo, I. Cross, and S. Scott. 2023. �
 citation_ieee: '[1] A. D. MacIntyre, H. Y. J. Lo, I. Crossand S. Scott, “Task-irrelevant
   auditory metre shapes visuomotor sequential learning”, <em>Psychological Research</em>,
   2023, doi: 10.1007/s00426-022-01690-y.'
+link: https://doi.org/10.1007/s00426-022-01690-y
 ---
