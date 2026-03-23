@@ -2799,28 +2799,12 @@ a.pub-item-title:hover {
   font-size: 0.9em;
 }
 
+/* ===== Responsive ===== */
 @media (max-width: 900px) {
   .datasets-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media (max-width: 640px) {
-  .datasets-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .theme-projects {
-    grid-template-columns: 1fr;
-  }
-
-  .methods-projects {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
   .theme-layout {
     gap: 32px;
   }
@@ -2878,6 +2862,12 @@ a.pub-item-title:hover {
 }
 
 @media (max-width: 640px) {
+  .datasets-grid,
+  .theme-projects,
+  .methods-projects {
+    grid-template-columns: 1fr;
+  }
+
   .nav-toggle {
     display: flex;
   }
