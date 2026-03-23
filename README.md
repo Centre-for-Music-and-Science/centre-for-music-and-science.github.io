@@ -214,3 +214,16 @@ Best for: fast visual checks on mobile while iterating locally.
 If the team wants one-click phone previews from any PR in future, you can add an external preview host (for example Netlify/Vercel/Cloudflare Pages) that posts a public URL per PR.
 
 Best for: easiest reviewer experience, but requires extra service setup.
+
+### Option 4 — GitHub Pages subpath previews (possible, but with caveats)
+
+Yes — you can publish branch/PR previews under paths like `/previews/pr-123/` on GitHub Pages by deploying preview builds into subfolders on a dedicated Pages branch and setting Hugo `--baseURL` to that subpath.
+
+Important tradeoffs:
+
+1. GitHub Pages exposes one published site per repo, so preview content and production content must be managed together on the Pages branch.
+2. You need cleanup logic for closed PRs to remove stale `/previews/...` folders.
+3. Concurrent PR deploys can conflict unless the workflow serializes writes and preserves existing preview folders.
+4. The current artifact-based preview is simpler and avoids touching the live Pages deployment path.
+
+Best for: teams that want GitHub-only hosted preview URLs and are comfortable maintaining extra deployment logic.
