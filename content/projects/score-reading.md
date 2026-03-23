@@ -5,6 +5,7 @@ people:
   - "arild-stenberg"
   - "david-duncan"
   - "katya-ness"
+thumbnail: "/images/projects/score-reading.jpg"
 ---
 
 As musicians we tend to think of musical notation as having the single, simple function of transmitting musical ideas from composer to performer.  But musical notation is actually many different things with a wide range of uses.  As noted in Grove Music Online (2001), it can be a memory aid, a means of communicating musical ideas, a method of preserving music, a textual representation enabling study and analysis, or a text that can be decoded on the fly so as to realise in performance the musical sounds and structures that it specifies.  It can be used in many ways: it can be read and re-read repeatedly while a performer learns a piece in the course of practice; it can be decoded at sight in the course of a performance; it can be written in an attempt to represent every nuance of a composer's intentions so that a performer can reproduce something close to the composer's wishes; it can constitute a sketchy depiction of musical ideas and structures that may be the starting point for a more formal and finished score; it can constitute a skeleton that may be elaborated improvisationally in performance according to pre-existing musical conventions; and so on...

@@ -3,7 +3,7 @@ title: "Memory"
 people: 
     - "david-whyatt"
     - "peter-harrison"
-thumbnail: "/images/projects/memory.png"
+thumbnail: "/images/projects/memory.jpg"
 ---
 
 ## Computational Modelling of Melodic Memory

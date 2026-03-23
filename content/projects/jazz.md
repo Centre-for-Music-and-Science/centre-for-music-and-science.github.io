@@ -3,7 +3,7 @@ title: "Jazz"
 people:
   - "huw-cheston"
   - "peter-harrison"
-thumbnail: "/images/projects/jazz.png"
+thumbnail: "/images/projects/jazz.jpg"
 ---
 
 ## Computational Jazz Research

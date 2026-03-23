@@ -3,5 +3,5 @@ title: "Film"
 stub_only: true
 people:
     - "farshad-jafari"
-thumbnail: "/images/projects/film.png"
+thumbnail: "/images/projects/film.jpg"
 ---

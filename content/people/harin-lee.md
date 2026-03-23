@@ -4,7 +4,7 @@ publication_names:
   - "Lee, H."
 role: "Junior Research Fellow"
 email: "hl744@cam.ac.uk"
-image: "/images/people/harin-lee.png"
+image: "/images/people/harin-lee.jpg"
 weight: 3
 category: postdoc
 group: "mcc"
