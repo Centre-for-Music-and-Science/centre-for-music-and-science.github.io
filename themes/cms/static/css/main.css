@@ -2813,6 +2813,10 @@ a.pub-item-title:hover {
   .theme-projects {
     grid-template-columns: 1fr;
   }
+
+  .methods-projects {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ===== Responsive ===== */
