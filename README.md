@@ -184,3 +184,13 @@ hugo --gc --minify --cleanDestinationDir
 ```
 
 Output goes to `public/`. Deployment to GitHub Pages happens automatically on push to `main` via GitHub Actions.
+
+## Pull request preview build
+
+Every pull request to `main` runs the same Hugo production build in GitHub Actions and uploads the generated `public/` directory as an artifact named `pr-preview-site-<PR number>`.
+
+To preview the built result before merge:
+
+1. Open the pull request's latest **Deploy Hugo site to GitHub Pages** workflow run.
+2. Download the `pr-preview-site-<PR number>` artifact.
+3. Extract it and open `index.html` in a browser.
