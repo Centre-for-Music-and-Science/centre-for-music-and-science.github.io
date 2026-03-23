@@ -5,6 +5,8 @@ date: 2019-12-01
 stub_only: false
 projects:
 - expectation
+methods:
+- computational-cognitive-modelling
 bibtex: |-
   @article{cheung2019uncertainty,
     author = {Cheung, V. K. M. and Harrison, P. M. C. and Meyer, L. and Pearce, M. T. and Haynes, J.-D. and Koelsch, S.},

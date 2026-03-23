@@ -3,6 +3,8 @@ title: 'melody-features: A Python Package for Symbolic Melody Analysis'
 date: 2025-12-16
 projects:
 - memory
+methods:
+- computational-cognitive-modelling
 # generated from bibtex; do not edit manually
 authors: Whyatt, D. M., & Harrison, P. M. C.
 journal: 'Conference: Digital Music Research Network 20'

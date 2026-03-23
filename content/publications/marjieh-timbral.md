@@ -6,6 +6,7 @@ projects:
 - consonance
 methods:
 - large-scale-online-experiments
+- computational-cognitive-modelling
 # generated from bibtex; do not edit manually
 authors: Marjieh, R., Harrison, P. M. C., Lee, H., Deligiannaki, F., & Jacoby, N.
 journal: Nature Communications

@@ -4,6 +4,8 @@ date: 2026-01-01
 stub_only: false
 projects:
 - consonance
+methods:
+- computational-cognitive-modelling
 bibtex: |-
   @article{frank2026chordpleasantness,
     author = {Frank, J. and Harrison, P. M. C.},

@@ -4,6 +4,8 @@ date: 2020-11-01
 stub_only: false
 projects:
 - expectation
+methods:
+- computational-cognitive-modelling
 bibtex: |-
   @article{harrison2020ppmdecay,
     author = {Harrison, P. M. C. and Bianco, R. and Chait, M. and Pearce, M. T.},
