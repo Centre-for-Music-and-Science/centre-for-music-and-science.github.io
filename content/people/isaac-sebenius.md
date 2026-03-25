@@ -1,11 +1,11 @@
 ---
 title: "Isaac Sebenius"
-status: active
-position_title: "Affiliate Researcher"
+positions:
+  - kind: affiliate
+    end_date: null
 email: ""
 image: "/images/people/isaac-sebenius.jpg"
 weight: 10
-category: affiliate
 group: "mcc"
 website: ""
 ---

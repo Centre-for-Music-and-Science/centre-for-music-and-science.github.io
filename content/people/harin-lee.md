@@ -2,12 +2,13 @@
 title: "Harin Lee"
 publication_names:
   - "Lee, H."
-status: active
-position_title: "Junior Research Fellow"
+positions:
+  - kind: postdoc
+    title: "Junior Research Fellow"
+    end_date: null
 email: "hl744@cam.ac.uk"
 image: "/images/people/harin-lee.jpg"
 weight: 3
-category: postdoc
 group: "mcc"
 website: "https://harinlee.info/"
 ---

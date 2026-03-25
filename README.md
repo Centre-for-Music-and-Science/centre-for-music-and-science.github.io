@@ -140,11 +140,11 @@ Optional bio text here.
 Notes:
 
 - `group` is optional. If set, use `mcc` for Music Cognition & Culture or `mls` for Music, Language & Society.
-- If `positions` is present, listing category/status and subtitle are derived from it.
+- Listing category/status and subtitle are derived from `positions`.
 - `positions[].title` is optional; when omitted, title defaults are derived from `kind`.
 - Current role is derived from `end_date` (empty/null = current role).
-- Use `YYYY` or `YYYY-MM` for `start_date` and `end_date`.
-- Keep legacy fields (`category`, `status`, `degree_type`, `graduation_year`, `position_title`) only for older profiles pending migration.
+- `start_date` and `end_date` are optional; include them when known.
+- Use `YYYY` or `YYYY-MM` for any provided date values.
 - `weight` controls sorting within a category. Lower numbers appear first.
 - The photo does not need to be perfectly square, but it will be cropped into a circular frame on the site. A centered head-and-shoulders image with roughly square dimensions works best.
 - Use an image path under `static/images/people/`, for example `"/images/people/jane-doe.jpg"`.

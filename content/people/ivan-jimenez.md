@@ -2,12 +2,12 @@
 title: "Ivan Jimenez"
 publication_names:
   - "Jimenez, I."
-status: active
-position_title: "Affiliate Researcher"
+positions:
+  - kind: affiliate
+    end_date: null
 email: "ivan.jimenez.rodriguez@uniarts.fi"
 image: "/images/people/ivan-jimenez.jpg"
 weight: 10
-category: affiliate
 website: ""
 ---
 

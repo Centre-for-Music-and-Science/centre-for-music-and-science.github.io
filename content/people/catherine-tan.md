@@ -2,12 +2,12 @@
 title: "Catherine Tan"
 publication_names:
   - "Tan, C."
-status: active
-degree_type: "PhD"
+positions:
+  - kind: phd
+    end_date: null
 email: ""
 image: "/images/people/catherine-tan.jpg"
 weight: 16
-category: phd
 group: "mcc"
 website: ""
 ---

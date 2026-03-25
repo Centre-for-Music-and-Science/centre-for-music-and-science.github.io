@@ -1,12 +1,11 @@
 ---
 title: "Nicky Swett"
-status: alumni
-degree_type: "PhD"
-graduation_year: "2025"
+positions:
+  - kind: phd
+    end_date: "2025"
 email: ""
 image: "/images/people/nicky-swett.jpg"
 weight: 101
-category: alumni
 website: ""
 ---
 

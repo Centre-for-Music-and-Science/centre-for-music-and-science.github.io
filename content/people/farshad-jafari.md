@@ -1,11 +1,11 @@
 ---
 title: "Farshad Jafari"
-status: active
-degree_type: "PhD"
+positions:
+  - kind: phd
+    end_date: null
 email: "fj303@cam.ac.uk"
 image: "/images/people/farshad-jafari.jpg"
 weight: 14
-category: phd
 group: "mcc"
 website: ""
 ---

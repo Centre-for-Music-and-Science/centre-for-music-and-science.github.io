@@ -1,12 +1,11 @@
 ---
 title: "Xiaoxuan Wang"
-status: alumni
-degree_type: "MPhil"
-graduation_year: "2022-23"
+positions:
+  - kind: mphil
+    end_date: "2022-23"
 email: ""
 image: "/images/people/xiaoxuan-wang.jpg"
 weight: 106
-category: alumni
 website: ""
 ---
 

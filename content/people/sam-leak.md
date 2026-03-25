@@ -1,12 +1,11 @@
 ---
 title: "Sam Leak"
-status: alumni
-degree_type: "PhD"
-graduation_year: "2023"
+positions:
+  - kind: phd
+    end_date: "2023"
 email: ""
 image: "/images/people/sam-leak.jpg"
 weight: 102
-category: alumni
 website: ""
 ---
 

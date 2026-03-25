@@ -1,6 +1,6 @@
 {{- $person := . -}}
 {{- $positions := default (slice) $person.Params.positions -}}
-{{- $category := $person.Params.category -}}
+{{- $category := "other" -}}
 
 {{- if gt (len $positions) 0 -}}
   {{- $current := partial "person-current-position.html" $person -}}

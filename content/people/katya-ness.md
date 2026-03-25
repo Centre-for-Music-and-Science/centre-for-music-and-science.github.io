@@ -2,12 +2,12 @@
 title: "Katya Ness"
 publication_names:
   - "Ness, K."
-status: active
-degree_type: "PhD"
+positions:
+  - kind: phd
+    end_date: null
 email: "kn428@cam.ac.uk"
 image: "/images/people/katya-ness.jpg"
 weight: 10
-category: phd
 group: "mls"
 website: ""
 ---

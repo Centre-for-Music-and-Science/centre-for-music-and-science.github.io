@@ -2,12 +2,13 @@
 title: "Ian Cross"
 publication_names:
   - "Cross, I."
-status: active
-position_title: "Emeritus Professor"
+positions:
+  - kind: emeritus
+    title: "Emeritus Professor"
+    end_date: null
 email: "ic108@cam.ac.uk"
 image: "/images/people/ian-cross.jpg"
 weight: 2
-category: emeritus
 group: "mls"
 website: "http://www.mus.cam.ac.uk/directory/ian-cross"
 ---

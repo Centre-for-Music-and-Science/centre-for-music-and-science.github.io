@@ -1,11 +1,11 @@
 ---
 title: "Satinder Gill"
-status: active
-position_title: "Affiliate Researcher"
+positions:
+  - kind: affiliate
+    end_date: null
 email: "spg12@cam.ac.uk"
 image: "/images/people/satinder-gill.jpg"
 weight: 10
-category: affiliate
 website: ""
 ---
 

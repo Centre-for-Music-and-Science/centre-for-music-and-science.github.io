@@ -2,12 +2,12 @@
 title: "David Whyatt"
 publication_names:
   - "Whyatt, D. M."
-status: active
-degree_type: "PhD"
+positions:
+  - kind: phd
+    end_date: null
 email: "dmw56@cam.ac.uk"
 image: "/images/people/david-whyatt.jpg"
 weight: 13
-category: phd
 group: "mcc"
 website: ""
 ---

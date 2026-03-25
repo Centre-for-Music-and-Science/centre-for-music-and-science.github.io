@@ -1,12 +1,11 @@
 ---
 title: "Xi Zhang"
-status: alumni
-degree_type: "PhD"
-graduation_year: "2023"
+positions:
+  - kind: phd
+    end_date: "2023"
 email: ""
 image: "/images/people/xi-zhang.jpg"
 weight: 103
-category: alumni
 website: ""
 ---
 

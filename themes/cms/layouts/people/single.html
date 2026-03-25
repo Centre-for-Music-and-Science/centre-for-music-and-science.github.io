@@ -24,9 +24,9 @@
           {{ if gt (len $positions) 0 }}
           <ul class="person-page-positions">
             {{ range sort $positions "start_date" "desc" }}
-              {{ $title := partial "person-position-title.html" (dict "position" . "is_current" true) }}
+              {{ $title := partial "person-position-title.html" (dict "position" . "is_current" (not (index . "end_date"))) }}
               {{ $range := partial "person-position-range.html" . }}
-            <li class="person-page-position">{{ $title }} ({{ $range }})</li>
+            <li class="person-page-position">{{ if $range }}{{ $title }} ({{ $range }}){{ else }}{{ $title }}{{ end }}</li>
             {{ end }}
           </ul>
           {{ else }}

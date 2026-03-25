@@ -2,12 +2,12 @@
 title: "Katelyn Emerson"
 publication_names:
   - "Emerson, K."
-status: active
-degree_type: "PhD"
+positions:
+  - kind: phd
+    end_date: null
 email: "kje34@cam.ac.uk"
 image: "/images/people/katelyn-emerson.jpg"
 weight: 11
-category: phd
 group: "mcc"
 website: ""
 ---

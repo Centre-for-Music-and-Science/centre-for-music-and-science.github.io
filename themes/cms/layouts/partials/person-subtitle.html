@@ -6,7 +6,7 @@
 {{- if $current -}}
   {{- $subtitle = partial "person-position-title.html" (dict "position" $current "is_current" true) -}}
 {{- else if gt (len $positions) 0 -}}
-  {{- $latest := index $positions (sub (len $positions) 1) -}}
+  {{- $latest := index (sort $positions "end_date" "desc") 0 -}}
   {{- $subtitle = partial "person-position-title.html" (dict "position" $latest "is_current" false) -}}
   {{- $kind := lower (printf "%v" (index $latest "kind")) -}}
   {{- if and (in (slice "phd" "mphil") $kind) (index $latest "end_date") -}}
@@ -15,18 +15,6 @@
     {{- if gt (len $yearMatches) 0 -}}
       {{- $subtitle = printf "%s %s" $subtitle (index $yearMatches 0) -}}
     {{- end -}}
-  {{- end -}}
-{{- else if $person.Params.position_title -}}
-  {{- $subtitle = $person.Params.position_title -}}
-{{- else if $person.Params.degree_type -}}
-  {{- if and (eq $person.Params.status "alumni") $person.Params.graduation_year -}}
-    {{- $subtitle = printf "%s %v" $person.Params.degree_type $person.Params.graduation_year -}}
-  {{- else if eq $person.Params.status "active" -}}
-    {{- $subtitle = printf "%s student" $person.Params.degree_type -}}
-  {{- else if $person.Params.graduation_year -}}
-    {{- $subtitle = printf "%s %v" $person.Params.degree_type $person.Params.graduation_year -}}
-  {{- else -}}
-    {{- $subtitle = $person.Params.degree_type -}}
   {{- end -}}
 {{- end -}}
 {{- return $subtitle -}}

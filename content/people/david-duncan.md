@@ -2,12 +2,13 @@
 title: "David Duncan"
 publication_names:
   - "Duncan, D."
-status: active
-position_title: "Research Assistant"
+positions:
+  - kind: postdoc
+    title: "Research Assistant"
+    end_date: null
 email: "dtd25@cam.ac.uk"
 image: "/images/people/david-duncan.jpg"
 weight: 5
-category: postdoc
 group: "mls"
 website: ""
 ---

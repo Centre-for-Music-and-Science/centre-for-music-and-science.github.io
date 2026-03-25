@@ -2,12 +2,12 @@
 title: "Joshua Frank"
 publication_names:
   - "Frank, J."
-status: active
-degree_type: "PhD"
+positions:
+  - kind: phd
+    end_date: null
 email: "jbf43@cam.ac.uk"
 image: "/images/people/joshua-frank.jpg"
 weight: 12
-category: phd
 group: "mcc"
 website: ""
 ---

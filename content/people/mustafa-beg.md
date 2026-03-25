@@ -1,11 +1,12 @@
 ---
 title: "Mustafa Beg"
-status: active
-position_title: "Computer Officer, Faculty of Music"
+positions:
+  - kind: technical
+    title: "Computer Officer, Faculty of Music"
+    end_date: null
 email: ""
 image: "/images/people/mustafa-beg.jpeg"
 weight: 8
-category: technical
 website: ""
 ---
 

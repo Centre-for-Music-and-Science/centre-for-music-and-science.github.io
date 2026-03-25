@@ -1,11 +1,11 @@
 ---
 title: "Lok Yan Lam"
-status: active
-degree_type: "PhD"
+positions:
+  - kind: phd
+    end_date: null
 email: "lyl31@cam.ac.uk"
 image: "/images/people/lok-yan-lam.jpg"
 weight: 15
-category: phd
 group: "mcc"
 website: ""
 ---
