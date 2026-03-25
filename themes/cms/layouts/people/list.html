@@ -4,13 +4,19 @@
     <h1 class="page-title">All People</h1>
 
     {{ $people := .RegularPages }}
+    {{ $sortedPeople := sort $people "Params.weight" }}
     {{ $categories := slice (dict "key" "director" "label" "Director") (dict "key" "phd" "label" "PhD students") (dict "key" "mphil" "label" "MPhil students") (dict "key" "postdoc" "label" "Postdoctoral researchers") (dict "key" "technical" "label" "Technical staff") (dict "key" "emeritus" "label" "Emeritus staff") (dict "key" "affiliate" "label" "Affiliates") (dict "key" "alumni" "label" "Alumni") }}
 
-    {{ range $categories }}
-      {{ $members := sort (where $people "Params.category" .key) "Params.weight" }}
+    {{ range $category := $categories }}
+      {{ $members := slice }}
+      {{ range $sortedPeople }}
+        {{ if eq (partial "person-category.html" .) $category.key }}
+          {{ $members = $members | append . }}
+        {{ end }}
+      {{ end }}
       {{ if $members }}
     <div class="people-category">
-      <h2 class="people-category-heading">{{ .label }}</h2>
+      <h2 class="people-category-heading">{{ $category.label }}</h2>
       <div class="people-grid">
         {{ range $members }}
         {{ partial "person-card.html" (dict "person" .) }}
@@ -20,12 +26,18 @@
       {{ end }}
     {{ end }}
 
-    {{ $other := where $people "Params.category" "not in" (slice "director" "phd" "mphil" "postdoc" "technical" "emeritus" "affiliate" "alumni") }}
+    {{ $knownCategories := slice "director" "phd" "mphil" "postdoc" "technical" "emeritus" "affiliate" "alumni" }}
+    {{ $other := slice }}
+    {{ range $sortedPeople }}
+      {{ if not (in $knownCategories (partial "person-category.html" .)) }}
+        {{ $other = $other | append . }}
+      {{ end }}
+    {{ end }}
     {{ if $other }}
     <div class="people-category">
       <h2 class="people-category-heading">Other</h2>
       <div class="people-grid">
-        {{ range sort $other "Params.weight" }}
+        {{ range $other }}
         {{ partial "person-card.html" (dict "person" .) }}
         {{ end }}
       </div>

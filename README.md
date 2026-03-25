@@ -120,11 +120,13 @@ Recommended front matter:
 ```yaml
 ---
 title: "Full Name"
-status: "active"         # active | alumni
-degree_type: "PhD"       # use for students/alumni (e.g., PhD, MPhil)
-graduation_year: "2026"  # use for alumni as needed
-position_title: ""       # use for non-degree roles (e.g., Affiliate Researcher)
-category: "phd"          # director | phd | mphil | postdoc | technical | emeritus | affiliate | alumni
+positions:
+  - kind: "phd"          # director | phd | mphil | postdoc | technical | emeritus | affiliate
+    start_date: "2022"
+    end_date: "2026"     # null/empty means current role
+  - kind: "postdoc"
+    start_date: "2026"
+    end_date: null
 weight: 10               # controls sort order within category
 email: "abc1@cam.ac.uk"
 image: "/images/people/full-name.jpg"
@@ -138,8 +140,11 @@ Optional bio text here.
 Notes:
 
 - `group` is optional. If set, use `mcc` for Music Cognition & Culture or `mls` for Music, Language & Society.
-- Use either `degree_type` or `position_title` depending on profile type.
-- For alumni, set `status: alumni` and include `graduation_year` where possible.
+- If `positions` is present, listing category/status and subtitle are derived from it.
+- `positions[].title` is optional; when omitted, title defaults are derived from `kind`.
+- Current role is derived from `end_date` (empty/null = current role).
+- Use `YYYY` or `YYYY-MM` for `start_date` and `end_date`.
+- Keep legacy fields (`category`, `status`, `degree_type`, `graduation_year`, `position_title`) only for older profiles pending migration.
 - `weight` controls sorting within a category. Lower numbers appear first.
 - The photo does not need to be perfectly square, but it will be cropped into a circular frame on the site. A centered head-and-shoulders image with roughly square dimensions works best.
 - Use an image path under `static/images/people/`, for example `"/images/people/jane-doe.jpg"`.

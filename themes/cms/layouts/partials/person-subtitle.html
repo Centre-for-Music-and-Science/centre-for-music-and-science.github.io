@@ -1,6 +1,22 @@
 {{- $person := . -}}
 {{- $subtitle := "" -}}
-{{- if $person.Params.position_title -}}
+{{- $positions := default (slice) $person.Params.positions -}}
+{{- $current := partial "person-current-position.html" $person -}}
+
+{{- if $current -}}
+  {{- $subtitle = partial "person-position-title.html" (dict "position" $current "is_current" true) -}}
+{{- else if gt (len $positions) 0 -}}
+  {{- $latest := index $positions (sub (len $positions) 1) -}}
+  {{- $subtitle = partial "person-position-title.html" (dict "position" $latest "is_current" false) -}}
+  {{- $kind := lower (printf "%v" (index $latest "kind")) -}}
+  {{- if and (in (slice "phd" "mphil") $kind) (index $latest "end_date") -}}
+    {{- $endDate := printf "%v" (index $latest "end_date") -}}
+    {{- $yearMatches := findRE "^[0-9]{4}" $endDate 1 -}}
+    {{- if gt (len $yearMatches) 0 -}}
+      {{- $subtitle = printf "%s %s" $subtitle (index $yearMatches 0) -}}
+    {{- end -}}
+  {{- end -}}
+{{- else if $person.Params.position_title -}}
   {{- $subtitle = $person.Params.position_title -}}
 {{- else if $person.Params.degree_type -}}
   {{- if and (eq $person.Params.status "alumni") $person.Params.graduation_year -}}

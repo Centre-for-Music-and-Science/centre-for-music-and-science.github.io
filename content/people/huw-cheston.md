@@ -2,13 +2,16 @@
 title: "Huw Cheston"
 publication_names:
   - "Cheston, H."
-status: alumni
-degree_type: "PhD"
-graduation_year: "2025"
+positions:
+  - kind: phd
+    start_date: "2021"
+    end_date: "2025"
+  - kind: postdoc
+    start_date: "2026"
+    end_date: null
 email: ""
 image: "/images/people/huw-cheston.jpg"
 weight: 18
-category: alumni
 group: "mcc"
 website: ""
 ---

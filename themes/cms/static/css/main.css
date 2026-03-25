@@ -1587,6 +1587,18 @@ a.pub-item-title:hover {
   margin-bottom: 8px;
 }
 
+.person-page-positions {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.person-page-position {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
 .person-page-email,
 .person-page-website,
 .person-page-google-scholar {

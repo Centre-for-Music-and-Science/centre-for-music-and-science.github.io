@@ -1,0 +1,19 @@
+{{- $person := . -}}
+{{- $positions := default (slice) $person.Params.positions -}}
+{{- $category := $person.Params.category -}}
+
+{{- if gt (len $positions) 0 -}}
+  {{- $current := partial "person-current-position.html" $person -}}
+  {{- if $current -}}
+    {{- $kind := lower (printf "%v" (index $current "kind")) -}}
+    {{- if $kind -}}
+      {{- $category = $kind -}}
+    {{- else -}}
+      {{- $category = "other" -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $category = "alumni" -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $category -}}

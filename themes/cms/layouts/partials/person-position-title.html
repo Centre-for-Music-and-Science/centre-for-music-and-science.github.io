@@ -1,0 +1,37 @@
+{{- $position := .position -}}
+{{- $isCurrent := default false .is_current -}}
+{{- $title := "" -}}
+
+{{- $titleOverride := index $position "title" -}}
+{{- if $titleOverride -}}
+  {{- $title = $titleOverride -}}
+{{- else -}}
+  {{- $kind := lower (printf "%v" (index $position "kind")) -}}
+  {{- if eq $kind "phd" -}}
+    {{- if $isCurrent -}}
+      {{- $title = "PhD student" -}}
+    {{- else -}}
+      {{- $title = "PhD" -}}
+    {{- end -}}
+  {{- else if eq $kind "mphil" -}}
+    {{- if $isCurrent -}}
+      {{- $title = "MPhil student" -}}
+    {{- else -}}
+      {{- $title = "MPhil" -}}
+    {{- end -}}
+  {{- else if eq $kind "postdoc" -}}
+    {{- $title = "Postdoctoral researcher" -}}
+  {{- else if eq $kind "director" -}}
+    {{- $title = "Director" -}}
+  {{- else if eq $kind "technical" -}}
+    {{- $title = "Technical staff" -}}
+  {{- else if eq $kind "emeritus" -}}
+    {{- $title = "Emeritus staff" -}}
+  {{- else if eq $kind "affiliate" -}}
+    {{- $title = "Affiliate" -}}
+  {{- else -}}
+    {{- $title = humanize $kind -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $title -}}

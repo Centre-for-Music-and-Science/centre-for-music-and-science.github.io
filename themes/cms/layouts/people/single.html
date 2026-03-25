@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{ $displaySubtitle := partial "person-subtitle.html" . }}
+{{ $positions := default (slice) .Params.positions }}
 <article class="person-page">
   <div class="container">
     <div class="detail-back-layout">
@@ -20,7 +21,17 @@
             {{ end }}
           </div>
           <h1 class="person-page-name">{{ .Title }}</h1>
+          {{ if gt (len $positions) 0 }}
+          <ul class="person-page-positions">
+            {{ range sort $positions "start_date" "desc" }}
+              {{ $title := partial "person-position-title.html" (dict "position" . "is_current" true) }}
+              {{ $range := partial "person-position-range.html" . }}
+            <li class="person-page-position">{{ $title }} ({{ $range }})</li>
+            {{ end }}
+          </ul>
+          {{ else }}
           {{ with $displaySubtitle }}<p class="person-page-role">{{ . }}</p>{{ end }}
+          {{ end }}
           {{ if eq .Params.group "mcc" }}<a href="{{ "groups/mcc/" | relURL }}" class="person-group-tag person-group-tag--mcc">Music Cognition &amp; Culture</a>
           {{ else if eq .Params.group "mls" }}<a href="{{ "groups/mls/" | relURL }}" class="person-group-tag person-group-tag--mls">Music, Language &amp; Society</a>{{ end }}
           {{ if .Params.email }}

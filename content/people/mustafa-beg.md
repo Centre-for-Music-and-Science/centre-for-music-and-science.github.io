@@ -9,4 +9,4 @@ category: technical
 website: ""
 ---
 
-Mustafa Beg is the Computer Officer for the Faculty of Music. He manages computer equipment across the Faculty and in the Centre for Music and Science in particular.
+Mustafa Beg manages computer equipment across the Faculty and in the Centre for Music and Science in particular.

@@ -1,0 +1,23 @@
+{{- $position := . -}}
+{{- $startDate := printf "%v" (index $position "start_date") -}}
+{{- $endDateValue := index $position "end_date" -}}
+{{- $range := printf "%s–" $startDate -}}
+
+{{- if $endDateValue -}}
+  {{- $endDate := printf "%v" $endDateValue -}}
+  {{- $displayEnd := $endDate -}}
+  {{- $startYearMatch := findRE "^[0-9]{4}$" $startDate 1 -}}
+  {{- $endYearMatch := findRE "^[0-9]{4}$" $endDate 1 -}}
+
+  {{- if and (gt (len $startYearMatch) 0) (gt (len $endYearMatch) 0) -}}
+    {{- $startCentury := index (findRE "^[0-9]{2}" $startDate 1) 0 -}}
+    {{- $endCentury := index (findRE "^[0-9]{2}" $endDate 1) 0 -}}
+    {{- if eq $startCentury $endCentury -}}
+      {{- $displayEnd = index (findRE "[0-9]{2}$" $endDate 1) 0 -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $range = printf "%s–%s" $startDate $displayEnd -}}
+{{- end -}}
+
+{{- return $range -}}

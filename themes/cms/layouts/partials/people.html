@@ -2,12 +2,23 @@
   <div class="container">
     <h2 class="section-title">Team</h2>
     <div class="people-grid">
-      {{ $people := where .Site.RegularPages "Section" "people" }}
-      {{ $shown := where $people "Params.category" "ne" "alumni" }}
-      {{ $affiliates := where $shown "Params.category" "eq" "affiliate" }}
-      {{ $nonAffiliates := where $shown "Params.category" "ne" "affiliate" }}
-      {{ $ordered := sort $nonAffiliates "Params.weight" | append (sort $affiliates "Params.weight") }}
-      {{ range $ordered }}
+      {{ $people := sort (where .Site.RegularPages "Section" "people") "Params.weight" }}
+      {{ $nonAffiliates := slice }}
+      {{ $affiliates := slice }}
+      {{ range $people }}
+        {{ $category := partial "person-category.html" . }}
+        {{ if ne $category "alumni" }}
+          {{ if eq $category "affiliate" }}
+            {{ $affiliates = $affiliates | append . }}
+          {{ else }}
+            {{ $nonAffiliates = $nonAffiliates | append . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ range $nonAffiliates }}
+      {{ partial "person-card.html" (dict "person" .) }}
+      {{ end }}
+      {{ range $affiliates }}
       {{ partial "person-card.html" (dict "person" .) }}
       {{ end }}
     </div>

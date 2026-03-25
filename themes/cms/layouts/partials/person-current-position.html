@@ -1,0 +1,11 @@
+{{- $person := . -}}
+{{- $positions := default (slice) $person.Params.positions -}}
+{{- $current := "" -}}
+
+{{- range $positions -}}
+  {{- if and (not $current) (not (index . "end_date")) -}}
+    {{- $current = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $current -}}

@@ -1,0 +1,27 @@
+{{- $people := where site.RegularPages "Section" "people" -}}
+{{- $allowedKinds := slice "director" "phd" "mphil" "postdoc" "technical" "emeritus" "affiliate" -}}
+
+{{- range $people -}}
+  {{- $slug := .File.ContentBaseName -}}
+  {{- $positions := default (slice) .Params.positions -}}
+  {{- range $idx, $position := $positions -}}
+    {{- $kind := lower (printf "%v" (index $position "kind")) -}}
+    {{- if not $kind -}}
+      {{- errorf "People positions error: person %q has a position at index %d without a kind." $slug $idx -}}
+    {{- else if not (in $allowedKinds $kind) -}}
+      {{- errorf "People positions error: person %q has position kind %q at index %d. Allowed kinds: %s." $slug $kind $idx (delimit $allowedKinds ", ") -}}
+    {{- end -}}
+
+    {{- $startDate := index $position "start_date" -}}
+    {{- if not $startDate -}}
+      {{- errorf "People positions error: person %q has a %q position at index %d without start_date." $slug $kind $idx -}}
+    {{- else if not (findRE "^[0-9]{4}(-[0-9]{2})?$" (printf "%v" $startDate)) -}}
+      {{- errorf "People positions error: person %q has invalid start_date %q at index %d. Use YYYY or YYYY-MM." $slug $startDate $idx -}}
+    {{- end -}}
+
+    {{- $endDate := index $position "end_date" -}}
+    {{- if and $endDate (not (findRE "^[0-9]{4}(-[0-9]{2})?$" (printf "%v" $endDate))) -}}
+      {{- errorf "People positions error: person %q has invalid end_date %q at index %d. Use YYYY or YYYY-MM, or null for current roles." $slug $endDate $idx -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
