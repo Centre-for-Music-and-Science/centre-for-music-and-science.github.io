@@ -7,7 +7,7 @@ people:
   - "jason-taylor"
   - "neta-spiro"
   - "david-duncan"
-thumbnail: "/images/projects/organ.jpeg"
+# thumbnail: "/images/projects/organ.jpeg"
 ---
 
 ## MUSIC, CULTURE AND SOCIALITY

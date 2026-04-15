@@ -1,8 +1,11 @@
 <section class="hero" id="hero">
   <div id="spectral-hero">
     <canvas id="spectral-canvas" role="img" aria-label="Animated spectral visualisation of the currently playing audio"></canvas>
-    <div class="hero-lab-logo-watermark" aria-hidden="true">
-      <img src="{{ "images/logos/cms_logo_white.svg" | relURL }}" alt="" class="hero-lab-logo-watermark-img">
+    <div class="hero-top-logos" aria-hidden="true">
+      <img src="{{ "images/logos/cms_logo_white.svg" | relURL }}" alt="" class="hero-cms-logo">
+    </div>
+    <div class="hero-bottom-left-logo" aria-hidden="true">
+      <img src="{{ "images/logos/university-cambridge-logo-white.png" | relURL }}" alt="" class="hero-cambridge-logo">
     </div>
     <div class="hero-corner-left">
       <button type="button" id="hero-info-btn" class="hero-info-btn" aria-expanded="false" aria-controls="hero-info-panel" title="Banner audio">
@@ -33,9 +36,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="hero-logos-bottom">
-      <img src="{{ "images/logos/university-cambridge-logo-white.png" | relURL }}" alt="University of Cambridge" class="hero-cambridge-logo">
     </div>
   </div>
 </section>

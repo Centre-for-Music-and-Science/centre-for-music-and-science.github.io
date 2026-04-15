@@ -228,44 +228,30 @@ img {
   z-index: 0;
 }
 
-.hero-lab-logo-watermark {
+.hero-top-logos {
   position: absolute;
-  inset: 0;
-  z-index: 15;
+  top: clamp(84px, 10vh, 128px);
+  left: clamp(24px, 5vw, 64px);
+  z-index: 21;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   pointer-events: none;
-  /* Promote above WebGL canvas compositing in Chromium (translateZ(0) is not always enough). */
-  transform: translate3d(0, 0, 0.1px);
 }
 
-/* Darken the spectrogram locally so the white SVG reads on bright terrain peaks. */
-.hero-lab-logo-watermark::before {
-  content: "";
+.hero-cms-logo {
+  height: clamp(100px, 9vw, 126px);
+  width: auto;
+  opacity: 0.82;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.4));
+}
+
+.hero-bottom-left-logo {
   position: absolute;
-  width: min(78vw, 640px);
-  height: min(42vh, 320px);
-  background: radial-gradient(
-    ellipse at center,
-    rgba(4, 10, 22, 0.88) 0%,
-    rgba(4, 10, 22, 0.5) 38%,
-    rgba(4, 10, 22, 0.12) 58%,
-    transparent 72%
-  );
-  z-index: 0;
-}
-
-.hero-lab-logo-watermark-img {
-  position: relative;
-  z-index: 1;
-  width: min(58vw, 520px);
-  max-width: 88%;
-  height: auto;
-  opacity: 0.62;
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.95))
-    drop-shadow(0 0 24px rgba(0, 0, 0, 0.65))
-    drop-shadow(0 6px 48px rgba(0, 0, 0, 0.5));
+  left: clamp(24px, 5vw, 64px);
+  bottom: clamp(20px, 4vw, 36px);
+  z-index: 21;
+  pointer-events: none;
 }
 
 .spectral-player-top {
@@ -287,6 +273,7 @@ img {
 
 .hero-info-btn {
   display: flex;
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -301,6 +288,18 @@ img {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: background 0.2s, color 0.2s, border-color 0.2s;
+  animation: heroInfoPulse 2.2s ease-in-out infinite;
+}
+
+.hero-info-btn::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  opacity: 0;
+  transform: scale(0.85);
+  animation: heroInfoRing 2.2s ease-out infinite;
 }
 
 .hero-info-btn:hover {
@@ -317,6 +316,31 @@ img {
 .hero-info-btn[aria-expanded="true"] {
   background: rgba(255, 255, 255, 0.16);
   color: #fff;
+  animation: none;
+}
+
+.hero-info-btn[aria-expanded="true"]::after {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes heroInfoPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes heroInfoRing {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  20% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
 }
 
 .hero-info-panel {
@@ -355,24 +379,21 @@ img {
   justify-content: flex-start;
 }
 
-.hero-logos-bottom {
-  position: absolute;
-  bottom: 32px;
-  left: 0;
-  right: 0;
-  z-index: 20;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 0 clamp(24px, 5vw, 64px);
-  pointer-events: none;
-}
-
 .hero-cambridge-logo {
-  height: clamp(24px, 3.5vw, 40px);
+  height: clamp(25px, 2.3vw, 30px);
   width: auto;
   opacity: 1;
   filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4));
+}
+
+#spectral-hero.spectral-fallback #spectral-canvas {
+  display: none;
+}
+
+#spectral-hero.spectral-fallback {
+  background:
+    radial-gradient(80% 65% at 50% 45%, rgba(30, 74, 142, 0.55) 0%, rgba(10, 22, 40, 0.92) 60%, #091525 100%),
+    linear-gradient(135deg, #0f1f36 0%, #0b182b 100%);
 }
 
 .hero-player {
@@ -516,13 +537,7 @@ img {
 }
 
 .tab-bar-title--accent::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 3px;
-  background: var(--color-accent);
+  content: none;
 }
 
 .tab-bar::-webkit-scrollbar {
@@ -533,9 +548,12 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: none;
-  border: none;
-  padding: 14px 24px;
+  background: #edf2fa;
+  border: 1px solid var(--color-border);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 12px 22px;
+  margin-right: 8px;
   font-family: var(--font-family);
   font-size: 0.95rem;
   font-weight: 400;
@@ -547,15 +565,7 @@ img {
 }
 
 .tab-btn::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--color-accent);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  content: none;
 }
 
 .tab-btn:hover {
@@ -565,10 +575,9 @@ img {
 .tab-btn.active {
   color: var(--color-text);
   font-weight: 500;
-}
-
-.tab-btn.active::after {
-  transform: scaleX(1);
+  background: #fff;
+  border-color: #ccd7ea;
+  box-shadow: 0 -1px 0 #fff, 0 2px 8px rgba(18, 65, 145, 0.08);
 }
 
 .tab-icon {
@@ -634,7 +643,11 @@ img {
 
 /* MLS colour variant */
 .tabs--mls .tab-btn::after {
-  background: #b72037;
+  background: none;
+}
+
+.tabs--mls .tab-btn.active {
+  box-shadow: 0 -1px 0 #fff, 0 2px 8px rgba(183, 32, 55, 0.14);
 }
 
 .tab-panel {
@@ -2925,6 +2938,16 @@ a.pub-item-title:hover {
 }
 
 @media (max-width: 640px) {
+  .hero-top-logos {
+    top: clamp(78px, 11vh, 110px);
+    left: 20px;
+  }
+
+  .hero-bottom-left-logo {
+    left: 20px;
+    bottom: 16px;
+  }
+
   .datasets-grid,
   .theme-projects,
   .methods-projects {

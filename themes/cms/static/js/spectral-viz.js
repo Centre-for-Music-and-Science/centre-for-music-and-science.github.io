@@ -59,8 +59,33 @@
   var postEndedResetTimeout = null;
   var cameraBlend = 0;
   var CAMERA_BLEND_SPEED = 3.0;
+  var spectralHero = document.getElementById('spectral-hero');
+
+  function setHeroStaticFallback() {
+    if (spectralHero) {
+      spectralHero.classList.add('spectral-fallback');
+    }
+  }
+
+  function canUseWebGL() {
+    if (!window.THREE) return false;
+    try {
+      var testCanvas = document.createElement('canvas');
+      var gl = testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl');
+      return !!gl;
+    } catch (e) {
+      return false;
+    }
+  }
 
   function init() {
+    if (!canUseWebGL()) {
+      setHeroStaticFallback();
+      bindHeroInfoPanel();
+      initAudioPlayer();
+      return;
+    }
+
     clock = new THREE.Clock();
 
     scene = new THREE.Scene();
@@ -79,9 +104,21 @@
     camera.position.set(0, 6, 8);
     camera.lookAt(0, 0.5, -2);
 
-    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: false,
+        powerPreference: 'high-performance',
+        alpha: false
+      });
+    } catch (e) {
+      setHeroStaticFallback();
+      bindHeroInfoPanel();
+      initAudioPlayer();
+      return;
+    }
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
 
     scene.add(new THREE.AmbientLight(0x334466, 0.6));
     var dirLight = new THREE.DirectionalLight(0xaaccff, 0.8);
