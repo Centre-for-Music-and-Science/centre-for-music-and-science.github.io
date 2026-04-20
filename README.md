@@ -191,3 +191,46 @@ hugo --gc --minify --cleanDestinationDir
 ```
 
 Output goes to `public/`. Deployment to GitHub Pages happens automatically on push to `main` via GitHub Actions.
+
+## Pull request preview build
+
+Every pull request to `main` runs the same Hugo production build in GitHub Actions and uploads the generated `public/` directory as an artifact named `pr-preview-site-<PR number>`.
+
+### Option 1 — Artifact preview from GitHub Actions (current CI flow)
+
+To preview the built result before merge:
+
+1. Open the pull request's latest **Deploy Hugo site to GitHub Pages** workflow run.
+2. Download the `pr-preview-site-<PR number>` artifact.
+3. Extract it and open `index.html` in a browser.
+
+Best for: checking exactly what CI produced.
+
+### Option 2 — Preview on your phone over local network
+
+If you want to test on your phone quickly while editing:
+
+1. Run `hugo server -D --bind 0.0.0.0 --baseURL http://<your-computer-ip>:1313`.
+2. Ensure phone and computer are on the same Wi-Fi network.
+3. Open `http://<your-computer-ip>:1313` on your phone browser.
+
+Best for: fast visual checks on mobile while iterating locally.
+
+### Option 3 — Keep artifact build, add hosted PR previews later
+
+If the team wants one-click phone previews from any PR in future, you can add an external preview host (for example Netlify/Vercel/Cloudflare Pages) that posts a public URL per PR.
+
+Best for: easiest reviewer experience, but requires extra service setup.
+
+### Option 4 — GitHub Pages subpath previews (possible, but with caveats)
+
+Yes — you can publish branch/PR previews under paths like `/previews/pr-123/` on GitHub Pages by deploying preview builds into subfolders on a dedicated Pages branch and setting Hugo `--baseURL` to that subpath.
+
+Important tradeoffs:
+
+1. GitHub Pages exposes one published site per repo, so preview content and production content must be managed together on the Pages branch.
+2. You need cleanup logic for closed PRs to remove stale `/previews/...` folders.
+3. Concurrent PR deploys can conflict unless the workflow serializes writes and preserves existing preview folders.
+4. The current artifact-based preview is simpler and avoids touching the live Pages deployment path.
+
+Best for: teams that want GitHub-only hosted preview URLs and are comfortable maintaining extra deployment logic.
