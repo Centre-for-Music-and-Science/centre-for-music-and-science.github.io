@@ -2,6 +2,8 @@
 
 The website for the [Centre for Music and Science](https://centre-for-music-and-science.github.io) at the University of Cambridge, built with [Hugo](https://gohugo.io/).
 
+For now, the old website is still visible at https://old-cms.mus.cam.ac.uk/, just in case people need to retrieve old content.
+
 ## Prerequisites
 
 Install Hugo **extended** edition (v0.157.0 or later):
