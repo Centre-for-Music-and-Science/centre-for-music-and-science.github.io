@@ -9,5 +9,6 @@ projects:
   - "pop"
   - "jazz"
   - "organ"
-  - "interaction"
+  - "interaction-music-in-the-wild"
+  - "interaction-music-and-law"
 ---

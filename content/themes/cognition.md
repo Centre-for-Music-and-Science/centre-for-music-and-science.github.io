@@ -10,4 +10,5 @@ projects:
   - "expectation"
   - "consonance"
   - "score-reading"
+  - "interaction-neural-synchrony"
 ---

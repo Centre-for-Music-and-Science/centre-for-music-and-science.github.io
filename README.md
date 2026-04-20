@@ -160,8 +160,8 @@ Create a file in `content/projects/` and add its slug to the relevant theme file
 title: "Project Title"
 people:
   - "person-slug"
-publications:
-  - "publication-slug"
+projects:
+  - "optional-child-project-slug"
 media:
   - type: "image"
     src: "/images/projects/filename.png"
@@ -172,6 +172,8 @@ Project body text.
 ```
 
 After creating the project file, add its slug to the `projects` list in either `content/themes/cognition.md` or `content/themes/culture.md` so it appears under the right theme.
+
+Do not add `publications` front matter to project files. Publication ownership is defined in `content/publications/*.md` using each publication's `projects` list.
 
 ## Python tooling and tests
 
