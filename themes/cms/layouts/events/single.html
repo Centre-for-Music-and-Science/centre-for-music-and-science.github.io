@@ -1,0 +1,78 @@
+{{ define "main" }}
+<article class="event-detail-page">
+  <div class="container">
+    <div class="detail-back-layout">
+      <aside class="detail-back-rail">
+        {{ partial "back-link.html" (dict "href" ("events/" | relURL)) }}
+      </aside>
+      <div class="event-detail-main">
+        {{ if .Params.image }}
+        <div class="event-detail-image">
+          <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+        </div>
+        {{ end }}
+        <div class="event-detail-header">
+          <div class="event-detail-kicker">
+            <time class="event-detail-date">{{ partial "event-date-label.html" . }}</time>
+            {{ with .Params.event_type }}<span class="event-detail-type">{{ . }}</span>{{ end }}
+          </div>
+          <h1>{{ .Title }}</h1>
+          {{ with .Params.speakers }}
+          <div class="event-speakers-list">
+            {{ range . }}
+            {{ $speaker := . }}
+            <div class="event-speaker-card">
+              {{ with .image }}
+              <div class="event-speaker-card-image">
+                <img src="{{ (strings.TrimPrefix "/" .) | relURL }}" alt="{{ $speaker.name }}">
+              </div>
+              {{ end }}
+              <div class="event-speaker-card-body">
+                <span class="event-speaker-name">{{ .name }}</span>
+                {{ with .affiliations }}
+                <span class="event-speaker-affiliations">{{ delimit . "; " }}</span>
+                {{ end }}
+              </div>
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+          <dl class="event-detail-meta">
+            {{ with .Params.location }}
+            <div>
+              <dt>
+                <span>Location</span>
+                {{ with $.Params.livestream_url }}
+                <a href="{{ . }}" class="event-detail-livestream-link" target="_blank" rel="noopener">Join livestream &rarr;</a>
+                {{ end }}
+              </dt>
+              <dd>
+                <span>{{ . }}</span>
+              </dd>
+            </div>
+            {{ end }}
+          </dl>
+        </div>
+        {{ with .Params.abstract }}
+        <section class="event-detail-section">
+          <h2>Abstract</h2>
+          <div class="event-detail-content">{{ . | markdownify }}</div>
+        </section>
+        {{ end }}
+        {{ with .Params.biography }}
+        <section class="event-detail-section">
+          <h2>Biography</h2>
+          <div class="event-detail-content">{{ . | markdownify }}</div>
+        </section>
+        {{ end }}
+        {{ with .Content }}
+        <div class="event-detail-content">
+          {{ . }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</article>
+{{ end }}
+

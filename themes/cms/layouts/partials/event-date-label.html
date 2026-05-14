@@ -1,0 +1,29 @@
+{{- $page := . -}}
+{{- with $page.Params.date_label -}}
+  {{- . -}}
+{{- else -}}
+  {{- $dateFormat := "Mon 2 January 2006" -}}
+  {{- $dateTimeFormat := "Mon 2 January 2006, 3:04pm" -}}
+  {{- $timeFormat := "3:04pm" -}}
+  {{- $start := $page.Date -}}
+  {{- $startHasTime := ne ($start.Format "15:04") "00:00" -}}
+  {{- $startLabel := cond $startHasTime ($start.Format $dateTimeFormat) ($start.Format $dateFormat) -}}
+  {{- with $page.Params.end_date -}}
+    {{- $end := time.AsTime . -}}
+    {{- $endHasTime := ne ($end.Format "15:04") "00:00" -}}
+    {{- $sameDay := eq ($start.Format "2006-01-02") ($end.Format "2006-01-02") -}}
+    {{- if $sameDay -}}
+      {{- if $endHasTime -}}
+        {{- printf "%s - %s" $startLabel ($end.Format $timeFormat) -}}
+      {{- else -}}
+        {{- $startLabel -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $endLabel := cond $endHasTime ($end.Format $dateTimeFormat) ($end.Format $dateFormat) -}}
+      {{- printf "%s - %s" $startLabel $endLabel -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $startLabel -}}
+  {{- end -}}
+{{- end -}}
+

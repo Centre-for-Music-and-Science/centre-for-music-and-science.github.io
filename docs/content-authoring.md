@@ -11,8 +11,9 @@ Use Hugo archetypes:
 - `hugo new groups/<slug>.md`
 - `hugo new publications/<slug>.md`
 - `hugo new datasets/<slug>.md`
+- `hugo new events/<slug>.md`
 
-Each archetype includes a `stub_only` field comment.
+Research record archetypes include a `stub_only` field comment.
 
 - `stub_only: false` visible and linkable
 - `stub_only: true` visible but non-clickable
@@ -91,6 +92,34 @@ Link publications to datasets via publication front matter:
 - `datasets: [dataset-slug, ...]`
 
 Dataset pages automatically gather related publications from this field.
+
+## Events workflow
+
+Create upcoming event records in `content/events/`. The homepage shows the next three current/future events, ordered by event date.
+
+Recommended front matter:
+
+```yaml
+---
+title: "CMS Seminar Title"
+date: 2026-03-25T17:00:00
+end_date: 2026-03-25T18:30:00
+date_label: "25 March 2026, 5pm"
+location: "Centre for Music and Science"
+speakers:
+  - name: "Presenter Name"
+    image: "/images/events/presenter-name.jpg"
+    affiliations:
+      - "Presenter Affiliation"
+event_type: "CMS seminar"
+image: ""
+livestream_url: ""
+abstract: ""
+biography: ""
+---
+```
+
+Use `date` for sorting. Use `date_label` when the public display text needs to differ from the default formatted date or date range. Add one or more `speakers`, each with one or more `affiliations` and an optional speaker `image`. Event-level `abstract`, `biography`, `image`, and `livestream_url` are optional and render only on the event detail page.
 
 ## Troubleshooting checklist
 

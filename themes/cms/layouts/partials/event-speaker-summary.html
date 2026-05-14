@@ -1,0 +1,11 @@
+{{- $speakers := .Params.speakers -}}
+{{- if $speakers -}}
+  {{- $names := slice -}}
+  {{- range $speakers -}}
+    {{- with .name -}}
+      {{- $names = $names | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- delimit $names "; " -}}
+{{- end -}}
+

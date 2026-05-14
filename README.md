@@ -2,7 +2,7 @@
 
 The website for the [Centre for Music and Science](https://centre-for-music-and-science.github.io) at the University of Cambridge, built with [Hugo](https://gohugo.io/).
 
-For now, the old website is still visible at https://old-cms.mus.cam.ac.uk/, just in case people need to retrieve old content.
+For now, the old website is still visible at [old-cms.mus.cam.ac.uk](https://old-cms.mus.cam.ac.uk/), just in case people need to retrieve old content.
 
 ## Prerequisites
 
@@ -60,6 +60,7 @@ Useful flags:
 │   ├── groups/          # Research groups
 │   ├── methods/         # Methods pages
 │   ├── news/            # News posts
+│   ├── events/          # Upcoming events
 │   ├── datasets/        # Dataset pages
 │   ├── facilities/      # Facilities info
 │   └── applicants/      # Applicant info (PhD, MPhil, etc.)
@@ -106,6 +107,32 @@ python scripts/fetch_publication_abstracts.py
 ```
 
 These scripts populate generated citation fields (`citation_apa`, `citation_mla`, etc.), `authors`, `journal`, `doi`, and (where available) `abstract`.
+
+### New event
+
+Create a file in `content/events/`:
+
+```yaml
+---
+title: "CMS Seminar Title"
+date: 2026-03-25T17:00:00
+end_date: 2026-03-25T18:30:00
+date_label: "25 March 2026, 5pm"
+location: "Centre for Music and Science"
+speakers:
+  - name: "Presenter Name"
+    image: "/images/events/presenter-name.jpg"
+    affiliations:
+      - "Presenter Affiliation"
+event_type: "CMS seminar"
+image: ""
+livestream_url: ""
+abstract: ""
+biography: ""
+---
+```
+
+The homepage shows the next three current/future events. Use `date` for sorting and `date_label` when you want exact public-facing date text. Add one or more `speakers`, each with one or more `affiliations` and an optional speaker `image`. Event-level `image`, `livestream_url`, `abstract`, and `biography` are optional and render on the event detail page.
 
 ### New person
 

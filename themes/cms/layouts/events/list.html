@@ -1,0 +1,48 @@
+{{ define "main" }}
+{{ $today := now.Format "2006-01-02" }}
+{{ $upcoming := slice }}
+{{ $past := slice }}
+{{ range sort .Pages "Date" "asc" }}
+  {{ if ge (.Date.Format "2006-01-02") $today }}
+    {{ $upcoming = $upcoming | append . }}
+  {{ else }}
+    {{ $past = $past | append . }}
+  {{ end }}
+{{ end }}
+<section class="upcoming-events-list-page">
+  <div class="container">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="events-timeline">
+      {{ range $upcoming }}
+      {{ $event := . }}
+      <a href="{{ .RelPermalink }}" class="event-list-item">
+        <time class="event-list-date">{{ partial "event-date-label.html" . }}</time>
+        <div class="event-list-body">
+          <h2 class="event-list-title">{{ .Title }}</h2>
+          <div class="event-list-meta">
+            {{ with .Params.speakers }}<span>{{ partial "event-speaker-summary.html" $event }}</span>{{ end }}
+            {{ with .Params.event_type }}<span>{{ . }}</span>{{ end }}
+            {{ with .Params.location }}<span>{{ . }}</span>{{ end }}
+          </div>
+        </div>
+      </a>
+      {{ end }}
+      {{ range sort $past "Date" "desc" }}
+      {{ $event := . }}
+      <a href="{{ .RelPermalink }}" class="event-list-item event-list-item-past">
+        <time class="event-list-date">{{ partial "event-date-label.html" . }}</time>
+        <div class="event-list-body">
+          <h2 class="event-list-title">{{ .Title }}</h2>
+          <div class="event-list-meta">
+            {{ with .Params.speakers }}<span>{{ partial "event-speaker-summary.html" $event }}</span>{{ end }}
+            {{ with .Params.event_type }}<span>{{ . }}</span>{{ end }}
+            {{ with .Params.location }}<span>{{ . }}</span>{{ end }}
+          </div>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
