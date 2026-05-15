@@ -65,6 +65,12 @@
           <div class="event-detail-content">{{ . | markdownify }}</div>
         </section>
         {{ end }}
+        {{ with .Params.further_information }}
+        <section class="event-detail-section">
+          <h2>Further information</h2>
+          <div class="event-detail-content">{{ . | markdownify }}</div>
+        </section>
+        {{ end }}
         {{ with .Content }}
         <div class="event-detail-content">
           {{ . }}

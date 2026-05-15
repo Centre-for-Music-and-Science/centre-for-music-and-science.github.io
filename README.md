@@ -129,10 +129,11 @@ image: ""
 livestream_url: ""
 abstract: ""
 biography: ""
+further_information: ""
 ---
 ```
 
-The homepage shows the next three current/future events. Use `date` for sorting and `date_label` when you want exact public-facing date text. Add one or more `speakers`, each with one or more `affiliations` and an optional speaker `image`. Event-level `image`, `livestream_url`, `abstract`, and `biography` are optional and render on the event detail page.
+The homepage shows the next three current/future events. Use `date` for sorting and `date_label` when you want exact public-facing date text. Add one or more `speakers`, each with one or more `affiliations` and an optional speaker `image`. Use `event_type` for labels such as `CMS seminar` or `Colloquium`. Event-level `image`, `livestream_url`, `abstract`, `biography`, and `further_information` are optional and render on the event detail page.
 
 ### New person
 

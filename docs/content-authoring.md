@@ -116,10 +116,11 @@ image: ""
 livestream_url: ""
 abstract: ""
 biography: ""
+further_information: ""
 ---
 ```
 
-Use `date` for sorting. Use `date_label` when the public display text needs to differ from the default formatted date or date range. Add one or more `speakers`, each with one or more `affiliations` and an optional speaker `image`. Event-level `abstract`, `biography`, `image`, and `livestream_url` are optional and render only on the event detail page.
+Use `date` for sorting. Use `date_label` when the public display text needs to differ from the default formatted date or date range. Add one or more `speakers`, each with one or more `affiliations` and an optional speaker `image`. Use `event_type` for labels such as `CMS seminar` or `Colloquium`. Event-level `abstract`, `biography`, `further_information`, `image`, and `livestream_url` are optional and render only on the event detail page.
 
 ## Troubleshooting checklist
 
