@@ -1,5 +1,5 @@
 ---
-title: "Transparency, Diversity, and Equality in Music Psychology: A Meta-Science Perspective"
+title: "Transparency, diversity, and equality in music psychology: A meta-science perspective"
 date: 2026-05-22T17:00:00
 draft: false
 location: "Lecture Room 2, Faculty of Music"

@@ -1471,10 +1471,16 @@ img {
 .event-list-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 16px;
+  gap: 4px 0;
   font-size: 0.9rem;
   color: var(--color-text-light);
   line-height: 1.5;
+}
+
+.event-list-meta span + span::before {
+  content: "\00b7";
+  margin: 0 10px;
+  color: var(--color-text-muted);
 }
 
 .event-list-item-past {

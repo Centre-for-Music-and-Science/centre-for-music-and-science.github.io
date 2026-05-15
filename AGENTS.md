@@ -54,6 +54,11 @@ JSON file, and a JS track definition.
 - Do not use LaTeX accent escapes like `{\"u}`, `{\c{C}}`, or `{\'e}` in
   newly added entries.
 
+## Content title casing
+
+- Use sentence case for content titles and event titles.
+- Preserve proper nouns, acronyms, and established source titles as needed.
+
 ## Image format preference
 
 - Prefer `.jpg` for new raster images referenced in content pages.

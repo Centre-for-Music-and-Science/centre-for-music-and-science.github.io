@@ -3,7 +3,6 @@ title: "{{ replace .File.ContentBaseName "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 end_date:
-date_label: ""
 location: ""
 speakers:
   - name: ""

@@ -117,7 +117,6 @@ Create a file in `content/events/`:
 title: "CMS Seminar Title"
 date: 2026-03-25T17:00:00
 end_date: 2026-03-25T18:30:00
-date_label: "25 March 2026, 5pm"
 location: "Centre for Music and Science"
 speakers:
   - name: "Presenter Name"
@@ -133,7 +132,7 @@ further_information: ""
 ---
 ```
 
-The homepage shows the next three current/future events. Use `date` for sorting and `date_label` when you want exact public-facing date text. Add one or more `speakers`, each with one or more `affiliations` and an optional speaker `image`. Use `event_type` for labels such as `CMS seminar` or `Colloquium`. Event-level `image`, `livestream_url`, `abstract`, `biography`, and `further_information` are optional and render on the event detail page.
+The homepage shows the next three current/future events. Use `date` for sorting and display, and `end_date` when an event has a known end time. Add one or more `speakers`, each with one or more `affiliations` and an optional speaker `image`. Use `event_type` for labels such as `CMS seminar` or `Colloquium`. Event-level `image`, `livestream_url`, `abstract`, `biography`, and `further_information` are optional and render on the event detail page.
 
 ### New person
 
