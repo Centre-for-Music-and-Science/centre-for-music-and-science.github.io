@@ -228,20 +228,20 @@ img {
   z-index: 0;
 }
 
-.hero-top-logos {
+.hero-lab-logo-watermark {
   position: absolute;
-  top: clamp(84px, 10vh, 128px);
-  left: clamp(24px, 5vw, 64px);
   z-index: 21;
+  inset: 0;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
 }
 
-.hero-cms-logo {
-  height: clamp(100px, 9vw, 126px);
-  width: auto;
+.hero-lab-logo-watermark-img {
+  width: min(58vw, 520px);
+  max-width: 88%;
+  height: auto;
   opacity: 0.82;
   filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.4));
 }
@@ -3193,9 +3193,8 @@ a.pub-item-title:hover {
 }
 
 @media (max-width: 640px) {
-  .hero-top-logos {
-    top: clamp(78px, 11vh, 110px);
-    left: 20px;
+  .hero-lab-logo-watermark-img {
+    width: min(76vw, 360px);
   }
 
   .hero-bottom-left-logo {
