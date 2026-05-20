@@ -8,6 +8,7 @@ positions:
 email: "ivan.jimenez.rodriguez@uniarts.fi"
 image: "/images/people/ivan-jimenez.jpg"
 weight: 10
+group: "mcc"
 website: ""
 ---
 
