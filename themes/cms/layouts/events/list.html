@@ -27,6 +27,9 @@
         </div>
       </a>
       {{ end }}
+      {{ if $past }}
+      <h2 class="section-title events-past-title">Past events</h2>
+      {{ end }}
       {{ range sort $past "Date" "desc" }}
       {{ $event := . }}
       <a href="{{ .RelPermalink }}" class="event-list-item event-list-item-past">

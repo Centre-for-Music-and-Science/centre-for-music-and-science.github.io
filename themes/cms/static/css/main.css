@@ -1487,6 +1487,14 @@ img {
   opacity: 0.72;
 }
 
+.upcoming-events-list-page .events-past-title {
+  margin-top: 80px;
+}
+
+.upcoming-events-list-page .events-past-title + .event-list-item {
+  border-top: 1px solid var(--color-border);
+}
+
 /* ===== Event Detail Page ===== */
 .event-detail-page {
   padding: 100px 0 32px;
