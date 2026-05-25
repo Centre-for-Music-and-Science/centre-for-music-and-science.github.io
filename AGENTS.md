@@ -1,5 +1,12 @@
 # Agent notes
 
+## Posting CMS seminars to Talks.cam
+
+Use `docs/talks-cam-posting.md` when posting CMS seminar events from
+`content/events/` to Talks.cam. The expected workflow is manual browser
+authentication, agent-assisted form filling, and organiser review before
+pressing `Save`.
+
 ## Adding a new track to the hero banner spectrogram
 
 The hero banner on the homepage displays a 3D terrain visualisation driven by
