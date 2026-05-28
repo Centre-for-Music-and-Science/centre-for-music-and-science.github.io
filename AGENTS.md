@@ -1,11 +1,16 @@
 # Agent notes
 
-## Posting CMS seminars to Talks.cam
+## Posting CMS seminars to external listings
 
-Use `docs/talks-cam-posting.md` when posting CMS seminar events from
-`content/events/` to Talks.cam. The expected workflow is manual browser
-authentication, agent-assisted form filling, and organiser review before
-pressing `Save`.
+Use these procedures when posting CMS seminar events from `content/events/` to
+external listing services:
+
+- `docs/talks-cam-posting.md` for Talks.cam.
+- `docs/faculty-music-event-posting.md` for the Faculty of Music website.
+
+The expected workflow is manual browser authentication, agent-assisted form
+filling, and organiser review before pressing `Save`, `Publish`, or any
+equivalent submit button.
 
 ## Adding a new track to the hero banner spectrogram
 
