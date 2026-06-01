@@ -12,6 +12,12 @@ The expected workflow is manual browser authentication, agent-assisted form
 filling, and organiser review before pressing `Save`, `Publish`, or any
 equivalent submit button.
 
+When creating or updating CMS seminar events, include the standard seminar Zoom
+link by default unless the organiser gives a different instruction. Use the
+`livestream_url` from the most recent CMS seminar as the source of truth; the
+current standard link is
+`https://zoom.us/j/99433440421?pwd=ZWxCQXFZclRtbjNXa0s2K1Q2REVPZz09`.
+
 ## Adding a new track to the hero banner spectrogram
 
 The hero banner on the homepage displays a 3D terrain visualisation driven by
