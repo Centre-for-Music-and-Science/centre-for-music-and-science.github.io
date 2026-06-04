@@ -12,6 +12,8 @@ speakers:
 event_type: "CHIA seminar"
 image: ""
 livestream_url: ""
+note: |
+  Unfortunately this talk is only open to CHIA and Music Faculty members.
 abstract: |
   Digital audio workstations rely on explicit control over musical parameters: waveforms, MIDI notes, track timelines and effects. Generative AI introduces a complementary top-down approach, bridging the gap between high-level creative intuition and granular audio manipulation. This presentation explores AI-assisted music generation and interaction through the lens of user experience and interactive workflows. Focusing on the Lyria 3 ecosystem's capabilities, we will deep-dive into the workflows available in Flow Music and show how modern generative systems can act as flexible, intuitive tools for creators. Through live demonstrations of full-song construction, we will highlight how conversational producer agents support user agency, and showcase interactive "spaces" that allow creators to develop custom tools and experiment rapidly with complex musical concepts.
 biography: |

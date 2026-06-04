@@ -53,6 +53,12 @@
             {{ end }}
           </dl>
         </div>
+        {{ with .Params.note }}
+        <section class="event-detail-section">
+          <h2>Note</h2>
+          <div class="event-detail-content">{{ . | markdownify }}</div>
+        </section>
+        {{ end }}
         {{ with .Params.abstract }}
         <section class="event-detail-section">
           <h2>Abstract</h2>
