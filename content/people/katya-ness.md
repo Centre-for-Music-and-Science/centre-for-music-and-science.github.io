@@ -8,7 +8,7 @@ positions:
 email: "kn428@cam.ac.uk"
 image: "/images/people/katya-ness.jpg"
 weight: 10
-group: "mls"
+group: "mcs"
 website: ""
 ---
 

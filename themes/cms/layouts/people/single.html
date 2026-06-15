@@ -33,7 +33,7 @@
           {{ with $displaySubtitle }}<p class="person-page-role">{{ . }}</p>{{ end }}
           {{ end }}
           {{ if eq .Params.group "mcc" }}<a href="{{ "groups/mcc/" | relURL }}" class="person-group-tag person-group-tag--mcc">Music Cognition &amp; Culture</a>
-          {{ else if eq .Params.group "mls" }}<a href="{{ "groups/mls/" | relURL }}" class="person-group-tag person-group-tag--mls">Music, Language &amp; Society</a>{{ end }}
+          {{ else if eq .Params.group "mcs" }}<a href="{{ "groups/mcs/" | relURL }}" class="person-group-tag person-group-tag--mcs">Music, Culture &amp; Sociality</a>{{ end }}
           {{ if .Params.email }}
           <p class="person-page-email"><a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a></p>
           {{ end }}

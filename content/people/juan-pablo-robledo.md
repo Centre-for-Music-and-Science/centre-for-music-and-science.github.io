@@ -7,7 +7,7 @@ positions:
 email: ""
 image: "/images/people/juan-pablo-robledo.png"
 weight: 43
-group: "mls"
+group: "mcs"
 website: "https://interpsy.univ-lorraine.fr/juanpablo-robledodelcanto/"
 ---
 

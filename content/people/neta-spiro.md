@@ -7,7 +7,7 @@ positions:
 email: ""
 image: "/images/people/neta-spiro.jpg"
 weight: 41
-group: "mls"
+group: "mcs"
 website: "https://www.rcm.ac.uk/research/people/details/?id=04540"
 ---
 

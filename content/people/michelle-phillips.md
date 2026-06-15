@@ -7,7 +7,7 @@ positions:
 email: ""
 image: "/images/people/michelle-philips.jpeg"
 weight: 42
-group: "mls"
+group: "mcs"
 website: "https://www.rncm.ac.uk/people/michelle-phillips/"
 ---
 

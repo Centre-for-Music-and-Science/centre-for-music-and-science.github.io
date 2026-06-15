@@ -9,7 +9,7 @@ positions:
 email: "ic108@cam.ac.uk"
 image: "/images/people/ian-cross.jpg"
 weight: 2
-group: "mls"
+group: "mcs"
 website: "http://www.mus.cam.ac.uk/directory/ian-cross"
 ---
 

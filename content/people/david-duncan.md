@@ -9,7 +9,7 @@ positions:
 email: "dtd25@cam.ac.uk"
 image: "/images/people/david-duncan.jpg"
 weight: 5
-group: "mls"
+group: "mcs"
 website: ""
 ---
 

@@ -159,7 +159,7 @@ positions:
 weight: 10               # controls sort order within category
 email: "abc1@cam.ac.uk"
 image: "/images/people/full-name.jpg"
-group: "mcc"             # optional: mcc | mls
+group: "mcc"             # optional: mcc | mcs
 website: "https://example.com"
 ---
 
@@ -168,7 +168,7 @@ Optional bio text here.
 
 Notes:
 
-- `group` is optional. If set, use `mcc` for Music Cognition & Culture or `mls` for Music, Language & Society.
+- `group` is optional. If set, use `mcc` for Music Cognition & Culture or `mcs` for the Music, Culture & Sociality (MCS) group.
 - Listing category/status and subtitle are derived from `positions`.
 - `positions[].title` is optional; when omitted, title defaults are derived from `kind`.
 - Current role is derived from `end_date` (empty/null = current role).

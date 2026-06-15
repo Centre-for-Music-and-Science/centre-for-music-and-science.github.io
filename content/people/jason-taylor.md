@@ -7,7 +7,7 @@ positions:
 email: ""
 image: "/images/people/jason-taylor.jpg"
 weight: 44
-group: "mls"
+group: "mcs"
 website: "https://research.manchester.ac.uk/en/persons/jason.taylor"
 ---
 

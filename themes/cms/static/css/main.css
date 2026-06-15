@@ -641,12 +641,12 @@ img {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-/* MLS colour variant */
-.tabs--mls .tab-btn::after {
+/* MCS colour variant */
+.tabs--mcs .tab-btn::after {
   background: none;
 }
 
-.tabs--mls .tab-btn.active {
+.tabs--mcs .tab-btn.active {
   box-shadow: 0 -1px 0 #fff, 0 2px 8px rgba(183, 32, 55, 0.14);
 }
 
@@ -701,7 +701,7 @@ img {
   color: #124191;
 }
 
-.theme-group-link--mls {
+.theme-group-link--mcs {
   color: #b72037;
 }
 
@@ -731,7 +731,7 @@ img {
   background: #124191;
 }
 
-.person-group-tag--mls {
+.person-group-tag--mcs {
   background: #b72037;
 }
 
