@@ -2,7 +2,7 @@
 title: "Bidirectional interactions between acoustic properties of sound and musical context in auditory perception"
 date: 2026-06-05T17:00:00
 draft: false
-location: "Centre for Music and Science"
+location: "Centre for Music and Science, Faculty of Music"
 speakers:
   - name: "Zofia Holubowska"
     image: "/images/events/zofia-holubowska.jpg"

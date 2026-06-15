@@ -3,7 +3,7 @@ title: "How humans categorize rhythm across the lifespan, species, cultures and 
 date: 2026-05-19T17:00:00
 # end_date: 2027-05-19T18:15:00
 draft: false
-location: "Centre for Music and Science"
+location: "Centre for Music and Science, Faculty of Music"
 speakers:
   - name: "Sylvie Nozaradan"
     image: "/images/events/sylvie-nozaradan.jpg"
