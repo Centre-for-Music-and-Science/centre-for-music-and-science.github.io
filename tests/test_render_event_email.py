@@ -146,6 +146,24 @@ class RenderEventEmailTests(unittest.TestCase):
         self.assertIn('id="email-body"', rendered)
         self.assertIn("copyBody('email-body', this)", rendered)
 
+    def test_render_event_email_uses_aptos_11pt_base_font(self) -> None:
+        rendered = render_event_email(
+            {
+                "title": "Example talk",
+                "date": "2026-06-16T11:00:00",
+                "speakers": [{"name": "Ron Friedman"}],
+                "event_type": "CMS seminar",
+                "abstract": "Abstract.",
+                "biography": "Biography.",
+            },
+            "https://centre-for-music-and-science.github.io/",
+        )
+
+        self.assertIn(
+            "font-family:Aptos, Calibri, Arial, sans-serif;font-size:11pt;",
+            rendered,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -118,7 +118,7 @@ def email_subject(event_type: str, speaker_name: str, title: str) -> str:
 
 
 def render_text_block(text: str) -> str:
-    """Render source text as escaped HTML paragraphs without rewriting words."""
+    """Render source text as escaped HTML paragraphs."""
     paragraphs = [
         paragraph.strip()
         for paragraph in text.strip().split("\n\n")
@@ -132,7 +132,10 @@ def render_text_block(text: str) -> str:
 
 def render_detail_row(label: str, value: str) -> str:
     """Render one escaped event detail row."""
-    return f"<p><strong>{html.escape(label)}:</strong> {html.escape(value)}</p>"
+    return (
+        f"<p><strong>{html.escape(label)}:</strong> "
+        f"{html.escape(value)}</p>"
+    )
 
 
 def render_location_row(location: str, livestream_url: str) -> str:
@@ -159,7 +162,10 @@ def copy_button(label: str, action: str) -> str:
         "border:1px solid #9aa7b2;border-radius:4px;"
         "background:#fff;cursor:pointer;"
     )
-    return f'<button type="button" style="{button_style}" {action}>{label}</button>'
+    return (
+        f'<button type="button" style="{button_style}" {action}>'
+        f"{label}</button>"
+    )
 
 
 def render_event_email(event: dict[str, Any], base_url: str) -> str:
@@ -202,7 +208,8 @@ def render_event_email(event: dict[str, Any], base_url: str) -> str:
     abstract = render_text_block(str(event.get("abstract") or ""))
     biography = render_text_block(str(event.get("biography") or ""))
     body_style = (
-        "font-family:Arial, Helvetica, sans-serif;line-height:1.5;"
+        "font-family:Aptos, Calibri, Arial, sans-serif;font-size:11pt;"
+        "line-height:1.5;"
         "color:#222;max-width:720px;"
     )
     intro = (
