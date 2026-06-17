@@ -19,13 +19,23 @@
         <time class="event-list-date">{{ partial "event-date-label.html" . }}</time>
         <div class="event-list-body">
           <h2 class="event-list-title">{{ .Title }}</h2>
+          {{ with .Params.speakers }}
+          <div class="event-list-speaker-row">
+            {{ partial "event-speaker-images.html" $event }}
+            <span>{{ partial "event-speaker-summary.html" $event }}</span>
+          </div>
+          {{ end }}
           <div class="event-list-meta">
-            {{ with .Params.speakers }}<span>{{ partial "event-speaker-summary.html" $event }}</span>{{ end }}
             {{ with .Params.event_type }}<span>{{ . }}</span>{{ end }}
             {{ with .Params.location }}<span>{{ . }}</span>{{ end }}
           </div>
         </div>
       </a>
+      {{ end }}
+      {{ if not $upcoming }}
+      <div class="upcoming-events-empty">
+        <p>No upcoming events are scheduled at the moment.</p>
+      </div>
       {{ end }}
       {{ if $past }}
       <h2 class="section-title events-past-title">Past events</h2>
@@ -36,8 +46,13 @@
         <time class="event-list-date">{{ partial "event-date-label.html" . }}</time>
         <div class="event-list-body">
           <h2 class="event-list-title">{{ .Title }}</h2>
+          {{ with .Params.speakers }}
+          <div class="event-list-speaker-row">
+            {{ partial "event-speaker-images.html" $event }}
+            <span>{{ partial "event-speaker-summary.html" $event }}</span>
+          </div>
+          {{ end }}
           <div class="event-list-meta">
-            {{ with .Params.speakers }}<span>{{ partial "event-speaker-summary.html" $event }}</span>{{ end }}
             {{ with .Params.event_type }}<span>{{ . }}</span>{{ end }}
             {{ with .Params.location }}<span>{{ . }}</span>{{ end }}
           </div>

@@ -1,0 +1,12 @@
+{{- with .Params.speakers -}}
+  {{- $speakersWithImages := where . "image" "!=" nil -}}
+  {{- if gt (len $speakersWithImages) 0 -}}
+  <span class="event-speaker-images" aria-hidden="true">
+    {{- range $speakersWithImages -}}
+    <span class="event-speaker-image">
+      <img src="{{ (strings.TrimPrefix "/" .image) | relURL }}" alt="">
+    </span>
+    {{- end -}}
+  </span>
+  {{- end -}}
+{{- end -}}

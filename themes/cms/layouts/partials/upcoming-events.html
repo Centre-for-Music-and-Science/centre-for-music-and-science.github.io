@@ -6,19 +6,13 @@
   {{- end -}}
 {{- end -}}
 {{- $upcoming = first 3 $upcoming -}}
-{{- if gt (len $upcoming) 0 }}
 <section class="latest-upcoming-events" id="upcoming-events">
   <div class="container">
     <h2 class="section-title">Upcoming events</h2>
+    {{- if gt (len $upcoming) 0 }}
     <div class="card-row">
       {{ range $upcoming }}
       {{ $event := . }}
-      {{ $speakerImage := "" }}
-      {{ with .Params.speakers }}
-        {{ with index . 0 }}
-          {{ with .image }}{{ $speakerImage = . }}{{ end }}
-        {{ end }}
-      {{ end }}
       <a href="{{ .RelPermalink }}" class="upcoming-event-card">
         <div class="upcoming-event-body">
           <div class="upcoming-event-card-header">
@@ -27,11 +21,7 @@
           <h3 class="upcoming-event-title">{{ .Title }}</h3>
           {{ with .Params.speakers }}
           <div class="upcoming-event-speaker-row">
-            {{ with $speakerImage }}
-            <span class="upcoming-event-speaker-image">
-              <img src="{{ (strings.TrimPrefix "/" .) | relURL }}" alt="">
-            </span>
-            {{ end }}
+            {{ partial "event-speaker-images.html" $event }}
             <p class="upcoming-event-speakers">{{ partial "event-speaker-summary.html" $event }}</p>
           </div>
           {{ end }}
@@ -39,10 +29,14 @@
       </a>
       {{ end }}
     </div>
+    {{- else }}
+    <div class="upcoming-events-empty">
+      <p>No upcoming events are scheduled at the moment.</p>
+    </div>
+    {{- end }}
     <div class="section-view-all">
       <a href="{{ "events/" | relURL }}" class="btn-view-all">View all events &rarr;</a>
     </div>
   </div>
 </section>
-{{- end }}
 
