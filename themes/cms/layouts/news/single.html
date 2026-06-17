@@ -19,6 +19,9 @@
         <div class="event-detail-header">
           <time class="event-detail-date">{{ .Date.Format "2 January 2006" }}</time>
           <h1>{{ .Title }}</h1>
+          {{ with .Params.authors }}
+          <p class="news-detail-authors">By {{ delimit . ", " ", and " }}</p>
+          {{ end }}
         </div>
         <div class="event-detail-content">
           {{ .Content }}

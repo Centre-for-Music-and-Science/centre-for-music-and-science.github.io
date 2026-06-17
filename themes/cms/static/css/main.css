@@ -1612,6 +1612,14 @@ img {
   letter-spacing: -0.02em;
 }
 
+.news-detail-authors {
+  margin-top: 10px;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
 .event-detail-meta {
   display: grid;
   grid-template-columns: 1fr;
