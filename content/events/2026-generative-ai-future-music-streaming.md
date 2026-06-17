@@ -19,7 +19,7 @@ speakers:
       - "Deezer; Centrale Nantes"
 event_type: "Public talk"
 image: ""
-livestream_url: ""
+livestream_url: "https://cam-ac-uk.zoom.us/j/82101982541?pwd=O91QJsFJXpJubeafEvqPp6xNou1rbV.1"
 note: |
   Refreshments will be available from 3.30pm. Please note that this event takes place in the Club Room, Churchill College, not the CMS Computer Room.
 abstract: |
