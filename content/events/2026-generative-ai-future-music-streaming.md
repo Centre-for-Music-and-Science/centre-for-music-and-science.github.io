@@ -1,7 +1,7 @@
 ---
 title: "Generative AI and the future of music streaming"
-date: 2026-06-23T16:00:00
-end_date: 2026-06-23T17:30:00
+date: 2026-06-24T16:00:00
+end_date: 2026-06-24T17:30:00
 draft: false
 location: "Club Room, Churchill College"
 speakers:
