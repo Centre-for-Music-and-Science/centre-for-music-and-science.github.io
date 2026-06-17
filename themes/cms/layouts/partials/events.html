@@ -2,6 +2,7 @@
   <div class="container">
     <h2 class="section-title">News</h2>
     {{ $events := first 3 (sort (where .Site.RegularPages "Section" "news") "Date" "desc") }}
+    {{ $fallbackImage := "images/logos/cms_logo_black_blue.svg" }}
     <div class="events-grid">
       {{ with index $events 0 }}
       <a href="{{ if .Params.externalUrl }}{{ .Params.externalUrl }}{{ else }}{{ .RelPermalink }}{{ end }}" class="event-card event-card-featured">
@@ -10,10 +11,8 @@
           <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
         </div>
         {{ else }}
-        <div class="card-image card-image-placeholder">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-          </svg>
+        <div class="card-image card-image-fallback">
+          <img src="{{ $fallbackImage | relURL }}" alt="">
         </div>
         {{ end }}
         <div class="card-body">
@@ -31,10 +30,8 @@
             <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
           </div>
           {{ else }}
-          <div class="card-image card-image-placeholder">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
+          <div class="card-image card-image-fallback">
+            <img src="{{ $fallbackImage | relURL }}" alt="">
           </div>
           {{ end }}
           <div class="card-body">

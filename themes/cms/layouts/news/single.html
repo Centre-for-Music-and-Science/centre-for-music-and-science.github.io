@@ -6,9 +6,14 @@
         {{ partial "back-link.html" (dict "href" ("news/" | relURL)) }}
       </aside>
       <div>
+        {{ $fallbackImage := "images/logos/cms_logo_black_blue.svg" }}
         {{ if .Params.image }}
         <div class="event-detail-image">
           <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
+        </div>
+        {{ else }}
+        <div class="event-detail-image">
+          <img src="{{ $fallbackImage | relURL }}" alt="">
         </div>
         {{ end }}
         <div class="event-detail-header">

@@ -1,5 +1,5 @@
 ---
-title: "British Academy Postdoctoral Fellowship opportunities hosted by the Faculty of Music"
+title: "British Academy Postdoctoral Fellowship opportunities hosted by the Centre for Music and Science"
 date: 2026-06-16
 summary: "Prospective applicants for the British Academy Postdoctoral Fellowships scheme are invited to explore hosting opportunities with the Faculty of Music and the Centre for Music and Science."
 image: ""
@@ -9,9 +9,11 @@ The [British Academy Postdoctoral Fellowships scheme](https://www.thebritishacad
 
 Within the Faculty, the [Centre for Music and Science](/) is especially interested in hearing from candidates whose proposed projects connect with our research themes in music cognition, psychology, technology, culture, health, performance, and related areas. Prospective applicants are welcome to contact Peter Harrison, CMS Director, at [pmch2@cam.ac.uk](mailto:pmch2@cam.ac.uk) in advance to discuss potential fit with the Centre and possible mentoring arrangements.
 
-Applicants wishing to apply through the University of Cambridge should submit draft materials to the Faculty of Music by **12 noon on Thursday 6 August 2026, UK time**. Applications will first be reviewed by the Faculty, with the final decision on whether Cambridge can host an application made at University level. Candidates supported through the internal competition will then work with Cambridge colleagues to refine their application ahead of the British Academy's national deadline of **30 September 2026**.
+Eligibility includes British citizens and nationals from the European Economic Area, regardless of where their doctorate was obtained. Applicants of any nationality are also eligible if they hold a doctorate from a UK university. Applicants who do not meet these criteria may still be eligible if they can demonstrate a strong prior association with the UK academic community.
 
-For the Faculty review, applicants should email Microsoft Word documents, not PDFs, to Faculty Manager Jennifer Goodwin at [facultymanager@mus.cam.ac.uk](mailto:facultymanager@mus.cam.ac.uk). The required materials are:
+Applicants wishing to apply through the University of Cambridge should submit draft materials to the Faculty of Music by **12 noon on Thursday 6 August 2026, UK time**. Applications will first be reviewed by the Faculty, with the final decision on whether Cambridge can host an application made at University level. The Faculty hopes to notify candidates by mid-September. Candidates supported through the internal competition will be asked to commit to applying through Cambridge alone, and will then work with Cambridge colleagues to refine their application ahead of the British Academy's national deadline of **30 September 2026**.
+
+For the Faculty review, applicants should email Microsoft Word documents, not PDFs, to Faculty Manager Jennifer Goodwin at [facultymanager@mus.cam.ac.uk](mailto:facultymanager@mus.cam.ac.uk). This address may also be used for general queries. The required materials are:
 
 - A short-form application containing the applicant's name, project title, proposed mentor, and a research project description of up to 750 words. This should explain the research problem, design and methodology, expected contribution, feasibility within three years, and why Cambridge is the right place for the project.
 - A draft full application, including an academic CV, a summary of the applicant's doctoral or previous research of about 500 words, and a research proposal of about 1500 words.
@@ -26,4 +28,4 @@ Research proposals should be structured as follows:
 6. Plan of action, setting out the intended timetable for the research programme over the three years of the Fellowship.
 7. Plans for publication or dissemination, including potential publishers, journals, conferences, or other appropriate routes for the research subject.
 
-Applicants are advised to contact a potential mentor within the Faculty before the internal deadline. The British Academy normally permits applicants to make only one application during their period of eligibility unless they reach the second round of the national competition, so candidates should consider carefully whether this is the right round in which to apply. In most cases, the Faculty recommends applying in this round only if the candidate will have passed their viva by September 2026.
+Applicants are advised to contact a potential mentor within the Faculty before the internal deadline. The British Academy normally permits applicants to make only one application during their period of eligibility unless they reach the second round of the national competition, so candidates should consider carefully whether this is the right round in which to apply. In most cases, the Faculty recommends applying in this round only if the candidate will have passed their viva by September 2026, partly because examiners are often the best-informed referees and supervisors are not permitted to act as referees.

@@ -1042,6 +1042,17 @@ img {
   object-fit: cover;
 }
 
+.card-image-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image-fallback img {
+  object-fit: contain;
+  padding: clamp(32px, 12%, 64px);
+}
+
 .card-image-placeholder {
   display: flex;
   align-items: center;
