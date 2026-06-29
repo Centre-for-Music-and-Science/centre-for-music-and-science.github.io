@@ -28,12 +28,16 @@ abstract: 'Simultaneous consonance is a salient perceptual phenomenon correspond
 # generated from bibtex; do not edit manually
 doi: https://doi.org/10.1037/rev0000169
 citation_apa: Harrison, P. M. C., & Pearce, M. T. (2020). Simultaneous consonance
-  in music perception and composition.. <em>Psychological Review</em>. https://doi.org/10.1037/rev0000169
+  in music perception and composition.. <em>Psychological Review</em>, <em>127</em>(2),
+  216–244. https://doi.org/10.1037/rev0000169
 citation_mla: Harrison, P. M. C. and M. T. Pearce. “Simultaneous Consonance in Music
-  Perception and Composition.”. <em>Psychological Review</em>, 2020, https://doi.org/10.1037/rev0000169.
-citation_chicago: Harrison, P. M. C., and Marcus T. Pearce. 2020. “Simultaneous Consonance
-  in Music Perception and Composition.”. <em>Psychological Review</em>. https://doi.org/10.1037/rev0000169.
+  Perception and Composition.”. <em>Psychological Review</em>, vol. 127, no. 2, 2020,
+  pp. 216–44, https://doi.org/10.1037/rev0000169.
+citation_chicago: 'Harrison, P. M. C., and Marcus T. Pearce. 2020. “Simultaneous Consonance
+  in Music Perception and Composition.”. <em>Psychological Review</em> 127 (2): 216–44.
+  https://doi.org/10.1037/rev0000169.'
 citation_ieee: '[1] P. M. C. Harrison and M. T. Pearce, “Simultaneous consonance in
-  music perception and composition.”, <em>Psychological Review</em>, 2020, doi: 10.1037/rev0000169.'
+  music perception and composition.”, <em>Psychological Review</em>, vol. 127, no.
+  2, pp. 216–244, 2020, doi: 10.1037/rev0000169.'
 authors: Harrison, P. M. C., & Pearce, M. T.
 ---

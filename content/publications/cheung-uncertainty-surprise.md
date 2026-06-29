@@ -45,19 +45,19 @@ abstract: Listening to music often evokes intense emotions [1, 2]. Recent resear
 # generated from bibtex; do not edit manually
 citation_apa: Cheung, V. K. M., Harrison, P. M. C., Meyer, L., Pearce, M. T., Haynes,
   J.-D., & Koelsch, S. (2019). Uncertainty and surprise jointly predict musical pleasure
-  and amygdala, hippocampus, and auditory cortex activity. <em>Current Biology</em>.
-  https://doi.org/10.1016/j.cub.2019.09.067
+  and amygdala, hippocampus, and auditory cortex activity. <em>Current Biology</em>,
+  <em>29</em>(23), 4084–4092.e4. https://doi.org/10.1016/j.cub.2019.09.067
 citation_mla: Cheung, V. K. M., et al.. “Uncertainty and Surprise Jointly Predict
   Musical Pleasure and Amygdala, Hippocampus, and Auditory Cortex Activity”. <em>Current
-  Biology</em>, 2019, https://doi.org/10.1016/j.cub.2019.09.067.
-citation_chicago: Cheung, V. K. M., P. M. C. Harrison, L. Meyer, M. T. Pearce, J.-D.
+  Biology</em>, vol. 29, no. 23, 2019, pp. 4084–92.e4, https://doi.org/10.1016/j.cub.2019.09.067.
+citation_chicago: 'Cheung, V. K. M., P. M. C. Harrison, L. Meyer, M. T. Pearce, J.-D.
   Haynes, and S. Koelsch. 2019. “Uncertainty and Surprise Jointly Predict Musical
-  Pleasure and Amygdala, Hippocampus, and Auditory Cortex Activity”. <em>Current Biology</em>.
-  https://doi.org/10.1016/j.cub.2019.09.067.
+  Pleasure and Amygdala, Hippocampus, and Auditory Cortex Activity”. <em>Current Biology</em>
+  29 (23): 4084–92.e4. https://doi.org/10.1016/j.cub.2019.09.067.'
 citation_ieee: '[1] V. K. M. Cheung, P. M. C. Harrison, L. Meyer, M. T. Pearce, J.-D.
-  Haynesand S. Koelsch, “Uncertainty and surprise jointly predict musical pleasure
+  Haynes and S. Koelsch, “Uncertainty and surprise jointly predict musical pleasure
   and amygdala, hippocampus, and auditory cortex activity”, <em>Current Biology</em>,
-  2019, doi: 10.1016/j.cub.2019.09.067.'
+  vol. 29, no. 23, pp. 4084–4092.e4, 2019, doi: 10.1016/j.cub.2019.09.067.'
 authors: Cheung, V. K. M., Harrison, P. M. C., Meyer, L., Pearce, M. T., Haynes, J.-D.,
   & Koelsch, S.
 link: https://doi.org/10.1016/j.cub.2019.09.067

@@ -45,7 +45,7 @@ citation_mla: Cheston, H., et al.. “Trade-offs in Coordination Strategies for 
 citation_chicago: Cheston, H., I. Cross, and P. M. C. Harrison. 2024. “Trade-offs
   in Coordination Strategies for Duet Jazz Performances Subject to Network Delay and
   Jitter”. <em>Music Perception</em>. https://doi.org/10.1525/mp.2024.42.1.48.
-citation_ieee: '[1] H. Cheston, I. Crossand P. M. C. Harrison, “Trade-offs in coordination
+citation_ieee: '[1] H. Cheston, I. Cross and P. M. C. Harrison, “Trade-offs in coordination
   strategies for duet jazz performances subject to network delay and jitter”, <em>Music
   Perception</em>, 2024, doi: 10.1525/mp.2024.42.1.48.'
 link: https://doi.org/10.1525/mp.2024.42.1.48

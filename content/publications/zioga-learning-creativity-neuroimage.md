@@ -89,18 +89,18 @@ doi: https://doi.org/10.1016/j.neuroimage.2019.116311
 citation_apa: 'Zioga, I., Harrison, P. M. C., Pearce, M. T., Bhattacharya, J., & Di
   Bernardi Luft, C. (2020). From learning to creativity: Identifying the behavioural
   and neural correlates of learning to predict human judgements of musical creativity.
-  <em>NeuroImage</em>. https://doi.org/10.1016/j.neuroimage.2019.116311'
+  <em>NeuroImage</em>, <em>206</em>. https://doi.org/10.1016/j.neuroimage.2019.116311'
 citation_mla: 'Zioga, I., et al.. “From Learning to Creativity: Identifying the Behavioural
   and Neural Correlates of Learning to Predict Human Judgements of Musical Creativity”.
-  <em>NeuroImage</em>, 2020, https://doi.org/10.1016/j.neuroimage.2019.116311.'
+  <em>NeuroImage</em>, vol. 206, 2020, https://doi.org/10.1016/j.neuroimage.2019.116311.'
 citation_chicago: 'Zioga, I, P. M. C. Harrison, M T Pearce, J Bhattacharya, and C
   Di Bernardi Luft. 2020. “From Learning to Creativity: Identifying the Behavioural
   and Neural Correlates of Learning to Predict Human Judgements of Musical Creativity”.
-  <em>NeuroImage</em>. https://doi.org/10.1016/j.neuroimage.2019.116311.'
-citation_ieee: '[1] I. Zioga, P. M. C. Harrison, M. T. Pearce, J. Bhattacharyaand
+  <em>NeuroImage</em> 206. https://doi.org/10.1016/j.neuroimage.2019.116311.'
+citation_ieee: '[1] I. Zioga, P. M. C. Harrison, M. T. Pearce, J. Bhattacharya and
   C. Di Bernardi Luft, “From learning to creativity: Identifying the behavioural and
   neural correlates of learning to predict human judgements of musical creativity”,
-  <em>NeuroImage</em>, 2020, doi: 10.1016/j.neuroimage.2019.116311.'
+  <em>NeuroImage</em>, vol. 206, 2020, doi: 10.1016/j.neuroimage.2019.116311.'
 authors: Zioga, I., Harrison, P. M. C., Pearce, M. T., Bhattacharya, J., & Di Bernardi
   Luft, C.
 ---

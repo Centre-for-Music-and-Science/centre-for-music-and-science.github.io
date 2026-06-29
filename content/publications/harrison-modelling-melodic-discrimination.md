@@ -62,15 +62,15 @@ abstract: Melodic discrimination tests have been used for many years to assess i
 doi: https://doi.org/10.1080/09298215.2016.1197953
 citation_apa: 'Harrison, P. M. C., Musil, J. J., & Müllensiefen, D. (2016). Modelling
   melodic discrimination tests: Descriptive and explanatory approaches. <em>Journal
-  of New Music Research</em>. https://doi.org/10.1080/09298215.2016.1197953'
+  of New Music Research</em>, <em>45</em>(3), 265–280. https://doi.org/10.1080/09298215.2016.1197953'
 citation_mla: 'Harrison, P. M. C., et al.. “Modelling Melodic Discrimination Tests:
   Descriptive and Explanatory Approaches”. <em>Journal of New Music Research</em>,
-  2016, https://doi.org/10.1080/09298215.2016.1197953.'
+  vol. 45, no. 3, 2016, pp. 265–80, https://doi.org/10.1080/09298215.2016.1197953.'
 citation_chicago: 'Harrison, P. M. C., J J Musil, and D Müllensiefen. 2016. “Modelling
   Melodic Discrimination Tests: Descriptive and Explanatory Approaches”. <em>Journal
-  of New Music Research</em>. https://doi.org/10.1080/09298215.2016.1197953.'
-citation_ieee: '[1] P. M. C. Harrison, J. J. Musiland D. Müllensiefen, “Modelling
+  of New Music Research</em> 45 (3): 265–80. https://doi.org/10.1080/09298215.2016.1197953.'
+citation_ieee: '[1] P. M. C. Harrison, J. J. Musil and D. Müllensiefen, “Modelling
   melodic discrimination tests: Descriptive and explanatory approaches”, <em>Journal
-  of New Music Research</em>, 2016, doi: 10.1080/09298215.2016.1197953.'
+  of New Music Research</em>, vol. 45, no. 3, pp. 265–280, 2016, doi: 10.1080/09298215.2016.1197953.'
 authors: Harrison, P. M. C., Musil, J. J., & Müllensiefen, D.
 ---

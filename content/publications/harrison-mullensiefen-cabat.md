@@ -24,16 +24,16 @@ abstract: Beat perception is increasingly being recognised as a fundamental musi
 # generated from bibtex; do not edit manually
 doi: https://doi.org/10.1038/s41598-018-30318-8
 citation_apa: Harrison, P. M. C., & Müllensiefen, D. (2018). Development and Validation
-  of the Computerised Adaptive Beat Alignment Test (CA-BAT). <em>Scientific Reports</em>.
-  https://doi.org/10.1038/s41598-018-30318-8
+  of the Computerised Adaptive Beat Alignment Test (CA-BAT). <em>Scientific Reports</em>,
+  <em>8</em>(1). https://doi.org/10.1038/s41598-018-30318-8
 citation_mla: Harrison, P. M. C. and D. Müllensiefen. “Development and Validation
   of the Computerised Adaptive Beat Alignment Test (CA-BAT)”. <em>Scientific Reports</em>,
-  2018, https://doi.org/10.1038/s41598-018-30318-8.
+  vol. 8, no. 1, 2018, https://doi.org/10.1038/s41598-018-30318-8.
 citation_chicago: Harrison, P. M. C., and Daniel Müllensiefen. 2018. “Development
   and Validation of the Computerised Adaptive Beat Alignment Test (CA-BAT)”. <em>Scientific
-  Reports</em>. https://doi.org/10.1038/s41598-018-30318-8.
+  Reports</em> 8 (1). https://doi.org/10.1038/s41598-018-30318-8.
 citation_ieee: '[1] P. M. C. Harrison and D. Müllensiefen, “Development and Validation
   of the Computerised Adaptive Beat Alignment Test (CA-BAT)”, <em>Scientific Reports</em>,
-  2018, doi: 10.1038/s41598-018-30318-8.'
+  vol. 8, no. 1, 2018, doi: 10.1038/s41598-018-30318-8.'
 authors: Harrison, P. M. C., & Müllensiefen, D.
 ---

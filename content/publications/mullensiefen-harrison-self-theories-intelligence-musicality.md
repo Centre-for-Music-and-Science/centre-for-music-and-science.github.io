@@ -42,17 +42,18 @@ abstract: Musical abilities and active engagement with music have been shown to 
 doi: https://doi.org/10.3389/fpsyg.2015.01702
 citation_apa: Müllensiefen, D., Harrison, P. M. C., Caprini, F., & Fancourt, A. (2015).
   Investigating the importance of self-theories of intelligence and musicality for
-  students’ academic and musical achievement. <em>Frontiers in Psychology</em>. https://doi.org/10.3389/fpsyg.2015.01702
+  students’ academic and musical achievement. <em>Frontiers in Psychology</em>, <em>6</em>.
+  https://doi.org/10.3389/fpsyg.2015.01702
 citation_mla: Müllensiefen, D., et al.. “Investigating the Importance of Self-theories
   of Intelligence and Musicality for Students’ Academic and Musical Achievement”.
-  <em>Frontiers in Psychology</em>, 2015, https://doi.org/10.3389/fpsyg.2015.01702.
+  <em>Frontiers in Psychology</em>, vol. 6, 2015, https://doi.org/10.3389/fpsyg.2015.01702.
 citation_chicago: Müllensiefen, Daniel, P. M. C. Harrison, Francesco Caprini, and
   Amy Fancourt. 2015. “Investigating the Importance of Self-theories of Intelligence
   and Musicality for Students’ Academic and Musical Achievement”. <em>Frontiers in
-  Psychology</em>. https://doi.org/10.3389/fpsyg.2015.01702.
-citation_ieee: '[1] D. Müllensiefen, P. M. C. Harrison, F. Capriniand A. Fancourt,
+  Psychology</em> 6. https://doi.org/10.3389/fpsyg.2015.01702.
+citation_ieee: '[1] D. Müllensiefen, P. M. C. Harrison, F. Caprini and A. Fancourt,
   “Investigating the importance of self-theories of intelligence and musicality for
-  students’ academic and musical achievement”, <em>Frontiers in Psychology</em>, 2015,
-  doi: 10.3389/fpsyg.2015.01702.'
+  students’ academic and musical achievement”, <em>Frontiers in Psychology</em>, vol.
+  6, 2015, doi: 10.3389/fpsyg.2015.01702.'
 authors: Müllensiefen, D., Harrison, P. M. C., Caprini, F., & Fancourt, A.
 ---

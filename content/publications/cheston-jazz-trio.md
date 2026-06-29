@@ -49,7 +49,7 @@ citation_chicago: 'Cheston, H., J. L. Schlichting, I. Cross, and P. M. C. Harris
   2024. “Jazz Trio Database: Automated Timing Annotation of Jazz Piano Trio Recordings
   Processed Using Audio Source Separation”. <em>Transactions of the International
   Society for Music Information Retrieval</em>. https://doi.org/10.5334/tismir.186.'
-citation_ieee: '[1] H. Cheston, J. L. Schlichting, I. Crossand P. M. C. Harrison,
+citation_ieee: '[1] H. Cheston, J. L. Schlichting, I. Cross and P. M. C. Harrison,
   “Jazz Trio Database: Automated timing annotation of jazz piano trio recordings processed
   using audio source separation”, <em>Transactions of the International Society for
   Music Information Retrieval</em>, 2024, doi: 10.5334/tismir.186.'

@@ -24,14 +24,15 @@ abstract: A listening experiment was designed to test whether modern listeners p
 doi: https://doi.org/10.18061/emr.v18i2.8711
 citation_apa: Frank, J., Harrison, P. M. C., Ross, B., & Venter, C. (2024). Exploring
   the variability of musical-emotional expression over historical time. <em>Empirical
-  Musicology Review</em>. https://doi.org/10.18061/emr.v18i2.8711
+  Musicology Review</em>, <em>18</em>(2), 117–132. https://doi.org/10.18061/emr.v18i2.8711
 citation_mla: Frank, J., et al.. “Exploring the Variability of Musical-emotional Expression
-  over Historical Time”. <em>Empirical Musicology Review</em>, 2024, https://doi.org/10.18061/emr.v18i2.8711.
-citation_chicago: Frank, Joshua, P. M. C. Harrison, Barry Ross, and Carina Venter.
+  over Historical Time”. <em>Empirical Musicology Review</em>, vol. 18, no. 2, 2024,
+  pp. 117–32, https://doi.org/10.18061/emr.v18i2.8711.
+citation_chicago: 'Frank, Joshua, P. M. C. Harrison, Barry Ross, and Carina Venter.
   2024. “Exploring the Variability of Musical-emotional Expression over Historical
-  Time”. <em>Empirical Musicology Review</em>. https://doi.org/10.18061/emr.v18i2.8711.
-citation_ieee: '[1] J. Frank, P. M. C. Harrison, B. Rossand C. Venter, “Exploring
+  Time”. <em>Empirical Musicology Review</em> 18 (2): 117–32. https://doi.org/10.18061/emr.v18i2.8711.'
+citation_ieee: '[1] J. Frank, P. M. C. Harrison, B. Ross and C. Venter, “Exploring
   the variability of musical-emotional expression over historical time”, <em>Empirical
-  Musicology Review</em>, 2024, doi: 10.18061/emr.v18i2.8711.'
+  Musicology Review</em>, vol. 18, no. 2, pp. 117–132, 2024, doi: 10.18061/emr.v18i2.8711.'
 authors: Frank, J., Harrison, P. M. C., Ross, B., & Venter, C.
 ---

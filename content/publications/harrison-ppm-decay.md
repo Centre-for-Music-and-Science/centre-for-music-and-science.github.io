@@ -37,15 +37,16 @@ abstract: 'Statistical learning and probabilistic prediction are fundamental pro
 # generated from bibtex; do not edit manually
 citation_apa: 'Harrison, P. M. C., Bianco, R., Chait, M., & Pearce, M. T. (2020).
   PPM-Decay: A computational model of auditory prediction with memory decay. <em>PLoS
-  Computational Biology</em>. https://doi.org/10.1371/journal.pcbi.1008304'
+  Computational Biology</em>, <em>16</em>(11), e1008304. https://doi.org/10.1371/journal.pcbi.1008304'
 citation_mla: 'Harrison, P. M. C., et al.. “PPM-Decay: A Computational Model of Auditory
-  Prediction with Memory Decay”. <em>PLoS Computational Biology</em>, 2020, https://doi.org/10.1371/journal.pcbi.1008304.'
+  Prediction with Memory Decay”. <em>PLoS Computational Biology</em>, vol. 16, no.
+  11, 2020, p. e1008304, https://doi.org/10.1371/journal.pcbi.1008304.'
 citation_chicago: 'Harrison, P. M. C., R. Bianco, M. Chait, and M. T. Pearce. 2020.
   “PPM-Decay: A Computational Model of Auditory Prediction with Memory Decay”. <em>PLoS
-  Computational Biology</em>. https://doi.org/10.1371/journal.pcbi.1008304.'
-citation_ieee: '[1] P. M. C. Harrison, R. Bianco, M. Chaitand M. T. Pearce, “PPM-Decay:
+  Computational Biology</em> 16 (11): e1008304. https://doi.org/10.1371/journal.pcbi.1008304.'
+citation_ieee: '[1] P. M. C. Harrison, R. Bianco, M. Chait and M. T. Pearce, “PPM-Decay:
   A computational model of auditory prediction with memory decay”, <em>PLoS Computational
-  Biology</em>, 2020, doi: 10.1371/journal.pcbi.1008304.'
+  Biology</em>, vol. 16, no. 11, p. e1008304, 2020, doi: 10.1371/journal.pcbi.1008304.'
 authors: Harrison, P. M. C., Bianco, R., Chait, M., & Pearce, M. T.
 link: https://doi.org/10.1371/journal.pcbi.1008304
 ---

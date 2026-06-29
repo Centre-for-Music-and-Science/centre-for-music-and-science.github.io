@@ -33,15 +33,18 @@ abstract: 'The ability to silently hear music in the mind has been argued to be 
 doi: https://doi.org/10.1007/s00426-020-01322-3
 citation_apa: Gelding, R. W., Harrison, P. M. C., Silas, S., Johnson, B. W., Thompson,
   W. F., & Müllensiefen, D. (2021). An efficient and adaptive test of auditory mental
-  imagery. <em>Psychological Research</em>. https://doi.org/10.1007/s00426-020-01322-3
+  imagery. <em>Psychological Research</em>, <em>85</em>(3), 1201–1220. https://doi.org/10.1007/s00426-020-01322-3
 citation_mla: Gelding, R. W., et al.. “An Efficient and Adaptive Test of Auditory
-  Mental Imagery”. <em>Psychological Research</em>, 2021, https://doi.org/10.1007/s00426-020-01322-3.
-citation_chicago: Gelding, Rebecca W., P. M. C. Harrison, Sebastian Silas, Blake W.
-  Johnson, William F. Thompson, and Daniel Müllensiefen. 2021. “An Efficient and Adaptive
-  Test of Auditory Mental Imagery”. <em>Psychological Research</em>. https://doi.org/10.1007/s00426-020-01322-3.
+  Mental Imagery”. <em>Psychological Research</em>, vol. 85, no. 3, 2021, pp. 1201–20,
+  https://doi.org/10.1007/s00426-020-01322-3.
+citation_chicago: 'Gelding, Rebecca W., P. M. C. Harrison, Sebastian Silas, Blake
+  W. Johnson, William F. Thompson, and Daniel Müllensiefen. 2021. “An Efficient and
+  Adaptive Test of Auditory Mental Imagery”. <em>Psychological Research</em> 85 (3):
+  1201–20. https://doi.org/10.1007/s00426-020-01322-3.'
 citation_ieee: '[1] R. W. Gelding, P. M. C. Harrison, S. Silas, B. W. Johnson, W.
-  F. Thompsonand D. Müllensiefen, “An efficient and adaptive test of auditory mental
-  imagery”, <em>Psychological Research</em>, 2021, doi: 10.1007/s00426-020-01322-3.'
+  F. Thompson and D. Müllensiefen, “An efficient and adaptive test of auditory mental
+  imagery”, <em>Psychological Research</em>, vol. 85, no. 3, pp. 1201–1220, 2021,
+  doi: 10.1007/s00426-020-01322-3.'
 authors: Gelding, R. W., Harrison, P. M. C., Silas, S., Johnson, B. W., Thompson,
   W. F., & Müllensiefen, D.
 ---

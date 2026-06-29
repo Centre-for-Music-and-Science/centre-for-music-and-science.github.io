@@ -45,7 +45,7 @@ citation_chicago: Eitel, M., N. Ruth, P. M. C. Harrison, K. Frieler, and D. Mül
   2024. “Perception of Chord Sequences Modeled with Prediction by Partial Matching,
   Voice-leading Distance, and Spectral Pitch-class Similarity”. <em>Music & Science</em>.
   https://doi.org/10.1177/20592043241257654.
-citation_ieee: '[1] M. Eitel, N. Ruth, P. M. C. Harrison, K. Frielerand D. Müllensiefen,
+citation_ieee: '[1] M. Eitel, N. Ruth, P. M. C. Harrison, K. Frieler and D. Müllensiefen,
   “Perception of chord sequences modeled with prediction by partial matching, voice-leading
   distance, and spectral pitch-class similarity”, <em>Music & Science</em>, 2024,
   doi: 10.1177/20592043241257654.'

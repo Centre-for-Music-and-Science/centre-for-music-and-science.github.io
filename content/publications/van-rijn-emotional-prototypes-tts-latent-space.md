@@ -35,8 +35,8 @@ citation_chicago: Rijn, Pol van, Silvan Mertes, Dominik Schiller, P. M. C. Harri
   Pauline Larrouy-Maestri, Elisabeth André, and Nori Jacoby. 2021. “Exploring Emotional
   Prototypes in a High Dimensional TTS Latent Space”. In <em>Interspeech 2021</em>.
   https://doi.org/10.21437/interspeech.2021-1538.
-citation_ieee: '[1] P. van . Rijn, “Exploring Emotional Prototypes in a High Dimensional
-  TTS Latent Space”, 2021. doi: 10.21437/interspeech.2021-1538.'
+citation_ieee: '[1] P. van . Rijn <em>et al.</em>, “Exploring Emotional Prototypes
+  in a High Dimensional TTS Latent Space”, 2021. doi: 10.21437/interspeech.2021-1538.'
 authors: Rijn, P. van ., Mertes, S., Schiller, D., Harrison, P. M. C., Larrouy-Maestri,
   P., André, E., & Jacoby, N.
 ---

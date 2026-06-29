@@ -23,15 +23,15 @@ abstract: Voice leading is a common task in Western music composition whose conv
 doi: https://doi.org/10.1525/mp.2020.37.3.208
 citation_apa: 'Harrison, P. M. C. M. C., & Pearce, M. T. (2020). A Computational Cognitive
   Model for the Analysis and Generation of Voice Leadings. <em>Music Perception: An
-  Interdisciplinary Journal</em>. https://doi.org/10.1525/mp.2020.37.3.208'
+  Interdisciplinary Journal</em>, <em>37</em>(3), 208–224. https://doi.org/10.1525/mp.2020.37.3.208'
 citation_mla: 'Harrison, P. M. C. M. C. and M. T. Pearce. “A Computational Cognitive
   Model for the Analysis and Generation of Voice Leadings”. <em>Music Perception:
-  An Interdisciplinary Journal</em>, 2020, https://doi.org/10.1525/mp.2020.37.3.208.'
+  An Interdisciplinary Journal</em>, vol. 37, no. 3, 2020, pp. 208–24, https://doi.org/10.1525/mp.2020.37.3.208.'
 citation_chicago: 'Harrison, P. M. C. M. C., and Marcus T. Pearce. 2020. “A Computational
   Cognitive Model for the Analysis and Generation of Voice Leadings”. <em>Music Perception:
-  An Interdisciplinary Journal</em>. https://doi.org/10.1525/mp.2020.37.3.208.'
+  An Interdisciplinary Journal</em> 37 (3): 208–24. https://doi.org/10.1525/mp.2020.37.3.208.'
 citation_ieee: '[1] P. M. C. M. C. Harrison and M. T. Pearce, “A Computational Cognitive
   Model for the Analysis and Generation of Voice Leadings”, <em>Music Perception:
-  An Interdisciplinary Journal</em>, 2020, doi: 10.1525/mp.2020.37.3.208.'
+  An Interdisciplinary Journal</em>, vol. 37, no. 3, pp. 208–224, 2020, doi: 10.1525/mp.2020.37.3.208.'
 authors: Harrison, P. M. C. M. C., & Pearce, M. T.
 ---

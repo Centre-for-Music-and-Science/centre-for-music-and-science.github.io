@@ -211,6 +211,13 @@ def normalize_citeproc_html(citation_html: str) -> str:
     citation_html = re.sub(r"\bURL:\s*(https?://\S+)", r"\1", citation_html)
     citation_html = re.sub(r"([A-Z])\.\.", r"\1.", citation_html)
     citation_html = re.sub(r"(?<=\.)and\b", " and", citation_html)
+    name_chars = r"A-Za-zÀ-ÖØ-öø-ÿ'’.-"
+    citation_html = re.sub(
+        rf"\b((?:[A-Z]\.\s+)+[{name_chars}]+(?:\s+[{name_chars}]+)*)"
+        rf"and(?=\s+(?:[A-Z]\.\s*)+[{name_chars}]+(?:\s+[{name_chars}]+)*,\s+)",
+        r"\1 and",
+        citation_html,
+    )
     citation_html = re.sub(r"^\[(\d+)\](?=\S)", r"[\1] ", citation_html)
     citation_html = normalize_terminal_title_punctuation(citation_html)
     # Citeproc leaves BibTeX surname braces for particles (e.g. {van Rijn}).
@@ -293,6 +300,17 @@ def bibtex_to_csl_item(
     venue = fields.get("journal", fields.get("booktitle", "")).strip()
     if venue:
         item["container-title"] = venue
+
+    for bibtex_key, csl_key in (
+        ("volume", "volume"),
+        ("number", "issue"),
+        ("pages", "page"),
+    ):
+        value = fields.get(bibtex_key, "").strip()
+        if value:
+            if bibtex_key == "pages":
+                value = value.replace("--", "–")
+            item[csl_key] = value
 
     effective_year = year.strip()
     if not effective_year:

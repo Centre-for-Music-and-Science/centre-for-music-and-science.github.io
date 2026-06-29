@@ -27,14 +27,14 @@ abstract: Memory, on multiple timescales, is critical to our ability to discover
 doi: https://doi.org/10.7554/elife.56073
 citation_apa: Bianco, R., Harrison, P. M. C., Hu, M., Bolger, C., Picken, S., Pearce,
   M. T., & Chait, M. (2020). Long-term implicit memory for sequential auditory patterns
-  in humans. <em>eLife</em>. https://doi.org/10.7554/elife.56073
+  in humans. <em>eLife</em>, <em>9</em>. https://doi.org/10.7554/elife.56073
 citation_mla: Bianco, R., et al.. “Long-term Implicit Memory for Sequential Auditory
-  Patterns in Humans”. <em>eLife</em>, 2020, https://doi.org/10.7554/elife.56073.
+  Patterns in Humans”. <em>eLife</em>, vol. 9, 2020, https://doi.org/10.7554/elife.56073.
 citation_chicago: Bianco, Roberta, P. M. C. Harrison, Mingyue Hu, Cora Bolger, Samantha
   Picken, Marcus T Pearce, and Maria Chait. 2020. “Long-term Implicit Memory for Sequential
-  Auditory Patterns in Humans”. <em>eLife</em>. https://doi.org/10.7554/elife.56073.
-citation_ieee: '[1] R. Bianco, “Long-term implicit memory for sequential auditory
-  patterns in humans”, <em>eLife</em>, 2020, doi: 10.7554/elife.56073.'
+  Auditory Patterns in Humans”. <em>eLife</em> 9. https://doi.org/10.7554/elife.56073.
+citation_ieee: '[1] R. Bianco <em>et al.</em>, “Long-term implicit memory for sequential
+  auditory patterns in humans”, <em>eLife</em>, vol. 9, 2020, doi: 10.7554/elife.56073.'
 authors: Bianco, R., Harrison, P. M. C., Hu, M., Bolger, C., Picken, S., Pearce, M.
   T., & Chait, M.
 ---

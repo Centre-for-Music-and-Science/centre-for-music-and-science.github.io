@@ -17,16 +17,19 @@ abstract: Proceedings of the National Academy of Sciences (PNAS), a peer reviewe
 doi: https://doi.org/10.1073/pnas.1913244116
 citation_apa: de Fleurian, R., Harrison, P. M. C., Pearce, M. T., & Quiroga-Martinez,
   D. R. (2019). Reward prediction tells us less than expected about musical pleasure.
-  <em>Proceedings of the National Academy of Sciences</em>. https://doi.org/10.1073/pnas.1913244116
+  <em>Proceedings of the National Academy of Sciences</em>, <em>116</em>(42), 20813–20814.
+  https://doi.org/10.1073/pnas.1913244116
 citation_mla: de Fleurian, R., et al.. “Reward Prediction Tells Us Less Than Expected
   About Musical Pleasure”. <em>Proceedings of the National Academy of Sciences</em>,
-  2019, https://doi.org/10.1073/pnas.1913244116.
-citation_chicago: de Fleurian, Rémi, P. M. C. Harrison, Marcus T. Pearce, and David
+  vol. 116, no. 42, 2019, pp. 20813–14, https://doi.org/10.1073/pnas.1913244116.
+citation_chicago: 'de Fleurian, Rémi, P. M. C. Harrison, Marcus T. Pearce, and David
   R. Quiroga-Martinez. 2019. “Reward Prediction Tells Us Less Than Expected About
-  Musical Pleasure”. <em>Proceedings of the National Academy of Sciences</em>. https://doi.org/10.1073/pnas.1913244116.
-citation_ieee: '[1] R. de Fleurian, P. M. C. Harrison, M. T. Pearceand D. R. Quiroga-Martinez,
+  Musical Pleasure”. <em>Proceedings of the National Academy of Sciences</em> 116
+  (42): 20813–14. https://doi.org/10.1073/pnas.1913244116.'
+citation_ieee: '[1] R. de Fleurian, P. M. C. Harrison, M. T. Pearce and D. R. Quiroga-Martinez,
   “Reward prediction tells us less than expected about musical pleasure”, <em>Proceedings
-  of the National Academy of Sciences</em>, 2019, doi: 10.1073/pnas.1913244116.'
+  of the National Academy of Sciences</em>, vol. 116, no. 42, pp. 20813–20814, 2019,
+  doi: 10.1073/pnas.1913244116.'
 authors: de Fleurian, R., Harrison, P. M. C., Pearce, M. T., & Quiroga-Martinez, D.
   R.
 ---

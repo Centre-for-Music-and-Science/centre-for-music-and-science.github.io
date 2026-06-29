@@ -7,6 +7,7 @@ authors: Anglada-Tort, M., Harrison, P. M. C., Lee, H., & Jacoby, N.
 journal: Current Biology
 methods:
 - large-scale-online-experiments
+# generated from bibtex; do not edit manually
 doi: https://doi.org/10.1016/j.cub.2023.02.070
 abstract: 'Speech and song have been transmitted orally for countless human generations,
   changing over time under the influence of biological, cognitive, and cultural pressures.
@@ -50,7 +51,7 @@ citation_mla: Anglada-Tort, M., et al.. “Large-scale Iterated Singing Experime
 citation_chicago: Anglada-Tort, M., P. M. C. Harrison, H. Lee, and N. Jacoby. 2023.
   “Large-scale Iterated Singing Experiments Reveal Oral Transmission Mechanisms Underlying
   Music Evolution”. <em>Current Biology</em>. https://doi.org/10.1016/j.cub.2023.02.070.
-citation_ieee: '[1] M. Anglada-Tort, P. M. C. Harrison, H. Leeand N. Jacoby, “Large-scale
+citation_ieee: '[1] M. Anglada-Tort, P. M. C. Harrison, H. Lee and N. Jacoby, “Large-scale
   iterated singing experiments reveal oral transmission mechanisms underlying music
   evolution”, <em>Current Biology</em>, 2023, doi: 10.1016/j.cub.2023.02.070.'
 link: https://doi.org/10.1016/j.cub.2023.02.070

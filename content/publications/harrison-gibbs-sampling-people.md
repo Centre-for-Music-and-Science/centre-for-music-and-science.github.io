@@ -42,15 +42,17 @@ bibtex: |-
 journal: Advances in Neural Information Processing Systems
 citation_apa: Harrison, P. M. C., Marjieh, R., Adolfi, F., van Rijn, P., Anglada-Tort,
   M., Tchernichovski, O., Larrouy-Maestri, P., & Jacoby, N. (2020). Gibbs Sampling
-  with People. <em>Advances in Neural Information Processing Systems</em>. https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf
+  with People. <em>Advances in Neural Information Processing Systems</em>, <em>33</em>,
+  10659–10671. https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf
 citation_mla: Harrison, P. M. C., et al.. “Gibbs Sampling with People”. <em>Advances
-  in Neural Information Processing Systems</em>, 2020, https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf.
+  in Neural Information Processing Systems</em>, vol. 33, 2020, pp. 10659–71, https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf.
 citation_chicago: Harrison, Peter M. C., Raja Marjieh, Federico Adolfi, Pol van Rijn,
   Manuel Anglada-Tort, Ofer Tchernichovski, Pauline Larrouy-Maestri, and Nori Jacoby.
   2020. “Gibbs Sampling with People”. In <em>Advances in Neural Information Processing
-  Systems</em>. https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf.
-citation_ieee: '[1] P. M. C. Harrison, “Gibbs Sampling with People”, 2020. [Online].
-  Available: https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf'
+  Systems</em>, 33:10659–71. https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf.
+citation_ieee: '[1] P. M. C. Harrison <em>et al.</em>, “Gibbs Sampling with People”,
+  in <em>Advances in Neural Information Processing Systems</em>, 2020, vol. 33, pp.
+  10659–10671. [Online]. Available: https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf'
 authors: Harrison, P. M. C., Marjieh, R., Adolfi, F., van Rijn, P., Anglada-Tort,
   M., Tchernichovski, O., Larrouy-Maestri, P., & Jacoby, N.
 link: https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf

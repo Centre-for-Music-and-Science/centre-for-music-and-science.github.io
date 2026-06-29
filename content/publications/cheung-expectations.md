@@ -49,7 +49,7 @@ citation_chicago: Cheung, V. K. M., P. M. C. Harrison, S. Koelsch, M. T. Pearce,
   Shape Musical Expectancy and Pleasure”. <em>Philosophical Transactions of the Royal
   Society of London. Series B, Biological Sciences</em>. https://doi.org/10.1098/rstb.2022.0420.
 citation_ieee: '[1] V. K. M. Cheung, P. M. C. Harrison, S. Koelsch, M. T. Pearce,
-  A. D. Friedericiand L. Meyer, “Cognitive and sensory expectations independently
+  A. D. Friederici and L. Meyer, “Cognitive and sensory expectations independently
   shape musical expectancy and pleasure”, <em>Philosophical Transactions of the Royal
   Society of London. Series B, Biological Sciences</em>, 2024, doi: 10.1098/rstb.2022.0420.'
 link: https://doi.org/10.1098/rstb.2022.0420

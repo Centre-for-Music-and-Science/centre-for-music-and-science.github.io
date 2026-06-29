@@ -38,7 +38,7 @@ citation_mla: 'van Rijn, P., et al.. “VoiceMe: Personalized Voice Generation i
 citation_chicago: 'van Rijn, P., S. Mertes, D. Schiller, P. Dura, H. Siuzdak, P. M.
   C. Harrison, E. André, and N. Jacoby. 2022. “VoiceMe: Personalized Voice Generation
   in TTS”. <em>Interspeech 2022</em>. https://doi.org/10.21437/interspeech.2022-10855.'
-citation_ieee: '[1] P. van Rijn, “VoiceMe: Personalized voice generation in TTS”,
-  <em>Interspeech 2022</em>, 2022, doi: 10.21437/interspeech.2022-10855.'
+citation_ieee: '[1] P. van Rijn <em>et al.</em>, “VoiceMe: Personalized voice generation
+  in TTS”, <em>Interspeech 2022</em>, 2022, doi: 10.21437/interspeech.2022-10855.'
 link: https://doi.org/10.21437/interspeech.2022-10855
 ---

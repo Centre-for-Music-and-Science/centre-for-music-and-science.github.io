@@ -22,8 +22,9 @@ citation_mla: 'Duncan, D., et al.. “Watch This Space: Primitive Visual Cues En
   Sight-reading Accuracy”. <em>Musicae Scientiae</em>, 2026, https://doi.org/10.1177/10298649261419805.'
 citation_chicago: 'Duncan, D., K. Ness, and I. Cross. 2026. “Watch This Space: Primitive
   Visual Cues Enhance Sight-reading Accuracy”. <em>Musicae Scientiae</em>. https://doi.org/10.1177/10298649261419805.'
-citation_ieee: '[1] D. Duncan, K. Nessand I. Cross, “Watch this space: primitive visual
-  cues enhance sight-reading accuracy”, <em>Musicae Scientiae</em>, 2026, doi: 10.1177/10298649261419805.'
+citation_ieee: '[1] D. Duncan, K. Ness and I. Cross, “Watch this space: primitive
+  visual cues enhance sight-reading accuracy”, <em>Musicae Scientiae</em>, 2026, doi:
+  10.1177/10298649261419805.'
 authors: Duncan, D., Ness, K., & Cross, I.
 link: https://doi.org/10.1177/10298649261419805
 ---

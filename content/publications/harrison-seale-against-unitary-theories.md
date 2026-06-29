@@ -17,12 +17,12 @@ abstract: Savage et al. and Mehr et al. provide well-substantiated arguments tha
 # generated from bibtex; do not edit manually
 doi: https://doi.org/10.1017/s0140525x20001314
 citation_apa: Harrison, P. M. C., & Seale, M. (2021). Against unitary theories of
-  music evolution. <em>Behavioral and Brain Sciences</em>. https://doi.org/10.1017/s0140525x20001314
+  music evolution. <em>Behavioral and Brain Sciences</em>, <em>44</em>. https://doi.org/10.1017/s0140525x20001314
 citation_mla: Harrison, P. M. C. and M. Seale. “Against Unitary Theories of Music
-  Evolution”. <em>Behavioral and Brain Sciences</em>, 2021, https://doi.org/10.1017/s0140525x20001314.
+  Evolution”. <em>Behavioral and Brain Sciences</em>, vol. 44, 2021, https://doi.org/10.1017/s0140525x20001314.
 citation_chicago: Harrison, P. M. C., and Madeleine Seale. 2021. “Against Unitary
-  Theories of Music Evolution”. <em>Behavioral and Brain Sciences</em>. https://doi.org/10.1017/s0140525x20001314.
+  Theories of Music Evolution”. <em>Behavioral and Brain Sciences</em> 44. https://doi.org/10.1017/s0140525x20001314.
 citation_ieee: '[1] P. M. C. Harrison and M. Seale, “Against unitary theories of music
-  evolution”, <em>Behavioral and Brain Sciences</em>, 2021, doi: 10.1017/s0140525x20001314.'
+  evolution”, <em>Behavioral and Brain Sciences</em>, vol. 44, 2021, doi: 10.1017/s0140525x20001314.'
 authors: Harrison, P. M. C., & Seale, M.
 ---

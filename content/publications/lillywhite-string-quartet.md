@@ -49,8 +49,9 @@ citation_chicago: Lillywhite, A., D. Nijhof, D. Glowinski, B. L. Giordano, A. Ca
   I. Cross, and F. E. Pollick. 2022. “A Functional Magnetic Resonance Imaging Examination
   of Audiovisual Observation of a Point-light String Quartet Using Intersubject Correlation
   and Physical Feature Analysis”. <em>Frontiers in Neuroscience</em>. https://doi.org/10.3389/fnins.2022.921489.
-citation_ieee: '[1] A. Lillywhite, “A functional magnetic resonance imaging examination
-  of audiovisual observation of a point-light string quartet using intersubject correlation
-  and physical feature analysis”, <em>Frontiers in Neuroscience</em>, 2022, doi: 10.3389/fnins.2022.921489.'
+citation_ieee: '[1] A. Lillywhite <em>et al.</em>, “A functional magnetic resonance
+  imaging examination of audiovisual observation of a point-light string quartet using
+  intersubject correlation and physical feature analysis”, <em>Frontiers in Neuroscience</em>,
+  2022, doi: 10.3389/fnins.2022.921489.'
 link: https://doi.org/10.3389/fnins.2022.921489
 ---

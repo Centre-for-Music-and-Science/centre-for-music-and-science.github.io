@@ -35,7 +35,7 @@ citation_mla: Cheston, H., et al.. “Deconstructing Jazz Piano Style Using Mach
   Learning”. <em>arXiv</em>, 2025, https://doi.org/10.48550/arXiv.2504.05009.
 citation_chicago: Cheston, H., R. Bance, and P. M. C. Harrison. 2025. “Deconstructing
   Jazz Piano Style Using Machine Learning”. <em>arXiv</em>. https://doi.org/10.48550/arXiv.2504.05009.
-citation_ieee: '[1] H. Cheston, R. Banceand P. M. C. Harrison, “Deconstructing jazz
+citation_ieee: '[1] H. Cheston, R. Bance and P. M. C. Harrison, “Deconstructing jazz
   piano style using machine learning”, <em>arXiv</em>, 2025, doi: 10.48550/arXiv.2504.05009.'
 link: https://doi.org/10.48550/arXiv.2504.05009
 ---

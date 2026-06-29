@@ -38,18 +38,19 @@ doi: https://doi.org/10.1162/jocn_a_01614
 citation_apa: Zioga, I., Harrison, P. M. C., Pearce, M. T., Bhattacharya, J., & Luft,
   C. D. B. (2020). Auditory but Not Audiovisual Cues Lead to Higher Neural Sensitivity
   to the Statistical Regularities of an Unfamiliar Musical Style. <em>Journal of Cognitive
-  Neuroscience</em>. https://doi.org/10.1162/jocn_a_01614
+  Neuroscience</em>, <em>32</em>(12), 2241–2259. https://doi.org/10.1162/jocn_a_01614
 citation_mla: Zioga, I., et al.. “Auditory but Not Audiovisual Cues Lead to Higher
   Neural Sensitivity to the Statistical Regularities of an Unfamiliar Musical Style”.
-  <em>Journal of Cognitive Neuroscience</em>, 2020, https://doi.org/10.1162/jocn_a_01614.
-citation_chicago: Zioga, Ioanna, P. M. C. Harrison, Marcus T. Pearce, Joydeep Bhattacharya,
+  <em>Journal of Cognitive Neuroscience</em>, vol. 32, no. 12, 2020, pp. 2241–59,
+  https://doi.org/10.1162/jocn_a_01614.
+citation_chicago: 'Zioga, Ioanna, P. M. C. Harrison, Marcus T. Pearce, Joydeep Bhattacharya,
   and Caroline Di Bernardi Luft. 2020. “Auditory but Not Audiovisual Cues Lead to
   Higher Neural Sensitivity to the Statistical Regularities of an Unfamiliar Musical
-  Style”. <em>Journal of Cognitive Neuroscience</em>. https://doi.org/10.1162/jocn_a_01614.
-citation_ieee: '[1] I. Zioga, P. M. C. Harrison, M. T. Pearce, J. Bhattacharyaand
+  Style”. <em>Journal of Cognitive Neuroscience</em> 32 (12): 2241–59. https://doi.org/10.1162/jocn_a_01614.'
+citation_ieee: '[1] I. Zioga, P. M. C. Harrison, M. T. Pearce, J. Bhattacharya and
   C. D. B. Luft, “Auditory but Not Audiovisual Cues Lead to Higher Neural Sensitivity
   to the Statistical Regularities of an Unfamiliar Musical Style”, <em>Journal of
-  Cognitive Neuroscience</em>, 2020, doi: 10.1162/jocn_a_01614.'
+  Cognitive Neuroscience</em>, vol. 32, no. 12, pp. 2241–2259, 2020, doi: 10.1162/jocn_a_01614.'
 authors: Zioga, I., Harrison, P. M. C., Pearce, M. T., Bhattacharya, J., & Luft, C.
   D. B.
 ---

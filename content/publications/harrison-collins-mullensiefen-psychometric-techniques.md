@@ -31,17 +31,18 @@ doi: https://doi.org/10.1038/s41598-017-03586-z
 citation_apa: 'Harrison, P. M. C., Collins, T., & Müllensiefen, D. (2017). Applying
   modern psychometric techniques to melodic discrimination testing: Item response
   theory, computerised adaptive testing, and automatic item generation. <em>Scientific
-  Reports</em>. https://doi.org/10.1038/s41598-017-03586-z'
+  Reports</em>, <em>7</em>(1). https://doi.org/10.1038/s41598-017-03586-z'
 citation_mla: 'Harrison, P. M. C., et al.. “Applying Modern Psychometric Techniques
   to Melodic Discrimination Testing: Item Response Theory, Computerised Adaptive Testing,
-  and Automatic Item Generation”. <em>Scientific Reports</em>, 2017, https://doi.org/10.1038/s41598-017-03586-z.'
+  and Automatic Item Generation”. <em>Scientific Reports</em>, vol. 7, no. 1, 2017,
+  https://doi.org/10.1038/s41598-017-03586-z.'
 citation_chicago: 'Harrison, P. M. C., Tom Collins, and Daniel Müllensiefen. 2017.
   “Applying Modern Psychometric Techniques to Melodic Discrimination Testing: Item
   Response Theory, Computerised Adaptive Testing, and Automatic Item Generation”.
-  <em>Scientific Reports</em>. https://doi.org/10.1038/s41598-017-03586-z.'
-citation_ieee: '[1] P. M. C. Harrison, T. Collinsand D. Müllensiefen, “Applying modern
+  <em>Scientific Reports</em> 7 (1). https://doi.org/10.1038/s41598-017-03586-z.'
+citation_ieee: '[1] P. M. C. Harrison, T. Collins and D. Müllensiefen, “Applying modern
   psychometric techniques to melodic discrimination testing: Item response theory,
   computerised adaptive testing, and automatic item generation”, <em>Scientific Reports</em>,
-  2017, doi: 10.1038/s41598-017-03586-z.'
+  vol. 7, no. 1, 2017, doi: 10.1038/s41598-017-03586-z.'
 authors: Harrison, P. M. C., Collins, T., & Müllensiefen, D.
 ---

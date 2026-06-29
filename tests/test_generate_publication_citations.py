@@ -80,6 +80,7 @@ class PublicationCitationTests(unittest.TestCase):
             "<em>Psychology of Aesthetics, Creativity, and the Arts</em>",
             citation,
         )
+        self.assertIn("<em>20</em>(1), 10–21", citation)
         self.assertIn("https://doi.org/10.1037/aca0000836", citation)
 
     def test_normalize_doi_accepts_url_or_raw(self):
@@ -167,6 +168,39 @@ class PublicationCitationTests(unittest.TestCase):
             out,
             "Di Bernardi Luft, C., Van Buren, K. (2020). <em>Journal</em>.",
         )
+
+    def test_normalize_citeproc_html_inserts_missing_ieee_author_space(self):
+        citation_html = (
+            "[1]J.-P. Robledo, I. Cross, M. Phillips, J. F. Kearneyand "
+            "J. R. Taylor, “Example title”, <i>Journal</i>, 2026."
+        )
+        out = normalize_citeproc_html(citation_html)
+        self.assertIn("Kearney and J. R. Taylor", out)
+        self.assertNotIn("Kearneyand", out)
+
+    def test_normalize_citeproc_html_fixes_short_ieee_surname_join(self):
+        citation_html = (
+            "[1]M. Anglada-Tort, P. M. C. Harrison, H. Leeand "
+            "N. Jacoby, “Example title”, <i>Journal</i>, 2026."
+        )
+        out = normalize_citeproc_html(citation_html)
+        self.assertIn("H. Lee and N. Jacoby", out)
+        self.assertNotIn("Leeand", out)
+
+    def test_normalize_citeproc_html_fixes_multiword_final_surname_join(self):
+        citation_html = (
+            "[1]I. Zioga, P. M. C. Harrison, M. Pearce, J. Bhattacharyaand "
+            "C. Di Bernardi Luft, “Example title”, <i>Journal</i>, 2026."
+        )
+        out = normalize_citeproc_html(citation_html)
+        self.assertIn("J. Bhattacharya and C. Di Bernardi Luft", out)
+        self.assertNotIn("Bhattacharyaand", out)
+
+    def test_normalize_citeproc_html_keeps_surnames_ending_and(self):
+        citation_html = "A. Strand, “Example title”, <i>Journal</i>, 2026."
+        out = normalize_citeproc_html(citation_html)
+        self.assertIn("A. Strand", out)
+        self.assertNotIn("Str and", out)
 
     def test_extract_publication_venue_uses_journal_or_booktitle(self):
         self.assertEqual(

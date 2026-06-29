@@ -33,15 +33,16 @@ abstract: Electroencephalographic responses to unexpected musical events allow r
 doi: https://doi.org/10.1525/mp.2021.39.2.118
 citation_apa: 'Goldman, A., Harrison, P. M. C., Jackson, T., & Pearce, M. T. (2021).
   Reassessing Syntax-Related ERP Components Using Popular Music Chord Sequences. <em>Music
-  Perception: An Interdisciplinary Journal</em>. https://doi.org/10.1525/mp.2021.39.2.118'
+  Perception: An Interdisciplinary Journal</em>, <em>39</em>(2), 118–144. https://doi.org/10.1525/mp.2021.39.2.118'
 citation_mla: 'Goldman, A., et al.. “Reassessing Syntax-Related ERP Components Using
   Popular Music Chord Sequences”. <em>Music Perception: An Interdisciplinary Journal</em>,
-  2021, https://doi.org/10.1525/mp.2021.39.2.118.'
+  vol. 39, no. 2, 2021, pp. 118–44, https://doi.org/10.1525/mp.2021.39.2.118.'
 citation_chicago: 'Goldman, Andrew, P. M. C. Harrison, Tyreek Jackson, and Marcus
   T. Pearce. 2021. “Reassessing Syntax-Related ERP Components Using Popular Music
-  Chord Sequences”. <em>Music Perception: An Interdisciplinary Journal</em>. https://doi.org/10.1525/mp.2021.39.2.118.'
-citation_ieee: '[1] A. Goldman, P. M. C. Harrison, T. Jacksonand M. T. Pearce, “Reassessing
+  Chord Sequences”. <em>Music Perception: An Interdisciplinary Journal</em> 39 (2):
+  118–44. https://doi.org/10.1525/mp.2021.39.2.118.'
+citation_ieee: '[1] A. Goldman, P. M. C. Harrison, T. Jackson and M. T. Pearce, “Reassessing
   Syntax-Related ERP Components Using Popular Music Chord Sequences”, <em>Music Perception:
-  An Interdisciplinary Journal</em>, 2021, doi: 10.1525/mp.2021.39.2.118.'
+  An Interdisciplinary Journal</em>, vol. 39, no. 2, pp. 118–144, 2021, doi: 10.1525/mp.2021.39.2.118.'
 authors: Goldman, A., Harrison, P. M. C., Jackson, T., & Pearce, M. T.
 ---

@@ -30,14 +30,15 @@ abstract: An important aspect of the perceived quality of vocal music is the deg
 doi: https://doi.org/10.3758/s13428-019-01225-1
 citation_apa: 'Larrouy-Maestri, P., Harrison, P. M. C., & Müllensiefen, D. (2019).
   The mistuning perception test: A new measurement instrument. <em>Behavior Research
-  Methods</em>. https://doi.org/10.3758/s13428-019-01225-1'
+  Methods</em>, <em>51</em>(2), 663–675. https://doi.org/10.3758/s13428-019-01225-1'
 citation_mla: 'Larrouy-Maestri, P., et al.. “The Mistuning Perception Test: A New
-  Measurement Instrument”. <em>Behavior Research Methods</em>, 2019, https://doi.org/10.3758/s13428-019-01225-1.'
+  Measurement Instrument”. <em>Behavior Research Methods</em>, vol. 51, no. 2, 2019,
+  pp. 663–75, https://doi.org/10.3758/s13428-019-01225-1.'
 citation_chicago: 'Larrouy-Maestri, Pauline, P. M. C. Harrison, and Daniel Müllensiefen.
   2019. “The Mistuning Perception Test: A New Measurement Instrument”. <em>Behavior
-  Research Methods</em>. https://doi.org/10.3758/s13428-019-01225-1.'
-citation_ieee: '[1] P. Larrouy-Maestri, P. M. C. Harrisonand D. Müllensiefen, “The
+  Research Methods</em> 51 (2): 663–75. https://doi.org/10.3758/s13428-019-01225-1.'
+citation_ieee: '[1] P. Larrouy-Maestri, P. M. C. Harrison and D. Müllensiefen, “The
   mistuning perception test: A new measurement instrument”, <em>Behavior Research
-  Methods</em>, 2019, doi: 10.3758/s13428-019-01225-1.'
+  Methods</em>, vol. 51, no. 2, pp. 663–675, 2019, doi: 10.3758/s13428-019-01225-1.'
 authors: Larrouy-Maestri, P., Harrison, P. M. C., & Müllensiefen, D.
 ---

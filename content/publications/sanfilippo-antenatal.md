@@ -49,7 +49,8 @@ citation_mla: Sanfilippo, K. R. M., et al.. “Expression of Antenatal Symptoms 
 citation_chicago: Sanfilippo, K. R. M., V. Glover, V. Cornelius, R. T. Amiel Castro,
   B. McConnell, B. Darboe, H. B. Huma, et al.. 2023. “Expression of Antenatal Symptoms
   of Common Mental Disorders in The Gambia and the UK”. <em>BMJ Open</em>. https://doi.org/10.1136/bmjopen-2022-066807.
-citation_ieee: '[1] K. R. M. Sanfilippo, “Expression of antenatal symptoms of common
-  mental disorders in The Gambia and the UK”, <em>BMJ Open</em>, 2023, doi: 10.1136/bmjopen-2022-066807.'
+citation_ieee: '[1] K. R. M. Sanfilippo <em>et al.</em>, “Expression of antenatal
+  symptoms of common mental disorders in The Gambia and the UK”, <em>BMJ Open</em>,
+  2023, doi: 10.1136/bmjopen-2022-066807.'
 link: https://doi.org/10.1136/bmjopen-2022-066807
 ---

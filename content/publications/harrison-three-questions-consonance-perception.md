@@ -27,12 +27,12 @@ abstract: 'I discuss three fundamental questions underpinning the study of conso
 # generated from bibtex; do not edit manually
 doi: https://doi.org/10.1525/mp.2021.38.3.337
 citation_apa: Harrison, P. M. C. (2021). Three Questions Concerning Consonance Perception.
-  <em>Music Perception</em>. https://doi.org/10.1525/mp.2021.38.3.337
+  <em>Music Perception</em>, <em>38</em>(3), 337–339. https://doi.org/10.1525/mp.2021.38.3.337
 citation_mla: Harrison, P. M. C. “Three Questions Concerning Consonance Perception”.
-  <em>Music Perception</em>, 2021, https://doi.org/10.1525/mp.2021.38.3.337.
-citation_chicago: Harrison, P. M. C. 2021. “Three Questions Concerning Consonance
-  Perception”. <em>Music Perception</em>. https://doi.org/10.1525/mp.2021.38.3.337.
+  <em>Music Perception</em>, vol. 38, no. 3, 2021, pp. 337–39, https://doi.org/10.1525/mp.2021.38.3.337.
+citation_chicago: 'Harrison, P. M. C. 2021. “Three Questions Concerning Consonance
+  Perception”. <em>Music Perception</em> 38 (3): 337–39. https://doi.org/10.1525/mp.2021.38.3.337.'
 citation_ieee: '[1] P. M. C. Harrison, “Three Questions Concerning Consonance Perception”,
-  <em>Music Perception</em>, 2021, doi: 10.1525/mp.2021.38.3.337.'
+  <em>Music Perception</em>, vol. 38, no. 3, pp. 337–339, 2021, doi: 10.1525/mp.2021.38.3.337.'
 authors: Harrison, P. M. C.
 ---

@@ -37,8 +37,8 @@ citation_mla: Anstee, L., et al.. “Handedness and Musicality in Secondary Scho
   <em>Music Perception</em>, 2023, https://doi.org/10.1525/mp.2023.40.5.373.
 citation_chicago: Anstee, L., D. Müllensiefen, and P. M. C. Harrison. 2023. “Handedness
   and Musicality in Secondary School Students”. <em>Music Perception</em>. https://doi.org/10.1525/mp.2023.40.5.373.
-citation_ieee: '[1] L. Anstee, D. Müllensiefenand P. M. C. Harrison, “Handedness and
-  musicality in secondary school students”, <em>Music Perception</em>, 2023, doi:
+citation_ieee: '[1] L. Anstee, D. Müllensiefen and P. M. C. Harrison, “Handedness
+  and musicality in secondary school students”, <em>Music Perception</em>, 2023, doi:
   10.1525/mp.2023.40.5.373.'
 link: https://doi.org/10.1525/mp.2023.40.5.373
 ---
