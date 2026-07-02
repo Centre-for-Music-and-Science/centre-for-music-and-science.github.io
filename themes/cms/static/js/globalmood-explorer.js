@@ -24,6 +24,110 @@
     MX: '#1f8a4c',
     US: '#7b1e3a'
   };
+  var TAG_TRANSLATIONS = {
+    EG: {
+      'احتفالي': 'celebratory',
+      'الألم': 'pain',
+      'الاثاره': 'excitement',
+      'الاستمتاع': 'enjoyment',
+      'الحب': 'love',
+      'الحزن': 'sadness',
+      'الحماس': 'enthusiasm',
+      'الدفئ': 'warmth',
+      'الرومانسية': 'romance',
+      'السعادة': 'happiness',
+      'المرح': 'fun',
+      'الهدوء': 'calmness',
+      'بهجة': 'delight',
+      'رقص': 'dance',
+      'شباب': 'youth',
+      'صاخب': 'loud',
+      'عشق': 'passion',
+      'فرح': 'joy',
+      'قوة': 'strength',
+      'نشاط': 'active'
+    },
+    FR: {
+      'rythmé': 'rhythmic',
+      'rythme': 'rhythmic',
+      'dansant': 'dancing',
+      'entrainant': 'catchy',
+      'entraînant': 'catchy',
+      'joie': 'joy',
+      'festif': 'festive',
+      'étranger': 'foreign',
+      'etranger': 'foreign',
+      'nostalgie': 'nostalgia',
+      'joyeux': 'happy',
+      'amour': 'love',
+      'cool': 'cool',
+      'moderne': 'modern',
+      'latino': 'latino',
+      'calme': 'calm',
+      'agréable': 'pleasant',
+      'agreable': 'pleasant',
+      'doux': 'soft',
+      'triste': 'sad',
+      'ensoleillé': 'sunny',
+      'ensoleille': 'sunny',
+      'amusant': 'fun',
+      'bonheur': 'happiness',
+      'mélancolie': 'melancholy',
+      'melancolie': 'melancholy'
+    },
+    KR: {
+      '리듬감있는': 'rhythmic',
+      '신나는': 'exciting',
+      '애절한': 'sorrowful',
+      '흥겨운': 'cheerful',
+      '즐거운': 'pleasant',
+      '호소하는': 'appealing',
+      '경쾌한': 'lively',
+      '그리움': 'longing',
+      '그리운': 'longing',
+      '슬픈': 'sad',
+      '감미로운': 'sweet',
+      '강렬한': 'intense',
+      '이국적인': 'exotic',
+      '감정적인': 'emotional',
+      '잔잔한': 'calm',
+      '부드러운': 'soft',
+      '자유로운': 'free',
+      '활기찬': 'energetic',
+      '기분좋은': 'feel-good',
+      '사랑스러운': 'lovely',
+      '평화로운': 'peaceful',
+      '평화롭다': 'peaceful'
+    },
+    MX: {
+      'alegría': 'joy',
+      'alegria': 'joy',
+      'baile': 'dance',
+      'amor': 'love',
+      'felicidad': 'happiness',
+      'fiesta': 'party',
+      'ritmo': 'rhythm',
+      'relajacion': 'relaxation',
+      'relajación': 'relaxation',
+      'tranquilidad': 'tranquility',
+      'nostalgia': 'nostalgia',
+      'emocion': 'emotion',
+      'emoción': 'emotion',
+      'tristeza': 'sadness',
+      'pasión': 'passion',
+      'pasion': 'passion',
+      'romance': 'romance',
+      'movida': 'lively',
+      'sensualidad': 'sensuality',
+      'raro': 'strange',
+      'esperanza': 'hope',
+      'melancolia': 'melancholy',
+      'melancolía': 'melancholy',
+      'diversion': 'fun',
+      'diversión': 'fun',
+      'paz': 'peace'
+    }
+  };
 
   function initGlobalMoodExplorer() {
     var root = document.querySelector('.globalmood-explorer');
@@ -520,10 +624,10 @@
       groups.length + ' rating group' + (groups.length === 1 ? ' is' : 's are') +
       ' available in the public file for this song.';
 
-    renderRatingBars(byGroup.get(state.selectedGroup), els);
+    renderRatingBars(byGroup.get(state.selectedGroup), els, state.selectedGroup);
   }
 
-  function renderRatingBars(ratings, els) {
+  function renderRatingBars(ratings, els, group) {
     els.ratingBars.replaceChildren();
 
     ratings.forEach(function (rating) {
@@ -546,7 +650,7 @@
       track.className = 'globalmood-rating-track';
       fill.className = 'globalmood-rating-fill';
 
-      tag.textContent = rating.tag;
+      tag.textContent = translatedTagLabel(group, rating.tag);
       value.textContent = details;
       fill.style.width = width + '%';
 
@@ -569,6 +673,14 @@
 
   function groupColor(group) {
     return GROUP_COLORS[group] || '#2a73b2';
+  }
+
+  function translatedTagLabel(group, tag) {
+    var translations = TAG_TRANSLATIONS[group];
+    var translation = translations && (translations[tag] || translations[clean(tag).toLowerCase()]);
+
+    if (!translation) return tag;
+    return tag + ' (' + translation + ')';
   }
 
   function clean(value) {
