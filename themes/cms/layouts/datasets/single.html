@@ -1,11 +1,11 @@
 {{ define "main" }}
-<article class="dataset-detail-page">
+<article class="dataset-detail-page{{ if .Params.globalmood_explorer }} dataset-detail-page--wide{{ end }}">
   <div class="container">
     <div class="detail-back-layout">
       <aside class="detail-back-rail">
         {{ partial "back-link.html" (dict "href" ("datasets/" | relURL)) }}
       </aside>
-      <div>
+      <div{{ if .Params.globalmood_explorer }} class="globalmood-explorer" data-song-url="https://raw.githubusercontent.com/harin-git/GlobalMood/main/Data/songmeta_GlobalMood.csv" data-ratings-url="https://raw.githubusercontent.com/harin-git/GlobalMood/main/Data/meanrating_GlobalMood.csv" data-map-url="https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson"{{ end }}>
         {{ if .Params.image }}
         <div class="dataset-detail-hero">
           <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="{{ .Title }}">
@@ -14,6 +14,10 @@
         <h1 class="dataset-detail-title">{{ .Title }}</h1>
         {{ if .Params.summary }}
         <p class="dataset-detail-summary">{{ .Params.summary }}</p>
+        {{ end }}
+        {{ if .Params.globalmood_explorer }}
+          {{ partial "globalmood-explorer-launcher.html" . }}
+          {{ partial "globalmood-explorer.html" . }}
         {{ end }}
         {{ if .Params.repo }}
         <a href="{{ .Params.repo }}" target="_blank" rel="noopener" class="dataset-repo-btn">

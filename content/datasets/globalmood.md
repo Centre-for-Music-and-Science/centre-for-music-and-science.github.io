@@ -4,6 +4,7 @@ summary: "A large-scale cross-cultural dataset for music emotion recognition, fe
 image: "/images/datasets/globalmood_logo.png"
 repo: "https://github.com/harin-git/GlobalMood"
 publication: "lee-globalmood"
+globalmood_explorer: true
 weight: 1
 ---
 

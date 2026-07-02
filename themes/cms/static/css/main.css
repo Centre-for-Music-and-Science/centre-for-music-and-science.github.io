@@ -3099,6 +3099,15 @@ a.pub-item-title:hover {
   max-width: 800px;
 }
 
+.dataset-detail-page--wide .container {
+  max-width: 1180px;
+}
+
+.dataset-detail-page--wide .detail-back-layout {
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 24px;
+}
+
 .dataset-detail-hero {
   max-width: 280px;
   margin-bottom: 32px;
@@ -3208,6 +3217,364 @@ a.pub-item-title:hover {
   font-size: 0.9em;
 }
 
+/* GlobalMood Explorer */
+.globalmood-explorer {
+  color: var(--color-text);
+}
+
+.globalmood-explorer-intro,
+.globalmood-map-panel,
+.globalmood-country-panel,
+.globalmood-song-panel,
+.globalmood-ratings-panel {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+.globalmood-explorer-intro {
+  align-content: center;
+  display: grid;
+  margin-bottom: 24px;
+  padding: 28px;
+}
+
+.globalmood-eyebrow {
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.globalmood-explorer h2 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.globalmood-explorer-intro p:not(.globalmood-eyebrow):not(.globalmood-status) {
+  color: var(--color-text-light);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.globalmood-load-btn,
+.globalmood-song-btn,
+.globalmood-language-btn {
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.globalmood-load-btn {
+  background: var(--color-text);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 12px 22px;
+}
+
+.globalmood-load-btn:hover,
+.globalmood-load-btn:focus-visible {
+  transform: translateY(-1px);
+}
+
+.globalmood-load-btn:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
+}
+
+.globalmood-status {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: 14px;
+}
+
+.globalmood-status.is-error {
+  color: #b45309;
+}
+
+.globalmood-app {
+  display: grid;
+  gap: 20px;
+  margin: 0 0 32px;
+}
+
+.globalmood-app[hidden],
+.globalmood-song-detail[hidden],
+.globalmood-song-empty[hidden] {
+  display: none;
+}
+
+.globalmood-map-panel,
+.globalmood-country-panel,
+.globalmood-song-panel,
+.globalmood-ratings-panel {
+  padding: 20px;
+}
+
+.globalmood-panel-heading {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+
+.globalmood-explorer h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.globalmood-map-note,
+.globalmood-country-summary,
+.globalmood-ratings-note,
+.globalmood-song-empty {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.globalmood-country-summary {
+  margin-bottom: 2em;
+}
+
+.globalmood-map {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.globalmood-map svg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.globalmood-country {
+  fill: #d9e0e8;
+  outline: none;
+  stroke: #fff;
+  stroke-width: 0.7;
+  transition: fill 0.15s, opacity 0.15s;
+}
+
+.globalmood-country:focus {
+  outline: none;
+}
+
+.globalmood-country.is-available {
+  cursor: pointer;
+  fill: #8fb7d7;
+}
+
+.globalmood-country.is-available:hover,
+.globalmood-country.is-available:focus-visible {
+  fill: var(--color-accent);
+  outline: none;
+}
+
+.globalmood-country.is-selected {
+  fill: var(--color-text);
+}
+
+.globalmood-map-tooltip {
+  background: rgba(10, 22, 40, 0.92);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  left: 0;
+  line-height: 1;
+  padding: 7px 10px;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translate3d(0, 0, 0);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.globalmood-map-tooltip[hidden] {
+  display: none;
+}
+
+.globalmood-detail-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.globalmood-right-column {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
+.globalmood-song-list {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.globalmood-song-btn {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-text);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.globalmood-song-btn:hover,
+.globalmood-song-btn:focus-visible,
+.globalmood-song-btn.is-selected {
+  border-color: var(--color-accent);
+}
+
+.globalmood-song-btn.is-selected {
+  background: rgba(42, 115, 178, 0.08);
+}
+
+.globalmood-song-name {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.globalmood-song-meta {
+  color: var(--color-text-muted);
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin-top: 3px;
+}
+
+.globalmood-song-detail {
+  display: grid;
+  gap: 18px;
+}
+
+.globalmood-song-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.globalmood-song-artist {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.globalmood-video {
+  aspect-ratio: 16 / 9;
+  background: #111827;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.globalmood-video iframe {
+  border: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.globalmood-ratings {
+  display: grid;
+  gap: 14px;
+}
+
+.globalmood-ratings-header {
+  display: grid;
+  gap: 12px;
+}
+
+.globalmood-ratings h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.globalmood-language-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.globalmood-language-btn {
+  background: #fff;
+  border: 1px solid var(--globalmood-group-color);
+  color: var(--globalmood-group-color);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 7px 12px;
+}
+
+.globalmood-language-btn:hover,
+.globalmood-language-btn:focus-visible,
+.globalmood-language-btn.is-selected {
+  border-color: var(--globalmood-group-color);
+  color: var(--globalmood-group-color);
+}
+
+.globalmood-language-btn.is-selected {
+  background: var(--globalmood-group-color);
+  color: #fff;
+}
+
+.globalmood-rating-bars {
+  display: grid;
+  gap: 10px;
+  max-height: 360px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.globalmood-rating-row {
+  display: grid;
+  gap: 5px;
+}
+
+.globalmood-rating-label {
+  display: flex;
+  font-size: 0.84rem;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.globalmood-rating-tag {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.globalmood-rating-value {
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.globalmood-rating-track {
+  background: rgba(10, 22, 40, 0.08);
+  border-radius: 999px;
+  height: 9px;
+  overflow: hidden;
+}
+
+.globalmood-rating-fill {
+  background: var(--globalmood-rating-color, var(--color-accent));
+  border-radius: inherit;
+  height: 100%;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .datasets-grid {
@@ -3267,6 +3634,14 @@ a.pub-item-title:hover {
 
   .methods-projects {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dataset-detail-page--wide .detail-back-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .globalmood-detail-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3342,6 +3717,18 @@ a.pub-item-title:hover {
 
   .trio-section {
     grid-template-columns: 1fr;
+  }
+
+  .globalmood-explorer-intro,
+  .globalmood-map-panel,
+  .globalmood-country-panel,
+  .globalmood-song-panel,
+  .globalmood-ratings-panel {
+    padding: 18px;
+  }
+
+  .globalmood-panel-heading {
+    display: block;
   }
 
   :root {

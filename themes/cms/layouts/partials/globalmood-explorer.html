@@ -1,0 +1,46 @@
+<div class="globalmood-app" hidden>
+  <div class="globalmood-map-panel">
+    <div class="globalmood-panel-heading">
+      <h3>Explore music around the world</h3>
+      <p class="globalmood-map-note">Select a country and then select a song!</p>
+    </div>
+    <div class="globalmood-map" aria-label="GlobalMood country map"></div>
+  </div>
+
+  <div class="globalmood-detail-grid">
+    <section class="globalmood-country-panel" aria-labelledby="globalmood-country-heading">
+      <h3 id="globalmood-country-heading">Songs</h3>
+      <p class="globalmood-country-summary"></p>
+      <div class="globalmood-song-list" role="list"></div>
+    </section>
+
+    <div class="globalmood-right-column">
+      <section class="globalmood-song-panel" aria-labelledby="globalmood-song-heading">
+        <h3 id="globalmood-song-heading">Selected song</h3>
+        <div class="globalmood-song-empty">
+          Select a country and song to preview the recording and view ratings.
+        </div>
+        <div class="globalmood-song-detail" hidden>
+          <div>
+            <p class="globalmood-song-title"></p>
+            <p class="globalmood-song-artist"></p>
+          </div>
+          <div class="globalmood-video"></div>
+        </div>
+      </section>
+
+      <section class="globalmood-ratings-panel" aria-labelledby="globalmood-ratings-heading">
+        <div class="globalmood-ratings">
+          <div class="globalmood-ratings-header">
+            <div>
+              <h3 id="globalmood-ratings-heading">Participant ratings</h3>
+              <p class="globalmood-ratings-note"></p>
+            </div>
+            <div class="globalmood-language-tabs" role="tablist" aria-label="Rating groups"></div>
+          </div>
+          <div class="globalmood-rating-bars"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
