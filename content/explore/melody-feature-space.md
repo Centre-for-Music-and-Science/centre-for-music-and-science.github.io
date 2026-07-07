@@ -1,6 +1,6 @@
 ---
 title: "Melody feature space"
-summary: "Explore a 3D visualization of relationships between computational melody features."
+summary: "How do different melodic features relate to each other?"
 item_type: "app"
 app_url: "https://dmwhyatt.github.io/Style-Classification-Analysis/"
 image: "/images/projects/memory.jpg"
@@ -14,6 +14,9 @@ publications:
 weight: 3
 ---
 
-This interactive visualization shows relationships between computational features used to describe melodies. It offers a way into a complex feature network by arranging related measures into a 3D space.
+We have developed a substantial collection of computational tools for extracting psychological and music-theoretic features from melodies.
+These features have diverse possible applications,
+ranging from psychological modelling to style analysis.
 
-The app supports work on melodic memory by making high-dimensional musical representations easier to inspect and discuss.
+This dashboard visualises this large of features, and shows how they connect together into related factors. It uses the Essen folksong corpus to provide examples of high and low values for every feature.
+

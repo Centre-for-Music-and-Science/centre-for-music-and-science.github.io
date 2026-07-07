@@ -8,7 +8,7 @@
     </div>
     <div class="explore-highlight-grid">
       {{ range first 4 (sort $featured "Params.weight") }}
-        {{ partial "explore-card.html" (dict "page" . "show_project" false) }}
+        {{ partial "explore-card.html" (dict "page" .) }}
       {{ end }}
     </div>
   </div>

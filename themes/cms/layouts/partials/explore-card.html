@@ -1,5 +1,4 @@
 {{- $page := .page -}}
-{{- $showProject := default true .show_project -}}
 {{- $variant := .variant | default "explore" -}}
 {{- $itemType := $page.Params.item_type | default "app" -}}
 {{- $itemLabel := cond (eq $itemType "video") "Video" "App" -}}
@@ -10,12 +9,6 @@
 {{- $thumb := $page.Params.image -}}
 {{- if and (not $thumb) $videoID -}}
   {{- $thumb = printf "https://img.youtube.com/vi/%s/hqdefault.jpg" $videoID -}}
-{{- end -}}
-{{- $firstProject := "" -}}
-{{- if $showProject -}}
-  {{- range first 1 (default (slice) $page.Params.projects) -}}
-    {{- $firstProject = $page.Site.GetPage (path.Join "/projects" .) -}}
-  {{- end -}}
 {{- end -}}
 {{- if eq $variant "project" -}}
 {{- $projectThumb := $thumb | default ($page.Params.thumbnail | default $page.Params.leader_image) -}}
@@ -47,13 +40,6 @@
     {{ with $page.Params.summary }}
     <p class="explore-card-summary">{{ . }}</p>
     {{ end }}
-    <div class="explore-card-meta">
-      {{ partial "explore-people-icons.html" (dict "page" $page "linked" false) }}
-      {{ with $firstProject }}
-      {{ $projectTitle := .Title }}
-      <a class="explore-card-project" href="{{ .RelPermalink }}">{{ if gt (len $projectTitle) 24 }}{{ substr $projectTitle 0 24 }} [...]{{ else }}{{ $projectTitle }}{{ end }}</a>
-      {{ end }}
-    </div>
   </div>
 </article>
 {{- end -}}

@@ -1,6 +1,6 @@
 ---
 title: "Jazz piano style explorer"
-summary: "Explore how machine-learning models distinguish the styles of iconic jazz pianists."
+summary: "What can computers teach us about the style of jazz pianists?"
 item_type: "app"
 app_url: "https://huwcheston.github.io/ImprovID-app/index.html"
 image: "/images/projects/jazz.jpg"
@@ -15,6 +15,8 @@ featured_home: true
 weight: 2
 ---
 
-This web app accompanies research on machine learning of artistic fingerprints in jazz. It lets you explore model predictions and musical features associated with different jazz piano styles.
-
-The underlying research asks how computational models can identify performers from patterns in melody, harmony, rhythm, and dynamics.
+In this project,
+we trained machine-learning models on large datasets of improvisations
+by famous jazz pianists.
+This dashboard visualises patterns learned by these models,
+giving insights into the unique ingredients of each performers' style.

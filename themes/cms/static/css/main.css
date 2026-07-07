@@ -3148,41 +3148,6 @@ a.pub-item-title:hover {
   color: var(--color-text-light);
   font-size: 0.92rem;
   line-height: 1.5;
-  margin-bottom: 16px;
-}
-
-.explore-card-meta {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: auto;
-  min-width: 0;
-}
-
-.explore-card-meta .explore-people-icons {
-  flex: 0 0 auto;
-}
-
-.explore-card .project-person-icon {
-  width: 32px;
-  height: 32px;
-}
-
-.explore-card-project {
-  color: var(--color-text-muted);
-  font-size: 0.85rem;
-  margin-left: auto;
-  min-width: 0;
-  overflow: hidden;
-  position: relative;
-  text-align: right;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  z-index: 3;
-}
-
-.explore-card-project:hover {
-  color: var(--color-accent);
 }
 
 .explore-launch-btn .arrow {
@@ -3200,10 +3165,10 @@ a.pub-item-title:hover {
 
 .explore-detail-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 320px);
   gap: 32px;
   align-items: start;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .explore-detail-header--no-media {
@@ -3232,10 +3197,10 @@ a.pub-item-title:hover {
 
 .explore-detail-summary {
   color: var(--color-text-light);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 1.6;
-  margin-bottom: 0;
+  line-height: 1.7;
+  margin-bottom: 16px;
 }
 
 .explore-launch-btn {
@@ -3293,7 +3258,7 @@ a.pub-item-title:hover {
 
 .explore-detail-image img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   transition: filter 0.2s, transform 0.2s;
 }
@@ -3363,7 +3328,6 @@ a.pub-item-title:hover {
   max-width: var(--copy-max-width);
   color: var(--color-text-light);
   line-height: 1.8;
-  margin-top: 32px;
 }
 
 .explore-detail-body p {
