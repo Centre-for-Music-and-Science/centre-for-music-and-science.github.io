@@ -69,6 +69,21 @@
         <div class="project-detail-body">
           {{ .Content }}
         </div>
+        {{ $projectRelationSlugs := slice $projectSlug }}
+        {{ $descendantProjectSlugs := slice }}
+        {{ $descendantProjectSlugsRaw := partial "collect-descendant-project-slugs.html" (dict "slug" $projectSlug "allProjects" (where .Site.RegularPages "Section" "projects")) }}
+        {{ if ne $descendantProjectSlugsRaw "" }}
+          {{ range (split $descendantProjectSlugsRaw "\n") }}
+            {{ if ne . "" }}
+              {{ if not (in $descendantProjectSlugs .) }}
+                {{ $descendantProjectSlugs = $descendantProjectSlugs | append . }}
+              {{ end }}
+              {{ if not (in $projectRelationSlugs .) }}
+                {{ $projectRelationSlugs = $projectRelationSlugs | append . }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
         {{ $childProjects := partial "resolve-project-pages.html" (dict "slugs" (default (slice) .Params.projects) "allProjects" (where .Site.RegularPages "Section" "projects")) }}
         {{ if gt (len $childProjects) 0 }}
         <section class="project-publications">
@@ -80,23 +95,27 @@
           </div>
         </section>
         {{ end }}
-        {{ $featuredPublications := slice }}
-        {{ range .Params.featured_publications }}
-          {{ $pub := $.Site.GetPage (path.Join "/publications" .) }}
-          {{ if $pub }}
-            {{ $featuredPublications = $featuredPublications | append $pub }}
+        {{ $relatedExploreApps := slice }}
+        {{ range where (where .Site.RegularPages "Section" "explore") "Params.item_type" "app" }}
+          {{ $exploreProjectSlugs := default (slice) .Params.projects }}
+          {{ $matchesCurrent := in $exploreProjectSlugs $projectSlug }}
+          {{ $matchesDescendant := gt (len (intersect $exploreProjectSlugs $descendantProjectSlugs)) 0 }}
+          {{ if and $matchesCurrent (not $matchesDescendant) }}
+            {{ $relatedExploreApps = $relatedExploreApps | append . }}
           {{ end }}
         {{ end }}
-        {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
-        {{ $projectRelationSlugs := slice $projectSlug }}
-        {{ $descendantProjectSlugsRaw := partial "collect-descendant-project-slugs.html" (dict "slug" $projectSlug "allProjects" (where .Site.RegularPages "Section" "projects")) }}
-        {{ if ne $descendantProjectSlugsRaw "" }}
-          {{ range (split $descendantProjectSlugsRaw "\n") }}
-            {{ if and (ne . "") (not (in $projectRelationSlugs .)) }}
-              {{ $projectRelationSlugs = $projectRelationSlugs | append . }}
+        {{ if gt (len $relatedExploreApps) 0 }}
+        <section class="project-publications">
+          <h2 class="project-publications-heading">Apps</h2>
+          <div class="theme-projects">
+            {{ range sort $relatedExploreApps "Params.weight" }}
+              {{ partial "explore-card.html" (dict "page" . "variant" "project") }}
             {{ end }}
-          {{ end }}
+          </div>
+        </section>
         {{ end }}
+        {{ $featuredPublications := partial "resolve-publication-pages.html" (dict "page" . "slugs" .Params.featured_publications) }}
+        {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
         {{ partial "related-publications-section.html" (dict "page" . "relation_key" "projects" "relation_slugs" $projectRelationSlugs "heading" "Related Publications" "featured" $featuredPublications) }}
       </div>
     </div>

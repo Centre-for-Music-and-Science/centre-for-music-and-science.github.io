@@ -145,7 +145,6 @@
 
     var els = {
       app: root.querySelector('.globalmood-app'),
-      button: root.querySelector('.globalmood-load-btn'),
       status: root.querySelector('.globalmood-status'),
       map: root.querySelector('.globalmood-map'),
       countryHeading: root.querySelector('#globalmood-country-heading'),
@@ -161,9 +160,7 @@
       ratingBars: root.querySelector('.globalmood-rating-bars')
     };
 
-    els.button.addEventListener('click', function () {
-      loadExplorer(root, els, state);
-    });
+    loadExplorer(root, els, state);
   }
 
   if (document.readyState === 'loading') {
@@ -173,7 +170,6 @@
   }
 
   function loadExplorer(root, els, state) {
-    els.button.disabled = true;
     setStatus(els, 'Loading metadata, ratings, and map data...', false);
 
     Promise.all([
@@ -199,7 +195,6 @@
         }
       })
       .catch(function (error) {
-        els.button.disabled = false;
         setStatus(els, 'Unable to load the explorer data: ' + error.message, true);
       });
   }

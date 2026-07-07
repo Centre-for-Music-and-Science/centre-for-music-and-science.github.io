@@ -1,0 +1,18 @@
+{{- $page := .page -}}
+{{- $projects := slice -}}
+{{- range (default (slice) $page.Params.projects) -}}
+  {{- $project := $page.Site.GetPage (path.Join "/projects" .) -}}
+  {{- if $project -}}
+    {{- $projects = $projects | append $project -}}
+  {{- end -}}
+{{- end -}}
+{{- if gt (len $projects) 0 -}}
+<section class="explore-detail-projects">
+  <h2 class="project-publications-heading">Projects</h2>
+  <div class="theme-projects">
+    {{- range $projects -}}
+      {{- partial "research-item-card.html" (dict "page" . "label" "Project") -}}
+    {{- end -}}
+  </div>
+</section>
+{{- end -}}

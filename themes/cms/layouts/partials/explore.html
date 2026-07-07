@@ -1,0 +1,16 @@
+{{ $featured := where (where .Site.RegularPages "Section" "explore") "Params.featured_home" true }}
+{{ if gt (len $featured) 0 }}
+<section class="explore-highlight-section" id="explore">
+  <div class="container">
+    <div class="section-heading-row">
+      <h2 class="section-title">Explore</h2>
+      <a href="{{ "explore/" | relURL }}" class="section-link">View all <span class="arrow">&rarr;</span></a>
+    </div>
+    <div class="explore-highlight-grid">
+      {{ range first 4 (sort $featured "Params.weight") }}
+        {{ partial "explore-card.html" (dict "page" . "show_project" false) }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

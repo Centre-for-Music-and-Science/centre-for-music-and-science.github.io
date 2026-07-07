@@ -1,12 +1,12 @@
 ---
 title: Deconstructing jazz piano style using machine learning
-date: 2025-01-01
+date: 2026-01-01
 projects:
 - jazz
 # generated from bibtex; do not edit manually
 authors: Cheston, H., Bance, R., & Harrison, P. M. C.
-journal: arXiv
-doi: https://doi.org/10.48550/arXiv.2504.05009
+journal: Nature Machine Intelligence
+inpress: true
 abstract: Artistic style has been studied for centuries, and recent advances in machine
   learning create new possibilities for understanding it computationally. However,
   ensuring that machine-learning models produce insights aligned with the interests
@@ -24,18 +24,20 @@ bibtex: |-
   @article{cheston-jazz-piano,
     author = {Cheston, H. and Bance, R. and Harrison, P. M. C.},
     title = {Deconstructing jazz piano style using machine learning},
-    journal = {arXiv},
-    year = {2025},
-    doi = {10.48550/arXiv.2504.05009}
+    journal = {Nature Machine Intelligence},
+    year = {2026},
+    note = {Forthcoming}
   }
 # generated from bibtex; do not edit manually
-citation_apa: Cheston, H., Bance, R., & Harrison, P. M. C. (2025). Deconstructing
-  jazz piano style using machine learning. <em>arXiv</em>. https://doi.org/10.48550/arXiv.2504.05009
+citation_apa: Cheston, H., Bance, R., & Harrison, P. M. C. (2026). Deconstructing
+  jazz piano style using machine learning. <em>Nature Machine Intelligence</em>.
+  Forthcoming.
 citation_mla: Cheston, H., et al.. “Deconstructing Jazz Piano Style Using Machine
-  Learning”. <em>arXiv</em>, 2025, https://doi.org/10.48550/arXiv.2504.05009.
-citation_chicago: Cheston, H., R. Bance, and P. M. C. Harrison. 2025. “Deconstructing
-  Jazz Piano Style Using Machine Learning”. <em>arXiv</em>. https://doi.org/10.48550/arXiv.2504.05009.
+  Learning”. <em>Nature Machine Intelligence</em>, forthcoming.
+citation_chicago: Cheston, H., R. Bance, and P. M. C. Harrison. 2026. “Deconstructing
+  Jazz Piano Style Using Machine Learning”. <em>Nature Machine Intelligence</em>.
+  Forthcoming.
 citation_ieee: '[1] H. Cheston, R. Bance and P. M. C. Harrison, “Deconstructing jazz
-  piano style using machine learning”, <em>arXiv</em>, 2025, doi: 10.48550/arXiv.2504.05009.'
+  piano style using machine learning”, <em>Nature Machine Intelligence</em>, forthcoming.'
 link: https://doi.org/10.48550/arXiv.2504.05009
 ---

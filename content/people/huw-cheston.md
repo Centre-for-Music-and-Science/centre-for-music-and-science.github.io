@@ -8,7 +8,7 @@ positions:
     end_date: "2025"
   - kind: postdoc
     start_date: "2026"
-    end_date: null
+    end_date: "2026"
 email: ""
 image: "/images/people/huw-cheston.jpg"
 weight: 18

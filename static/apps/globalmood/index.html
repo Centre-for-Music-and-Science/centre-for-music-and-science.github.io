@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GlobalMood explorer | Centre for Music and Science</title>
+  <meta name="description" content="Explore cross-cultural music emotion ratings from the GlobalMood dataset.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="icon" href="../../images/logos/cms_favicon.png" type="image/png">
+</head>
+<body class="standalone-app-body">
+  <main class="standalone-app-shell">
+    <p class="standalone-app-back-link"><a href="../../explore/globalmood-explorer/">Back to GlobalMood explorer</a></p>
+    <div
+      class="globalmood-explorer"
+      data-song-url="https://raw.githubusercontent.com/harin-git/GlobalMood/main/Data/songmeta_GlobalMood.csv"
+      data-ratings-url="https://raw.githubusercontent.com/harin-git/GlobalMood/main/Data/meanrating_GlobalMood.csv"
+      data-map-url="https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson"
+    >
+      <div class="globalmood-explorer-intro">
+        <p class="globalmood-eyebrow">App</p>
+        <h1>Explore songs and mood ratings around the world</h1>
+        <p>
+          Choose a country, preview a song through YouTube, and compare the
+          available participant rating groups.
+        </p>
+        <p class="globalmood-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="globalmood-app" hidden>
+        <div class="globalmood-map-panel">
+          <div class="globalmood-map" aria-label="GlobalMood country map"></div>
+        </div>
+
+        <div class="globalmood-detail-grid">
+          <section class="globalmood-country-panel" aria-labelledby="globalmood-country-heading">
+            <h2 id="globalmood-country-heading">Songs</h2>
+            <p class="globalmood-country-summary"></p>
+            <div class="globalmood-song-list" role="list"></div>
+          </section>
+
+          <div class="globalmood-right-column">
+            <section class="globalmood-song-panel" aria-labelledby="globalmood-song-heading">
+              <h2 id="globalmood-song-heading">Selected song</h2>
+              <div class="globalmood-song-empty">
+                Select a country and song to preview the recording and view ratings.
+              </div>
+              <div class="globalmood-song-detail" hidden>
+                <div>
+                  <p class="globalmood-song-title"></p>
+                  <p class="globalmood-song-artist"></p>
+                </div>
+                <div class="globalmood-video"></div>
+              </div>
+            </section>
+
+            <section class="globalmood-ratings-panel" aria-labelledby="globalmood-ratings-heading">
+              <div class="globalmood-ratings">
+                <div class="globalmood-ratings-header">
+                  <div>
+                    <h2 id="globalmood-ratings-heading">Participant ratings</h2>
+                    <p class="globalmood-ratings-note"></p>
+                  </div>
+                  <div class="globalmood-language-tabs" role="tablist" aria-label="Rating groups"></div>
+                </div>
+                <div class="globalmood-rating-bars"></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="../../js/globalmood-explorer.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{{ define "main" }}
+<section class="explore-page">
+  <div class="container">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with .Content }}
+    <div class="explore-page-intro">
+      {{ . }}
+    </div>
+    {{ end }}
+    {{ $apps := where .RegularPages "Params.item_type" "app" }}
+    {{ $videos := where .RegularPages "Params.item_type" "video" }}
+    {{ if gt (len $apps) 0 }}
+    <section class="explore-subsection">
+      <h2 class="explore-subsection-title">Apps</h2>
+      <div class="explore-grid">
+        {{ range sort $apps "Params.weight" }}
+          {{ partial "explore-card.html" (dict "page" .) }}
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+    {{ if gt (len $videos) 0 }}
+    <section class="explore-subsection">
+      <h2 class="explore-subsection-title">Videos</h2>
+      <div class="explore-grid">
+        {{ range sort $videos "Params.weight" }}
+          {{ partial "explore-card.html" (dict "page" .) }}
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

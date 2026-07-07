@@ -1,0 +1,38 @@
+{{- $page := .page -}}
+{{- $linked := true -}}
+{{- if isset . "linked" -}}
+  {{- $linked = .linked -}}
+{{- end -}}
+{{- $people := slice -}}
+{{- range (default (slice) $page.Params.people) -}}
+  {{- $person := $page.Site.GetPage (path.Join "/people" .) -}}
+  {{- if $person -}}
+    {{- $people = $people | append $person -}}
+  {{- end -}}
+{{- end -}}
+{{- if gt (len $people) 0 -}}
+<div class="project-people-icons explore-people-icons">
+  {{- range $people -}}
+  {{- $person := . -}}
+  {{- if $linked -}}
+  <a href="{{ $person.RelPermalink }}" class="project-person-icon" title="{{ $person.Title }}">
+  {{- else -}}
+  <span class="project-person-icon" title="{{ $person.Title }}">
+  {{- end -}}
+    {{- if $person.Params.image -}}
+    <img src="{{ (strings.TrimPrefix "/" $person.Params.image) | relURL }}" alt="{{ $person.Title }}">
+    {{- else -}}
+    <span class="project-person-placeholder" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+      </svg>
+    </span>
+    {{- end -}}
+  {{- if $linked -}}
+  </a>
+  {{- else -}}
+  </span>
+  {{- end -}}
+  {{- end -}}
+</div>
+{{- end -}}

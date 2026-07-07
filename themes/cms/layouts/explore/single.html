@@ -1,0 +1,77 @@
+{{ define "main" }}
+{{ $itemType := .Params.item_type | default "app" }}
+{{ $itemLabel := cond (eq $itemType "video") "Video" "App" }}
+{{ $appURL := .Params.app_url }}
+{{ $hasAppURL := ne (default "" $appURL) "" }}
+{{ $isExternalApp := and $hasAppURL (strings.HasPrefix $appURL "http") }}
+{{ $appHref := "" }}
+{{ if $hasAppURL }}
+  {{ $appHref = cond $isExternalApp $appURL ((strings.TrimPrefix "/" $appURL) | relURL) }}
+{{ end }}
+{{ $videoURL := .Params.video_url }}
+{{ $hasVideoURL := ne (default "" $videoURL) "" }}
+{{ $videoID := "" }}
+{{ if $hasVideoURL }}
+  {{ $videoID = replaceRE `.*(?:youtube\.com/watch\?v=|youtu\.be/)([^&?]+).*` "$1" $videoURL }}
+{{ end }}
+{{ $hasMedia := or .Params.image (and (eq $itemType "video") $videoID) }}
+{{ $imageFit := .Params.image_fit | default "cover" }}
+{{ $imageFillColor := .Params.image_fill_color | default "#fff" }}
+<article class="explore-detail-page">
+  <div class="container">
+    <div class="detail-back-layout">
+      <aside class="detail-back-rail">
+        {{ partial "back-link.html" (dict "href" ("explore/" | relURL) "label" "Explore") }}
+      </aside>
+      <div class="explore-detail-content">
+        <header class="explore-detail-header{{ if not $hasMedia }} explore-detail-header--no-media{{ end }}">
+          <div class="explore-detail-heading">
+            <p class="explore-detail-type">{{ $itemLabel }}</p>
+            <h1 class="explore-detail-title">{{ .Title }}</h1>
+            {{ partial "explore-people-icons.html" (dict "page" .) }}
+            {{ with .Params.summary }}
+            <p class="explore-detail-summary">{{ . }}</p>
+            {{ end }}
+          </div>
+          {{ if eq $itemType "video" }}
+          {{ if $videoID }}
+          <div class="explore-detail-video">
+            <iframe src="https://www.youtube-nocookie.com/embed/{{ $videoID }}" title="{{ .Title }}" style="border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          {{ end }}
+          {{ else if .Params.image }}
+          {{ if $hasAppURL }}
+          <a class="explore-detail-image explore-detail-image--link{{ if eq $imageFit "contain" }} explore-detail-image--contain{{ end }}"{{ if eq $imageFit "contain" }} style="--explore-image-fill: {{ $imageFillColor | safeCSS }};"{{ end }} href="{{ $appHref }}" target="_blank" rel="noopener">
+            <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="">
+            <span class="explore-image-launch-btn">Launch app <span class="arrow">&rarr;</span></span>
+          </a>
+          {{ else }}
+          <div class="explore-detail-image{{ if eq $imageFit "contain" }} explore-detail-image--contain{{ end }}"{{ if eq $imageFit "contain" }} style="--explore-image-fill: {{ $imageFillColor | safeCSS }};"{{ end }}>
+            <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="">
+            <span class="explore-image-coming-soon">App link coming soon</span>
+          </div>
+          {{ end }}
+          {{ end }}
+        </header>
+        <div class="explore-detail-body">
+          {{ .Content }}
+        </div>
+        {{ if and (eq $itemType "app") (not .Params.image) }}
+        <div class="explore-detail-actions">
+          {{ if $hasAppURL }}
+          <a class="explore-launch-btn" href="{{ $appHref }}" target="_blank" rel="noopener">Launch app <span class="arrow">&rarr;</span></a>
+          {{ else }}
+          <p class="explore-coming-soon">App link coming soon.</p>
+          {{ end }}
+        </div>
+        {{ end }}
+        {{ partial "explore-project-cards.html" (dict "page" .) }}
+        {{ $featuredPublications := partial "resolve-publication-pages.html" (dict "page" . "slugs" .Params.featured_publications) }}
+        {{ partial "featured-publications.html" (dict "page" . "featured" $featuredPublications) }}
+        {{ $linkedPublications := partial "resolve-publication-pages.html" (dict "page" . "slugs" .Params.publications) }}
+        {{ partial "related-publications-section.html" (dict "page" . "heading" "Publications" "publications" $linkedPublications "featured" $featuredPublications) }}
+      </div>
+    </div>
+  </div>
+</article>
+{{ end }}

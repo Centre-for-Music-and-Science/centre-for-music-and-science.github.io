@@ -1,0 +1,12 @@
+{{ $page := .page }}
+{{ $slugs := .slugs | default (slice) }}
+{{ $publications := slice }}
+
+{{ range $slugs }}
+  {{ $publication := $page.Site.GetPage (path.Join "/publications" .) }}
+  {{ if $publication }}
+    {{ $publications = $publications | append $publication }}
+  {{ end }}
+{{ end }}
+
+{{ return $publications }}

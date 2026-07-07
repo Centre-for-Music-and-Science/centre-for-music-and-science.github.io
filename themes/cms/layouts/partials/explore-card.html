@@ -1,0 +1,59 @@
+{{- $page := .page -}}
+{{- $showProject := default true .show_project -}}
+{{- $variant := .variant | default "explore" -}}
+{{- $itemType := $page.Params.item_type | default "app" -}}
+{{- $itemLabel := cond (eq $itemType "video") "Video" "App" -}}
+{{- $videoID := "" -}}
+{{- if and (eq $itemType "video") $page.Params.video_url -}}
+  {{- $videoID = replaceRE `.*(?:youtube\.com/watch\?v=|youtu\.be/)([^&?]+).*` "$1" $page.Params.video_url -}}
+{{- end -}}
+{{- $thumb := $page.Params.image -}}
+{{- if and (not $thumb) $videoID -}}
+  {{- $thumb = printf "https://img.youtube.com/vi/%s/hqdefault.jpg" $videoID -}}
+{{- end -}}
+{{- $firstProject := "" -}}
+{{- if $showProject -}}
+  {{- range first 1 (default (slice) $page.Params.projects) -}}
+    {{- $firstProject = $page.Site.GetPage (path.Join "/projects" .) -}}
+  {{- end -}}
+{{- end -}}
+{{- if eq $variant "project" -}}
+{{- $projectThumb := $thumb | default ($page.Params.thumbnail | default $page.Params.leader_image) -}}
+<a href="{{ $page.RelPermalink }}" class="project-card{{ if not $projectThumb }} project-card--no-thumb{{ end }}">
+  {{- if $projectThumb -}}
+  <div class="project-card-thumb">
+    <img src="{{ if strings.HasPrefix $projectThumb "http" }}{{ $projectThumb }}{{ else }}{{ (strings.TrimPrefix "/" $projectThumb) | relURL }}{{ end }}" alt="">
+  </div>
+  {{- end -}}
+  <div class="project-card-text">
+    <span class="project-title">{{ $page.Title }} <span class="arrow">&rarr;</span></span>
+  </div>
+</a>
+{{- else -}}
+{{- $imageFit := $page.Params.image_fit | default "cover" -}}
+{{- $imageFillColor := $page.Params.image_fill_color | default "#fff" -}}
+<article class="explore-card">
+  <a class="explore-card-cover" href="{{ $page.RelPermalink }}" aria-label="{{ $page.Title }}"></a>
+  <div class="explore-card-media{{ if eq $imageFit "contain" }} explore-card-media--contain{{ end }}"{{ if eq $imageFit "contain" }} style="--explore-image-fill: {{ $imageFillColor | safeCSS }};"{{ end }} aria-hidden="true">
+    {{- if $thumb -}}
+    <img src="{{ if strings.HasPrefix $thumb "http" }}{{ $thumb }}{{ else }}{{ (strings.TrimPrefix "/" $thumb) | relURL }}{{ end }}" alt="">
+    {{- else -}}
+    <span class="explore-card-placeholder">{{ substr $page.Title 0 1 }}</span>
+    {{- end -}}
+  </div>
+  <div class="explore-card-body">
+    <span class="explore-card-type">{{ $itemLabel }}</span>
+    <span class="explore-card-title">{{ $page.Title }}</span>
+    {{ with $page.Params.summary }}
+    <p class="explore-card-summary">{{ . }}</p>
+    {{ end }}
+    <div class="explore-card-meta">
+      {{ partial "explore-people-icons.html" (dict "page" $page "linked" false) }}
+      {{ with $firstProject }}
+      {{ $projectTitle := .Title }}
+      <a class="explore-card-project" href="{{ .RelPermalink }}">{{ if gt (len $projectTitle) 24 }}{{ substr $projectTitle 0 24 }} [...]{{ else }}{{ $projectTitle }}{{ end }}</a>
+      {{ end }}
+    </div>
+  </div>
+</article>
+{{- end -}}
