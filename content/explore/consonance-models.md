@@ -1,6 +1,6 @@
 ---
 title: "Consonance models"
-summary: "Compare psychoacoustic models of consonance."
+summary: "What are the basic ingredients of consonance?"
 item_type: "app"
 app_url: "https://pmcharrison.github.io/incon-js"
 image: "/images/apps/consonance-models.png"

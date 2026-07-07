@@ -28,6 +28,9 @@
           <div class="explore-detail-heading">
             <p class="explore-detail-type">{{ $itemLabel }}</p>
             <h1 class="explore-detail-title">{{ .Title }}</h1>
+            {{ with .Params.summary }}
+            <p class="explore-detail-summary">{{ . }}</p>
+            {{ end }}
             {{ partial "explore-people-icons.html" (dict "page" .) }}
           </div>
           {{ if eq $itemType "video" }}
@@ -51,9 +54,6 @@
           {{ end }}
         </header>
         <div class="explore-detail-body">
-          {{ with .Params.summary }}
-          <p class="explore-detail-summary">{{ . }}</p>
-          {{ end }}
           {{ .Content }}
         </div>
         {{ if and (eq $itemType "app") (not .Params.image) }}

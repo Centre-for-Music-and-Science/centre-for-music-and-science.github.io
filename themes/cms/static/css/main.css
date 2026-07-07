@@ -3167,7 +3167,7 @@ a.pub-item-title:hover {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(180px, 320px);
   gap: 32px;
-  align-items: start;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -3191,16 +3191,16 @@ a.pub-item-title:hover {
   margin-bottom: 14px;
 }
 
-.explore-detail-heading .explore-people-icons {
-  margin-bottom: 22px;
-}
-
 .explore-detail-summary {
   color: var(--color-text-light);
   font-size: 1rem;
-  font-weight: 600;
+  font-style: italic;
   line-height: 1.7;
   margin-bottom: 16px;
+}
+
+.explore-detail-heading .explore-people-icons {
+  margin-bottom: 22px;
 }
 
 .explore-launch-btn {
@@ -3339,7 +3339,9 @@ a.pub-item-title:hover {
 }
 
 .explore-detail-projects {
-  margin-top: 36px;
+  margin-top: 48px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 32px;
 }
 
 /* ===== Datasets Page ===== */
