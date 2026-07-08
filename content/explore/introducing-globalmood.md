@@ -1,6 +1,6 @@
 ---
-title: "Introducing GlobalMood at ISMIR 2025"
-summary: "A video introduction to GlobalMood, a cross-cultural benchmark for music emotion recognition."
+title: "The GlobalMood dataset"
+summary: "A cross-cultural benchmark for music emotion recognition."
 item_type: "video"
 video_url: "https://www.youtube.com/watch?v=BJwA_TSWB4A"
 publications:
@@ -8,4 +8,5 @@ publications:
 weight: 11
 ---
 
-Watch the ISMIR 2025 introduction to GlobalMood and the ideas behind its cross-cultural music emotion dataset.
+Recorded at the 2025 conference for the International Society of Music Information Retrieval.
+This won the Best Student Paper award (congratulations Harin Lee)!

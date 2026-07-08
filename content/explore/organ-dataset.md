@@ -3,6 +3,9 @@ title: "The ORgAN dataset"
 summary: "A new multimodal dataset for contextualised study of expressive interpretations."
 item_type: "video"
 video_url: "https://www.youtube.com/watch?v=M_w0vbWvYVc"
+image: "/images/apps/organ-dataset.jpg"
+image_fit: "contain"
+image_fill_color: "#f8f8f8"
 people:
   - "katelyn-emerson"
 weight: 13

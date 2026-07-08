@@ -1,6 +1,7 @@
 {{ define "main" }}
 {{ $itemType := .Params.item_type | default "app" }}
 {{ $itemLabel := cond (eq $itemType "video") "Video" "App" }}
+{{ $isVideo := eq $itemType "video" }}
 {{ $appURL := .Params.app_url }}
 {{ $hasAppURL := ne (default "" $appURL) "" }}
 {{ $isExternalApp := and $hasAppURL (strings.HasPrefix $appURL "http") }}
@@ -11,10 +12,18 @@
 {{ $videoURL := .Params.video_url }}
 {{ $hasVideoURL := ne (default "" $videoURL) "" }}
 {{ $videoID := "" }}
-{{ if $hasVideoURL }}
+{{ if and $isVideo $hasVideoURL }}
   {{ $videoID = replaceRE `.*(?:youtube\.com/watch\?v=|youtu\.be/)([^&?]+).*` "$1" $videoURL }}
 {{ end }}
-{{ $hasMedia := or .Params.image (and (eq $itemType "video") $videoID) }}
+{{ $mediaImage := .Params.image }}
+{{ if and (not $mediaImage) $videoID }}
+  {{ $mediaImage = printf "https://img.youtube.com/vi/%s/maxresdefault.jpg" $videoID }}
+{{ end }}
+{{ $mediaHref := cond $isVideo $videoURL $appHref }}
+{{ $hasMediaHref := cond $isVideo $hasVideoURL $hasAppURL }}
+{{ $mediaActionLabel := cond $isVideo "Watch video" "Launch app" }}
+{{ $comingSoonLabel := cond $isVideo "Video link coming soon" "App link coming soon" }}
+{{ $hasMedia := $mediaImage }}
 {{ $imageFit := .Params.image_fit | default "cover" }}
 {{ $imageFillColor := .Params.image_fill_color | default "#fff" }}
 <article class="explore-detail-page">
@@ -33,22 +42,16 @@
             {{ end }}
             {{ partial "explore-people-icons.html" (dict "page" .) }}
           </div>
-          {{ if eq $itemType "video" }}
-          {{ if $videoID }}
-          <div class="explore-detail-video">
-            <iframe src="https://www.youtube-nocookie.com/embed/{{ $videoID }}" title="{{ .Title }}" style="border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          {{ end }}
-          {{ else if .Params.image }}
-          {{ if $hasAppURL }}
-          <a class="explore-detail-image explore-detail-image--link{{ if eq $imageFit "contain" }} explore-detail-image--contain{{ end }}"{{ if eq $imageFit "contain" }} style="--explore-image-fill: {{ $imageFillColor | safeCSS }};"{{ end }} href="{{ $appHref }}" target="_blank" rel="noopener">
-            <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="">
-            <span class="explore-image-launch-btn">Launch app <span class="arrow">&rarr;</span></span>
+          {{ if $mediaImage }}
+          {{ if $hasMediaHref }}
+          <a class="explore-detail-image explore-detail-image--link{{ if eq $imageFit "contain" }} explore-detail-image--contain{{ end }}"{{ if eq $imageFit "contain" }} style="--explore-image-fill: {{ $imageFillColor | safeCSS }};"{{ end }} href="{{ $mediaHref }}" target="_blank" rel="noopener">
+            <img src="{{ if strings.HasPrefix $mediaImage "http" }}{{ $mediaImage }}{{ else }}{{ (strings.TrimPrefix "/" $mediaImage) | relURL }}{{ end }}" alt="">
+            <span class="explore-image-launch-btn">{{ $mediaActionLabel }} <span class="arrow">&rarr;</span></span>
           </a>
           {{ else }}
           <div class="explore-detail-image{{ if eq $imageFit "contain" }} explore-detail-image--contain{{ end }}"{{ if eq $imageFit "contain" }} style="--explore-image-fill: {{ $imageFillColor | safeCSS }};"{{ end }}>
-            <img src="{{ (strings.TrimPrefix "/" .Params.image) | relURL }}" alt="">
-            <span class="explore-image-coming-soon">App link coming soon</span>
+            <img src="{{ if strings.HasPrefix $mediaImage "http" }}{{ $mediaImage }}{{ else }}{{ (strings.TrimPrefix "/" $mediaImage) | relURL }}{{ end }}" alt="">
+            <span class="explore-image-coming-soon">{{ $comingSoonLabel }}</span>
           </div>
           {{ end }}
           {{ end }}
@@ -56,12 +59,12 @@
         <div class="explore-detail-body">
           {{ .Content }}
         </div>
-        {{ if and (eq $itemType "app") (not .Params.image) }}
+        {{ if not $mediaImage }}
         <div class="explore-detail-actions">
-          {{ if $hasAppURL }}
-          <a class="explore-launch-btn" href="{{ $appHref }}" target="_blank" rel="noopener">Launch app <span class="arrow">&rarr;</span></a>
+          {{ if $hasMediaHref }}
+          <a class="explore-launch-btn" href="{{ $mediaHref }}" target="_blank" rel="noopener">{{ $mediaActionLabel }} <span class="arrow">&rarr;</span></a>
           {{ else }}
-          <p class="explore-coming-soon">App link coming soon.</p>
+          <p class="explore-coming-soon">{{ $comingSoonLabel }}.</p>
           {{ end }}
         </div>
         {{ end }}
