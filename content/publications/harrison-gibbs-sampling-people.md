@@ -26,6 +26,8 @@ abstract: A core problem in cognitive science and machine learning is to underst
   synthesis network (StyleGAN), a promising approach for applying GSP to high-dimensional
   perceptual spaces. We conclude by discussing future cognitive applications and ethical
   implications.
+equal_contribution_author_groups:
+- [0, 1]
 bibtex: |-
   @inproceedings{NEURIPS2020_7880d722,
     author = {Harrison, Peter M. C. and Marjieh, Raja and Adolfi, Federico and van Rijn, Pol and Anglada-Tort, Manuel and Tchernichovski, Ofer and Larrouy-Maestri, Pauline and Jacoby, Nori},
