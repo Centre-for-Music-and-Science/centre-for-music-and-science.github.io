@@ -1,15 +1,25 @@
-{{ $featured := where (where .Site.RegularPages "Section" "explore") "Params.featured_home" true }}
-{{ if gt (len $featured) 0 }}
+{{ $exploreItems := where .Site.RegularPages "Section" "explore" }}
+{{ if gt (len $exploreItems) 0 }}
 <section class="explore-highlight-section" id="explore">
   <div class="container">
     <div class="section-heading-row">
       <h2 class="section-title">Explore</h2>
       <a href="{{ "explore/" | relURL }}" class="section-link">View all <span class="arrow">&rarr;</span></a>
     </div>
-    <div class="explore-highlight-grid">
-      {{ range first 4 (sort $featured "Params.weight") }}
-        {{ partial "explore-card.html" (dict "page" .) }}
-      {{ end }}
+    <div class="explore-highlight-carousel" data-explore-carousel>
+      <button class="explore-carousel-btn explore-carousel-btn--prev" type="button" aria-label="Previous Explore item" data-explore-carousel-prev>
+        <span aria-hidden="true">&larr;</span>
+      </button>
+      <div class="explore-highlight-track" data-explore-carousel-track>
+        {{ range sort $exploreItems "Params.weight" }}
+          <div class="explore-highlight-slide">
+            {{ partial "explore-card.html" (dict "page" .) }}
+          </div>
+        {{ end }}
+      </div>
+      <button class="explore-carousel-btn explore-carousel-btn--next" type="button" aria-label="Next Explore item" data-explore-carousel-next>
+        <span aria-hidden="true">&rarr;</span>
+      </button>
     </div>
   </div>
 </section>
