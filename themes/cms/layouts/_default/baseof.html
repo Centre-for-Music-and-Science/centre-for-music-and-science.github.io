@@ -36,6 +36,9 @@
   {{ if and (eq .Section "publications") (eq .Kind "page") }}
   <script src="{{ "js/publication-cite.js" | relURL }}"></script>
   {{ end }}
+  {{ if and (eq .Section "explore") (eq .Kind "page") (eq (.Params.item_type | default "app") "video") .Params.video_url }}
+  <script src="{{ "js/explore-video.js" | relURL }}"></script>
+  {{ end }}
   {{ if .IsHome }}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="{{ "js/spectral-viz.js" | relURL }}"></script>

@@ -64,7 +64,7 @@
         {{ range $pubs }}
         {{ if eq (.Date.Format "2006") $year }}
         <li class="pub-year-item">
-          <span class="pub-item-authors">{{ partial "bold-lab-authors" (dict "publication" . "site" $.Site) }}</span>
+          <span class="pub-item-authors">{{ partial "publication-authors" (dict "publication" . "site" $.Site) }}</span>
           {{ $href := "" }}
           {{ if not (default false .Params.stub_only) }}
             {{ $href = .RelPermalink }}

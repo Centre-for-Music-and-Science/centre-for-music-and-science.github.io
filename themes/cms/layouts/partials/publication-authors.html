@@ -1,0 +1,88 @@
+{{ $publication := .publication }}
+{{ $site := .site | default site }}
+{{ $authors := .authors }}
+{{ if and (not $authors) $publication }}
+  {{ $authors = default "" $publication.Params.authors }}
+{{ end }}
+{{ if $authors }}
+  {{ $result := $authors }}
+  {{ $equalContributionGroups := slice }}
+  {{ if $publication }}
+    {{ $equalContributionGroups = default (slice) $publication.Params.equal_contribution_author_groups }}
+  {{ end }}
+  {{ $contributionNotes := slice }}
+  {{ if gt (len $equalContributionGroups) 0 }}
+    {{ $splitAuthors := replaceRE "(\\.),\\s+(&\\s+)?([^,]+,\\s+)" "${1}||${3}" $authors }}
+    {{ $authorNames := split $splitAuthors "||" }}
+    {{ $renderedAuthors := slice }}
+    {{ range $authorIndex, $authorName := $authorNames }}
+      {{ $marker := "" }}
+      {{ range $groupIndex, $group := $equalContributionGroups }}
+        {{ if in $group $authorIndex }}
+          {{ $marker = "*" }}
+          {{ if gt $groupIndex 0 }}
+            {{ $marker = printf "*%d" (add $groupIndex 1) }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ $renderedAuthor := $authorName }}
+      {{ if $marker }}
+        {{ $renderedAuthor = printf "%s<sup class=\"pub-author-contribution-marker\" title=\"Equal contribution\" aria-label=\"Equal contribution\">%s</sup>" $authorName $marker }}
+      {{ end }}
+      {{ $renderedAuthors = $renderedAuthors | append $renderedAuthor }}
+    {{ end }}
+    {{ $result = "" }}
+    {{ $lastAuthorIndex := sub (len $renderedAuthors) 1 }}
+    {{ range $authorIndex, $renderedAuthor := $renderedAuthors }}
+      {{ if eq $authorIndex 0 }}
+        {{ $result = $renderedAuthor }}
+      {{ else if and (eq $authorIndex $lastAuthorIndex) (gt $lastAuthorIndex 0) }}
+        {{ $result = printf "%s, & %s" $result $renderedAuthor }}
+      {{ else }}
+        {{ $result = printf "%s, %s" $result $renderedAuthor }}
+      {{ end }}
+    {{ end }}
+    {{ range $groupIndex, $group := $equalContributionGroups }}
+      {{ $marker := "*" }}
+      {{ if gt $groupIndex 0 }}
+        {{ $marker = printf "*%d" (add $groupIndex 1) }}
+      {{ end }}
+      {{ $contributionNotes = $contributionNotes | append (printf "<span class=\"pub-author-contribution-note\"><sup aria-hidden=\"true\">%s</sup>Equal contribution</span>" $marker) }}
+    {{ end }}
+  {{ end }}
+  {{ $authorProfiles := slice }}
+  {{ if $publication }}
+    {{ $authorProfiles = partial "resolve-publication-author-profiles.html" (dict "publication" $publication "site" $site) }}
+  {{ else }}
+    {{ range (where $site.RegularPages "Section" "people") }}
+      {{ $person := . }}
+      {{ $aliases := default (slice) $person.Params.publication_names }}
+      {{ $matched := false }}
+      {{ range $aliases }}
+        {{ if and . (in $authors .) }}
+          {{ $matched = true }}
+        {{ end }}
+      {{ end }}
+      {{ if and $matched (not (in $authorProfiles $person)) }}
+        {{ $authorProfiles = $authorProfiles | append $person }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ $matchedAliases := slice }}
+  {{ range $authorProfiles }}
+    {{ range (default (slice) .Params.publication_names) }}
+      {{ if and . (in $authors .) (not (in $matchedAliases .)) }}
+        {{ $matchedAliases = $matchedAliases | append . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ range $matchedAliases }}
+    {{ $result = replace $result . (printf "<strong>%s</strong>" .) }}
+  {{ end }}
+  {{ if gt (len $contributionNotes) 0 }}
+    {{ $result = printf "%s <span class=\"pub-author-contribution-notes\" aria-label=\"Author contribution notes\">(%s)</span>" $result (delimit $contributionNotes "; ") }}
+  {{ end }}
+  {{ $result | safeHTML }}
+{{ else }}
+  {{ $authors }}
+{{ end }}

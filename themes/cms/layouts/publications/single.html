@@ -10,7 +10,7 @@
       <h1 class="project-detail-title">{{ .Title }}</h1>
       <div class="publication-header">
         <div class="publication-title-meta">
-          {{ if .Params.authors }}<span class="project-pub-authors">{{ partial "bold-lab-authors" (dict "publication" . "site" .Site) }}</span>{{ end }}
+          {{ if .Params.authors }}<span class="project-pub-authors">{{ partial "publication-authors" (dict "publication" . "site" .Site) }}</span>{{ end }}
           {{ if or .Params.journal .Params.inpress }}
           <span class="project-pub-journal">
             {{- with .Params.journal }}{{ . }}{{ end -}}

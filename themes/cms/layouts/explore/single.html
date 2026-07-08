@@ -44,10 +44,17 @@
           </div>
           {{ if $mediaImage }}
           {{ if $hasMediaHref }}
+          {{ if and $isVideo $videoID }}
+          <button class="explore-detail-image explore-detail-image--link explore-video-trigger{{ if eq $imageFit "contain" }} explore-detail-image--contain{{ end }}"{{ if eq $imageFit "contain" }} style="--explore-image-fill: {{ $imageFillColor | safeCSS }};"{{ end }} type="button" data-video-id="{{ $videoID }}" data-video-title="{{ .Title }}" data-video-url="{{ $videoURL }}">
+            <img src="{{ if strings.HasPrefix $mediaImage "http" }}{{ $mediaImage }}{{ else }}{{ (strings.TrimPrefix "/" $mediaImage) | relURL }}{{ end }}" alt="">
+            <span class="explore-image-launch-btn">{{ $mediaActionLabel }} <span class="arrow">&rarr;</span></span>
+          </button>
+          {{ else }}
           <a class="explore-detail-image explore-detail-image--link{{ if eq $imageFit "contain" }} explore-detail-image--contain{{ end }}"{{ if eq $imageFit "contain" }} style="--explore-image-fill: {{ $imageFillColor | safeCSS }};"{{ end }} href="{{ $mediaHref }}" target="_blank" rel="noopener">
             <img src="{{ if strings.HasPrefix $mediaImage "http" }}{{ $mediaImage }}{{ else }}{{ (strings.TrimPrefix "/" $mediaImage) | relURL }}{{ end }}" alt="">
             <span class="explore-image-launch-btn">{{ $mediaActionLabel }} <span class="arrow">&rarr;</span></span>
           </a>
+          {{ end }}
           {{ else }}
           <div class="explore-detail-image{{ if eq $imageFit "contain" }} explore-detail-image--contain{{ end }}"{{ if eq $imageFit "contain" }} style="--explore-image-fill: {{ $imageFillColor | safeCSS }};"{{ end }}>
             <img src="{{ if strings.HasPrefix $mediaImage "http" }}{{ $mediaImage }}{{ else }}{{ (strings.TrimPrefix "/" $mediaImage) | relURL }}{{ end }}" alt="">
@@ -56,6 +63,14 @@
           {{ end }}
           {{ end }}
         </header>
+        {{ if and $isVideo $hasVideoURL $videoID }}
+        <div class="explore-video-modal" id="explore-video-modal" aria-hidden="true" hidden>
+          <div class="explore-video-modal-backdrop" data-explore-video-close></div>
+          <div class="explore-video-modal-dialog" role="dialog" aria-modal="true" aria-label="Video player">
+            <div class="explore-video-frame" data-explore-video-frame></div>
+          </div>
+        </div>
+        {{ end }}
         <div class="explore-detail-body">
           {{ .Content }}
         </div>

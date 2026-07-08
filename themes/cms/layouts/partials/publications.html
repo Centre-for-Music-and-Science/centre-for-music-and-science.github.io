@@ -12,7 +12,7 @@
         <div class="pub-body">
           <span class="pub-year">{{ .Date.Format "2006" }}</span>
           <h3 class="pub-title">{{ .Title }}</h3>
-          {{ if .Params.authors }}<p class="pub-authors">{{ .Params.authors }}</p>{{ end }}
+          {{ if .Params.authors }}<p class="pub-authors">{{ partial "publication-authors" (dict "publication" . "site" $.Site) }}</p>{{ end }}
           {{ if or .Params.journal .Params.inpress }}
           <p class="pub-journal">
             {{- with .Params.journal }}{{ . }}{{ end -}}
@@ -26,7 +26,7 @@
         <div class="pub-body">
           <span class="pub-year">{{ .Date.Format "2006" }}</span>
           <h3 class="pub-title">{{ .Title }} <span class="stub-label">(Coming soon)</span></h3>
-          {{ if .Params.authors }}<p class="pub-authors">{{ .Params.authors }}</p>{{ end }}
+          {{ if .Params.authors }}<p class="pub-authors">{{ partial "publication-authors" (dict "publication" . "site" $.Site) }}</p>{{ end }}
         </div>
       </div>
       {{ end }}

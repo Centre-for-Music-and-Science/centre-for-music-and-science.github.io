@@ -46,7 +46,7 @@
       <li>
         {{ if $href }}
         <a href="{{ $href }}" {{ if $external }}target="_blank" rel="noopener"{{ end }}>
-          {{ if $pub.Params.authors }}<span class="project-pub-authors">{{ partial "bold-lab-authors" (dict "publication" $pub "site" $page.Site) }}</span>{{ end }}
+          {{ if $pub.Params.authors }}<span class="project-pub-authors">{{ partial "publication-authors" (dict "publication" $pub "site" $page.Site) }}</span>{{ end }}
           <span class="project-pub-title">{{ $pub.Title }}</span>
           {{ if or $pub.Params.journal $pub.Params.inpress }}
           <span class="project-pub-journal">
@@ -57,7 +57,7 @@
         </a>
         {{ else }}
         <div class="project-publication-citation">
-          {{ if $pub.Params.authors }}<span class="project-pub-authors">{{ partial "bold-lab-authors" (dict "publication" $pub "site" $page.Site) }}</span>{{ end }}
+          {{ if $pub.Params.authors }}<span class="project-pub-authors">{{ partial "publication-authors" (dict "publication" $pub "site" $page.Site) }}</span>{{ end }}
           <span class="project-pub-title">{{ $pub.Title }}</span>
           {{ if or $pub.Params.journal $pub.Params.inpress }}
           <span class="project-pub-journal">

@@ -7,6 +7,8 @@ projects:
 methods:
 - large-scale-online-experiments
 - computational-cognitive-modelling
+equal_contribution_author_groups:
+- [0, 1]
 # generated from bibtex; do not edit manually
 authors: Marjieh, R., Harrison, P. M. C., Lee, H., Deligiannaki, F., & Jacoby, N.
 journal: Nature Communications
