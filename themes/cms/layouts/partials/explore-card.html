@@ -8,7 +8,7 @@
 {{- end -}}
 {{- $thumb := $page.Params.image -}}
 {{- if and (not $thumb) $videoID -}}
-  {{- $thumb = printf "https://img.youtube.com/vi/%s/hqdefault.jpg" $videoID -}}
+  {{- $thumb = printf "https://img.youtube.com/vi/%s/maxresdefault.jpg" $videoID -}}
 {{- end -}}
 {{- if eq $variant "project" -}}
 {{- $projectThumb := $thumb | default ($page.Params.thumbnail | default $page.Params.leader_image) -}}
