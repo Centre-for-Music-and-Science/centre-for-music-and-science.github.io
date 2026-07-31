@@ -1,0 +1,46 @@
+{{- $allOpportunities := where site.RegularPages "Section" "opportunities" -}}
+{{- $openOpportunities := partial "filter-open-opportunities.html" (dict "opportunities" $allOpportunities) -}}
+{{- $openOpportunities = sort $openOpportunities "Params.weight" -}}
+{{- $levelsPresent := slice -}}
+{{- range $openOpportunities -}}
+  {{- range (default (slice) .Params.levels) -}}
+    {{- if not (in $levelsPresent .) -}}
+      {{- $levelsPresent = $levelsPresent | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $levelOrder := slice "undergraduate" "mphil" "phd" "postdoc" "internship" "visitor" -}}
+{{- $orderedLevels := slice -}}
+{{- range $levelOrder -}}
+  {{- if in $levelsPresent . -}}
+    {{- $orderedLevels = $orderedLevels | append . -}}
+  {{- end -}}
+{{- end -}}
+
+<section class="applicants-brochure" aria-labelledby="applicants-brochure-heading">
+  <h2 id="applicants-brochure-heading" class="applicants-brochure-heading">Research topics</h2>
+  <p class="applicants-brochure-intro">
+    Choose a topic below when preparing an application. Process guidance for each pathway follows further down the page.
+  </p>
+
+  {{ if gt (len $openOpportunities) 0 }}
+  {{ if gt (len $orderedLevels) 0 }}
+  <div class="brochure-filters" role="group" aria-label="Filter by level">
+    <button type="button" class="brochure-filter-btn active" data-filter="all">All</button>
+    {{ range $orderedLevels }}
+    <button type="button" class="brochure-filter-btn" data-filter="{{ . }}">{{ partial "application-level-label.html" . }}</button>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  <div class="brochure-grid">
+    {{ range $openOpportunities }}
+      {{ partial "brochure-opportunity-card.html" (dict "page" .) }}
+    {{ end }}
+  </div>
+  {{ else }}
+  <p class="applicants-brochure-empty">
+    No open opportunities are listed at the moment. Check back soon, or contact us using the guidance below.
+  </p>
+  {{ end }}
+</section>

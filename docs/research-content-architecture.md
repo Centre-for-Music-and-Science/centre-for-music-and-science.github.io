@@ -5,7 +5,8 @@ This document is the canonical source of truth for the research content model.
 ## Entity model
 
 - Themes: top-level research areas.
-- Projects: children of themes or other projects.
+- Projects: children of themes or other projects (research portfolio).
+- Opportunities: applicant-facing topics for Join us (optionally linked to a project).
 - Methods: standalone method records.
 - Groups: organisational group records.
 - Publications: bibliographic records with optional detail pages.
@@ -40,6 +41,44 @@ Boolean semantics:
 - `stub_only: true`: record is shown in cards/lists but rendered as non-clickable.
 
 Default for new records is `stub_only: false`.
+
+## Opportunities contract
+
+Projects are the research portfolio. **Opportunities** are a separate applicant-facing content type for topics people can apply to work on.
+
+- Section: `content/opportunities/`
+- Surfaced on `/applicants/` (brochure) and optional detail pages at `/opportunities/<slug>/`
+
+Front matter:
+
+```yaml
+open: true              # false = hide from brochure (default true)
+levels:                 # required when open is true
+  - phd
+  - mphil
+projects:               # optional links to portfolio project slugs
+  - memory
+note: ""                # optional caveat shown in the brochure
+summary: ""             # short text shown only on the brochure card
+weight: 0
+```
+
+Known `levels` values:
+
+- `undergraduate`, `mphil`, `phd`, `postdoc`, `internship`, `visitor`
+
+Relationship rules:
+
+- `summary` is the short applicant-facing pitch shown on the brochure.
+- The Markdown body is the detailed description shown only on the opportunity page.
+- Every slug in `projects` must resolve to an existing `content/projects` record.
+- Portfolio projects with no opportunity are not advertised for applications.
+- Hypothetical topics use an opportunity with no `projects` (until research exists in the portfolio).
+
+Build-time rules:
+
+- if `open` is `true` (or omitted), `levels` must be a non-empty list of known levels
+- every slug in `projects` must match an existing project slug
 
 ## Reverse aggregation model
 

@@ -69,6 +69,26 @@
         <div class="project-detail-body">
           {{ .Content }}
         </div>
+        {{ $linkedOpportunities := slice }}
+        {{ range where site.RegularPages "Section" "opportunities" }}
+          {{ if and (partial "opportunity-open.html" .) (in (default (slice) .Params.projects) $projectSlug) }}
+            {{ $linkedOpportunities = $linkedOpportunities | append . }}
+          {{ end }}
+        {{ end }}
+        {{ if gt (len $linkedOpportunities) 0 }}
+        <aside class="project-applications-callout">
+          <h2 class="project-applications-callout-heading">Open for applications</h2>
+          <p>
+            This research topic currently has open opportunities for applicants.
+            See <a href="{{ "/applicants/" | relURL }}">Join us</a> for the brochure and how to apply.
+          </p>
+          <ul class="project-applications-callout-list">
+            {{ range sort $linkedOpportunities "Params.weight" }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+          </ul>
+        </aside>
+        {{ end }}
         {{ $projectRelationSlugs := slice $projectSlug }}
         {{ $descendantProjectSlugs := slice }}
         {{ $descendantProjectSlugsRaw := partial "collect-descendant-project-slugs.html" (dict "slug" $projectSlug "allProjects" (where .Site.RegularPages "Section" "projects")) }}

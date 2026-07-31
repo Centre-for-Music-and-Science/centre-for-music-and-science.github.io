@@ -7,6 +7,7 @@ This guide describes how to create and maintain records in the refactored resear
 Use Hugo archetypes:
 
 - `hugo new projects/<slug>.md`
+- `hugo new opportunities/<slug>.md`
 - `hugo new methods/<slug>.md`
 - `hugo new groups/<slug>.md`
 - `hugo new publications/<slug>.md`
@@ -43,6 +44,16 @@ Build-time guards:
 
 - every project must be listed in `themes.*.projects` or `projects.*.projects`
 - parent `projects` lists must only reference existing project slugs
+- open opportunities must declare known non-empty `levels`
+- opportunity `projects` links must resolve when set
+
+### Applicant brochure workflow
+
+1. Keep research write-ups in `content/projects/<slug>.md` (portfolio only).
+2. To advertise work for applicants, add `content/opportunities/<slug>.md` with `levels`, a short front-matter `summary` for the brochure, and the detailed description in the Markdown body.
+3. Link to existing projects with `projects: [<slug>, ...]` when the opportunity continues portfolio work.
+4. For hypothetical topics not yet in the portfolio, omit `projects` or leave it empty.
+5. To stop advertising, set `open: false` (or remove the opportunity record).
 
 ## Publications workflow
 

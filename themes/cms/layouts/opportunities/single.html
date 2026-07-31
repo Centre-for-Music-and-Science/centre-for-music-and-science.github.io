@@ -1,0 +1,38 @@
+{{ define "main" }}
+<article class="opportunity-detail-page single-page">
+  <div class="container">
+    <div class="page-back-top">
+      {{ partial "back-link.html" (dict "href" (printf "%sapplicants/" .Site.Home.RelPermalink) "label" "Join us") }}
+    </div>
+    <header class="opportunity-detail-header">
+      <p class="opportunity-detail-kicker">Opportunity</p>
+      <h1>{{ .Title }}</h1>
+      {{ $levels := default (slice) .Params.levels }}
+      {{ if $levels }}
+      <ul class="brochure-level-badges" aria-label="Suitable levels">
+        {{ range $levels }}
+        <li class="brochure-level-badge">{{ partial "application-level-label.html" . }}</li>
+        {{ end }}
+      </ul>
+      {{ end }}
+      {{ with .Params.note }}
+      <p class="brochure-card-note">{{ . }}</p>
+      {{ end }}
+    </header>
+    <div class="content opportunity-detail-body">
+      {{ .Content }}
+    </div>
+    {{ $projects := partial "resolve-project-pages.html" (dict "slugs" (default (slice) .Params.projects)) }}
+    {{ if gt (len $projects) 0 }}
+      <section class="project-publications">
+        <h2 class="project-publications-heading">Projects</h2>
+        <div class="theme-projects">
+          {{ range $projects }}
+            {{ partial "research-item-card.html" (dict "page" . "label" "Project") }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

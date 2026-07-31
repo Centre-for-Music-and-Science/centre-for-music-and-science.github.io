@@ -2,9 +2,12 @@
 title: "{{ replace .File.ContentBaseName "-" " " | title }}"
 date: {{ .Date }}
 draft: true
-stub_only: false
+open: true
+levels: []
 projects: []
-leader_image: ""
-thumbnail: ""
-featured_publications: []
+note: ""
+summary: ""
+weight: 0
 ---
+
+Detailed description shown on the opportunity page.

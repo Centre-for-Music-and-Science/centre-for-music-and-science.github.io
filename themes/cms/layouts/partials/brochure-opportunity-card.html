@@ -1,0 +1,42 @@
+{{- /*
+  Brochure card for one open opportunity.
+  Expects .page (opportunity page).
+*/ -}}
+{{- $opportunity := .page -}}
+{{- $levels := default (slice) $opportunity.Params.levels -}}
+{{- $note := default "" $opportunity.Params.note -}}
+{{- $themeTitles := slice -}}
+{{- range (default (slice) $opportunity.Params.projects) -}}
+  {{- with site.GetPage (path.Join "/projects" .) -}}
+    {{- $themeTitle := partial "resolve-project-theme-title.html" (dict "page" .) -}}
+    {{- if and (ne $themeTitle "") (not (in $themeTitles $themeTitle)) -}}
+      {{- $themeTitles = $themeTitles | append $themeTitle -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $levelAttr := delimit $levels " " -}}
+<article class="brochure-card" data-levels="{{ $levelAttr }}">
+  <div class="brochure-card-main">
+    {{ if gt (len $themeTitles) 0 }}
+    <p class="brochure-card-theme">{{ delimit $themeTitles ", " }}</p>
+    {{ else }}
+    <p class="brochure-card-theme">Proposed</p>
+    {{ end }}
+    <h3 class="brochure-card-title">
+      <a href="{{ $opportunity.RelPermalink }}">{{ $opportunity.Title }}</a>
+    </h3>
+    {{ if $levels }}
+    <ul class="brochure-level-badges" aria-label="Suitable levels">
+      {{ range $levels }}
+      <li class="brochure-level-badge">{{ partial "application-level-label.html" . }}</li>
+      {{ end }}
+    </ul>
+    {{ end }}
+    {{ with $note }}
+    <p class="brochure-card-note">{{ . }}</p>
+    {{ end }}
+    {{ with $opportunity.Params.summary }}
+    <p class="brochure-card-excerpt">{{ . }}</p>
+    {{ end }}
+  </div>
+</article>

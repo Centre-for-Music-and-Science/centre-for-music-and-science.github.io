@@ -1,0 +1,16 @@
+{{ define "main" }}
+<div class="single-page">
+  <div class="container">
+    <div class="page-back-top">
+      {{ partial "back-link.html" (dict "href" .Site.Home.RelPermalink) }}
+    </div>
+    <h1 class="page-title">Opportunities</h1>
+    <div class="content">
+      <p>
+        Open research opportunities for prospective applicants are listed on the
+        <a href="{{ "/applicants/" | relURL }}">Join us</a> page.
+      </p>
+    </div>
+  </div>
+</div>
+{{ end }}
