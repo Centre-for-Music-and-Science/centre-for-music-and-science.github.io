@@ -49,8 +49,9 @@ Projects are the research portfolio. **Topics** are a separate applicant-facing 
 - Section: `content/topics/`
 - Open topics are surfaced in the Topics tab on each rendered
   `/applicants/<pathway>/` page.
-- The complete topic index remains available at `/topics/`; pathway
-  Topics tabs link to it subtly, while the `/applicants/` hub does not.
+- The complete topic index remains available at `/topics/`, but neither the
+  pathway Topics tabs nor the `/applicants/` hub link to it; the tabs embed the
+  topic cards directly instead.
 - Detail pages live at `/topics/<slug>/`.
 - Pathway pages currently show the same unfiltered set of open topics.
   The embedded Topics tab provides the extension point for pathway-specific

@@ -3289,24 +3289,6 @@ a.pub-item-title:hover {
   max-width: var(--copy-max-width);
 }
 
-.applicants-pathway-topics-note {
-  color: var(--color-text-muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin: 28px 0 0;
-  max-width: var(--copy-max-width);
-}
-
-.applicants-pathway-topics-note a {
-  color: var(--color-accent);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.applicants-pathway-topics-note a:hover {
-  color: var(--color-text);
-}
-
 .applicants-pathway-body p {
   margin-bottom: 14px;
 }
