@@ -10,9 +10,9 @@
     {{ end }}
 
     <div class="applicants-hub-pathways">
-      <p class="applicants-hub-pathways-intro">
+      <!-- <p class="applicants-hub-pathways-intro">
         There are many different ways to join the CMS, depending on your current academic level and experience!
-      </p>
+      </p> -->
       <div class="applicants-pathway-grid">
         {{ range sort .RegularPages "Params.weight" }}
         {{ $isStub := default false .Params.stub_only }}

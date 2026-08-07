@@ -28,7 +28,7 @@ we normally recommend courses from
 or the Social Sciences Research Methods Programme ([SSRMP](https://www.ssrmp.group.cam.ac.uk/)).
 - **Easter (Term 3).** This is dedicated to the research project, though most students will already have made substantial progress in the first two terms.
 
-As a CMS member you will join a vibrant community of other postgraduate and postdoctoral researchers who regularly meet for seminars and work together in a shared office space. We particularly look for team players who enjoy group discussion and collaboration.
+As a CMS member you will join a vibrant community of other postgraduate and postdoctoral researchers who regularly meet for seminars and work together in a shared office space. We particularly look for team players who enjoy group discussion and collaboration!
 
 ## Prerequisites
 

@@ -38,6 +38,18 @@
     <div class="content topic-detail-body">
       {{ .Content }}
     </div>
+
+    {{ $allTopics := where .Site.RegularPages "Section" "topics" }}
+    {{ $openTopics := partial "filter-open-topics.html" (dict "topics" $allTopics) }}
+    {{ $openTopics = sort $openTopics "Params.weight" }}
+    {{ partial "sibling-nav.html" (dict
+      "pages" $openTopics
+      "current" .
+      "aria_label" "Research topics"
+      "prev_label" "Previous topic"
+      "next_label" "Next topic"
+    ) }}
+
     {{ $projectSlugs := default (slice) .Params.projects }}
     {{ $projects := partial "resolve-project-pages.html" (dict "slugs" $projectSlugs) }}
     {{ if gt (len $projects) 0 }}
@@ -71,17 +83,6 @@
       "publications" $linkedPublications
       "relation_key" "projects"
       "relation_slugs" $publicationRelationSlugs
-    ) }}
-
-    {{ $allTopics := where .Site.RegularPages "Section" "topics" }}
-    {{ $openTopics := partial "filter-open-topics.html" (dict "topics" $allTopics) }}
-    {{ $openTopics = sort $openTopics "Params.weight" }}
-    {{ partial "sibling-nav.html" (dict
-      "pages" $openTopics
-      "current" .
-      "aria_label" "Research topics"
-      "prev_label" "Previous topic"
-      "next_label" "Next topic"
     ) }}
   </div>
 </article>

@@ -17,7 +17,7 @@ We welcome applications for PhD studentships at the Centre for Music and Science
 
 As a CMS member you will join a vibrant community of other postgraduate and postdoctoral researchers
 who regularly meet for seminars and work together in a shared office space.
-We particularly look for team players who enjoy group discussion and collaboration.
+We particularly look for team players who enjoy group discussion and collaboration!
 
 ## Prerequisites
 

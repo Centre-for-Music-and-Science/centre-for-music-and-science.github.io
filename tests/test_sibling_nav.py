@@ -17,6 +17,11 @@ class SiblingNavSmokeTests(HugoSiteSmokeTest):
         self.assertIn("Next topic", html)
         self.assertIn("/topics/computational-music-cognition/", html)
         self.assertIn("/topics/music-pleasure/", html)
+        # Sibling nav sits after the body, before related projects/pubs.
+        self.assertLess(
+            html.index("sibling-nav"),
+            html.index("Related projects"),
+        )
 
     def test_topic_first_has_next_only(self):
         html = self._read(

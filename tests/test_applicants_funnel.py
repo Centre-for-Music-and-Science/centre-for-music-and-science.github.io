@@ -66,12 +66,30 @@ class ApplicantsFunnelSmokeTests(HugoSiteSmokeTest):
         self.assertNotIn("data-tab=faq", html)
         self.assertNotIn("data-tab=about", html)
 
-    def test_pathway_nav_keeps_about_when_page_has_no_sections(self):
+    def test_postdoctoral_pathway_tabs(self):
         html = self._read("applicants/postdoctoral-researchers/index.html")
         self.assertIn("applicants-pathway-tabs", html)
-        self.assertIn("data-tab=about", html)
+        self.assertIn("data-tab=overview", html)
         self.assertIn("data-tab=topics", html)
+        self.assertIn("data-tab=funding", html)
+        self.assertIn("data-tab=applying", html)
+        self.assertIn("id=panel-overview", html)
         self.assertIn("id=panel-topics", html)
+        self.assertIn("id=panel-funding", html)
+        self.assertIn("id=panel-applying", html)
+        overview_tab = html.index("data-tab=overview")
+        topics_tab = html.index("data-tab=topics")
+        funding_tab = html.index("data-tab=funding")
+        applying_tab = html.index("data-tab=applying")
+        self.assertLess(overview_tab, topics_tab)
+        self.assertLess(topics_tab, funding_tab)
+        self.assertLess(funding_tab, applying_tab)
+        self.assertIn(
+            "We particularly welcome fellowship proposals that connect with",
+            html,
+        )
+        self.assertIn("/news/british-academy-postdoctoral-fellowships-2026/", html)
+        self.assertNotIn("data-tab=about", html)
         self.assertNotIn("data-tab=faq", html)
         self.assertNotIn("data-tab=finances", html)
         self.assertIn("/topics/", html)
