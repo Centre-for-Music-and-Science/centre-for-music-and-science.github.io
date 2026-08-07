@@ -12,7 +12,9 @@ pathway_tabs:
 
 ## Overview
 
-We are eager to welcome postdoctoral researchers to the CMS. As a CMS member you will join a vibrant community of postgraduate and postdoctoral researchers who regularly meet for seminars and work together in a shared office space. We particularly look for team players who enjoy group discussion and collaboration!
+We are eager to welcome postdoctoral researchers to the CMS. As a CMS member you will join a vibrant community of postgraduate and postdoctoral researchers who regularly meet for seminars and work together in our dedicated facilities.
+You will have many opportunities to collaborate with other CMS members,
+and to develop undergraduate and postgraduate teaching experience.
 
 ## Opportunities
 
