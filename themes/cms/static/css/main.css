@@ -3235,6 +3235,12 @@ a.pub-item-title:hover {
   color: var(--color-text);
 }
 
+.opportunity-collaborators {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  margin: 0 0 10px;
+}
+
 .brochure-card-note {
   font-size: 0.9rem;
   color: var(--color-text);

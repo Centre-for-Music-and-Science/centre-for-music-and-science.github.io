@@ -15,6 +15,11 @@
         {{ end }}
       </ul>
       {{ end }}
+      {{ with .Params.collaborators }}
+      <p class="opportunity-collaborators">
+        <strong>Collaborators:</strong> {{ delimit . ", " }}
+      </p>
+      {{ end }}
       {{ with .Params.note }}
       <p class="brochure-card-note">{{ . }}</p>
       {{ end }}
@@ -25,7 +30,7 @@
     {{ $projects := partial "resolve-project-pages.html" (dict "slugs" (default (slice) .Params.projects)) }}
     {{ if gt (len $projects) 0 }}
       <section class="project-publications">
-        <h2 class="project-publications-heading">Projects</h2>
+        <h2 class="project-publications-heading">Related projects</h2>
         <div class="theme-projects">
           {{ range $projects }}
             {{ partial "research-item-card.html" (dict "page" . "label" "Project") }}
@@ -33,6 +38,8 @@
         </div>
       </section>
     {{ end }}
+    {{ $linkedPublications := partial "resolve-publication-pages.html" (dict "page" . "slugs" (default (slice) .Params.publications)) }}
+    {{ partial "related-publications-section.html" (dict "page" . "heading" "Related publications" "publications" $linkedPublications) }}
   </div>
 </article>
 {{ end }}

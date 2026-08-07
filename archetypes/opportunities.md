@@ -4,7 +4,9 @@ date: {{ .Date }}
 draft: true
 open: true
 levels: []
+collaborators: []
 projects: []
+publications: []
 note: ""
 summary: ""
 weight: 0

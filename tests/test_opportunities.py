@@ -11,6 +11,7 @@ from scripts.opportunities import (
     filter_open_opportunities,
     opportunity_open,
     opportunity_projects,
+    opportunity_publications,
     validate_opportunities_dir,
     validate_opportunity,
 )
@@ -89,6 +90,83 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(len(errors), 1)
         self.assertIn("projects must be a list", errors[0])
 
+    def test_missing_publication_slug_is_rejected(self):
+        errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "levels": ["phd"],
+                "publications": ["lee-globalmood", "nope"],
+            },
+            publication_slugs={"lee-globalmood"},
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("does not exist", errors[0])
+
+    def test_multiple_publications_are_supported(self):
+        self.assertEqual(
+            opportunity_publications(
+                {"publications": ["lee-globalmood", "frank-chord-pleasantness"]}
+            ),
+            ["lee-globalmood", "frank-chord-pleasantness"],
+        )
+        errors = validate_opportunity(
+            "combined-topic",
+            {
+                "open": True,
+                "levels": ["phd"],
+                "publications": ["lee-globalmood", "frank-chord-pleasantness"],
+            },
+            publication_slugs={"lee-globalmood", "frank-chord-pleasantness"},
+        )
+        self.assertEqual(errors, [])
+
+    def test_publications_must_be_a_list(self):
+        errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "levels": ["phd"],
+                "publications": "lee-globalmood",
+            },
+            publication_slugs={"lee-globalmood"},
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("publications must be a list", errors[0])
+
+    def test_quoted_collaborator_names_are_valid(self):
+        errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "levels": ["phd"],
+                "collaborators": ["Alex Smith", "Sam Jones"],
+            },
+        )
+        self.assertEqual(errors, [])
+
+    def test_collaborators_must_be_a_list_of_names(self):
+        scalar_errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "levels": ["phd"],
+                "collaborators": "Alex Smith",
+            },
+        )
+        item_errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "levels": ["phd"],
+                "collaborators": [{"name": "Alex Smith"}],
+            },
+        )
+        self.assertIn("collaborators must be a list", scalar_errors[0])
+        self.assertIn(
+            "collaborator names must be non-empty strings", item_errors[0]
+        )
+
     def test_known_levels_enum_is_complete(self):
         self.assertEqual(
             set(APPLICATION_LEVELS),
@@ -131,8 +209,15 @@ class OpportunitiesDirValidationTests(unittest.TestCase):
                 "---\ntitle: Memory\n---\n",
                 encoding="utf-8",
             )
+            publications = root / "publications"
+            publications.mkdir()
+            (publications / "lee-globalmood.md").write_text(
+                "---\ntitle: GlobalMood\n---\n",
+                encoding="utf-8",
+            )
             (opps / "ok.md").write_text(
-                "---\ntitle: Ok\nopen: true\nlevels: [phd]\nprojects: [memory]\n---\n",
+                "---\ntitle: Ok\nopen: true\nlevels: [phd]\n"
+                "projects: [memory]\npublications: [lee-globalmood]\n---\n",
                 encoding="utf-8",
             )
             (opps / "bad.md").write_text(
@@ -144,7 +229,9 @@ class OpportunitiesDirValidationTests(unittest.TestCase):
                 encoding="utf-8",
             )
             errors = validate_opportunities_dir(
-                opps, projects_dir=projects
+                opps,
+                projects_dir=projects,
+                publications_dir=publications,
             )
             self.assertEqual(len(errors), 1)
             self.assertIn("bad", errors[0])

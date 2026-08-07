@@ -32,6 +32,11 @@
       {{ end }}
     </ul>
     {{ end }}
+    {{ with $opportunity.Params.collaborators }}
+    <p class="opportunity-collaborators">
+      <strong>Collaborators:</strong> {{ delimit . ", " }}
+    </p>
+    {{ end }}
     {{ with $note }}
     <p class="brochure-card-note">{{ . }}</p>
     {{ end }}

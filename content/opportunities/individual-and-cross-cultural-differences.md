@@ -4,6 +4,8 @@ open: true
 levels:
   - phd
   - mphil
+collaborators:
+  - "Nori Jacoby"
 note: ""
 summary: "TODO"
 weight: 7
@@ -11,20 +13,23 @@ weight: 7
 
 Music cognition research has traditionally focused on developing normative accounts
 of music perception: how does the average (read: Western, industrialised, educated)
-listener respond to music? However, this approach disguises the fact that two listeners
-can drastically disagree on their evaluation of a given musical stimulus, especially
-(but not exclusively) if they come from distant cultures.
+listener respond to music? However, this approach disguises the fact that the listening experience
+can drastically vary between listeners, especially (but not exclusively) if they come from distant cultures.
 
-The purpose of this project would likely be to identify one or more aspects of music cognition
-described in [Computational music cognition](/opportunities/computational-music-cognition/),
-and then develop a systematic approach to quantifying individual differences in that domain.
-One could start by examining prior literature to identify previous
-manifestations of individual differences,
-develop robust experimental tasks for quantifying those individual differences,
-deliver these tasks over the Internet to participants across the world
-using [PsyNet](https://psynet.dev)
-and then study how the individual differences vary as a function of culture
-and other person-level variables.
-There could be scope for sophisticated computational modelling here too,
-for example using statistical-learning models to explain how differential musical exposure
-can explain different cognitive outcomes.
+This variation is interesting for several reasons.
+Firstly, it can help us deconstruct a given cognitive phenomenon into its underlying processes
+(e.g. deconstructing consonance into roughness and harmonicity).
+Second, it can help us to understand the origins of these cognitive phenomena:
+those that are constant across the world are likely to be biologically hardwired,
+whereas those that vary are likely to be driven by learning.
+Third, it can help us to understand our own music preferences and how they relate to others.
+
+Projects in this area could draw on any of the topics mentioned in
+[Computational music cognition](/opportunities/computational-music-cognition/).
+We would recommend starting with a theoretical review to identify what dimensions of individual differences
+are likely to exist, and using this to develop a rigorous test battery for quantifying those
+individual differences.
+We can then run online experiments using our platform [PsyNet](https://psynet.dev)
+to test participants across the world,
+and see how the individual differences vary as a function of culture and other person-level variables.
+The results can then potentially be linked to corpus analyses of musical cultures across the world.

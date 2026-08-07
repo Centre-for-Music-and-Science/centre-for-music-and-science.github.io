@@ -26,17 +26,22 @@ Pleasure can also be derived on a more intellectual basis
 when music contains the kinds of patterns that challenge, stimulate,
 and ultimately reward the mind.
 
-This project would likely take a computational angle,
-aiming to develop better computer models for simulating musical pleasure.
-It might well follow the generic project blueprint outlined in
-[Computational music cognition](/opportunities/computational-music-cognition/).
-It might alternatively focus on a more specific
-angle like the following:
+The purpose of this project would be to turn these kinds of hypotheses into
+testable computational models, and evaluate them on behavioural data.
+As well as yielding essential insights into the psychology of musical aesthetics,
+these models could have exciting applications in music composition.
 
-- How to move past simple idealised stimuli (e.g. melodies) to naturalistic music audio and understudied musical styles?
+There are many interesting challenges here, and a project might choose
+to address one or more of the following:
+
+- How to move past simple idealised stimuli (e.g. melodies)
+  to naturalistic music audio and understudied musical styles?
 - How does tension relate to pleasure?
 - How to predict when a piece of music will be emotionally moving (as opposed to simply emotional)?
 - What personal factors moderate musical pleasure?
 - How does musical pleasure evolve as a function of repeated listening?
 - Can we explain aspects of musical style (and its evolution) through computational models of musical pleasure?
-- Can we use computational models of musical pleasure to guide AI music generation models?
+
+## See also
+
+- [Computational music cognition](/opportunities/computational-music-cognition/)

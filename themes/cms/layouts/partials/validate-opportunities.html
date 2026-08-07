@@ -8,6 +8,11 @@
 {{- range $allProjects -}}
   {{- $projectSlugs = $projectSlugs | append .File.ContentBaseName -}}
 {{- end -}}
+{{- $allPublications := where site.RegularPages "Section" "publications" -}}
+{{- $publicationSlugs := slice -}}
+{{- range $allPublications -}}
+  {{- $publicationSlugs = $publicationSlugs | append .File.ContentBaseName -}}
+{{- end -}}
 
 {{- range where site.RegularPages "Section" "opportunities" -}}
   {{- $slug := .File.ContentBaseName -}}
@@ -30,12 +35,35 @@
     {{- errorf "Opportunity error: opportunity %q is open but levels is empty." $slug -}}
   {{- end -}}
 
+  {{- if isset .Params "collaborators" -}}
+    {{- if not (reflect.IsSlice .Params.collaborators) -}}
+      {{- errorf "Opportunity error: opportunity %q has non-list collaborators." $slug -}}
+    {{- else -}}
+      {{- range .Params.collaborators -}}
+        {{- if ne (printf "%T" .) "string" -}}
+          {{- errorf "Opportunity error: opportunity %q has a collaborator name that is not a string." $slug -}}
+        {{- else if eq (strings.TrimSpace .) "" -}}
+          {{- errorf "Opportunity error: opportunity %q has an empty collaborator name." $slug -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
   {{- if and (isset .Params "projects") (not (reflect.IsSlice .Params.projects)) -}}
     {{- errorf "Opportunity error: opportunity %q has non-list projects." $slug -}}
   {{- end -}}
   {{- range (default (slice) .Params.projects) -}}
     {{- if not (in $projectSlugs .) -}}
       {{- errorf "Opportunity error: opportunity %q links to unknown project %q." $slug . -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if and (isset .Params "publications") (not (reflect.IsSlice .Params.publications)) -}}
+    {{- errorf "Opportunity error: opportunity %q has non-list publications." $slug -}}
+  {{- end -}}
+  {{- range (default (slice) .Params.publications) -}}
+    {{- if not (in $publicationSlugs .) -}}
+      {{- errorf "Opportunity error: opportunity %q links to unknown publication %q." $slug . -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
