@@ -6,7 +6,7 @@ topics_intro: "We particularly welcome fellowship proposals that connect with th
 pathway_tabs:
   - overview
   - topics
-  - funding
+  - opportunities
   - applying
 ---
 
@@ -14,7 +14,7 @@ pathway_tabs:
 
 We are eager to welcome postdoctoral researchers to the CMS. As a CMS member you will join a vibrant community of postgraduate and postdoctoral researchers who regularly meet for seminars and work together in a shared office space. We particularly look for team players who enjoy group discussion and collaboration!
 
-## Funding
+## Opportunities
 
 Several recurring postdoctoral fellowship programmes can support a position at the CMS:
 
