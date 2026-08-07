@@ -1,6 +1,6 @@
 ---
 title: "PhD"
-summary: "Multi-year postgraduate studentships supervised at the CMS."
+summary: "3- or 4-year doctoral projects supervised at the CMS."
 weight: 3
 topics_intro: "We are currently offering PhD projects in the following areas. Please explore and see what best matches your interests."
 pathway_tabs:
