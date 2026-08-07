@@ -8,7 +8,7 @@ collaborators:
   - "Nori Jacoby"
 note: ""
 summary: "TODO"
-weight: 7
+weight: 4
 ---
 
 Music cognition research has traditionally focused on developing normative accounts

@@ -6,7 +6,7 @@ levels:
   - mphil
 note: ""
 summary: "Building computational models of the musical mind"
-weight: 10
+weight: 1
 ---
 
 The goal of computational music cognition research is to develop

@@ -7,7 +7,7 @@ levels:
   - undergraduate
 note: ""
 summary: "TODO"
-weight: 10
+weight: 5
 ---
 
 Microtonality may be defined as the use of pitch intervals distinctly smaller than a semitone. While various contemporary classical composers have explored microtonality, the vast majority of Western music is not microtonal, instead using a 12-tone scale or subsets thereof.

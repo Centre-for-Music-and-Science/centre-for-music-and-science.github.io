@@ -7,7 +7,7 @@ levels:
   - undergraduate
 note: ""
 summary: "TODO"
-weight: 10
+weight: 2
 ---
 
 Music is produced in an incredibly diverse number of styles across the world. These styles have many layers: for example, we can discuss the style of individual musicians (e.g. Miles Davis), subgenres (e.g. cool jazz), or genres (e.g. jazz).
