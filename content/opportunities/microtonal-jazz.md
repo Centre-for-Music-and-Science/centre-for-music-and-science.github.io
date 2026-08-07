@@ -1,12 +1,6 @@
 ---
 title: "The psychology of microtonal jazz"
 open: true
-levels:
-  - phd
-  - mphil
-  - undergraduate
-note: ""
-summary: "TODO"
 weight: 5
 ---
 

@@ -3,12 +3,10 @@ title: "{{ replace .File.ContentBaseName "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 open: true
-levels: []
+thumbnail: ""
 collaborators: []
 projects: []
 publications: []
-note: ""
-summary: ""
 weight: 0
 ---
 

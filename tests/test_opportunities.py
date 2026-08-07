@@ -7,7 +7,6 @@ import unittest
 from pathlib import Path
 
 from scripts.opportunities import (
-    APPLICATION_LEVELS,
     filter_open_opportunities,
     opportunity_open,
     opportunity_projects,
@@ -26,40 +25,17 @@ class OpportunityOpenTests(unittest.TestCase):
 
 
 class ValidationTests(unittest.TestCase):
-    def test_open_requires_levels(self):
+    def test_open_without_levels_is_valid(self):
         errors = validate_opportunity(
             "melodic-memory",
-            {"open": True, "levels": []},
-        )
-        self.assertEqual(len(errors), 1)
-        self.assertIn("levels is empty", errors[0])
-
-    def test_open_with_levels_is_valid(self):
-        errors = validate_opportunity(
-            "melodic-memory",
-            {"open": True, "levels": ["phd", "mphil"]},
-        )
-        self.assertEqual(errors, [])
-
-    def test_unknown_level_is_rejected(self):
-        errors = validate_opportunity(
-            "melodic-memory",
-            {"open": True, "levels": ["masters"]},
-        )
-        self.assertEqual(len(errors), 1)
-        self.assertIn("unknown level", errors[0])
-
-    def test_closed_with_no_levels_is_valid(self):
-        errors = validate_opportunity(
-            "melodic-memory",
-            {"open": False},
+            {"open": True},
         )
         self.assertEqual(errors, [])
 
     def test_missing_project_slug_is_rejected(self):
         errors = validate_opportunity(
             "melodic-memory",
-            {"open": True, "levels": ["phd"], "projects": ["memory", "nope"]},
+            {"open": True, "projects": ["memory", "nope"]},
             project_slugs={"memory"},
         )
         self.assertEqual(len(errors), 1)
@@ -74,7 +50,6 @@ class ValidationTests(unittest.TestCase):
             "combined-topic",
             {
                 "open": True,
-                "levels": ["phd"],
                 "projects": ["memory", "expectation"],
             },
             project_slugs={"memory", "expectation"},
@@ -84,7 +59,7 @@ class ValidationTests(unittest.TestCase):
     def test_projects_must_be_a_list(self):
         errors = validate_opportunity(
             "melodic-memory",
-            {"open": True, "levels": ["phd"], "projects": "memory"},
+            {"open": True, "projects": "memory"},
             project_slugs={"memory"},
         )
         self.assertEqual(len(errors), 1)
@@ -95,7 +70,6 @@ class ValidationTests(unittest.TestCase):
             "melodic-memory",
             {
                 "open": True,
-                "levels": ["phd"],
                 "publications": ["lee-globalmood", "nope"],
             },
             publication_slugs={"lee-globalmood"},
@@ -106,7 +80,12 @@ class ValidationTests(unittest.TestCase):
     def test_multiple_publications_are_supported(self):
         self.assertEqual(
             opportunity_publications(
-                {"publications": ["lee-globalmood", "frank-chord-pleasantness"]}
+                {
+                    "publications": [
+                        "lee-globalmood",
+                        "frank-chord-pleasantness",
+                    ]
+                }
             ),
             ["lee-globalmood", "frank-chord-pleasantness"],
         )
@@ -114,7 +93,6 @@ class ValidationTests(unittest.TestCase):
             "combined-topic",
             {
                 "open": True,
-                "levels": ["phd"],
                 "publications": ["lee-globalmood", "frank-chord-pleasantness"],
             },
             publication_slugs={"lee-globalmood", "frank-chord-pleasantness"},
@@ -126,7 +104,6 @@ class ValidationTests(unittest.TestCase):
             "melodic-memory",
             {
                 "open": True,
-                "levels": ["phd"],
                 "publications": "lee-globalmood",
             },
             publication_slugs={"lee-globalmood"},
@@ -139,7 +116,6 @@ class ValidationTests(unittest.TestCase):
             "melodic-memory",
             {
                 "open": True,
-                "levels": ["phd"],
                 "collaborators": ["Alex Smith", "Sam Jones"],
             },
         )
@@ -150,7 +126,6 @@ class ValidationTests(unittest.TestCase):
             "melodic-memory",
             {
                 "open": True,
-                "levels": ["phd"],
                 "collaborators": "Alex Smith",
             },
         )
@@ -158,7 +133,6 @@ class ValidationTests(unittest.TestCase):
             "melodic-memory",
             {
                 "open": True,
-                "levels": ["phd"],
                 "collaborators": [{"name": "Alex Smith"}],
             },
         )
@@ -167,34 +141,16 @@ class ValidationTests(unittest.TestCase):
             "collaborator names must be non-empty strings", item_errors[0]
         )
 
-    def test_known_levels_enum_is_complete(self):
-        self.assertEqual(
-            set(APPLICATION_LEVELS),
-            {
-                "undergraduate",
-                "mphil",
-                "phd",
-                "postdoc",
-                "internship",
-                "visitor",
-            },
-        )
-
 
 class FilterTests(unittest.TestCase):
-    def test_filter_open_by_level(self):
+    def test_filters_out_closed_opportunities(self):
         opportunities = [
-            ("a", {"open": True, "levels": ["phd"]}),
-            ("b", {"open": True, "levels": ["mphil", "phd"]}),
-            ("c", {"open": False, "levels": ["phd"]}),
-            ("d", {"open": True, "levels": ["undergraduate"]}),
+            ("a", {"open": True}),
+            ("b", {}),
+            ("c", {"open": False}),
         ]
-        phd = filter_open_opportunities(opportunities, level="phd")
-        self.assertEqual([slug for slug, _ in phd], ["a", "b"])
-        undergrad = filter_open_opportunities(
-            opportunities, level="undergraduate"
-        )
-        self.assertEqual([slug for slug, _ in undergrad], ["d"])
+        open_opportunities = filter_open_opportunities(opportunities)
+        self.assertEqual([slug for slug, _ in open_opportunities], ["a", "b"])
 
 
 class OpportunitiesDirValidationTests(unittest.TestCase):
@@ -216,12 +172,12 @@ class OpportunitiesDirValidationTests(unittest.TestCase):
                 encoding="utf-8",
             )
             (opps / "ok.md").write_text(
-                "---\ntitle: Ok\nopen: true\nlevels: [phd]\n"
+                "---\ntitle: Ok\nopen: true\n"
                 "projects: [memory]\npublications: [lee-globalmood]\n---\n",
                 encoding="utf-8",
             )
             (opps / "bad.md").write_text(
-                "---\ntitle: Bad\nopen: true\nlevels: []\n---\n",
+                '---\ntitle: Bad\nopen: "yes"\n---\n',
                 encoding="utf-8",
             )
             (opps / "_index.md").write_text(

@@ -3148,134 +3148,16 @@ a.pub-item-title:hover {
   max-width: 44rem;
 }
 
-.brochure-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.brochure-filter-btn {
-  appearance: none;
-  border: 1px solid var(--color-border, #d1d5db);
-  background: #fff;
-  color: var(--color-text-light);
-  font-family: var(--font-family);
-  font-size: 0.9rem;
-  padding: 8px 14px;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-
-.brochure-filter-btn:hover {
-  border-color: var(--color-accent);
-  color: var(--color-text);
-}
-
-.brochure-filter-btn.active {
-  background: var(--color-accent-light);
-  border-color: var(--color-accent);
-  color: var(--color-text);
-  font-weight: 500;
-}
-
 .brochure-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-.brochure-card {
-  background: var(--color-card-bg, #f8fafc);
-  border: 1px solid var(--color-border, #e5e7eb);
-  border-radius: 8px;
-  padding: 20px;
-}
-
-.brochure-card-theme {
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-text-light);
-  margin: 0 0 8px;
-}
-
-.brochure-card-title {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin: 0 0 12px;
-  line-height: 1.35;
-}
-
-.brochure-card-title a {
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-.brochure-card-title a:hover {
-  color: var(--color-accent);
-}
-
-.brochure-level-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
-  margin: 0 0 12px;
-  padding: 0;
-}
-
-.brochure-level-badge {
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--color-accent-light);
-  color: var(--color-text);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
 
 .opportunity-collaborators {
   font-size: 0.9rem;
   color: var(--color-text-light);
   margin: 0 0 10px;
-}
-
-.brochure-card-note {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  margin: 0 0 10px;
-  font-style: italic;
-}
-
-.brochure-card-excerpt {
-  font-size: 0.95rem;
-  color: var(--color-text-light);
-  line-height: 1.6;
-  margin: 0;
-}
-
-.applicants-level-projects {
-  margin: 0 0 28px;
-  padding: 16px 18px;
-  background: var(--color-accent-light);
-  border-radius: 8px;
-}
-
-.applicants-level-projects-heading {
-  font-size: 1.05rem !important;
-  margin: 0 0 10px !important;
-}
-
-.applicants-level-projects-list {
-  margin: 0 !important;
-  padding-left: 18px;
-}
-
-.applicants-level-projects-note {
-  color: var(--color-text-light);
-  font-size: 0.9rem;
-  margin-left: 6px;
 }
 
 .project-applications-callout {
@@ -3319,10 +3201,6 @@ a.pub-item-title:hover {
   text-transform: uppercase;
   color: var(--color-text-light);
   margin: 0 0 8px;
-}
-
-.opportunity-detail-header .brochure-level-badges {
-  margin-top: 12px;
 }
 
 .opportunity-detail-howto {
@@ -4358,7 +4236,8 @@ a.pub-item-title:hover {
   .datasets-grid,
   .explore-grid,
   .theme-projects,
-  .methods-projects {
+  .methods-projects,
+  .brochure-grid {
     grid-template-columns: 1fr;
   }
 

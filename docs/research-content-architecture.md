@@ -53,29 +53,21 @@ Front matter:
 
 ```yaml
 open: true              # false = hide from brochure (default true)
-levels:                 # required when open is true
-  - phd
-  - mphil
+thumbnail: ""           # optional card image path
 collaborators:          # optional display names (not yet linked to people)
   - "Alex Smith"
 projects:               # optional links to portfolio project slugs
   - memory
 publications:           # optional links to publication slugs
   - lee-globalmood
-note: ""                # optional caveat shown in the brochure
-summary: ""             # short text shown only on the brochure card
 weight: 0
 ```
 
-Known `levels` values:
-
-- `undergraduate`, `mphil`, `phd`, `postdoc`, `internship`, `visitor`
-
 Relationship rules:
 
-- `summary` is the short applicant-facing pitch shown on the brochure.
+- `thumbnail` is an optional image shown on the brochure card.
 - The Markdown body is the detailed description shown only on the opportunity page.
-- `collaborators` is an optional list of quoted names displayed directly on the brochure card and detail page.
+- `collaborators` is an optional list of quoted names displayed on the detail page.
 - Every slug in `projects` must resolve to an existing `content/projects` record.
 - Every slug in `publications` must resolve to an existing `content/publications` record.
 - Portfolio projects with no opportunity are not advertised for applications.
@@ -83,7 +75,6 @@ Relationship rules:
 
 Build-time rules:
 
-- if `open` is `true` (or omitted), `levels` must be a non-empty list of known levels
 - `collaborators`, when set, must be a list of non-empty strings
 - every slug in `projects` must match an existing project slug
 - every slug in `publications` must match an existing publication slug

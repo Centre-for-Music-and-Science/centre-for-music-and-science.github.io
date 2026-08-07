@@ -1,12 +1,6 @@
 ---
 title: "Computational analysis of musical style"
 open: true
-levels:
-  - phd
-  - mphil
-  - undergraduate
-note: ""
-summary: "TODO"
 weight: 2
 ---
 

@@ -24,18 +24,7 @@
       <div class="applicants-panels">
         {{ range sort .RegularPages "Params.weight" }}
         {{ $pageSlug := .File.ContentBaseName }}
-        {{ $level := "" }}
-        {{ if eq $pageSlug "undergraduate" }}{{ $level = "undergraduate" }}
-        {{ else if eq $pageSlug "mphil" }}{{ $level = "mphil" }}
-        {{ else if eq $pageSlug "phd" }}{{ $level = "phd" }}
-        {{ else if eq $pageSlug "postdoctoral-researchers" }}{{ $level = "postdoc" }}
-        {{ else if eq $pageSlug "internships" }}{{ $level = "internship" }}
-        {{ else if eq $pageSlug "visitors" }}{{ $level = "visitor" }}
-        {{ end }}
         <div class="applicants-panel" id="panel-{{ $pageSlug }}">
-          {{ if $level }}
-            {{ partial "applicants-level-opportunities.html" (dict "level" $level) }}
-          {{ end }}
           {{ .Content }}
         </div>
         {{ end }}
@@ -67,22 +56,6 @@
   if (buttons.length > 0) {
     activate(buttons[0].getAttribute('data-target'));
   }
-
-  var filterButtons = document.querySelectorAll('.brochure-filter-btn');
-  var cards = document.querySelectorAll('.brochure-card');
-  filterButtons.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var filter = this.getAttribute('data-filter');
-      filterButtons.forEach(function(other) {
-        other.classList.toggle('active', other === btn);
-      });
-      cards.forEach(function(card) {
-        var levels = (card.getAttribute('data-levels') || '').split(/\s+/).filter(Boolean);
-        var show = filter === 'all' || levels.indexOf(filter) !== -1;
-        card.hidden = !show;
-      });
-    });
-  });
 })();
 </script>
 {{ end }}

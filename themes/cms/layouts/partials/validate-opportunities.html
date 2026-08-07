@@ -1,8 +1,6 @@
 {{- /*
   Validate opportunity front matter.
-  Known levels: undergraduate, mphil, phd, postdoc, internship, visitor.
 */ -}}
-{{- $knownLevels := slice "undergraduate" "mphil" "phd" "postdoc" "internship" "visitor" -}}
 {{- $allProjects := where site.RegularPages "Section" "projects" -}}
 {{- $projectSlugs := slice -}}
 {{- range $allProjects -}}
@@ -16,23 +14,10 @@
 
 {{- range where site.RegularPages "Section" "opportunities" -}}
   {{- $slug := .File.ContentBaseName -}}
-  {{- $open := true -}}
   {{- if isset .Params "open" -}}
     {{- if ne (printf "%T" .Params.open) "bool" -}}
       {{- errorf "Opportunity error: opportunity %q has non-boolean open." $slug -}}
     {{- end -}}
-    {{- $open = .Params.open -}}
-  {{- end -}}
-
-  {{- $levels := default (slice) .Params.levels -}}
-  {{- range $levels -}}
-    {{- if not (in $knownLevels .) -}}
-      {{- errorf "Opportunity error: opportunity %q has unknown level %q. Expected one of: %s." $slug . (delimit $knownLevels ", ") -}}
-    {{- end -}}
-  {{- end -}}
-
-  {{- if and $open (eq (len $levels) 0) -}}
-    {{- errorf "Opportunity error: opportunity %q is open but levels is empty." $slug -}}
   {{- end -}}
 
   {{- if isset .Params "collaborators" -}}

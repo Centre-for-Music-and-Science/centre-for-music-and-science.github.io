@@ -7,33 +7,6 @@ from typing import Any
 
 import yaml
 
-APPLICATION_LEVELS = (
-    "undergraduate",
-    "mphil",
-    "phd",
-    "postdoc",
-    "internship",
-    "visitor",
-)
-
-LEVEL_LABELS = {
-    "undergraduate": "Undergraduate",
-    "mphil": "MPhil",
-    "phd": "PhD",
-    "postdoc": "Postdoctoral",
-    "internship": "Internship",
-    "visitor": "Visitor",
-}
-
-APPLICANT_PAGE_LEVELS = {
-    "undergraduate": "undergraduate",
-    "mphil": "mphil",
-    "phd": "phd",
-    "postdoctoral-researchers": "postdoc",
-    "internships": "internship",
-    "visitors": "visitor",
-}
-
 
 def split_front_matter(content: str) -> tuple[dict[str, Any], str]:
     """Split a markdown document into YAML front matter and body."""
@@ -56,20 +29,16 @@ def opportunity_open(front_matter: dict[str, Any]) -> bool:
     return bool(front_matter["open"])
 
 
-def opportunity_levels(front_matter: dict[str, Any]) -> list[str]:
-    """Return the list of application levels for an opportunity."""
-    levels = front_matter.get("levels") or []
-    if not isinstance(levels, list):
-        raise ValueError("levels must be a list")
-    return [str(level) for level in levels]
-
-
 def opportunity_projects(front_matter: dict[str, Any]) -> list[str]:
     """Return linked project slugs."""
     projects = front_matter.get("projects") or []
     if not isinstance(projects, list):
         raise ValueError("projects must be a list")
-    return [str(project).strip() for project in projects if str(project).strip()]
+    return [
+        str(project).strip()
+        for project in projects
+        if str(project).strip()
+    ]
 
 
 def opportunity_publications(front_matter: dict[str, Any]) -> list[str]:
@@ -114,25 +83,6 @@ def validate_opportunity(
     if "open" in front_matter and not isinstance(front_matter["open"], bool):
         errors.append(f"opportunity {slug!r}: open must be a boolean")
 
-    levels = front_matter.get("levels")
-    if levels is not None and not isinstance(levels, list):
-        errors.append(f"opportunity {slug!r}: levels must be a list")
-        return errors
-
-    level_list = [str(level) for level in (levels or [])]
-    for level in level_list:
-        if level not in APPLICATION_LEVELS:
-            errors.append(
-                f"opportunity {slug!r}: unknown level {level!r}; "
-                f"expected one of {', '.join(APPLICATION_LEVELS)}"
-            )
-
-    is_open = opportunity_open(front_matter)
-    if is_open and not level_list:
-        errors.append(
-            f"opportunity {slug!r}: open is true but levels is empty"
-        )
-
     collaborators = front_matter.get("collaborators")
     if collaborators is not None and not isinstance(collaborators, list):
         errors.append(f"opportunity {slug!r}: collaborators must be a list")
@@ -141,7 +91,8 @@ def validate_opportunity(
         for name in (collaborators or [])
     ):
         errors.append(
-            f"opportunity {slug!r}: collaborator names must be non-empty strings"
+            f"opportunity {slug!r}: collaborator names must be "
+            "non-empty strings"
         )
 
     projects = front_matter.get("projects")
@@ -211,15 +162,11 @@ def validate_opportunities_dir(
 
 def filter_open_opportunities(
     opportunities: list[tuple[str, dict[str, Any]]],
-    *,
-    level: str | None = None,
 ) -> list[tuple[str, dict[str, Any]]]:
-    """Keep open opportunities, optionally filtered by level."""
+    """Keep open opportunities."""
     result: list[tuple[str, dict[str, Any]]] = []
     for slug, fm in opportunities:
         if not opportunity_open(fm):
-            continue
-        if level is not None and level not in opportunity_levels(fm):
             continue
         result.append((slug, fm))
     return result

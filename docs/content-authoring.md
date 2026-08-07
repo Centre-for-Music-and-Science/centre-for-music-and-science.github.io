@@ -44,14 +44,13 @@ Build-time guards:
 
 - every project must be listed in `themes.*.projects` or `projects.*.projects`
 - parent `projects` lists must only reference existing project slugs
-- open opportunities must declare known non-empty `levels`
 - opportunity `projects` and `publications` links must resolve when set
 
 ### Applicant brochure workflow
 
 1. Keep research write-ups in `content/projects/<slug>.md` (portfolio only).
-2. To advertise work for applicants, add `content/opportunities/<slug>.md` with `levels`, a short front-matter `summary` for the brochure, and the detailed description in the Markdown body.
-3. Optionally add collaborators as quoted display names, for example `collaborators: ["Alex Smith", "Sam Jones"]`.
+2. To advertise work for applicants, add `content/opportunities/<slug>.md` with the detailed description in the Markdown body and, optionally, a `thumbnail` image for the brochure card.
+3. Optionally add collaborators for the detail page as quoted display names, for example `collaborators: ["Alex Smith", "Sam Jones"]`.
 4. Link to existing projects with `projects: [<slug>, ...]` when the opportunity continues portfolio work.
 5. Optionally link related publications with `publications: [<slug>, ...]`.
 6. For hypothetical topics not yet in the portfolio, omit `projects` or leave it empty.

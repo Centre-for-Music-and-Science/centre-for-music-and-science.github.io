@@ -1,11 +1,6 @@
 ---
 title: "Music and pleasure"
 open: true
-levels:
-  - phd
-  - mphil
-note: ""
-summary: "TODO"
 weight: 3
 ---
 

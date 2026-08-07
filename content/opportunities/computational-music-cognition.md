@@ -1,11 +1,6 @@
 ---
 title: "Computational music cognition"
 open: true
-levels:
-  - phd
-  - mphil
-note: ""
-summary: "Building computational models of the musical mind"
 weight: 1
 ---
 

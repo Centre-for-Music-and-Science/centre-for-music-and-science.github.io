@@ -7,21 +7,10 @@
     <header class="opportunity-detail-header">
       <p class="opportunity-detail-kicker">Opportunity</p>
       <h1>{{ .Title }}</h1>
-      {{ $levels := default (slice) .Params.levels }}
-      {{ if $levels }}
-      <ul class="brochure-level-badges" aria-label="Suitable levels">
-        {{ range $levels }}
-        <li class="brochure-level-badge">{{ partial "application-level-label.html" . }}</li>
-        {{ end }}
-      </ul>
-      {{ end }}
       {{ with .Params.collaborators }}
       <p class="opportunity-collaborators">
         <strong>Collaborators:</strong> {{ delimit . ", " }}
       </p>
-      {{ end }}
-      {{ with .Params.note }}
-      <p class="brochure-card-note">{{ . }}</p>
       {{ end }}
     </header>
     <div class="content opportunity-detail-body">

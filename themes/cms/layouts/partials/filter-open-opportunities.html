@@ -1,16 +1,11 @@
 {{- /*
   Filter opportunity pages that are open.
-  Optional .level restricts to opportunities listing that level.
 */ -}}
 {{- $opportunities := default (slice) .opportunities -}}
-{{- $level := default "" .level -}}
 {{- $filtered := slice -}}
 {{- range $opportunities -}}
   {{- if partial "opportunity-open.html" . -}}
-    {{- $levels := default (slice) .Params.levels -}}
-    {{- if or (eq $level "") (in $levels $level) -}}
-      {{- $filtered = $filtered | append . -}}
-    {{- end -}}
+    {{- $filtered = $filtered | append . -}}
   {{- end -}}
 {{- end -}}
 {{- return $filtered -}}

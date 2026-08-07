@@ -1,13 +1,8 @@
 ---
 title: "Individual and cross-cultural differences in music cognition"
 open: true
-levels:
-  - phd
-  - mphil
 collaborators:
   - "Nori Jacoby"
-note: ""
-summary: "TODO"
 weight: 4
 ---
 
