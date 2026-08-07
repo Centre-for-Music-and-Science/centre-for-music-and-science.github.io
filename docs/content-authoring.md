@@ -7,7 +7,7 @@ This guide describes how to create and maintain records in the refactored resear
 Use Hugo archetypes:
 
 - `hugo new projects/<slug>.md`
-- `hugo new opportunities/<slug>.md`
+- `hugo new topics/<slug>.md`
 - `hugo new methods/<slug>.md`
 - `hugo new groups/<slug>.md`
 - `hugo new publications/<slug>.md`
@@ -44,31 +44,31 @@ Build-time guards:
 
 - every project must be listed in `themes.*.projects` or `projects.*.projects`
 - parent `projects` lists must only reference existing project slugs
-- opportunity `projects` and `publications` links must resolve when set
+- topic `projects` and `publications` links must resolve when set
 
 ### Applicant brochure workflow
 
 1. Keep research write-ups in `content/projects/<slug>.md` (portfolio only).
-2. To advertise work for applicants, add `content/opportunities/<slug>.md` with the detailed description in the Markdown body and, optionally, a `thumbnail` image for the brochure card on `/opportunities/`.
+2. To advertise work for applicants, add `content/topics/<slug>.md` with the detailed description in the Markdown body and, optionally, a `thumbnail` image for the brochure card on `/topics/`.
 3. For third-party images, set `thumbnail_credit` with `author`, `license`, and
-   optional `license_url`. The credit renders only on the opportunity detail
+   optional `license_url`. The credit renders only on the topic detail
    page, under the header thumbnail.
 4. Optionally set `supervisor: <person-slug>` (for example
    `supervisor: peter-harrison`).
 5. Optionally list possible cosupervisors as people slugs, for example
    `cosupervisors: [harin-lee, nori-jacoby]`. External collaborators who should
    not appear on the People page can use `positions[].kind: collaborator`.
-6. Link to existing projects with `projects: [<slug>, ...]` when the opportunity continues portfolio work.
+6. Link to existing projects with `projects: [<slug>, ...]` when the topic continues portfolio work.
 7. Optionally list extra publications with `publications: [<slug>, ...]`.
    Related publications are also auto-aggregated from publications that tag
    the linked projects (including descendant projects).
 8. For hypothetical topics not yet in the portfolio, omit `projects` or leave it empty.
-9. To stop advertising, set `open: false` (or remove the opportunity record).
+9. To stop advertising, set `open: false` (or remove the topic record).
 10. Pathway process text lives in `content/applicants/<pathway>.md` and is linked from the `/applicants/` hub.
     Graduate pathways (e.g. MPhil, PhD) use `##` sections for tab bodies such as
     `Programme`, `Prerequisites`, `Finances`, and `Applying`. Set `pathway_tabs` in
     front matter to control tab order (include `topics` where you want the
-    opportunities brochure). Without `pathway_tabs`, sections appear in heading
+    topics brochure). Without `pathway_tabs`, sections appear in heading
     order and Topics is inserted after the first section when enabled.
 11. Optionally set `topics_intro` on a pathway page to customise the Topics tab
    blurb (defaults to a generic open-topics sentence). Set `show_topics: false`

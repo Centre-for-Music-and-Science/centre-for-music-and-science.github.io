@@ -1,15 +1,15 @@
 {{ define "main" }}
-<article class="opportunity-detail-page single-page">
+<article class="topic-detail-page single-page">
   <div class="container">
     <div class="page-back-top">
-      {{ partial "back-link.html" (dict "href" (printf "%sopportunities/" .Site.Home.RelPermalink) "label" "Research topics") }}
+      {{ partial "back-link.html" (dict "href" (printf "%stopics/" .Site.Home.RelPermalink) "label" "Research topics") }}
     </div>
-    <header class="detail-header opportunity-detail-header">
-      <div class="opportunity-header-meta">
-        <p class="opportunity-detail-kicker">Opportunity</p>
+    <header class="detail-header topic-detail-header">
+      <div class="topic-header-meta">
+        <p class="topic-detail-kicker">Topic</p>
         <h1>{{ .Title }}</h1>
         {{ with .Params.supervisor }}
-        <p class="opportunity-supervisor-meta">
+        <p class="topic-supervisor-meta">
           <strong>Supervisor:</strong>
           {{- $supervisorSlug := . -}}
           {{- with $.Site.GetPage (path.Join "/people" $supervisorSlug) }}
@@ -20,7 +20,7 @@
         </p>
         {{ end }}
         {{ with .Params.cosupervisors }}
-        <p class="opportunity-supervisor-meta">
+        <p class="topic-supervisor-meta">
           <strong>Possible cosupervisors:</strong>
           {{ range $i, $slug := . }}
             {{- if $i }}, {{ end -}}
@@ -35,7 +35,7 @@
       </div>
       {{ partial "detail-header-thumbnail.html" (dict "page" .) }}
     </header>
-    <div class="content opportunity-detail-body">
+    <div class="content topic-detail-body">
       {{ .Content }}
     </div>
     {{ $projectSlugs := default (slice) .Params.projects }}
@@ -73,11 +73,11 @@
       "relation_slugs" $publicationRelationSlugs
     ) }}
 
-    {{ $allOpportunities := where .Site.RegularPages "Section" "opportunities" }}
-    {{ $openOpportunities := partial "filter-open-opportunities.html" (dict "opportunities" $allOpportunities) }}
-    {{ $openOpportunities = sort $openOpportunities "Params.weight" }}
+    {{ $allTopics := where .Site.RegularPages "Section" "topics" }}
+    {{ $openTopics := partial "filter-open-topics.html" (dict "topics" $allTopics) }}
+    {{ $openTopics = sort $openTopics "Params.weight" }}
     {{ partial "sibling-nav.html" (dict
-      "pages" $openOpportunities
+      "pages" $openTopics
       "current" .
       "aria_label" "Research topics"
       "prev_label" "Previous topic"

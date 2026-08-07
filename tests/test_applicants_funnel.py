@@ -1,58 +1,20 @@
-"""Smoke tests for the applicants / opportunities page funnel."""
+"""Smoke tests for the applicants / topics page funnel."""
 
 from __future__ import annotations
 
-import shutil
-import subprocess
-import tempfile
 import unittest
-from pathlib import Path
+
+from tests.hugo_smoke import HugoSiteSmokeTest
 
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-
-
-@unittest.skipUnless(shutil.which("hugo"), "hugo not installed")
-class ApplicantsFunnelSmokeTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls._tmpdir = tempfile.TemporaryDirectory()
-        cls.public = Path(cls._tmpdir.name) / "public"
-        result = subprocess.run(
-            [
-                "hugo",
-                "--destination",
-                str(cls.public),
-                "--minify",
-                "--cleanDestinationDir",
-            ],
-            cwd=REPO_ROOT,
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        if result.returncode != 0:
-            raise AssertionError(
-                "hugo build failed:\n"
-                f"{result.stdout}\n{result.stderr}"
-            )
-
-    @classmethod
-    def tearDownClass(cls):
-        cls._tmpdir.cleanup()
-
-    def _read(self, relative: str) -> str:
-        path = self.public / relative
-        self.assertTrue(path.is_file(), f"missing build output: {relative}")
-        return path.read_text(encoding="utf-8")
-
+class ApplicantsFunnelSmokeTests(HugoSiteSmokeTest):
     def test_applicants_hub_links_to_pathways_not_topics_index(self):
         html = self._read("applicants/index.html")
         self.assertIn("/applicants/phd/", html)
         self.assertIn("/applicants/mphil/", html)
         self.assertNotIn("Explore research topics", html)
         self.assertNotIn("applicants-hub-primary", html)
-        self.assertNotIn("/opportunities/", html)
+        self.assertNotIn("/topics/", html)
         self.assertNotIn("applicants-nav-btn", html)
         self.assertNotIn("applicants-panel", html)
 
@@ -94,11 +56,11 @@ class ApplicantsFunnelSmokeTests(unittest.TestCase):
         self.assertLess(topics_tab, prerequisites_tab)
         self.assertLess(prerequisites_tab, finances_tab)
         self.assertLess(finances_tab, applying_tab)
-        self.assertIn("/opportunities/computational-music-cognition/", html)
-        self.assertIn("/opportunities/", html)
+        self.assertIn("/topics/computational-music-cognition/", html)
+        self.assertIn("/topics/", html)
         self.assertIn("/people/peter-harrison/", html)
         self.assertIn(
-            "We are currently offering PhDs in the following topic areas.",
+            "We are currently offering PhD projects in the following areas.",
             html,
         )
         self.assertNotIn("data-tab=faq", html)
@@ -112,7 +74,7 @@ class ApplicantsFunnelSmokeTests(unittest.TestCase):
         self.assertIn("id=panel-topics", html)
         self.assertNotIn("data-tab=faq", html)
         self.assertNotIn("data-tab=finances", html)
-        self.assertIn("/opportunities/", html)
+        self.assertIn("/topics/", html)
 
     def test_undergraduate_omits_topics_tab(self):
         html = self._read("applicants/undergraduate/index.html")
@@ -122,17 +84,17 @@ class ApplicantsFunnelSmokeTests(unittest.TestCase):
         self.assertNotIn("data-tab=about", html)
         self.assertNotIn("data-tab=topics", html)
         self.assertNotIn("id=panel-topics", html)
-        self.assertNotIn("/opportunities/", html)
+        self.assertNotIn("/topics/", html)
 
-    def test_opportunities_list_is_the_brochure(self):
-        html = self._read("opportunities/index.html")
+    def test_topics_list_is_the_brochure(self):
+        html = self._read("topics/index.html")
         self.assertIn("Research topics", html)
-        self.assertIn("/opportunities/computational-music-cognition/", html)
+        self.assertIn("/topics/computational-music-cognition/", html)
         self.assertIn("/applicants/", html)
 
-    def test_opportunity_detail_shows_related_projects_and_publications(self):
+    def test_topic_detail_shows_related_projects_and_publications(self):
         html = self._read(
-            "opportunities/individual-and-cross-cultural-differences/index.html"
+            "topics/individual-and-cross-cultural-differences/index.html"
         )
         self.assertIn("Related projects", html)
         self.assertIn("/projects/emotions/", html)
@@ -143,9 +105,9 @@ class ApplicantsFunnelSmokeTests(unittest.TestCase):
         # Descendant project (music-mood-regulation under emotions) publication.
         self.assertIn("tan-mood-regulation", html)
 
-    def test_opportunity_detail_shows_supervisor_and_cosupervisors(self):
+    def test_topic_detail_shows_supervisor_and_cosupervisors(self):
         html = self._read(
-            "opportunities/individual-and-cross-cultural-differences/index.html"
+            "topics/individual-and-cross-cultural-differences/index.html"
         )
         self.assertIn("Supervisor:", html)
         self.assertIn("/people/peter-harrison/", html)
@@ -159,7 +121,7 @@ class ApplicantsFunnelSmokeTests(unittest.TestCase):
         self.assertNotIn("/people/nori-jacoby/", html)
         self.assertNotIn("/people/daniel-mullensiefen/", html)
         self.assertNotIn("/people/lars-seniuk/", html)
-        # Detail pages still exist for linking from opportunities.
+        # Detail pages still exist for linking from topics.
         self.assertTrue(
             (self.public / "people/nori-jacoby/index.html").is_file()
         )

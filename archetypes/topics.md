@@ -15,4 +15,4 @@ publications: []
 weight: 0
 ---
 
-Detailed description shown on the opportunity page.
+Detailed description shown on the topic page.

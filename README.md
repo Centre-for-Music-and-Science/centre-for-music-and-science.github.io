@@ -171,7 +171,7 @@ Notes:
 - `group` is optional. If set, use `mcc` for Music Cognition & Culture or `mcs` for the Music, Culture & Sociality (MCS) group.
 - Listing category/status and subtitle are derived from `positions`.
 - `positions[].kind: collaborator` is for external collaborators listed as
-  possible opportunity cosupervisors. These people get detail pages but are
+  possible topic cosupervisors. These people get detail pages but are
   omitted from the homepage Team section and `/people/` listings.
   Listing rules live in `themes/cms/layouts/partials/person-taxonomy.html`.
 - `positions[].title` is optional; when omitted, title defaults are derived from `kind`.

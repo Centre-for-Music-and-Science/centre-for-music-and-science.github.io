@@ -1,4 +1,4 @@
-"""Tests for applicant opportunity front-matter helpers."""
+"""Tests for applicant topic front-matter helpers."""
 
 from __future__ import annotations
 
@@ -6,36 +6,36 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.opportunities import (
-    filter_open_opportunities,
-    opportunity_cosupervisors,
-    opportunity_open,
-    opportunity_projects,
-    opportunity_publications,
-    opportunity_supervisor,
-    validate_opportunities_dir,
-    validate_opportunity,
+from scripts.topics import (
+    filter_open_topics,
+    topic_cosupervisors,
+    topic_open,
+    topic_projects,
+    topic_publications,
+    topic_supervisor,
+    validate_topic,
+    validate_topics_dir,
 )
 
 
-class OpportunityOpenTests(unittest.TestCase):
+class TopicOpenTests(unittest.TestCase):
     def test_defaults_to_true_when_omitted(self):
-        self.assertTrue(opportunity_open({}))
+        self.assertTrue(topic_open({}))
 
     def test_respects_explicit_false(self):
-        self.assertFalse(opportunity_open({"open": False}))
+        self.assertFalse(topic_open({"open": False}))
 
 
 class ValidationTests(unittest.TestCase):
     def test_open_without_levels_is_valid(self):
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {"open": True},
         )
         self.assertEqual(errors, [])
 
     def test_missing_project_slug_is_rejected(self):
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {"open": True, "projects": ["memory", "nope"]},
             project_slugs={"memory"},
@@ -45,10 +45,10 @@ class ValidationTests(unittest.TestCase):
 
     def test_multiple_projects_are_supported(self):
         self.assertEqual(
-            opportunity_projects({"projects": ["memory", "expectation"]}),
+            topic_projects({"projects": ["memory", "expectation"]}),
             ["memory", "expectation"],
         )
-        errors = validate_opportunity(
+        errors = validate_topic(
             "combined-topic",
             {
                 "open": True,
@@ -59,7 +59,7 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
     def test_projects_must_be_a_list(self):
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {"open": True, "projects": "memory"},
             project_slugs={"memory"},
@@ -68,7 +68,7 @@ class ValidationTests(unittest.TestCase):
         self.assertIn("projects must be a list", errors[0])
 
     def test_missing_publication_slug_is_rejected(self):
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
@@ -81,7 +81,7 @@ class ValidationTests(unittest.TestCase):
 
     def test_multiple_publications_are_supported(self):
         self.assertEqual(
-            opportunity_publications(
+            topic_publications(
                 {
                     "publications": [
                         "lee-globalmood",
@@ -91,7 +91,7 @@ class ValidationTests(unittest.TestCase):
             ),
             ["lee-globalmood", "frank-chord-pleasantness"],
         )
-        errors = validate_opportunity(
+        errors = validate_topic(
             "combined-topic",
             {
                 "open": True,
@@ -102,7 +102,7 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
     def test_publications_must_be_a_list(self):
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
@@ -115,10 +115,10 @@ class ValidationTests(unittest.TestCase):
 
     def test_person_slug_supervisor_is_valid(self):
         self.assertEqual(
-            opportunity_supervisor({"supervisor": "peter-harrison"}),
+            topic_supervisor({"supervisor": "peter-harrison"}),
             "peter-harrison",
         )
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
@@ -129,7 +129,7 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
     def test_missing_supervisor_slug_is_rejected(self):
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
@@ -141,7 +141,7 @@ class ValidationTests(unittest.TestCase):
         self.assertIn("does not exist", errors[0])
 
     def test_supervisor_must_be_a_non_empty_string(self):
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
@@ -153,12 +153,12 @@ class ValidationTests(unittest.TestCase):
 
     def test_person_slug_cosupervisors_are_valid(self):
         self.assertEqual(
-            opportunity_cosupervisors(
+            topic_cosupervisors(
                 {"cosupervisors": ["harin-lee", "nori-jacoby"]}
             ),
             ["harin-lee", "nori-jacoby"],
         )
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
@@ -169,7 +169,7 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
     def test_missing_cosupervisor_slug_is_rejected(self):
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
@@ -181,14 +181,14 @@ class ValidationTests(unittest.TestCase):
         self.assertIn("does not exist", errors[0])
 
     def test_cosupervisors_must_be_a_list_of_slugs(self):
-        scalar_errors = validate_opportunity(
+        scalar_errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
                 "cosupervisors": "harin-lee",
             },
         )
-        item_errors = validate_opportunity(
+        item_errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
@@ -201,7 +201,7 @@ class ValidationTests(unittest.TestCase):
         )
 
     def test_legacy_collaborators_field_is_rejected(self):
-        errors = validate_opportunity(
+        errors = validate_topic(
             "melodic-memory",
             {
                 "open": True,
@@ -213,23 +213,23 @@ class ValidationTests(unittest.TestCase):
 
 
 class FilterTests(unittest.TestCase):
-    def test_filters_out_closed_opportunities(self):
-        opportunities = [
+    def test_filters_out_closed_topics(self):
+        topics = [
             ("a", {"open": True}),
             ("b", {}),
             ("c", {"open": False}),
         ]
-        open_opportunities = filter_open_opportunities(opportunities)
-        self.assertEqual([slug for slug, _ in open_opportunities], ["a", "b"])
+        open_topics = filter_open_topics(topics)
+        self.assertEqual([slug for slug, _ in open_topics], ["a", "b"])
 
 
-class OpportunitiesDirValidationTests(unittest.TestCase):
-    def test_validate_opportunities_dir_reports_errors(self):
+class TopicsDirValidationTests(unittest.TestCase):
+    def test_validate_topics_dir_reports_errors(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            opps = root / "opportunities"
+            topics = root / "topics"
             projects = root / "projects"
-            opps.mkdir()
+            topics.mkdir()
             projects.mkdir()
             (projects / "memory.md").write_text(
                 "---\ntitle: Memory\n---\n",
@@ -241,21 +241,21 @@ class OpportunitiesDirValidationTests(unittest.TestCase):
                 "---\ntitle: GlobalMood\n---\n",
                 encoding="utf-8",
             )
-            (opps / "ok.md").write_text(
+            (topics / "ok.md").write_text(
                 "---\ntitle: Ok\nopen: true\n"
                 "projects: [memory]\npublications: [lee-globalmood]\n---\n",
                 encoding="utf-8",
             )
-            (opps / "bad.md").write_text(
+            (topics / "bad.md").write_text(
                 '---\ntitle: Bad\nopen: "yes"\n---\n',
                 encoding="utf-8",
             )
-            (opps / "_index.md").write_text(
+            (topics / "_index.md").write_text(
                 "---\ntitle: Index\n---\n",
                 encoding="utf-8",
             )
-            errors = validate_opportunities_dir(
-                opps,
+            errors = validate_topics_dir(
+                topics,
                 projects_dir=projects,
                 publications_dir=publications,
             )

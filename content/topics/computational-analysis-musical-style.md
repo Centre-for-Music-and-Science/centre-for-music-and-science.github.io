@@ -6,7 +6,7 @@ supervisor: peter-harrison
 cosupervisors:
   - harin-lee
   - richard-widdess
-thumbnail: "/images/opportunities/piano-roll.jpg"
+thumbnail: "/images/topics/piano-roll.jpg"
 thumbnail_credit:
   author: "Jorge Royan"
   license: "CC BY-SA 3.0"

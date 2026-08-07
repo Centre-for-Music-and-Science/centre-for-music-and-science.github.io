@@ -1,0 +1,16 @@
+{{- $allTopics := where site.RegularPages "Section" "topics" -}}
+{{- $openTopics := partial "filter-open-topics.html" (dict "topics" $allTopics) -}}
+{{- $openTopics = sort $openTopics "Params.weight" -}}
+
+{{ if gt (len $openTopics) 0 }}
+<div class="brochure-grid">
+  {{ range $openTopics }}
+    {{ partial "research-item-card.html" (dict "page" .) }}
+  {{ end }}
+</div>
+{{ else }}
+<p class="applicants-brochure-empty">
+  No open topics are listed at the moment. Check back soon, or see
+  <a href="{{ "applicants/" | relURL }}">how to apply</a> for pathway guidance.
+</p>
+{{ end }}

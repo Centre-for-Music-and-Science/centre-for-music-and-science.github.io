@@ -1,5 +1,5 @@
 {{- /*
-  Validate opportunity front matter.
+  Validate topic front matter.
 */ -}}
 {{- $allProjects := where site.RegularPages "Section" "projects" -}}
 {{- $projectSlugs := slice -}}
@@ -17,60 +17,60 @@
   {{- $peopleSlugs = $peopleSlugs | append .File.ContentBaseName -}}
 {{- end -}}
 
-{{- range where site.RegularPages "Section" "opportunities" -}}
+{{- range where site.RegularPages "Section" "topics" -}}
   {{- $slug := .File.ContentBaseName -}}
   {{- if isset .Params "open" -}}
     {{- if ne (printf "%T" .Params.open) "bool" -}}
-      {{- errorf "Opportunity error: opportunity %q has non-boolean open." $slug -}}
+      {{- errorf "Topic error: topic %q has non-boolean open." $slug -}}
     {{- end -}}
   {{- end -}}
 
   {{- if isset .Params "collaborators" -}}
-    {{- errorf "Opportunity error: opportunity %q still uses collaborators; rename to cosupervisors (person slugs)." $slug -}}
+    {{- errorf "Topic error: topic %q still uses collaborators; rename to cosupervisors (person slugs)." $slug -}}
   {{- end -}}
 
   {{- if isset .Params "supervisor" -}}
     {{- $supervisor := .Params.supervisor -}}
     {{- if ne (printf "%T" $supervisor) "string" -}}
-      {{- errorf "Opportunity error: opportunity %q has a non-string supervisor." $slug -}}
+      {{- errorf "Topic error: topic %q has a non-string supervisor." $slug -}}
     {{- else if eq (strings.TrimSpace $supervisor) "" -}}
-      {{- errorf "Opportunity error: opportunity %q has an empty supervisor slug." $slug -}}
+      {{- errorf "Topic error: topic %q has an empty supervisor slug." $slug -}}
     {{- else if not (in $peopleSlugs $supervisor) -}}
-      {{- errorf "Opportunity error: opportunity %q links to unknown supervisor %q." $slug $supervisor -}}
+      {{- errorf "Topic error: topic %q links to unknown supervisor %q." $slug $supervisor -}}
     {{- end -}}
   {{- end -}}
 
   {{- if isset .Params "cosupervisors" -}}
     {{- if not (reflect.IsSlice .Params.cosupervisors) -}}
-      {{- errorf "Opportunity error: opportunity %q has non-list cosupervisors." $slug -}}
+      {{- errorf "Topic error: topic %q has non-list cosupervisors." $slug -}}
     {{- else -}}
       {{- range .Params.cosupervisors -}}
         {{- if ne (printf "%T" .) "string" -}}
-          {{- errorf "Opportunity error: opportunity %q has a cosupervisor slug that is not a string." $slug -}}
+          {{- errorf "Topic error: topic %q has a cosupervisor slug that is not a string." $slug -}}
         {{- else if eq (strings.TrimSpace .) "" -}}
-          {{- errorf "Opportunity error: opportunity %q has an empty cosupervisor slug." $slug -}}
+          {{- errorf "Topic error: topic %q has an empty cosupervisor slug." $slug -}}
         {{- else if not (in $peopleSlugs .) -}}
-          {{- errorf "Opportunity error: opportunity %q links to unknown person %q." $slug . -}}
+          {{- errorf "Topic error: topic %q links to unknown person %q." $slug . -}}
         {{- end -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
 
   {{- if and (isset .Params "projects") (not (reflect.IsSlice .Params.projects)) -}}
-    {{- errorf "Opportunity error: opportunity %q has non-list projects." $slug -}}
+    {{- errorf "Topic error: topic %q has non-list projects." $slug -}}
   {{- end -}}
   {{- range (default (slice) .Params.projects) -}}
     {{- if not (in $projectSlugs .) -}}
-      {{- errorf "Opportunity error: opportunity %q links to unknown project %q." $slug . -}}
+      {{- errorf "Topic error: topic %q links to unknown project %q." $slug . -}}
     {{- end -}}
   {{- end -}}
 
   {{- if and (isset .Params "publications") (not (reflect.IsSlice .Params.publications)) -}}
-    {{- errorf "Opportunity error: opportunity %q has non-list publications." $slug -}}
+    {{- errorf "Topic error: topic %q has non-list publications." $slug -}}
   {{- end -}}
   {{- range (default (slice) .Params.publications) -}}
     {{- if not (in $publicationSlugs .) -}}
-      {{- errorf "Opportunity error: opportunity %q links to unknown publication %q." $slug . -}}
+      {{- errorf "Topic error: topic %q links to unknown publication %q." $slug . -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

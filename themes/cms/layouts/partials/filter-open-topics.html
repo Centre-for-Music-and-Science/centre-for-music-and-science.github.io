@@ -1,0 +1,11 @@
+{{- /*
+  Filter topic pages that are open.
+*/ -}}
+{{- $topics := default (slice) .topics -}}
+{{- $filtered := slice -}}
+{{- range $topics -}}
+  {{- if partial "topic-open.html" . -}}
+    {{- $filtered = $filtered | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- return $filtered -}}

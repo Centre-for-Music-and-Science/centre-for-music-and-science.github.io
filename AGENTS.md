@@ -86,14 +86,14 @@ JSON file, and a JS track definition.
 - When converting existing assets, update all affected links in `content/`
   files in the same change.
 
-## Opportunity page thumbnails
+## Topic page thumbnails
 
-Opportunity pages use an optional `thumbnail` for brochure cards and the detail
-header. Put raster assets in `static/images/opportunities/` and reference them
+Topic pages use an optional `thumbnail` for brochure cards and the detail
+header. Put raster assets in `static/images/topics/` and reference them
 from front matter, for example:
 
 ```yaml
-thumbnail: "/images/opportunities/example.jpg"
+thumbnail: "/images/topics/example.jpg"
 thumbnail_credit:
   author: "Example Author"
   license: "CC BY-SA 3.0"
@@ -107,7 +107,7 @@ Notes:
   white (and use Pillow `ImageOps.pad` when a fixed aspect ratio helps).
 - `thumbnail_credit` is optional. When set, credit renders only under the
   detail-page thumbnail, not on brochure cards.
-- Do not add smoke tests that hard-code particular opportunity image paths,
+- Do not add smoke tests that hard-code particular topic image paths,
   authors, or license strings. Document the workflow here and in
   `docs/content-authoring.md` / `docs/research-content-architecture.md`
   instead.

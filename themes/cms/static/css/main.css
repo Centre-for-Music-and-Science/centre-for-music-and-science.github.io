@@ -99,7 +99,7 @@ a {
 .project-detail-body a,
 .project-detail-summary a,
 .facility-description a,
-.opportunity-detail-body a {
+.topic-detail-body a {
   color: var(--color-accent);
   text-decoration: underline;
   text-underline-offset: 2px;
@@ -117,7 +117,7 @@ a {
 .project-detail-body a:hover,
 .project-detail-summary a:hover,
 .facility-description a:hover,
-.opportunity-detail-body a:hover {
+.topic-detail-body a:hover {
   color: var(--color-text);
 }
 
@@ -2533,18 +2533,18 @@ a.pub-item-title:hover {
 }
 
 .project-detail-body,
-.opportunity-detail-body {
+.topic-detail-body {
   line-height: 1.8;
   color: var(--color-text-light);
 }
 
 .project-detail-body p,
-.opportunity-detail-body p {
+.topic-detail-body p {
   margin-bottom: 16px;
 }
 
 .project-detail-body h2,
-.opportunity-detail-body h2 {
+.topic-detail-body h2 {
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--color-text);
@@ -2552,7 +2552,7 @@ a.pub-item-title:hover {
 }
 
 .project-detail-body h3,
-.opportunity-detail-body h3 {
+.topic-detail-body h3 {
   font-size: 1.15rem;
   font-weight: 500;
   color: var(--color-text);
@@ -2561,18 +2561,18 @@ a.pub-item-title:hover {
 
 .project-detail-body ul,
 .project-detail-body ol,
-.opportunity-detail-body ul,
-.opportunity-detail-body ol {
+.topic-detail-body ul,
+.topic-detail-body ol {
   margin: 0 0 16px 24px;
 }
 
 .project-detail-body li,
-.opportunity-detail-body li {
+.topic-detail-body li {
   margin-bottom: 8px;
 }
 
 .project-detail-body img,
-.opportunity-detail-body img {
+.topic-detail-body img {
   max-width: 100%;
   border-radius: 8px;
   display: block;
@@ -2580,7 +2580,7 @@ a.pub-item-title:hover {
 }
 
 .project-detail-body video,
-.opportunity-detail-body video {
+.topic-detail-body video {
   max-width: 100%;
   border-radius: 8px;
   display: block;
@@ -3365,19 +3365,19 @@ a.pub-item-title:hover {
   gap: 24px;
 }
 
-.opportunity-supervisor-meta {
+.topic-supervisor-meta {
   font-size: 0.9rem;
   color: var(--color-text-light);
   margin: 0 0 10px;
 }
 
-.opportunity-supervisor-meta a {
+.topic-supervisor-meta a {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.opportunity-detail-kicker {
+.topic-detail-kicker {
   font-size: 0.8rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -3385,7 +3385,7 @@ a.pub-item-title:hover {
   margin: 0 0 8px;
 }
 
-.opportunity-detail-howto {
+.topic-detail-howto {
   margin-top: 24px;
   color: var(--color-text-light);
 }

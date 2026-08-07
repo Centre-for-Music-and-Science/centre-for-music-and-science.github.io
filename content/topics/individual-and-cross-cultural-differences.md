@@ -7,7 +7,7 @@ cosupervisors:
   - daniel-mullensiefen
   - harin-lee
 weight: 4
-thumbnail: "/images/opportunities/individual-differences.jpg"
+thumbnail: "/images/topics/individual-differences.jpg"
 projects:
   - emotions
   - consonance
@@ -27,7 +27,7 @@ whereas those that vary are likely to be driven by learning.
 Third, it can help us to understand our own music preferences and how they relate to others.
 
 Projects in this area could draw on any of the topics mentioned in
-[Computational music cognition](/opportunities/computational-music-cognition/).
+[Computational music cognition](/topics/computational-music-cognition/).
 We would recommend starting with a theoretical review to identify what dimensions of individual differences
 are likely to exist, and using this to develop a rigorous test battery for quantifying those
 individual differences.

@@ -2,7 +2,7 @@
 title: "Computational music cognition"
 open: true
 weight: 1
-thumbnail: "/images/opportunities/probe-tone-major-chord.jpg"
+thumbnail: "/images/topics/probe-tone-major-chord.jpg"
 supervisor: peter-harrison
 cosupervisors:
   - harin-lee

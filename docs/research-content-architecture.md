@@ -6,7 +6,7 @@ This document is the canonical source of truth for the research content model.
 
 - Themes: top-level research areas.
 - Projects: children of themes or other projects (research portfolio).
-- Opportunities: applicant-facing topics shown within pathway pages and on `/opportunities/` (optionally linked to a project).
+- Topics: applicant-facing research topics shown within pathway pages and on `/topics/` (optionally linked to a project).
 - Methods: standalone method records.
 - Groups: organisational group records.
 - Publications: bibliographic records with optional detail pages.
@@ -42,17 +42,17 @@ Boolean semantics:
 
 Default for new records is `stub_only: false`.
 
-## Opportunities contract
+## Topics contract
 
-Projects are the research portfolio. **Opportunities** are a separate applicant-facing content type for topics people can apply to work on.
+Projects are the research portfolio. **Topics** are a separate applicant-facing content type for research areas people can apply to work on.
 
-- Section: `content/opportunities/`
-- Open opportunities are surfaced in the Topics tab on each rendered
+- Section: `content/topics/`
+- Open topics are surfaced in the Topics tab on each rendered
   `/applicants/<pathway>/` page.
-- The complete topic index remains available at `/opportunities/`; pathway
+- The complete topic index remains available at `/topics/`; pathway
   Topics tabs link to it subtly, while the `/applicants/` hub does not.
-- Detail pages live at `/opportunities/<slug>/`.
-- Pathway pages currently show the same unfiltered set of open opportunities.
+- Detail pages live at `/topics/<slug>/`.
+- Pathway pages currently show the same unfiltered set of open topics.
   The embedded Topics tab provides the extension point for pathway-specific
   filtering in the future.
 - Graduate pathway pages may define tab bodies with top-level `##` headings (for
@@ -91,19 +91,19 @@ Relationship rules:
 - `thumbnail` is an optional image shown on topic cards and the detail header.
 - `thumbnail_credit` is optional attribution for third-party thumbnails; when
   set, it renders under the detail-page thumbnail only (not on brochure cards).
-- The Markdown body is the detailed description shown only on the opportunity page.
+- The Markdown body is the detailed description shown only on the topic page.
 - `supervisor` is an optional people slug shown on the detail page as Supervisor.
 - `cosupervisors` is an optional list of people slugs shown on the detail page
   as Possible cosupervisors. External collaborators can use people records with
   `positions[].kind: collaborator` (these are omitted from People listings).
 - Every slug in `projects` must resolve to an existing `content/projects` record.
 - Every slug in `publications` must resolve to an existing `content/publications` record.
-- Opportunity detail pages show linked projects as Related projects.
+- Topic detail pages show linked projects as Related projects.
 - Related publications combine any explicit `publications` list with reverse
   lookup of publications tagged to the linked projects (including descendant
   projects).
-- Portfolio projects with no opportunity are not advertised for applications.
-- Hypothetical topics use an opportunity with no `projects` (until research exists in the portfolio).
+- Portfolio projects with no topic are not advertised for applications.
+- Hypothetical topics use a topic with no `projects` (until research exists in the portfolio).
 
 Build-time rules:
 

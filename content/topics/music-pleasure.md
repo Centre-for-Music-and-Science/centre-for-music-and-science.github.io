@@ -3,7 +3,7 @@ title: "Music and pleasure"
 open: true
 weight: 3
 supervisor: peter-harrison
-thumbnail: "/images/opportunities/dopamine.jpg"
+thumbnail: "/images/topics/dopamine.jpg"
 projects:
   - consonance
   - expectation
@@ -45,4 +45,4 @@ to address one or more of the following:
 
 ## See also
 
-- [Computational music cognition](/opportunities/computational-music-cognition/)
+- [Computational music cognition](/topics/computational-music-cognition/)

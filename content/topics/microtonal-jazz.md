@@ -3,7 +3,7 @@ title: "The psychology of microtonal jazz"
 open: true
 weight: 5
 supervisor: peter-harrison
-thumbnail: "/images/opportunities/fretless-guitar.jpg"
+thumbnail: "/images/topics/fretless-guitar.jpg"
 thumbnail_credit:
   author: "ArtBrom"
   license: "CC BY-SA 2.0"

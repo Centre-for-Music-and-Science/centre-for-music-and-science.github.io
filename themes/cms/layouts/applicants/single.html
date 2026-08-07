@@ -127,7 +127,7 @@
             {{ with $topicsIntro }}
             <p class="applicants-pathway-topics-intro">{{ . }}</p>
             {{ end }}
-            {{ partial "open-opportunities-brochure.html" . }}
+            {{ partial "open-topics-brochure.html" . }}
           </div>
           {{ else }}
           {{ $label := index $sectionLabels $id | default ($id | humanize) }}
