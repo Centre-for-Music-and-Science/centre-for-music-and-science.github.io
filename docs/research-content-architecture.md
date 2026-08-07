@@ -55,6 +55,14 @@ Projects are the research portfolio. **Opportunities** are a separate applicant-
 - Pathway pages currently show the same unfiltered set of open opportunities.
   The embedded Topics tab provides the extension point for pathway-specific
   filtering in the future.
+- Graduate pathway pages may define tab bodies with top-level `##` headings (for
+  example `Programme`, `Prerequisites`, `Finances`, `Applying`). Set `pathway_tabs` in
+  front matter to control order, including where `topics` sits — e.g.
+  `[programme, topics, prerequisites, finances, applying]`.
+- Without `pathway_tabs`, markdown sections appear in heading order and Topics
+  is inserted after the first section when enabled.
+- Pathway pages without `##` sections keep a single About panel (plus Topics
+  when enabled).
 - Pathway pages may set `topics_intro` to customise the Topics tab blurb.
 - Set `show_topics: false` on a pathway page to hide the Topics tab entirely
   (default is shown).

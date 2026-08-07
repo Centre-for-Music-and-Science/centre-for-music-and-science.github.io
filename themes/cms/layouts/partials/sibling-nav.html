@@ -1,0 +1,49 @@
+{{- /*
+  Footer prev/next navigation over an ordered page list.
+
+  Params:
+    pages       - ordered slice of pages (same sequence as the section list/brochure)
+    current     - the current page
+    aria_label  - optional nav aria-label (default "Nearby pages")
+    prev_label  - optional direction label (default "Previous")
+    next_label  - optional direction label (default "Next")
+*/ -}}
+{{- $pages := default (slice) .pages -}}
+{{- $current := .current -}}
+{{- $ariaLabel := .aria_label | default "Nearby pages" -}}
+{{- $prevLabel := .prev_label | default "Previous" -}}
+{{- $nextLabel := .next_label | default "Next" -}}
+{{- $currentIndex := -1 -}}
+{{- range $i, $page := $pages -}}
+  {{- if eq $page.RelPermalink $current.RelPermalink -}}
+    {{- $currentIndex = $i -}}
+  {{- end -}}
+{{- end -}}
+{{- if ge $currentIndex 0 -}}
+  {{- $prev := false -}}
+  {{- $next := false -}}
+  {{- if gt $currentIndex 0 -}}
+    {{- $prev = index $pages (sub $currentIndex 1) -}}
+  {{- end -}}
+  {{- if lt (add $currentIndex 1) (len $pages) -}}
+    {{- $next = index $pages (add $currentIndex 1) -}}
+  {{- end -}}
+  {{- if or $prev $next -}}
+<nav class="sibling-nav" aria-label="{{ $ariaLabel }}">
+  {{ with $prev }}
+  <a class="sibling-nav-link sibling-nav-link--prev" href="{{ .RelPermalink }}">
+    <span class="sibling-nav-dir">&larr; {{ $prevLabel }}</span>
+    <span class="sibling-nav-title">{{ .Title }}</span>
+  </a>
+  {{ else }}
+  <span class="sibling-nav-spacer" aria-hidden="true"></span>
+  {{ end }}
+  {{ with $next }}
+  <a class="sibling-nav-link sibling-nav-link--next" href="{{ .RelPermalink }}">
+    <span class="sibling-nav-dir">{{ $nextLabel }} &rarr;</span>
+    <span class="sibling-nav-title">{{ .Title }}</span>
+  </a>
+  {{ end }}
+</nav>
+  {{- end -}}
+{{- end -}}

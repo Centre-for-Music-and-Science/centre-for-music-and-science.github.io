@@ -26,6 +26,15 @@
         <div class="event-detail-content">
           {{ .Content }}
         </div>
+        {{ $newsPages := where .Site.RegularPages "Section" "news" }}
+        {{ $newsPages = sort $newsPages "Date" "desc" }}
+        {{ partial "sibling-nav.html" (dict
+          "pages" $newsPages
+          "current" .
+          "aria_label" "News"
+          "prev_label" "Newer"
+          "next_label" "Older"
+        ) }}
       </div>
     </div>
   </div>

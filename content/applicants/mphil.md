@@ -2,59 +2,80 @@
 title: "MPhil"
 summary: "One-year Music and Science track within the MPhil in Music."
 weight: 2
-topics_intro: "We are currently soliciting MPhil applications in the following topic areas. Please explore and see what best matches your personal interests."
+topics_intro: "We are currently offering the following topic areas for MPhil dissertation projects. Please explore and see what best matches your interests."
+pathway_tabs:
+  - programme
+  - topics
+  - prerequisites
+  - finances
+  - applying
 ---
 
-The Faculty of Music offers a 1-year [MPhil in Music](https://www.mus.cam.ac.uk/applicants/graduate/mphil) targeted at individuals with an undergraduate degree who wish to develop more experience in music research. This MPhil provides a varied collection of courses designed to develop and hone research skills, as well as an opportunity to conduct a significant research project resulting in a substantial written dissertation. Within this MPhil in music one can then take the Music and Science track, which means focusing the optional courses on relevant scientific topics and conducting a research project into a particular area of music and science.
+## Programme
 
-The first term involves some rather intense study of general topics and research skills in musicology. There is a lot of required reading for this part of the course, and only a small part is scientific in nature. MPhil candidates should ideally have some prior knowledge already of some musicological literature, be it through prior taught courses or self-study, and they should have some enthusiasm for learning more about this research area.
+The Faculty of Music offers a 1-year [MPhil in Music](https://www.mus.cam.ac.uk/applicants/graduate/mphil) for graduates who want to develop experience in music research. Within that degree you can take the Music and Science track,
+taking scientifically oriented optional courses,
+and conducting a research project in music and science.
 
-The second term involves taking two taught courses which are chosen from a wider selection. Music and Science students are likely to take the MPhil Music & Science course as well as another empirically oriented course. This could include the Computer Music course run by the Department of Computer Science and Technology, an MPhil course from [Digital Humanities](https://www.cdh.cam.ac.uk/mphil/courses/#2-options), one of the undergraduate courses in Music & Science run by the CMS, or specialist research skills courses taught by the Social Sciences Research Methods Programme ([SSRMP](https://www.ssrmp.group.cam.ac.uk/)).
+The year is organised in three terms:
 
-The third term is dedicated wholly to the research project, though students will have typically made substantial progress already on this project in the previous two terms. MPhil Music and Science research projects are generally supervised by the CMS Director, [Peter Harrison](https://cms.mus.cam.ac.uk/staff/dr-peter-harrison).
+- **Michaelmas (Term 1).** Intensive study of general topics and research skills in musicology. There is substantial required reading, and only a small part is scientific. Applicants should ideally already know some musicological literature (through taught courses or self-study) and be keen to learn more.
+- **Lent (Term 2).** Two taught courses chosen from a wider selection.
+Music and Science students typically take the MPhil Music & Science course,
+plus either another Music course or an external course;
+we normally recommend courses from
+[the Centre for Digital Humanities](https://www.cdh.cam.ac.uk/mphil/courses/#2-options)
+or the Social Sciences Research Methods Programme ([SSRMP](https://www.ssrmp.group.cam.ac.uk/)).
+- **Easter (Term 3).** This is dedicated to the research project, though most students will already have made substantial progress in the first two terms.
 
-## FAQ
+As a CMS member you will join a vibrant community of other postgraduate and postdoctoral researchers who regularly meet for seminars and work together in a shared office space. We particularly look for team players who enjoy group discussion and collaboration.
 
-### Why should I do an MPhil?
+## Prerequisites
 
-The MPhil provides an excellent opportunity to develop research skills (e.g. designing surveys, conducting interviews, applying statistical methods) that are highly valued both in academia and in many parts of industry (e.g. market research, audio branding). It simultaneously allows you to immerse yourself for a year in a particular research topic of your choosing, which can itself be a highly enjoyable and rewarding experience.
+You should have received, or be expecting, a good grade (high 2:1 or 1st)
+in a relevant undergraduate degree such as Music, Psychology, Neuroscience, or Computer Science.
+If your undergraduate degree is not in Music, it's important nonetheless that you have a
+strong musical background (e.g. advanced performance experience),
+with some experience and enthusiasm about reading musicological literature.
 
-### Why Cambridge?
+## Finances
 
-The Music MPhil at Cambridge places a relatively high weight on its research component compared to most other Master's programmes in music psychology. There are relatively few taught courses, and these courses are mainly focused on critical thinking and research skills as opposed to foundational knowledge. The student is therefore free to spend the larger proportion of their time on their personal research project. This setup is particularly well-suited to students who already have experience in music and science and have already started to develop their own research interests.
+### Cost
 
-A special property of the Cambridge MPhil is the freedom it provides to select optional courses from different departments. The University of Cambridge has many world-class teaching programmes in a great variety of fields, and it can be very valuable to incorporate some of these different programmes into one's MPhil experience.
+The latest fees are on the [Postgraduate Finance page](https://www.postgraduate.study.cam.ac.uk/finance). For reference, for 2026-27 tuition fees were £16,109 for home students and £37,856 for international students, with estimated living costs of £14,895.
 
-### How do I apply?
+### Funding
 
-Prospective Music and Science MPhil students should apply for the [MPhil in Music](https://www.mus.cam.ac.uk/applicants/graduate/mphil), and state their intention to work with Peter Harrison at the Centre for Music and Science as part of their application. See [How to Apply](https://www.mus.cam.ac.uk/applicants/graduate/grad-how-to-apply) for details on the application process and required materials.
+MPhil funding is available, though highly competitive. Most applications go through a central University scheme; see [Funding Postgraduate Study](https://www.mus.cam.ac.uk/applicants/graduate/funding-graduate-study). To be eligible you typically need to apply well in advance,
+typically around a year in advance of your start date.
 
-Each year's program starts in October. The application deadline for October entry is typically in May of the same year, but if you want to apply for funding (highly recommended), then the relevant application deadlines are in the preceding December/January.
+Other schemes exist outside the central University route. One example relevant to US citizens is the [Churchill Scholarship](https://www.churchillscholarship.org/index.html).
 
-You may be asked to attend an online interview as part of the application process. These interviews typically take place within a month of the January funding application deadline, or within a month of your application if you submit it after this deadline.
+## Applying
 
-### How much does it cost?
+### Timeline
 
-The latest fees can be found on the [Postgraduate Finance page](https://www.postgraduate.study.cam.ac.uk/finance). For reference, for 2024-25 the tuition fees were £13,554 for home students and £31,860 for international students, while the estimated living costs were £13,969.
+Each year's programme starts in October. If you want to apply for funding (highly recommended),
+there are various deadlines to look out for, usually starting from October the previous year
+([Gates Cambridge](https://www.gatescambridge.org/) USA) and lasting until January.
+Even if you are not applying for funding, we encourage you to apply by this deadline so that
+your application is considered before places are filled.
 
-Music and Science students are asked to set aside an additional £600 for possible costs involved in participant recruitment, and/or other expenses associated with running scientific experiments.
+You may be asked to attend an online interview. These usually take place within a month of the January funding deadline, or within a month of your application if you submit later.
 
-### How do I get funding?
+### Expressions of interest
 
-MPhil funding is available, though highly competitive. Most applications are made through a central University scheme; see [Funding Postgraduate Study](https://www.mus.cam.ac.uk/applicants/graduate/funding-graduate-study) for details. In order to be eligible for funding one must typically apply fairly far in advance, not much less than a year before your proposed start date.
+We encourage you to get in touch in advance of submitting your application
+to get feedback on your CV and planned research direction.
+To do this, please write directly to the
+CMS director ([Peter Harrison](/people/peter-harrison/)),
+including the following:
 
-There are some other funding opportunities available outside of the central University scheme. One example relevant to US citizens is the [Churchill Scholarship](https://www.churchillscholarship.org/index.html).
+- A draft CV (short is fine, but it should include estimated or final undergraduate grades);
+- A sample piece of work;
+- A paragraph or so about your research interests and how they fit into the [available topics](#topics);
+- Any questions you might have about the application process and the programme.
 
-### What should I write for my research proposal?
+### How to apply
 
-Assuming your supervisor is going to be Peter Harrison, you should start by looking through his [current research interests](https://cms.mus.cam.ac.uk/node/150). Think about what topics within these areas you might be well-suited to studying, both in terms of your abilities and your passions.
-
-For the MPhil application, the research proposal should be approximately 250 words in length, not including the bibliography. You should cover: Background, Aims, Methodology, Significance, and Bibliography.
-
-It's important to note that the research proposal is not a final commitment. We would expect to workshop these plans during the early parts of the MPhil.
-
-### Should I get in touch before applying?
-
-If you have general administrative questions about the application or the degree programme, please contact our graduate administrator at graduate@mus.cam.ac.uk.
-
-If you have specific questions about studying at the CMS, please email Peter at pmch2@cam.ac.uk. If you would like to meet Peter in advance of applying, he is happy to do so via a one-on-one video call (1 x 15-minute call per applicant). Peter is also happy to give feedback on a draft research proposal (one round of feedback per application).
+See the centralised Faculty guidance at [How to Apply](https://www.mus.cam.ac.uk/applicants/graduate/grad-how-to-apply).

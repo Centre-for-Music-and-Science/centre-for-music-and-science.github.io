@@ -65,6 +65,11 @@ Build-time guards:
 8. For hypothetical topics not yet in the portfolio, omit `projects` or leave it empty.
 9. To stop advertising, set `open: false` (or remove the opportunity record).
 10. Pathway process text lives in `content/applicants/<pathway>.md` and is linked from the `/applicants/` hub.
+    Graduate pathways (e.g. MPhil, PhD) use `##` sections for tab bodies such as
+    `Programme`, `Prerequisites`, `Finances`, and `Applying`. Set `pathway_tabs` in
+    front matter to control tab order (include `topics` where you want the
+    opportunities brochure). Without `pathway_tabs`, sections appear in heading
+    order and Topics is inserted after the first section when enabled.
 11. Optionally set `topics_intro` on a pathway page to customise the Topics tab
    blurb (defaults to a generic open-topics sentence). Set `show_topics: false`
    to hide the Topics tab on that pathway.

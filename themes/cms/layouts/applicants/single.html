@@ -1,97 +1,153 @@
 {{ define "main" }}
-{{ $parts := split .RawContent "## FAQ" }}
-{{ $hasFAQ := gt (len $parts) 1 }}
 {{ $showTopics := ne .Params.show_topics false }}
-{{ $hasTabs := or $hasFAQ $showTopics }}
-{{ $aboutMarkdown := trim (index $parts 0) " \n\r\t" }}
-{{ $faqMarkdown := "" }}
-{{ if $hasFAQ }}
-  {{ $faqMarkdown = trim (index $parts 1) " \n\r\t" }}
+{{ $topicsIntro := .Params.topics_intro | default "Browse open research topics you can propose to work on at the CMS." }}
+
+{{/* Parse optional ## Section headings from RawContent. */}}
+{{ $raw := .RawContent }}
+{{ if hasPrefix (trim $raw " \n\r\t") "## " }}
+  {{ $raw = printf "\n%s" (trim $raw " \n\r\t") }}
 {{ end }}
+{{ $parts := split $raw "\n## " }}
+{{ $sectionIDs := slice }}
+{{ $sectionLabels := dict }}
+{{ $sectionBodies := dict }}
+{{ $preamble := trim (index $parts 0) " \n\r\t" }}
+{{ if and $preamble (le (len $parts) 1) }}
+  {{ $sectionIDs = slice "about" }}
+  {{ $sectionLabels = merge $sectionLabels (dict "about" "About") }}
+  {{ $sectionBodies = merge $sectionBodies (dict "about" "") }}
+{{ else }}
+  {{ range $i, $part := $parts }}
+    {{ if eq $i 0 }}
+      {{ if $preamble }}
+        {{ $sectionIDs = $sectionIDs | append "about" }}
+        {{ $sectionLabels = merge $sectionLabels (dict "about" "About") }}
+        {{ $sectionBodies = merge $sectionBodies (dict "about" $preamble) }}
+      {{ end }}
+    {{ else }}
+      {{ $trimmed := trim $part " \n\r\t" }}
+      {{ $lines := split $trimmed "\n" }}
+      {{ $title := trim (index $lines 0) " \r\t" }}
+      {{ $body := "" }}
+      {{ if gt (len $lines) 1 }}
+        {{ $body = trim (delimit (after 1 $lines) "\n") " \n\r\t" }}
+      {{ end }}
+      {{ $id := $title | urlize }}
+      {{ if $id }}
+        {{ $sectionIDs = $sectionIDs | append $id }}
+        {{ $sectionLabels = merge $sectionLabels (dict $id $title) }}
+        {{ $sectionBodies = merge $sectionBodies (dict $id $body) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/*
+  Tab order: params.pathway_tabs when set, otherwise section order with Topics
+  after the first section. Unknown markdown sections listed in pathway_tabs are
+  skipped; markdown sections omitted from pathway_tabs are appended at the end.
+*/}}
+{{ $tabIDs := slice }}
+{{ $seen := dict }}
+{{ $configuredTabs := .Params.pathway_tabs }}
+{{ if $configuredTabs }}
+  {{ range $configuredTabs }}
+    {{ $id := . | urlize }}
+    {{ if eq $id "topics" }}
+      {{ if and $showTopics (not (index $seen "topics")) }}
+        {{ $tabIDs = $tabIDs | append "topics" }}
+        {{ $seen = merge $seen (dict "topics" true) }}
+      {{ end }}
+    {{ else if and (in $sectionIDs $id) (not (index $seen $id)) }}
+      {{ $tabIDs = $tabIDs | append $id }}
+      {{ $seen = merge $seen (dict $id true) }}
+    {{ end }}
+  {{ end }}
+  {{ range $sectionIDs }}
+    {{ if not (index $seen .) }}
+      {{ $tabIDs = $tabIDs | append . }}
+      {{ $seen = merge $seen (dict . true) }}
+    {{ end }}
+  {{ end }}
+  {{ if and $showTopics (not (index $seen "topics")) }}
+    {{ $tabIDs = $tabIDs | append "topics" }}
+  {{ end }}
+{{ else }}
+  {{ range $i, $id := $sectionIDs }}
+    {{ $tabIDs = $tabIDs | append $id }}
+    {{ if and $showTopics (eq $i 0) }}
+      {{ $tabIDs = $tabIDs | append "topics" }}
+      {{ $seen = merge $seen (dict "topics" true) }}
+    {{ end }}
+  {{ end }}
+  {{ if and $showTopics (not (index $seen "topics")) }}
+    {{ $tabIDs = $tabIDs | append "topics" }}
+  {{ end }}
+{{ end }}
+
+{{ $hasTabs := gt (len $tabIDs) 1 }}
+
 <article class="applicants-page applicants-pathway-page single-page">
   <div class="container">
-    <div class="page-back-top">
-      {{ partial "back-link.html" (dict "href" (printf "%sapplicants/" .Site.Home.RelPermalink) "label" "Join us") }}
-    </div>
-    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="detail-back-layout">
+      <aside class="detail-back-rail">
+        {{ partial "back-link.html" (dict "href" (printf "%sapplicants/" .Site.Home.RelPermalink) "label" "Join us") }}
+      </aside>
+      <div>
+        <h1 class="page-title">{{ .Title }}</h1>
 
-    <div class="tabs applicants-pathway-tabs" data-tab-group="pathway"{{ if $hasTabs }} data-sync-hash{{ end }}>
-      {{ if $hasTabs }}
-      <div class="applicants-pathway-nav">
-        <div class="tab-bar applicants-pathway-tab-bar" role="tablist" aria-label="Pathway sections">
-          <button type="button"
-                  class="tab-btn active"
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="panel-about"
-                  data-tab="about"
-                  tabindex="0">About</button>
-          {{ if $hasFAQ }}
-          <button type="button"
-                  class="tab-btn"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="panel-faq"
-                  data-tab="faq"
-                  tabindex="-1">FAQ</button>
+        <div class="tabs applicants-pathway-tabs" data-tab-group="pathway"{{ if $hasTabs }} data-sync-hash{{ end }}>
+          {{ if $hasTabs }}
+          <div class="applicants-pathway-nav">
+            <div class="tab-bar applicants-pathway-tab-bar" role="tablist" aria-label="Pathway sections">
+              {{ range $i, $id := $tabIDs }}
+              {{ $label := cond (eq $id "topics") "Topics" (index $sectionLabels $id | default ($id | humanize)) }}
+              {{ $isFirst := eq $i 0 }}
+              <button type="button"
+                      class="tab-btn{{ if $isFirst }} active{{ end }}"
+                      role="tab"
+                      aria-selected="{{ cond $isFirst "true" "false" }}"
+                      aria-controls="panel-{{ $id }}"
+                      data-tab="{{ $id }}"
+                      tabindex="{{ cond $isFirst "0" "-1" }}">{{ $label }}</button>
+              {{ end }}
+            </div>
+          </div>
           {{ end }}
-          {{ if $showTopics }}
-          <button type="button"
-                  class="tab-btn"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="panel-topics"
-                  data-tab="topics"
-                  tabindex="-1">Topics</button>
+
+          {{ range $i, $id := $tabIDs }}
+          {{ $isFirst := eq $i 0 }}
+          {{ if eq $id "topics" }}
+          <div id="panel-topics"
+               class="tab-panel{{ if $isFirst }} active{{ end }} applicants-pathway-topics"
+               role="tabpanel"
+               aria-labelledby="topics"
+               aria-hidden="{{ cond $isFirst "false" "true" }}">
+            <h2 id="topics" class="visually-hidden">Topics</h2>
+            {{ with $topicsIntro }}
+            <p class="applicants-pathway-topics-intro">{{ . }}</p>
+            {{ end }}
+            {{ partial "open-opportunities-brochure.html" . }}
+          </div>
+          {{ else }}
+          {{ $label := index $sectionLabels $id | default ($id | humanize) }}
+          {{ $body := index $sectionBodies $id }}
+          <div id="panel-{{ $id }}"
+               class="tab-panel{{ if $isFirst }} active{{ end }} content applicants-pathway-body"
+               role="tabpanel"
+               aria-labelledby="{{ $id }}"
+               aria-hidden="{{ cond $isFirst "false" "true" }}">
+            <h2 id="{{ $id }}" class="visually-hidden">{{ $label }}</h2>
+            {{ if and (eq $id "about") (eq $body "") }}
+              {{ $.Content }}
+            {{ else }}
+              {{ $body | markdownify }}
+            {{ end }}
+          </div>
+          {{ end }}
           {{ end }}
         </div>
       </div>
-      {{ end }}
-
-      <div id="panel-about"
-           class="tab-panel active content applicants-pathway-body"
-           role="tabpanel"
-           aria-labelledby="about"
-           aria-hidden="false">
-        <h2 id="about" class="visually-hidden">About</h2>
-        {{ if $hasFAQ }}
-          {{ $aboutMarkdown | markdownify }}
-        {{ else }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      {{ if $hasFAQ }}
-      <div id="panel-faq"
-           class="tab-panel content applicants-pathway-body"
-           role="tabpanel"
-           aria-labelledby="faq"
-           aria-hidden="true">
-        <h2 id="faq">FAQ</h2>
-        {{ $faqMarkdown | markdownify }}
-      </div>
-      {{ end }}
-
-      {{ if $showTopics }}
-      {{ $topicsIntro := .Params.topics_intro | default "Browse open research topics you can propose to work on at the CMS." }}
-      <div id="panel-topics"
-           class="tab-panel applicants-pathway-topics"
-           role="tabpanel"
-           aria-labelledby="topics"
-           aria-hidden="true">
-        <h2 id="topics" class="visually-hidden">Topics</h2>
-        {{ with $topicsIntro }}
-        <p class="applicants-pathway-topics-intro">{{ . }}</p>
-        {{ end }}
-        {{ partial "open-opportunities-brochure.html" . }}
-        <!-- <p class="applicants-pathway-topics-note">
-          Prefer to browse everything in one place?
-          See the full
-          <a href="{{ "opportunities/" | relURL }}">research topics</a>
-          page.
-        </p> -->
-      </div>
-      {{ end }}
     </div>
   </div>
 </article>

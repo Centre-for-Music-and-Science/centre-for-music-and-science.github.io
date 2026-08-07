@@ -72,6 +72,17 @@
       "relation_key" "projects"
       "relation_slugs" $publicationRelationSlugs
     ) }}
+
+    {{ $allOpportunities := where .Site.RegularPages "Section" "opportunities" }}
+    {{ $openOpportunities := partial "filter-open-opportunities.html" (dict "opportunities" $allOpportunities) }}
+    {{ $openOpportunities = sort $openOpportunities "Params.weight" }}
+    {{ partial "sibling-nav.html" (dict
+      "pages" $openOpportunities
+      "current" .
+      "aria_label" "Research topics"
+      "prev_label" "Previous topic"
+      "next_label" "Next topic"
+    ) }}
   </div>
 </article>
 {{ end }}

@@ -74,29 +74,44 @@ class ApplicantsFunnelSmokeTests(unittest.TestCase):
         self.assertIn("PhD", html)
         self.assertIn("/applicants/", html)
         self.assertIn("applicants-pathway-tabs", html)
-        self.assertIn("data-tab=about", html)
-        self.assertIn("data-tab=faq", html)
+        self.assertIn("data-tab=programme", html)
         self.assertIn("data-tab=topics", html)
-        self.assertIn("id=panel-about", html)
-        self.assertIn("id=panel-faq", html)
+        self.assertIn("data-tab=prerequisites", html)
+        self.assertIn("data-tab=finances", html)
+        self.assertIn("data-tab=applying", html)
+        self.assertIn("id=panel-programme", html)
         self.assertIn("id=panel-topics", html)
+        self.assertIn("id=panel-prerequisites", html)
+        self.assertIn("id=panel-finances", html)
+        self.assertIn("id=panel-applying", html)
+        # Tab order: Programme, Topics, Prerequisites, Finances, Applying.
+        programme_tab = html.index("data-tab=programme")
+        topics_tab = html.index("data-tab=topics")
+        prerequisites_tab = html.index("data-tab=prerequisites")
+        finances_tab = html.index("data-tab=finances")
+        applying_tab = html.index("data-tab=applying")
+        self.assertLess(programme_tab, topics_tab)
+        self.assertLess(topics_tab, prerequisites_tab)
+        self.assertLess(prerequisites_tab, finances_tab)
+        self.assertLess(finances_tab, applying_tab)
         self.assertIn("/opportunities/computational-music-cognition/", html)
         self.assertIn("/opportunities/", html)
-        self.assertIn("Why should I do a PhD?", html)
+        self.assertIn("/people/peter-harrison/", html)
         self.assertIn(
-            "We are currently soliciting PhD applications in the following topic areas.",
+            "We are currently offering PhDs in the following topic areas.",
             html,
         )
-        self.assertNotIn("applicants-pathway-nav-topics", html)
+        self.assertNotIn("data-tab=faq", html)
+        self.assertNotIn("data-tab=about", html)
 
-    def test_pathway_nav_omits_faq_when_page_has_no_faq_section(self):
+    def test_pathway_nav_keeps_about_when_page_has_no_sections(self):
         html = self._read("applicants/postdoctoral-researchers/index.html")
         self.assertIn("applicants-pathway-tabs", html)
         self.assertIn("data-tab=about", html)
         self.assertIn("data-tab=topics", html)
         self.assertIn("id=panel-topics", html)
         self.assertNotIn("data-tab=faq", html)
-        self.assertNotIn("id=panel-faq", html)
+        self.assertNotIn("data-tab=finances", html)
         self.assertIn("/opportunities/", html)
 
     def test_undergraduate_omits_topics_tab(self):

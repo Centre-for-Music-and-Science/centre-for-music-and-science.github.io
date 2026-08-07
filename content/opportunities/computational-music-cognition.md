@@ -48,7 +48,7 @@ We welcome new research projects within or outside these topic areas.
 Here is a generic blueprint for a PhD-scale computational music cognition project;
 an MPhil project could comprise a subset of these steps.
 
-1. Choose a domain to study (e.g. music similarity). This doesn't necessarily need to be a domain already studied in the CMS.
+1. Choose a domain to study (e.g. music similarity).
 2. Review existing psychological theories for the chosen domain.
 3. Review existing computational models for that domain, and compile usable implementations for these models.
 4. Compile relevant existing open-access behavioural datasets that could plausibly be used for model testing.
