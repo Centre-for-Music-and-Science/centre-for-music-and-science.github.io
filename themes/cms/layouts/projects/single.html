@@ -21,7 +21,6 @@
         {{ end }}
       </nav>
       <div class="project-detail-content">
-        {{ $projectThumb := .Params.thumbnail | default .Params.leader_image }}
         <header class="detail-header">
           <div class="project-header-meta">
             <h1 class="project-detail-title">{{ .Title }}</h1>
@@ -60,11 +59,7 @@
         </div>
         {{ end }}
           </div>
-          {{ if $projectThumb }}
-          <div class="detail-header-thumb">
-            <img src="{{ (strings.TrimPrefix "/" $projectThumb) | relURL }}" alt="{{ .Title }} thumbnail">
-          </div>
-          {{ end }}
+          {{ partial "detail-header-thumbnail.html" (dict "page" .) }}
         </header>
         <div class="project-detail-body">
           {{ .Content }}
@@ -80,7 +75,8 @@
           <h2 class="project-applications-callout-heading">Open for applications</h2>
           <p>
             This research topic currently has open opportunities for applicants.
-            See <a href="{{ "/applicants/" | relURL }}">Join us</a> for the brochure and how to apply.
+            See <a href="{{ "/opportunities/" | relURL }}">research topics</a>
+            and <a href="{{ "/applicants/" | relURL }}">how to apply</a>.
           </p>
           <ul class="project-applications-callout-list">
             {{ range sort $linkedOpportunities "Params.weight" }}

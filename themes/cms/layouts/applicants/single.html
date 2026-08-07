@@ -1,0 +1,98 @@
+{{ define "main" }}
+{{ $parts := split .RawContent "## FAQ" }}
+{{ $hasFAQ := gt (len $parts) 1 }}
+{{ $showTopics := ne .Params.show_topics false }}
+{{ $hasTabs := or $hasFAQ $showTopics }}
+{{ $aboutMarkdown := trim (index $parts 0) " \n\r\t" }}
+{{ $faqMarkdown := "" }}
+{{ if $hasFAQ }}
+  {{ $faqMarkdown = trim (index $parts 1) " \n\r\t" }}
+{{ end }}
+<article class="applicants-page applicants-pathway-page single-page">
+  <div class="container">
+    <div class="page-back-top">
+      {{ partial "back-link.html" (dict "href" (printf "%sapplicants/" .Site.Home.RelPermalink) "label" "Join us") }}
+    </div>
+    <h1 class="page-title">{{ .Title }}</h1>
+
+    <div class="tabs applicants-pathway-tabs" data-tab-group="pathway"{{ if $hasTabs }} data-sync-hash{{ end }}>
+      {{ if $hasTabs }}
+      <div class="applicants-pathway-nav">
+        <div class="tab-bar applicants-pathway-tab-bar" role="tablist" aria-label="Pathway sections">
+          <button type="button"
+                  class="tab-btn active"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="panel-about"
+                  data-tab="about"
+                  tabindex="0">About</button>
+          {{ if $hasFAQ }}
+          <button type="button"
+                  class="tab-btn"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="panel-faq"
+                  data-tab="faq"
+                  tabindex="-1">FAQ</button>
+          {{ end }}
+          {{ if $showTopics }}
+          <button type="button"
+                  class="tab-btn"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="panel-topics"
+                  data-tab="topics"
+                  tabindex="-1">Topics</button>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+
+      <div id="panel-about"
+           class="tab-panel active content applicants-pathway-body"
+           role="tabpanel"
+           aria-labelledby="about"
+           aria-hidden="false">
+        <h2 id="about" class="visually-hidden">About</h2>
+        {{ if $hasFAQ }}
+          {{ $aboutMarkdown | markdownify }}
+        {{ else }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      {{ if $hasFAQ }}
+      <div id="panel-faq"
+           class="tab-panel content applicants-pathway-body"
+           role="tabpanel"
+           aria-labelledby="faq"
+           aria-hidden="true">
+        <h2 id="faq">FAQ</h2>
+        {{ $faqMarkdown | markdownify }}
+      </div>
+      {{ end }}
+
+      {{ if $showTopics }}
+      {{ $topicsIntro := .Params.topics_intro | default "Browse open research topics you can propose to work on at the CMS." }}
+      <div id="panel-topics"
+           class="tab-panel applicants-pathway-topics"
+           role="tabpanel"
+           aria-labelledby="topics"
+           aria-hidden="true">
+        <h2 id="topics" class="visually-hidden">Topics</h2>
+        {{ with $topicsIntro }}
+        <p class="applicants-pathway-topics-intro">{{ . }}</p>
+        {{ end }}
+        {{ partial "open-opportunities-brochure.html" . }}
+        <!-- <p class="applicants-pathway-topics-note">
+          Prefer to browse everything in one place?
+          See the full
+          <a href="{{ "opportunities/" | relURL }}">research topics</a>
+          page.
+        </p> -->
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</article>
+{{ end }}

@@ -85,3 +85,29 @@ JSON file, and a JS track definition.
   when available.
 - When converting existing assets, update all affected links in `content/`
   files in the same change.
+
+## Opportunity page thumbnails
+
+Opportunity pages use an optional `thumbnail` for brochure cards and the detail
+header. Put raster assets in `static/images/opportunities/` and reference them
+from front matter, for example:
+
+```yaml
+thumbnail: "/images/opportunities/example.jpg"
+thumbnail_credit:
+  author: "Example Author"
+  license: "CC BY-SA 3.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/3.0/"
+```
+
+Notes:
+
+- Prefer `.jpg`; resize long edge to about 1600px when importing large sources.
+- For transparent sources that should sit on a light background, flatten onto
+  white (and use Pillow `ImageOps.pad` when a fixed aspect ratio helps).
+- `thumbnail_credit` is optional. When set, credit renders only under the
+  detail-page thumbnail, not on brochure cards.
+- Do not add smoke tests that hard-code particular opportunity image paths,
+  authors, or license strings. Document the workflow here and in
+  `docs/content-authoring.md` / `docs/research-content-architecture.md`
+  instead.

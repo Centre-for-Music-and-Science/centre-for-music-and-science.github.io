@@ -1,9 +1,9 @@
 ---
 title: "MPhil"
+summary: "One-year Music and Science track within the MPhil in Music."
 weight: 2
+topics_intro: "We are currently soliciting MPhil applications in the following topic areas. Please explore and see what best matches your personal interests."
 ---
-
-**Note: As it currently stands, the CMS may not be able to take MPhil students in the 2026-27 academic year, due to leave plans. Please check with Peter (pmch2@cam.ac.uk) before preparing an application.**
 
 The Faculty of Music offers a 1-year [MPhil in Music](https://www.mus.cam.ac.uk/applicants/graduate/mphil) targeted at individuals with an undergraduate degree who wish to develop more experience in music research. This MPhil provides a varied collection of courses designed to develop and hone research skills, as well as an opportunity to conduct a significant research project resulting in a substantial written dissertation. Within this MPhil in music one can then take the Music and Science track, which means focusing the optional courses on relevant scientific topics and conducting a research project into a particular area of music and science.
 

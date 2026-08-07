@@ -5,9 +5,9 @@
 
     {{ $people := .RegularPages }}
     {{ $sortedPeople := sort $people "Params.weight" }}
-    {{ $categories := slice (dict "key" "director" "label" "Director") (dict "key" "phd" "label" "PhD students") (dict "key" "mphil" "label" "MPhil students") (dict "key" "postdoc" "label" "Postdoctoral researchers") (dict "key" "technical" "label" "Technical staff") (dict "key" "emeritus" "label" "Emeritus staff") (dict "key" "affiliate" "label" "Affiliates") (dict "key" "alumni" "label" "Alumni") }}
+    {{ $taxonomy := partialCached "person-taxonomy.html" . "person-taxonomy" }}
 
-    {{ range $category := $categories }}
+    {{ range $category := $taxonomy.list_sections }}
       {{ $members := slice }}
       {{ range $sortedPeople }}
         {{ if eq (partial "person-category.html" .) $category.key }}
@@ -26,10 +26,9 @@
       {{ end }}
     {{ end }}
 
-    {{ $knownCategories := slice "director" "phd" "mphil" "postdoc" "technical" "emeritus" "affiliate" "alumni" }}
     {{ $other := slice }}
     {{ range $sortedPeople }}
-      {{ if not (in $knownCategories (partial "person-category.html" .)) }}
+      {{ if not (in $taxonomy.known_categories (partial "person-category.html" .)) }}
         {{ $other = $other | append . }}
       {{ end }}
     {{ end }}

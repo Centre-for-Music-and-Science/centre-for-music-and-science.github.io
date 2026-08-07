@@ -4,7 +4,12 @@ date: {{ .Date }}
 draft: true
 open: true
 thumbnail: ""
-collaborators: []
+# thumbnail_credit:
+#   author: ""
+#   license: ""
+#   license_url: ""
+supervisor: ""
+cosupervisors: []
 projects: []
 publications: []
 weight: 0

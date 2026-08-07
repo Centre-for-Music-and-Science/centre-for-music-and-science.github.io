@@ -1,5 +1,6 @@
 {{- $people := where site.RegularPages "Section" "people" -}}
-{{- $allowedKinds := slice "director" "phd" "mphil" "postdoc" "technical" "emeritus" "affiliate" -}}
+{{- $taxonomy := partialCached "person-taxonomy.html" site "person-taxonomy" -}}
+{{- $allowedKinds := $taxonomy.allowed_kinds -}}
 
 {{- range $people -}}
   {{- $slug := .File.ContentBaseName -}}

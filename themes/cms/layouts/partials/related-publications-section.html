@@ -15,9 +15,13 @@
 
 {{ $allPublications := where $page.Site.RegularPages "Section" "publications" }}
 {{ $relatedPublications := slice }}
-{{ if gt (len $providedPublications) 0 }}
-  {{ $relatedPublications = $providedPublications }}
-{{ else }}
+{{ range $providedPublications }}
+  {{ if not (in $relatedPublications .) }}
+    {{ $relatedPublications = $relatedPublications | append . }}
+  {{ end }}
+{{ end }}
+
+{{ if and $relationKey (gt (len $relationSlugs) 0) }}
   {{ range $allPublications }}
     {{ $publicationRelations := default (slice) (index .Params $relationKey) }}
     {{ $matches := false }}
@@ -26,7 +30,7 @@
         {{ $matches = true }}
       {{ end }}
     {{ end }}
-    {{ if $matches }}
+    {{ if and $matches (not (in $relatedPublications .)) }}
       {{ $relatedPublications = $relatedPublications | append . }}
     {{ end }}
   {{ end }}
@@ -78,4 +82,3 @@
   {{ end }}
 </section>
 {{ end }}
-

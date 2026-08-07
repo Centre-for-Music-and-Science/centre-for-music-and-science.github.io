@@ -29,6 +29,8 @@
     {{- $title = "Emeritus staff" -}}
   {{- else if eq $kind "affiliate" -}}
     {{- $title = "Affiliate Researcher" -}}
+  {{- else if eq $kind "collaborator" -}}
+    {{- $title = "Collaborator" -}}
   {{- else -}}
     {{- $title = humanize $kind -}}
   {{- end -}}

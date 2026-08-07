@@ -3,11 +3,12 @@
     <h2 class="section-title">Team</h2>
     <div class="people-grid">
       {{ $people := sort (where .Site.RegularPages "Section" "people") "Params.weight" }}
+      {{ $taxonomy := partialCached "person-taxonomy.html" . "person-taxonomy" }}
       {{ $nonAffiliates := slice }}
       {{ $affiliates := slice }}
       {{ range $people }}
         {{ $category := partial "person-category.html" . }}
-        {{ if ne $category "alumni" }}
+        {{ if not (in $taxonomy.homepage_excluded_categories $category) }}
           {{ if eq $category "affiliate" }}
             {{ $affiliates = $affiliates | append . }}
           {{ else }}

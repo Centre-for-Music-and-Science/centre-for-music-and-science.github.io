@@ -1,0 +1,23 @@
+{{- $page := .page -}}
+{{- $thumb := $page.Params.thumbnail | default $page.Params.leader_image -}}
+{{- $credit := $page.Params.thumbnail_credit -}}
+{{- with $thumb }}
+<figure class="detail-header-thumb">
+  <div class="detail-header-thumb-media">
+    <img src="{{ (strings.TrimPrefix "/" .) | relURL }}" alt="{{ $page.Title }} thumbnail">
+  </div>
+  {{- with $credit }}
+  <figcaption class="detail-header-thumb-credit">
+    {{- with .author }}Photo: {{ . }}{{- end -}}
+    {{- if and .author .license }} · {{ end -}}
+    {{- if .license -}}
+      {{- if .license_url -}}
+        <a href="{{ .license_url }}" rel="license noopener" target="_blank">{{ .license }}</a>
+      {{- else -}}
+        {{ .license }}
+      {{- end -}}
+    {{- end }}
+  </figcaption>
+  {{- end }}
+</figure>
+{{- end }}

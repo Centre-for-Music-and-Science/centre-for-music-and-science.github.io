@@ -1,5 +1,6 @@
 ---
 title: "Visitors"
+summary: "Academic visits through the Faculty visitors scheme."
 weight: 6
 ---
 

@@ -8,9 +8,11 @@ from pathlib import Path
 
 from scripts.opportunities import (
     filter_open_opportunities,
+    opportunity_cosupervisors,
     opportunity_open,
     opportunity_projects,
     opportunity_publications,
+    opportunity_supervisor,
     validate_opportunities_dir,
     validate_opportunity,
 )
@@ -111,35 +113,103 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(len(errors), 1)
         self.assertIn("publications must be a list", errors[0])
 
-    def test_quoted_collaborator_names_are_valid(self):
+    def test_person_slug_supervisor_is_valid(self):
+        self.assertEqual(
+            opportunity_supervisor({"supervisor": "peter-harrison"}),
+            "peter-harrison",
+        )
         errors = validate_opportunity(
             "melodic-memory",
             {
                 "open": True,
-                "collaborators": ["Alex Smith", "Sam Jones"],
+                "supervisor": "peter-harrison",
             },
+            people_slugs={"peter-harrison"},
         )
         self.assertEqual(errors, [])
 
-    def test_collaborators_must_be_a_list_of_names(self):
+    def test_missing_supervisor_slug_is_rejected(self):
+        errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "supervisor": "nope",
+            },
+            people_slugs={"peter-harrison"},
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("does not exist", errors[0])
+
+    def test_supervisor_must_be_a_non_empty_string(self):
+        errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "supervisor": ["peter-harrison"],
+            },
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("supervisor must be a non-empty string", errors[0])
+
+    def test_person_slug_cosupervisors_are_valid(self):
+        self.assertEqual(
+            opportunity_cosupervisors(
+                {"cosupervisors": ["harin-lee", "nori-jacoby"]}
+            ),
+            ["harin-lee", "nori-jacoby"],
+        )
+        errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "cosupervisors": ["harin-lee", "nori-jacoby"],
+            },
+            people_slugs={"harin-lee", "nori-jacoby"},
+        )
+        self.assertEqual(errors, [])
+
+    def test_missing_cosupervisor_slug_is_rejected(self):
+        errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "cosupervisors": ["harin-lee", "nope"],
+            },
+            people_slugs={"harin-lee"},
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("does not exist", errors[0])
+
+    def test_cosupervisors_must_be_a_list_of_slugs(self):
         scalar_errors = validate_opportunity(
             "melodic-memory",
             {
                 "open": True,
-                "collaborators": "Alex Smith",
+                "cosupervisors": "harin-lee",
             },
         )
         item_errors = validate_opportunity(
             "melodic-memory",
             {
                 "open": True,
-                "collaborators": [{"name": "Alex Smith"}],
+                "cosupervisors": [{"slug": "harin-lee"}],
             },
         )
-        self.assertIn("collaborators must be a list", scalar_errors[0])
+        self.assertIn("cosupervisors must be a list", scalar_errors[0])
         self.assertIn(
-            "collaborator names must be non-empty strings", item_errors[0]
+            "cosupervisor slugs must be non-empty strings", item_errors[0]
         )
+
+    def test_legacy_collaborators_field_is_rejected(self):
+        errors = validate_opportunity(
+            "melodic-memory",
+            {
+                "open": True,
+                "collaborators": ["Alex Smith"],
+            },
+        )
+        self.assertEqual(len(errors), 1)
+        self.assertIn("collaborators is no longer supported", errors[0])
 
 
 class FilterTests(unittest.TestCase):

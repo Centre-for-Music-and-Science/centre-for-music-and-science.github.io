@@ -4,58 +4,42 @@
     <div class="page-back-top">
       {{ partial "back-link.html" (dict "href" .Site.Home.RelPermalink) }}
     </div>
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ with .Params.description }}
+    <p class="applicants-hub-intro">{{ . }}</p>
+    {{ end }}
+
+    <div class="applicants-hub-pathways">
+      <p class="applicants-hub-pathways-intro">
+        There are many different ways to join the CMS, depending on your current academic level and experience!
+      </p>
+      <div class="applicants-pathway-grid">
+        {{ range sort .RegularPages "Params.weight" }}
+        {{ $isStub := default false .Params.stub_only }}
+        {{ if $isStub }}
+        <div class="applicants-hub-card applicants-hub-card--stub" aria-disabled="true">
+          <h2 class="applicants-hub-card-title">{{ .Title }}</h2>
+          {{ with .Params.summary }}
+          <p class="applicants-hub-card-blurb">{{ . }}</p>
+          {{ end }}
+        </div>
+        {{ else }}
+        <a href="{{ .RelPermalink }}" class="applicants-hub-card">
+          <h2 class="applicants-hub-card-title">{{ .Title }}</h2>
+          {{ with .Params.summary }}
+          <p class="applicants-hub-card-blurb">{{ . }}</p>
+          {{ end }}
+          <span class="applicants-hub-card-link">Read more <span class="arrow">&rarr;</span></span>
+        </a>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+
     <div class="applicants-mailing-block">
       <p class="applicants-mailing-text">Follow us to be kept up to date with upcoming talks and events.</p>
       <a href="https://lists.cam.ac.uk/sympa/subscribe/mus-cms-news?previous_action=info" target="_blank" rel="noopener" class="applicants-mailing-btn">Join the mailing list</a>
     </div>
-    <h1 class="page-title">Prospective Applicants</h1>
-
-    {{ partial "applicants-brochure.html" . }}
-
-    <h2 class="applicants-howto-heading">How to apply</h2>
-    <div class="applicants-layout">
-      <nav class="applicants-sidebar">
-        {{ range sort .RegularPages "Params.weight" }}
-        <button class="applicants-nav-btn" data-target="{{ .File.ContentBaseName }}">
-          {{ .Title }}
-        </button>
-        {{ end }}
-      </nav>
-      <div class="applicants-panels">
-        {{ range sort .RegularPages "Params.weight" }}
-        {{ $pageSlug := .File.ContentBaseName }}
-        <div class="applicants-panel" id="panel-{{ $pageSlug }}">
-          {{ .Content }}
-        </div>
-        {{ end }}
-      </div>
-    </div>
   </div>
 </div>
-
-<script>
-(function() {
-  var buttons = document.querySelectorAll('.applicants-nav-btn');
-  var panels = document.querySelectorAll('.applicants-panel');
-
-  function activate(target) {
-    buttons.forEach(function(btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-target') === target);
-    });
-    panels.forEach(function(panel) {
-      panel.classList.toggle('active', panel.id === 'panel-' + target);
-    });
-  }
-
-  buttons.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      activate(this.getAttribute('data-target'));
-    });
-  });
-
-  if (buttons.length > 0) {
-    activate(buttons[0].getAttribute('data-target'));
-  }
-})();
-</script>
 {{ end }}

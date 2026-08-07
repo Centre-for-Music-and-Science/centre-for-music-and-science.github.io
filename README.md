@@ -150,7 +150,7 @@ Recommended front matter:
 ---
 title: "Full Name"
 positions:
-  - kind: "phd"          # director | phd | mphil | postdoc | technical | emeritus | affiliate
+  - kind: "phd"          # director | phd | mphil | postdoc | technical | emeritus | affiliate | collaborator
     start_date: "2022"
     end_date: "2026"     # null/empty means current role
   - kind: "postdoc"
@@ -170,6 +170,10 @@ Notes:
 
 - `group` is optional. If set, use `mcc` for Music Cognition & Culture or `mcs` for the Music, Culture & Sociality (MCS) group.
 - Listing category/status and subtitle are derived from `positions`.
+- `positions[].kind: collaborator` is for external collaborators listed as
+  possible opportunity cosupervisors. These people get detail pages but are
+  omitted from the homepage Team section and `/people/` listings.
+  Listing rules live in `themes/cms/layouts/partials/person-taxonomy.html`.
 - `positions[].title` is optional; when omitted, title defaults are derived from `kind`.
 - Current role is derived from `end_date` (empty/null = current role).
 - `start_date` and `end_date` are optional; include them when known.

@@ -2,6 +2,17 @@
 title: "The psychology of microtonal jazz"
 open: true
 weight: 5
+supervisor: peter-harrison
+thumbnail: "/images/opportunities/fretless-guitar.jpg"
+thumbnail_credit:
+  author: "ArtBrom"
+  license: "CC BY-SA 2.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/2.0/"
+cosupervisors:
+  - lars-seniuk
+projects:
+  - jazz
+  - consonance
 ---
 
 Microtonality may be defined as the use of pitch intervals distinctly smaller than a semitone. While various contemporary classical composers have explored microtonality, the vast majority of Western music is not microtonal, instead using a 12-tone scale or subsets thereof.

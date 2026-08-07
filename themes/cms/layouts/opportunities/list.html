@@ -1,16 +1,18 @@
 {{ define "main" }}
-<div class="single-page">
+<div class="applicants-page">
   <div class="container">
     <div class="page-back-top">
-      {{ partial "back-link.html" (dict "href" .Site.Home.RelPermalink) }}
+      {{ partial "back-link.html" (dict "href" (printf "%sapplicants/" .Site.Home.RelPermalink) "label" "Join us") }}
     </div>
-    <h1 class="page-title">Opportunities</h1>
-    <div class="content">
-      <p>
-        Open research opportunities for prospective applicants are listed on the
-        <a href="{{ "/applicants/" | relURL }}">Join us</a> page.
-      </p>
-    </div>
+    <h1 class="page-title">Research topics</h1>
+    <p class="applicants-brochure-intro">
+      Choose a topic when preparing an application. When you are ready,
+      follow the <a href="{{ "applicants/" | relURL }}">how to apply</a> guidance for your pathway.
+    </p>
+
+    <section class="applicants-brochure" aria-label="Open topics">
+      {{ partial "open-opportunities-brochure.html" . }}
+    </section>
   </div>
 </div>
 {{ end }}

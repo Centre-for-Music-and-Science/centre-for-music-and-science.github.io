@@ -1,9 +1,16 @@
 ---
 title: "Individual and cross-cultural differences in music cognition"
 open: true
-collaborators:
-  - "Nori Jacoby"
+supervisor: peter-harrison
+cosupervisors:
+  - nori-jacoby
+  - daniel-mullensiefen
+  - harin-lee
 weight: 4
+thumbnail: "/images/opportunities/individual-differences.jpg"
+projects:
+  - emotions
+  - consonance
 ---
 
 Music cognition research has traditionally focused on developing normative accounts

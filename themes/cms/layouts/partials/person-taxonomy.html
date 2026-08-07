@@ -1,0 +1,48 @@
+{{- /*
+  Shared people taxonomy for position kinds and listing behaviour.
+
+  Returns a dict with:
+  - allowed_kinds: position kinds allowed in people front matter
+  - list_sections: ordered {key, label} sections shown on /people/
+  - known_categories: all recognised category keys (listed + intentionally unlisted)
+  - unlisted_categories: omitted from /people/ sections and the Other bucket
+  - homepage_excluded_categories: omitted from the homepage Team grid
+*/ -}}
+{{- $allowedKinds := slice
+  "director"
+  "phd"
+  "mphil"
+  "postdoc"
+  "technical"
+  "emeritus"
+  "affiliate"
+  "collaborator"
+-}}
+{{- $listSections := slice
+  (dict "key" "director" "label" "Director")
+  (dict "key" "phd" "label" "PhD students")
+  (dict "key" "mphil" "label" "MPhil students")
+  (dict "key" "postdoc" "label" "Postdoctoral researchers")
+  (dict "key" "technical" "label" "Technical staff")
+  (dict "key" "emeritus" "label" "Emeritus staff")
+  (dict "key" "affiliate" "label" "Affiliates")
+  (dict "key" "alumni" "label" "Alumni")
+-}}
+{{- $unlistedCategories := slice "collaborator" -}}
+{{- $homepageExcludedCategories := slice "alumni" "collaborator" -}}
+{{- $knownCategories := slice -}}
+{{- range $listSections -}}
+  {{- $knownCategories = $knownCategories | append .key -}}
+{{- end -}}
+{{- range $unlistedCategories -}}
+  {{- if not (in $knownCategories .) -}}
+    {{- $knownCategories = $knownCategories | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- return (dict
+  "allowed_kinds" $allowedKinds
+  "list_sections" $listSections
+  "known_categories" $knownCategories
+  "unlisted_categories" $unlistedCategories
+  "homepage_excluded_categories" $homepageExcludedCategories
+) -}}

@@ -2,21 +2,44 @@
 <article class="opportunity-detail-page single-page">
   <div class="container">
     <div class="page-back-top">
-      {{ partial "back-link.html" (dict "href" (printf "%sapplicants/" .Site.Home.RelPermalink) "label" "Join us") }}
+      {{ partial "back-link.html" (dict "href" (printf "%sopportunities/" .Site.Home.RelPermalink) "label" "Research topics") }}
     </div>
-    <header class="opportunity-detail-header">
-      <p class="opportunity-detail-kicker">Opportunity</p>
-      <h1>{{ .Title }}</h1>
-      {{ with .Params.collaborators }}
-      <p class="opportunity-collaborators">
-        <strong>Collaborators:</strong> {{ delimit . ", " }}
-      </p>
-      {{ end }}
+    <header class="detail-header opportunity-detail-header">
+      <div class="opportunity-header-meta">
+        <p class="opportunity-detail-kicker">Opportunity</p>
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.supervisor }}
+        <p class="opportunity-supervisor-meta">
+          <strong>Supervisor:</strong>
+          {{- $supervisorSlug := . -}}
+          {{- with $.Site.GetPage (path.Join "/people" $supervisorSlug) }}
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{- else }}
+            {{ $supervisorSlug }}
+          {{- end }}
+        </p>
+        {{ end }}
+        {{ with .Params.cosupervisors }}
+        <p class="opportunity-supervisor-meta">
+          <strong>Possible cosupervisors:</strong>
+          {{ range $i, $slug := . }}
+            {{- if $i }}, {{ end -}}
+            {{- with $.Site.GetPage (path.Join "/people" $slug) -}}
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            {{- else -}}
+              {{ $slug }}
+            {{- end -}}
+          {{ end }}
+        </p>
+        {{ end }}
+      </div>
+      {{ partial "detail-header-thumbnail.html" (dict "page" .) }}
     </header>
     <div class="content opportunity-detail-body">
       {{ .Content }}
     </div>
-    {{ $projects := partial "resolve-project-pages.html" (dict "slugs" (default (slice) .Params.projects)) }}
+    {{ $projectSlugs := default (slice) .Params.projects }}
+    {{ $projects := partial "resolve-project-pages.html" (dict "slugs" $projectSlugs) }}
     {{ if gt (len $projects) 0 }}
       <section class="project-publications">
         <h2 class="project-publications-heading">Related projects</h2>
@@ -27,8 +50,28 @@
         </div>
       </section>
     {{ end }}
+
+    {{ $publicationRelationSlugs := $projectSlugs }}
+    {{ $allProjects := where .Site.RegularPages "Section" "projects" }}
+    {{ range $projectSlugs }}
+      {{ $descendantProjectSlugsRaw := partial "collect-descendant-project-slugs.html" (dict "slug" . "allProjects" $allProjects) }}
+      {{ if ne $descendantProjectSlugsRaw "" }}
+        {{ range (split $descendantProjectSlugsRaw "\n") }}
+          {{ if and (ne . "") (not (in $publicationRelationSlugs .)) }}
+            {{ $publicationRelationSlugs = $publicationRelationSlugs | append . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
     {{ $linkedPublications := partial "resolve-publication-pages.html" (dict "page" . "slugs" (default (slice) .Params.publications)) }}
-    {{ partial "related-publications-section.html" (dict "page" . "heading" "Related publications" "publications" $linkedPublications) }}
+    {{ partial "related-publications-section.html" (dict
+      "page" .
+      "heading" "Related publications"
+      "publications" $linkedPublications
+      "relation_key" "projects"
+      "relation_slugs" $publicationRelationSlugs
+    ) }}
   </div>
 </article>
 {{ end }}

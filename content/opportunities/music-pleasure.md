@@ -2,6 +2,12 @@
 title: "Music and pleasure"
 open: true
 weight: 3
+supervisor: peter-harrison
+thumbnail: "/images/opportunities/dopamine.jpg"
+projects:
+  - consonance
+  - expectation
+  - emotions
 ---
 
 Music is hardly necessary for our day-to-day survival, yet it is capable

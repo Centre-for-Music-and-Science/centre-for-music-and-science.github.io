@@ -2,6 +2,15 @@
 title: "Computational music cognition"
 open: true
 weight: 1
+thumbnail: "/images/opportunities/probe-tone-major-chord.jpg"
+supervisor: peter-harrison
+cosupervisors:
+  - harin-lee
+projects:
+  - memory
+  - expectation
+  - consonance
+  - emotions
 ---
 
 The goal of computational music cognition research is to develop

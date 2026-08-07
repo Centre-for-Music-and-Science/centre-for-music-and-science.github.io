@@ -2,6 +2,19 @@
 title: "Computational analysis of musical style"
 open: true
 weight: 2
+supervisor: peter-harrison
+cosupervisors:
+  - harin-lee
+  - richard-widdess
+thumbnail: "/images/opportunities/piano-roll.jpg"
+thumbnail_credit:
+  author: "Jorge Royan"
+  license: "CC BY-SA 3.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/3.0/"
+projects:
+  - memory
+  - jazz
+  - organ
 ---
 
 Music is produced in an incredibly diverse number of styles across the world. These styles have many layers: for example, we can discuss the style of individual musicians (e.g. Miles Davis), subgenres (e.g. cool jazz), or genres (e.g. jazz).

@@ -1,6 +1,8 @@
 ---
 title: "PhD"
+summary: "Multi-year postgraduate studentships supervised at the CMS."
 weight: 3
+topics_intro: "We are currently soliciting PhD applications in the following topic areas. Please explore and see what best matches your personal interests."
 ---
 
 We welcome applications for PhD studentships at the Centre for Music and Science. A PhD will typically provide three or four years of focused study on a particular research topic, culminating in the submission and examination of a substantial research thesis. It provides a very special opportunity to immerse oneself in a particular research field, to design and conduct a series of empirical studies, and submit one or more research articles for publication.

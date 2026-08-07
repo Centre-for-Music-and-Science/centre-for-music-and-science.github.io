@@ -53,12 +53,36 @@ def opportunity_publications(front_matter: dict[str, Any]) -> list[str]:
     ]
 
 
+def opportunity_supervisor(front_matter: dict[str, Any]) -> str | None:
+    """Return the linked supervisor person slug, if set."""
+    if "supervisor" not in front_matter:
+        return None
+    supervisor = front_matter["supervisor"]
+    if not isinstance(supervisor, str):
+        raise ValueError("supervisor must be a string")
+    supervisor = supervisor.strip()
+    return supervisor or None
+
+
+def opportunity_cosupervisors(front_matter: dict[str, Any]) -> list[str]:
+    """Return linked possible-cosupervisor person slugs."""
+    cosupervisors = front_matter.get("cosupervisors") or []
+    if not isinstance(cosupervisors, list):
+        raise ValueError("cosupervisors must be a list")
+    return [
+        str(person).strip()
+        for person in cosupervisors
+        if str(person).strip()
+    ]
+
+
 def validate_opportunity(
     slug: str,
     front_matter: dict[str, Any],
     *,
     project_slugs: set[str] | None = None,
     publication_slugs: set[str] | None = None,
+    people_slugs: set[str] | None = None,
 ) -> list[str]:
     """Validate front matter for one opportunity record.
 
@@ -72,6 +96,9 @@ def validate_opportunity(
         Optional set of valid project slugs for ``projects`` checks.
     publication_slugs :
         Optional set of valid publication slugs for ``publications`` checks.
+    people_slugs :
+        Optional set of valid people slugs for ``supervisor`` /
+        ``cosupervisors`` checks.
 
     Returns
     -------
@@ -83,17 +110,43 @@ def validate_opportunity(
     if "open" in front_matter and not isinstance(front_matter["open"], bool):
         errors.append(f"opportunity {slug!r}: open must be a boolean")
 
-    collaborators = front_matter.get("collaborators")
-    if collaborators is not None and not isinstance(collaborators, list):
-        errors.append(f"opportunity {slug!r}: collaborators must be a list")
+    if "collaborators" in front_matter:
+        errors.append(
+            f"opportunity {slug!r}: collaborators is no longer supported; "
+            "use cosupervisors with person slugs"
+        )
+
+    if "supervisor" in front_matter:
+        supervisor = front_matter["supervisor"]
+        if not isinstance(supervisor, str) or not supervisor.strip():
+            errors.append(
+                f"opportunity {slug!r}: supervisor must be a "
+                "non-empty string"
+            )
+        elif people_slugs is not None and supervisor.strip() not in people_slugs:
+            errors.append(
+                f"opportunity {slug!r}: person {supervisor.strip()!r} "
+                "does not exist"
+            )
+
+    cosupervisors = front_matter.get("cosupervisors")
+    if cosupervisors is not None and not isinstance(cosupervisors, list):
+        errors.append(f"opportunity {slug!r}: cosupervisors must be a list")
     elif any(
-        not isinstance(name, str) or not name.strip()
-        for name in (collaborators or [])
+        not isinstance(person, str) or not person.strip()
+        for person in (cosupervisors or [])
     ):
         errors.append(
-            f"opportunity {slug!r}: collaborator names must be "
+            f"opportunity {slug!r}: cosupervisor slugs must be "
             "non-empty strings"
         )
+    elif people_slugs is not None:
+        for person in opportunity_cosupervisors(front_matter):
+            if person in people_slugs:
+                continue
+            errors.append(
+                f"opportunity {slug!r}: person {person!r} does not exist"
+            )
 
     projects = front_matter.get("projects")
     if projects is not None and not isinstance(projects, list):
@@ -126,6 +179,7 @@ def validate_opportunities_dir(
     *,
     projects_dir: Path | None = None,
     publications_dir: Path | None = None,
+    people_dir: Path | None = None,
 ) -> list[str]:
     """Validate all opportunity markdown files under ``opportunities_dir``."""
     project_slugs: set[str] | None = None
@@ -144,6 +198,14 @@ def validate_opportunities_dir(
             if not path.name.startswith("_")
         }
 
+    people_slugs: set[str] | None = None
+    if people_dir is not None:
+        people_slugs = {
+            path.stem
+            for path in people_dir.glob("*.md")
+            if not path.name.startswith("_")
+        }
+
     errors: list[str] = []
     for path in sorted(opportunities_dir.glob("*.md")):
         if path.name.startswith("_"):
@@ -155,6 +217,7 @@ def validate_opportunities_dir(
                 front_matter,
                 project_slugs=project_slugs,
                 publication_slugs=publication_slugs,
+                people_slugs=people_slugs,
             )
         )
     return errors

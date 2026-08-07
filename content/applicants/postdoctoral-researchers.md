@@ -1,5 +1,6 @@
 ---
 title: "Postdoctoral researchers"
+summary: "Fellowships and other postdoctoral opportunities at the CMS."
 weight: 5
 ---
 

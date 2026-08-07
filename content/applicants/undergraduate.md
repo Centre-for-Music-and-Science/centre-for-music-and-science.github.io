@@ -1,6 +1,8 @@
 ---
 title: "Undergraduate"
+summary: "Music and science options within the Faculty of Music degree."
 weight: 1
+show_topics: false
 ---
 
 Interested students are highly encouraged to make music and science a significant part of their undergraduate degrees at the Faculty of Music. Currently, there are three main music and science options that you can select during your degree:

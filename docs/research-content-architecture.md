@@ -6,7 +6,7 @@ This document is the canonical source of truth for the research content model.
 
 - Themes: top-level research areas.
 - Projects: children of themes or other projects (research portfolio).
-- Opportunities: applicant-facing topics for Join us (optionally linked to a project).
+- Opportunities: applicant-facing topics shown within pathway pages and on `/opportunities/` (optionally linked to a project).
 - Methods: standalone method records.
 - Groups: organisational group records.
 - Publications: bibliographic records with optional detail pages.
@@ -47,15 +47,30 @@ Default for new records is `stub_only: false`.
 Projects are the research portfolio. **Opportunities** are a separate applicant-facing content type for topics people can apply to work on.
 
 - Section: `content/opportunities/`
-- Surfaced on `/applicants/` (brochure) and optional detail pages at `/opportunities/<slug>/`
+- Open opportunities are surfaced in the Topics tab on each rendered
+  `/applicants/<pathway>/` page.
+- The complete topic index remains available at `/opportunities/`; pathway
+  Topics tabs link to it subtly, while the `/applicants/` hub does not.
+- Detail pages live at `/opportunities/<slug>/`.
+- Pathway pages currently show the same unfiltered set of open opportunities.
+  The embedded Topics tab provides the extension point for pathway-specific
+  filtering in the future.
+- Pathway pages may set `topics_intro` to customise the Topics tab blurb.
+- Set `show_topics: false` on a pathway page to hide the Topics tab entirely
+  (default is shown).
 
 Front matter:
 
 ```yaml
-open: true              # false = hide from brochure (default true)
-thumbnail: ""           # optional card image path
-collaborators:          # optional display names (not yet linked to people)
-  - "Alex Smith"
+open: true              # false = hide from topic listings (default true)
+thumbnail: ""           # optional card / detail image path
+thumbnail_credit:       # optional; shown on detail page only
+  author: "ArtBrom"
+  license: "CC BY-SA 2.0"
+  license_url: "https://creativecommons.org/licenses/by-sa/2.0/"
+supervisor: peter-harrison  # optional person slug
+cosupervisors:          # optional person slugs for possible cosupervisors
+  - harin-lee
 projects:               # optional links to portfolio project slugs
   - memory
 publications:           # optional links to publication slugs
@@ -65,20 +80,30 @@ weight: 0
 
 Relationship rules:
 
-- `thumbnail` is an optional image shown on the brochure card.
+- `thumbnail` is an optional image shown on topic cards and the detail header.
+- `thumbnail_credit` is optional attribution for third-party thumbnails; when
+  set, it renders under the detail-page thumbnail only (not on brochure cards).
 - The Markdown body is the detailed description shown only on the opportunity page.
-- `collaborators` is an optional list of quoted names displayed on the detail page.
+- `supervisor` is an optional people slug shown on the detail page as Supervisor.
+- `cosupervisors` is an optional list of people slugs shown on the detail page
+  as Possible cosupervisors. External collaborators can use people records with
+  `positions[].kind: collaborator` (these are omitted from People listings).
 - Every slug in `projects` must resolve to an existing `content/projects` record.
 - Every slug in `publications` must resolve to an existing `content/publications` record.
+- Opportunity detail pages show linked projects as Related projects.
+- Related publications combine any explicit `publications` list with reverse
+  lookup of publications tagged to the linked projects (including descendant
+  projects).
 - Portfolio projects with no opportunity are not advertised for applications.
 - Hypothetical topics use an opportunity with no `projects` (until research exists in the portfolio).
 
 Build-time rules:
 
-- `collaborators`, when set, must be a list of non-empty strings
+- `supervisor`, when set, must be an existing people slug
+- `cosupervisors`, when set, must be a list of existing people slugs
 - every slug in `projects` must match an existing project slug
 - every slug in `publications` must match an existing publication slug
-
+- legacy `collaborators` fields are rejected
 ## Reverse aggregation model
 
 People/publications/datasets are aggregated by reverse lookup tags.

@@ -2,17 +2,12 @@
 <article class="project-detail-page">
   <div class="container">
     <div class="project-detail-content">
-      {{ $methodThumb := .Params.thumbnail | default .Params.leader_image }}
       <header class="detail-header">
         <div class="method-header-meta">
           <h1 class="project-detail-title">{{ .Title }}</h1>
           {{ with .Params.summary }}<p class="project-detail-summary">{{ . }}</p>{{ end }}
         </div>
-        {{ if $methodThumb }}
-        <div class="detail-header-thumb">
-          <img src="{{ (strings.TrimPrefix "/" $methodThumb) | relURL }}" alt="{{ .Title }} thumbnail">
-        </div>
-        {{ end }}
+        {{ partial "detail-header-thumbnail.html" (dict "page" .) }}
       </header>
       {{ with .Params.image }}
       <div class="dataset-detail-hero">
