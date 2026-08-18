@@ -56,4 +56,5 @@ citation_ieee: '[1] D. Müllensiefen, P. M. C. Harrison, F. Caprini and A. Fanco
   students’ academic and musical achievement”, <em>Frontiers in Psychology</em>, vol.
   6, 2015, doi: 10.3389/fpsyg.2015.01702.'
 authors: Müllensiefen, D., Harrison, P. M. C., Caprini, F., & Fancourt, A.
+volume: '6'
 ---

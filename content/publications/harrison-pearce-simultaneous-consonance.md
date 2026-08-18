@@ -40,4 +40,7 @@ citation_ieee: '[1] P. M. C. Harrison and M. T. Pearce, “Simultaneous consonan
   music perception and composition.”, <em>Psychological Review</em>, vol. 127, no.
   2, pp. 216–244, 2020, doi: 10.1037/rev0000169.'
 authors: Harrison, P. M. C., & Pearce, M. T.
+volume: '127'
+number: '2'
+pages: 216–244
 ---

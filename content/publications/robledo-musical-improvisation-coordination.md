@@ -36,4 +36,7 @@ citation_ieee: '[1] J. P. Robledo, S. Hawkins, C. Cornejo, I. Cross, D. Party an
   E. Hurtado, “Musical improvisation enhances interpersonal coordination in subsequent
   conversation: Motor and speech evidence”, <em>PLOS ONE</em>, vol. 16, no. 4, p.
   e0250166, 2021, doi: 10.1371/journal.pone.0250166.'
+volume: '16'
+number: '4'
+pages: e0250166
 ---

@@ -45,4 +45,6 @@ citation_ieee: '[1] P. M. C. Harrison, T. Collins and D. Müllensiefen, “Apply
   computerised adaptive testing, and automatic item generation”, <em>Scientific Reports</em>,
   vol. 7, no. 1, 2017, doi: 10.1038/s41598-017-03586-z.'
 authors: Harrison, P. M. C., Collins, T., & Müllensiefen, D.
+volume: '7'
+number: '1'
 ---

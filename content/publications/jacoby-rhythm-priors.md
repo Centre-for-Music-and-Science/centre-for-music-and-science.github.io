@@ -33,8 +33,8 @@ citation_chicago: Jacoby, N., R. Polak, J. A. Grahn, D. J. Cameron, K. M. Lee, R
   Godoy, E. A. Undurraga, et al.. 2024. “Commonality and Variation in Mental Representations
   of Music Revealed by a Cross-cultural Comparison of Rhythm Priors in 15 Countries”.
   <em>Nature Human Behaviour</em>. https://doi.org/10.1038/s41562-023-01800-9.
-citation_ieee: '[1] N. Jacoby <em>et al.</em>, “Commonality and variation in mental
-  representations of music revealed by a cross-cultural comparison of rhythm priors
-  in 15 countries”, <em>Nature Human Behaviour</em>, 2024, doi: 10.1038/s41562-023-01800-9.'
+citation_ieee: '[1] N. Jacoby, “Commonality and variation in mental representations
+  of music revealed by a cross-cultural comparison of rhythm priors in 15 countries”,
+  <em>Nature Human Behaviour</em>, 2024, doi: 10.1038/s41562-023-01800-9.'
 link: https://doi.org/10.1038/s41562-023-01800-9
 ---

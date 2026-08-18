@@ -41,4 +41,7 @@ citation_ieee: '[1] P. Larrouy-Maestri, P. M. C. Harrison and D. Müllensiefen, 
   mistuning perception test: A new measurement instrument”, <em>Behavior Research
   Methods</em>, vol. 51, no. 2, pp. 663–675, 2019, doi: 10.3758/s13428-019-01225-1.'
 authors: Larrouy-Maestri, P., Harrison, P. M. C., & Müllensiefen, D.
+volume: '51'
+number: '2'
+pages: 663–675
 ---

@@ -45,4 +45,7 @@ citation_ieee: '[1] A. Goldman, P. M. C. Harrison, T. Jackson and M. T. Pearce, 
   Syntax-Related ERP Components Using Popular Music Chord Sequences”, <em>Music Perception:
   An Interdisciplinary Journal</em>, vol. 39, no. 2, pp. 118–144, 2021, doi: 10.1525/mp.2021.39.2.118.'
 authors: Goldman, A., Harrison, P. M. C., Jackson, T., & Pearce, M. T.
+volume: '39'
+number: '2'
+pages: 118–144
 ---

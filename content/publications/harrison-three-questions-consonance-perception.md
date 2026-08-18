@@ -35,4 +35,7 @@ citation_chicago: 'Harrison, P. M. C. 2021. “Three Questions Concerning Conson
 citation_ieee: '[1] P. M. C. Harrison, “Three Questions Concerning Consonance Perception”,
   <em>Music Perception</em>, vol. 38, no. 3, pp. 337–339, 2021, doi: 10.1525/mp.2021.38.3.337.'
 authors: Harrison, P. M. C.
+volume: '38'
+number: '3'
+pages: 337–339
 ---

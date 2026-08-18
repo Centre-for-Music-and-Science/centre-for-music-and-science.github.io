@@ -53,4 +53,7 @@ citation_ieee: '[1] I. Zioga, P. M. C. Harrison, M. T. Pearce, J. Bhattacharya a
   Cognitive Neuroscience</em>, vol. 32, no. 12, pp. 2241–2259, 2020, doi: 10.1162/jocn_a_01614.'
 authors: Zioga, I., Harrison, P. M. C., Pearce, M. T., Bhattacharya, J., & Luft, C.
   D. B.
+volume: '32'
+number: '12'
+pages: 2241–2259
 ---

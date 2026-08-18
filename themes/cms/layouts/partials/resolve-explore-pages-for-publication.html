@@ -1,0 +1,21 @@
+{{- /*
+  Resolve explore pages that explicitly link a publication slug.
+
+  Params:
+  - slug: publication content base name
+  - item_type: optional filter (e.g. "app"); omit to include all explore items
+*/ -}}
+{{- $slug := .slug -}}
+{{- $itemType := .item_type -}}
+{{- $resolved := slice -}}
+{{- range where site.RegularPages "Section" "explore" -}}
+  {{- $matchesType := true -}}
+  {{- if $itemType -}}
+    {{- $matchesType = eq (.Params.item_type | default "app") $itemType -}}
+  {{- end -}}
+  {{- $publicationSlugs := default (slice) .Params.publications -}}
+  {{- if and $matchesType (in $publicationSlugs $slug) -}}
+    {{- $resolved = $resolved | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- return $resolved -}}

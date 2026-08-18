@@ -27,7 +27,8 @@ abstract: A core problem in cognitive science and machine learning is to underst
   perceptual spaces. We conclude by discussing future cognitive applications and ethical
   implications.
 equal_contribution_author_groups:
-- [0, 1]
+- - 0
+  - 1
 bibtex: |-
   @inproceedings{NEURIPS2020_7880d722,
     author = {Harrison, Peter M. C. and Marjieh, Raja and Adolfi, Federico and van Rijn, Pol and Anglada-Tort, Manuel and Tchernichovski, Ofer and Larrouy-Maestri, Pauline and Jacoby, Nori},
@@ -52,10 +53,12 @@ citation_chicago: Harrison, Peter M. C., Raja Marjieh, Federico Adolfi, Pol van 
   Manuel Anglada-Tort, Ofer Tchernichovski, Pauline Larrouy-Maestri, and Nori Jacoby.
   2020. “Gibbs Sampling with People”. In <em>Advances in Neural Information Processing
   Systems</em>, 33:10659–71. https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf.
-citation_ieee: '[1] P. M. C. Harrison <em>et al.</em>, “Gibbs Sampling with People”,
-  in <em>Advances in Neural Information Processing Systems</em>, 2020, vol. 33, pp.
-  10659–10671. [Online]. Available: https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf'
+citation_ieee: '[1] P. M. C. Harrison, “Gibbs Sampling with People”, in <em>Advances
+  in Neural Information Processing Systems</em>, 2020, vol. 33, pp. 10659–10671. [Online].
+  Available: https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf'
 authors: Harrison, P. M. C., Marjieh, R., Adolfi, F., van Rijn, P., Anglada-Tort,
   M., Tchernichovski, O., Larrouy-Maestri, P., & Jacoby, N.
 link: https://proceedings.neurips.cc/paper_files/paper/2020/file/7880d7226e872b776d8b9f23975e2a3d-Paper.pdf
+volume: '33'
+pages: 10659–10671
 ---

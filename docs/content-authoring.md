@@ -115,6 +115,17 @@ Featured publications render first as cards; the remaining related publications 
 Do not add `publications` arrays to project/method/group records. Publication pages are the sole source of relation ownership.
 Do not add `groups` arrays to publication records for group-page linking; group publication lists are inherited from group members.
 
+## Publication dates
+
+Use Hugo front-matter `date` for publication ordering:
+
+- Prefer the online publication date as `YYYY-MM-DD` when known.
+- Display stays year-only next to the journal name.
+- Older records may keep year placeholders such as `YYYY-01-01`.
+
+Do not put the day-level date in BibTeX unless the venue citation needs it;
+`date` is the sorting source of truth.
+
 ## Dataset linkage
 
 Link publications to datasets via publication front matter:
@@ -122,6 +133,12 @@ Link publications to datasets via publication front matter:
 - `datasets: [dataset-slug, ...]`
 
 Dataset pages automatically gather related publications from this field.
+
+Publication detail pages also show:
+
+- Related projects from the publication's `projects` tags
+- Related apps from explore records that list the publication under `publications`
+- Related datasets from `datasets`
 
 ## Events workflow
 

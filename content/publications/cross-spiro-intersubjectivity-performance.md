@@ -25,4 +25,5 @@ citation_chicago: Cross, I., and N. Spiro. 2025. “Intersubjectivity in Perform
 citation_ieee: '[1] I. Cross and N. Spiro, “Intersubjectivity in performance”, in
   <em>The Music Performer''s Lived Experiences</em>, 2025, pp. 188–203.'
 authors: Cross, I., & Spiro, N.
+pages: 188-203
 ---

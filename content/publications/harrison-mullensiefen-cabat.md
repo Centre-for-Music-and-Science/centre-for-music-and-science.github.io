@@ -36,4 +36,6 @@ citation_ieee: '[1] P. M. C. Harrison and D. Müllensiefen, “Development and V
   of the Computerised Adaptive Beat Alignment Test (CA-BAT)”, <em>Scientific Reports</em>,
   vol. 8, no. 1, 2018, doi: 10.1038/s41598-018-30318-8.'
 authors: Harrison, P. M. C., & Müllensiefen, D.
+volume: '8'
+number: '1'
 ---

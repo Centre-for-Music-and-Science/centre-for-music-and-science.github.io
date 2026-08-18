@@ -34,4 +34,7 @@ citation_ieee: '[1] P. M. C. M. C. Harrison and M. T. Pearce, “A Computational
   Model for the Analysis and Generation of Voice Leadings”, <em>Music Perception:
   An Interdisciplinary Journal</em>, vol. 37, no. 3, pp. 208–224, 2020, doi: 10.1525/mp.2020.37.3.208.'
 authors: Harrison, P. M. C. M. C., & Pearce, M. T.
+volume: '37'
+number: '3'
+pages: 208–224
 ---

@@ -4,6 +4,7 @@ from scripts.generate_publication_citations import build_front_matter_text
 from scripts.generate_publication_citations import (
     extract_authors_from_apa_citation,
 )
+from scripts.generate_publication_citations import extract_publication_locator_fields
 from scripts.generate_publication_citations import extract_publication_venue
 from scripts.generate_publication_citations import inject_autogen_comments
 from scripts.generate_publication_citations import normalize_citeproc_html
@@ -202,6 +203,28 @@ class PublicationCitationTests(unittest.TestCase):
         self.assertIn("A. Strand", out)
         self.assertNotIn("Str and", out)
 
+    def test_extract_publication_locator_fields_normalizes_pages(self):
+        fields = {
+            "volume": "8",
+            "number": "8",
+            "pages": "1261--1274",
+        }
+        self.assertEqual(
+            extract_publication_locator_fields(fields),
+            {
+                "volume": "8",
+                "number": "8",
+                "pages": "1261–1274",
+            },
+        )
+
+    def test_extract_publication_locator_fields_omits_missing_values(self):
+        self.assertEqual(
+            extract_publication_locator_fields({"volume": "16"}),
+            {"volume": "16"},
+        )
+        self.assertEqual(extract_publication_locator_fields({}), {})
+
     def test_extract_publication_venue_uses_journal_or_booktitle(self):
         self.assertEqual(
             extract_publication_venue({"journal": "Music Perception"}),
@@ -226,12 +249,18 @@ class PublicationCitationTests(unittest.TestCase):
             "citation_apa": "Doe, J. (2026). Example.",
             "authors": "Doe, J.",
             "journal": "Journal",
+            "volume": "8",
+            "number": "1",
+            "pages": "10–21",
             "doi": "https://doi.org/10.1000/example",
         }
         output = build_front_matter_text(front_matter)
         self.assertIn("bibtex: |", output)
         self.assertIn("  @article{example,", output)
         self.assertIn("# generated from bibtex; do not edit manually", output)
+        self.assertRegex(output, r"(?m)^volume:")
+        self.assertRegex(output, r"(?m)^number:")
+        self.assertRegex(output, r"(?m)^pages:")
 
     def test_inject_autogen_comments_keeps_single_comment_block(self):
         yaml_text = (

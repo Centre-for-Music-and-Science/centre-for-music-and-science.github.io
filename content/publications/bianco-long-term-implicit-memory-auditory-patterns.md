@@ -33,8 +33,9 @@ citation_mla: Bianco, R., et al.. “Long-term Implicit Memory for Sequential Au
 citation_chicago: Bianco, Roberta, P. M. C. Harrison, Mingyue Hu, Cora Bolger, Samantha
   Picken, Marcus T Pearce, and Maria Chait. 2020. “Long-term Implicit Memory for Sequential
   Auditory Patterns in Humans”. <em>eLife</em> 9. https://doi.org/10.7554/elife.56073.
-citation_ieee: '[1] R. Bianco <em>et al.</em>, “Long-term implicit memory for sequential
-  auditory patterns in humans”, <em>eLife</em>, vol. 9, 2020, doi: 10.7554/elife.56073.'
+citation_ieee: '[1] R. Bianco, “Long-term implicit memory for sequential auditory
+  patterns in humans”, <em>eLife</em>, vol. 9, 2020, doi: 10.7554/elife.56073.'
 authors: Bianco, R., Harrison, P. M. C., Hu, M., Bolger, C., Picken, S., Pearce, M.
   T., & Chait, M.
+volume: '9'
 ---

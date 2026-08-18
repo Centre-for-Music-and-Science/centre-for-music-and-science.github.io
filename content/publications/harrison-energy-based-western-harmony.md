@@ -36,4 +36,5 @@ citation_ieee: '[1] P. M. C. Harrison and M. T. Pearce, “An energy-based gener
   of the 19th International Society for Music Information Retrieval Conference</em>,
   2018, pp. 160–167.'
 authors: Harrison, P. M. C., & Pearce, M. T.
+pages: 160–167
 ---

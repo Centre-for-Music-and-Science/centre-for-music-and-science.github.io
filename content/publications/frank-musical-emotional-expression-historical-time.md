@@ -35,4 +35,7 @@ citation_ieee: '[1] J. Frank, P. M. C. Harrison, B. Ross and C. Venter, “Explo
   the variability of musical-emotional expression over historical time”, <em>Empirical
   Musicology Review</em>, vol. 18, no. 2, pp. 117–132, 2024, doi: 10.18061/emr.v18i2.8711.'
 authors: Frank, J., Harrison, P. M. C., Ross, B., & Venter, C.
+volume: '18'
+number: '2'
+pages: 117–132
 ---

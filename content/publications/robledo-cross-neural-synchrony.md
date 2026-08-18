@@ -1,7 +1,7 @@
 ---
 title: 'Interpersonal neural synchrony in joint music-making and conversation: toward
   an integrative Marr-level account'
-date: 2026-09-01
+date: 2026-06-22
 projects:
 - interaction-neural-synchrony
 abstract: |
@@ -37,4 +37,6 @@ citation_ieee: '[1] J.-P. Robledo, I. Cross, M. Phillips, J. F. Kearney and J. R
   vol. 188, p. 106826, 2026, doi: 10.1016/j.neubiorev.2026.106826.'
 authors: Robledo, J.-P., Cross, I., Phillips, M., Kearney, J. F., & Taylor, J. R.
 link: https://doi.org/10.1016/j.neubiorev.2026.106826
+volume: '188'
+pages: '106826'
 ---

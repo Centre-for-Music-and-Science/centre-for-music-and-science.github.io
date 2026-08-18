@@ -152,6 +152,12 @@ Publication-to-dataset linking source of truth:
 
 Dataset pages should reverse-query publication records by `datasets`.
 
+Publication detail pages also surface:
+
+- Related projects from `publications.projects`
+- Related apps from explore records that list the publication in `publications`
+- Related datasets from `publications.datasets`
+
 ## Featured publication rules
 
 Featured publications are parent-owned:
@@ -177,7 +183,11 @@ Generated fields (do not edit manually):
 - `citation_apa`
 - `authors` (display line for list formatting)
 - `journal` (display venue for list formatting)
+- `volume`, `number`, `pages` (when present in BibTeX)
 - `doi` (derived from BibTeX when available)
+
+Hand-maintained `date` should be the online publication day (`YYYY-MM-DD`) when
+known, because lists sort on it. Display still uses the year only.
 
 Publication pages are optional and controlled by content readiness.
 

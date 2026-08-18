@@ -11,12 +11,7 @@
       <div class="publication-header">
         <div class="publication-title-meta">
           {{ if .Params.authors }}<span class="project-pub-authors">{{ partial "publication-authors" (dict "publication" . "site" .Site) }}</span>{{ end }}
-          {{ if or .Params.journal .Params.inpress }}
-          <span class="project-pub-journal">
-            {{- with .Params.journal }}{{ . }}{{ end -}}
-            {{- if .Params.inpress }}{{ if .Params.journal }} {{ end }}(Forthcoming){{ else if and .Params.journal .Date }} ({{ .Date.Format "2006" }}){{ end -}}
-          </span>
-          {{ end }}
+          {{ partial "publication-journal-line.html" (dict "publication" .) }}
           <div class="project-pub-links-row">
             {{ $paperLink := .Params.link | default .Params.doi }}
             {{ if $paperLink }}
@@ -43,6 +38,31 @@
       <div class="project-detail-body">
         {{ .Content }}
       </div>
+
+      {{ $projectSlugs := default (slice) .Params.projects }}
+      {{ $projects := partial "resolve-project-pages.html" (dict "slugs" $projectSlugs) }}
+      {{ if gt (len $projects) 0 }}
+      <section class="project-publications">
+        <h2 class="project-publications-heading">Related projects</h2>
+        <div class="theme-projects">
+          {{ range $projects }}
+            {{ partial "research-item-card.html" (dict "page" .) }}
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+
+      {{ $relatedExploreApps := partial "resolve-explore-pages-for-publication.html" (dict "slug" .File.ContentBaseName "item_type" "app") }}
+      {{ if gt (len $relatedExploreApps) 0 }}
+      <section class="project-publications">
+        <h2 class="project-publications-heading">Related apps</h2>
+        <div class="theme-projects">
+          {{ range sort $relatedExploreApps "Params.weight" }}
+            {{ partial "explore-card.html" (dict "page" . "variant" "project") }}
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
 
       {{ $datasetSlugs := default (slice) .Params.datasets }}
       {{ $datasets := slice }}

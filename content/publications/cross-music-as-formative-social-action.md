@@ -28,4 +28,5 @@ citation_chicago: Cross, I. 2024. “Music as Formative Social Action”. In <em
   Time</em>, 256–68. https://doi.org/10.2307/jj.21226518.24.
 citation_ieee: '[1] I. Cross, “Music as formative social action”, in <em>Keeping Time</em>,
   2024, pp. 256–268. doi: 10.2307/jj.21226518.24.'
+pages: 256–268
 ---

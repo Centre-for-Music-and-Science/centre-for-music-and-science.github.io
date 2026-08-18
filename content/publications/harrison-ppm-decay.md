@@ -49,4 +49,7 @@ citation_ieee: '[1] P. M. C. Harrison, R. Bianco, M. Chait and M. T. Pearce, “
   Biology</em>, vol. 16, no. 11, p. e1008304, 2020, doi: 10.1371/journal.pcbi.1008304.'
 authors: Harrison, P. M. C., Bianco, R., Chait, M., & Pearce, M. T.
 link: https://doi.org/10.1371/journal.pcbi.1008304
+volume: '16'
+number: '11'
+pages: e1008304
 ---

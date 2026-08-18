@@ -61,4 +61,7 @@ citation_ieee: '[1] V. K. M. Cheung, P. M. C. Harrison, L. Meyer, M. T. Pearce, 
 authors: Cheung, V. K. M., Harrison, P. M. C., Meyer, L., Pearce, M. T., Haynes, J.-D.,
   & Koelsch, S.
 link: https://doi.org/10.1016/j.cub.2019.09.067
+volume: '29'
+number: '23'
+pages: 4084–4092.e4
 ---

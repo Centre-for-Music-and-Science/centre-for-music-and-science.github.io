@@ -1,14 +1,13 @@
 ---
 title: "Publications"
 featured:
-  title: "Multimodal datasets for studying expert performances of musical scores"
-  citation: "Emerson, K., & Harrison, P. M. C. (2025). Multimodal datasets for studying expert performances of musical scores. *Transactions of the International Society for Music Information Retrieval*, 8(1), 400–428."
-  doi: "https://doi.org/10.5334/tismir.230"
-  image: "/images/featured_pub/katelyn2026.jpg"
+  title: "Machine learning of artistic fingerprints in jazz"
+  slug: "cheston-jazz-piano"
+  citation: "Cheston, H., Bance, R., & Harrison, P. M. C. (2026). Machine learning of artistic fingerprints in jazz. *Nature Machine Intelligence*, *8*(8), 1261–1274."
+  doi: "https://doi.org/10.1038/s42256-026-01279-9"
+  image: "/images/featured_pub/cheston-jazz-piano-cover.jpg"
   description: |
-    Multimodal datasets are datasets that provide multiple complementary streams of data corresponding to different recording modalities. In the context of music performance, a multimodal dataset might include modalities such as audio, musical scores, motion-capture data, physiological data, performer biography data, and so on. Collecting such diverse data can greatly expand the range of research questions we can ask about musical performance, especially those that look outside the details of note onsets and offsets and connect more widely with contextual attributes of the composition, performer, and performance.
+    Artists are often recognizable through distinctive patterns—“fingerprints”—in their work. This paper trains machine-learning models to identify 20 iconic jazz pianists from 84 hours of recordings, including a multi-input architecture that analyses melody, harmony, rhythm, and dynamics separately. The best model reaches 94% accuracy across 20 classes, and the models reveal which musical elements most strongly distinguish individual artists.
 
-    This paper provides a comprehensive review of existing multimodal datasets for studying expert performances of musical scores. It provides a detailed organisation scheme for categorising these datasets, and identifies key challenges remaining for the collection of such datasets.
-
-    Check out the paper to learn more!
+    Open-source model code and an interactive web app accompany the paper.
 ---

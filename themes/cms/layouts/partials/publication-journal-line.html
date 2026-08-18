@@ -1,0 +1,27 @@
+{{- /*
+  Render journal/venue metadata for a publication detail header.
+
+  Expected params:
+  - publication: the publication page
+*/ -}}
+{{- $pub := .publication -}}
+{{- if or $pub.Params.journal $pub.Params.inpress -}}
+<span class="project-pub-journal">
+  {{- with $pub.Params.journal -}}
+    {{- . -}}
+    {{- $hasLocator := or $pub.Params.volume $pub.Params.number $pub.Params.pages -}}
+    {{- if $hasLocator -}}, {{ end -}}
+    {{- with $pub.Params.volume -}}
+      {{- . -}}
+      {{- with $pub.Params.number }}({{ . }}){{ end -}}
+    {{- else -}}
+      {{- with $pub.Params.number }}({{ . }}){{ end -}}
+    {{- end -}}
+    {{- if and $pub.Params.pages (or $pub.Params.volume $pub.Params.number) -}}, {{ end -}}
+    {{- with $pub.Params.pages }}{{ . }}{{ end -}}
+  {{- end -}}
+  {{- if $pub.Params.inpress -}}
+    {{- if $pub.Params.journal }} {{ end -}}(Forthcoming)
+  {{- else if and $pub.Params.journal $pub.Date }} ({{ $pub.Date.Format "2006" }}){{ end -}}
+</span>
+{{- end -}}

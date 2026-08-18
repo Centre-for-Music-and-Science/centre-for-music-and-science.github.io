@@ -32,4 +32,7 @@ citation_ieee: '[1] R. de Fleurian, P. M. C. Harrison, M. T. Pearce and D. R. Qu
   doi: 10.1073/pnas.1913244116.'
 authors: de Fleurian, R., Harrison, P. M. C., Pearce, M. T., & Quiroga-Martinez, D.
   R.
+volume: '116'
+number: '42'
+pages: 20813–20814
 ---

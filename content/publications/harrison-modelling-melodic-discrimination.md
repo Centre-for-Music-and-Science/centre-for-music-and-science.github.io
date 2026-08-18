@@ -73,4 +73,5 @@ citation_ieee: '[1] P. M. C. Harrison, J. J. Musil and D. Müllensiefen, “Mode
   melodic discrimination tests: Descriptive and explanatory approaches”, <em>Journal
   of New Music Research</em>, vol. 45, no. 3, pp. 265–280, 2016, doi: 10.1080/09298215.2016.1197953.'
 authors: Harrison, P. M. C., Musil, J. J., & Müllensiefen, D.
+pages: 265–280
 ---

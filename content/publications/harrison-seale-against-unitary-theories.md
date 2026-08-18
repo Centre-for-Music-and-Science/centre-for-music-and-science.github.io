@@ -25,4 +25,5 @@ citation_chicago: Harrison, P. M. C., and Madeleine Seale. 2021. “Against Unit
 citation_ieee: '[1] P. M. C. Harrison and M. Seale, “Against unitary theories of music
   evolution”, <em>Behavioral and Brain Sciences</em>, vol. 44, 2021, doi: 10.1017/s0140525x20001314.'
 authors: Harrison, P. M. C., & Seale, M.
+volume: '44'
 ---

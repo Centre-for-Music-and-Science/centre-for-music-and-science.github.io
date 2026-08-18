@@ -50,6 +50,9 @@ AUTOGEN_FIELDS = (
     "citation_ieee",
     "authors",
     "journal",
+    "volume",
+    "number",
+    "pages",
     "link",
     "doi",
 )
@@ -237,6 +240,30 @@ def extract_publication_venue(fields: Dict[str, str]) -> str:
     return fields.get("journal", fields.get("booktitle", "")).strip()
 
 
+def extract_publication_locator_fields(fields: Dict[str, str]) -> Dict[str, str]:
+    """Extract volume/issue/pages for publication detail rendering.
+
+    Parameters
+    ----------
+    fields
+        Parsed BibTeX fields.
+
+    Returns
+    -------
+    dict of str
+        Locator fields present in the BibTeX entry. Pages use an en dash.
+    """
+    locators: Dict[str, str] = {}
+    for key in ("volume", "number", "pages"):
+        value = fields.get(key, "").strip()
+        if not value:
+            continue
+        if key == "pages":
+            value = value.replace("--", "–")
+        locators[key] = value
+    return locators
+
+
 def year_from_front_matter(date_value: object) -> str:
     """Extract a 4-digit year from YAML date front matter values."""
     if date_value is None:
@@ -398,6 +425,13 @@ def update_publication_file(path: Path) -> bool:
     venue = extract_publication_venue(fields)
     if venue:
         front_matter["journal"] = venue
+
+    locators = extract_publication_locator_fields(fields)
+    for key in ("volume", "number", "pages"):
+        if key in locators:
+            front_matter[key] = locators[key]
+        else:
+            front_matter.pop(key, None)
 
     link = publication_link(fields)
     if link:

@@ -84,7 +84,7 @@ Create a file in `content/publications/` with a `bibtex` entry:
 ```yaml
 ---
 title: "Paper Title"
-date: 2026-01-15
+date: 2026-08-17
 stub_only: false
 projects:
   - "project-slug"
@@ -98,6 +98,10 @@ bibtex: |-
   }
 ---
 ```
+
+Set `date` to the online publication day (`YYYY-MM-DD`) when known. This drives
+sorting on the homepage and publications list; the UI still displays the year
+only. Year placeholders like `2024-01-01` are fine for older records.
 
 Then run:
 

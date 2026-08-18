@@ -47,4 +47,7 @@ citation_ieee: '[1] R. W. Gelding, P. M. C. Harrison, S. Silas, B. W. Johnson, W
   doi: 10.1007/s00426-020-01322-3.'
 authors: Gelding, R. W., Harrison, P. M. C., Silas, S., Johnson, B. W., Thompson,
   W. F., & Müllensiefen, D.
+volume: '85'
+number: '3'
+pages: 1201–1220
 ---

@@ -29,4 +29,6 @@ citation_chicago: 'Spiro, N., D. Duncan, and I. Cross. 2026. “Singing with Str
 citation_ieee: '[1] N. Spiro, D. Duncan and I. Cross, “Singing with strangers: the
   social significance of music”, <em>Journal of Consciousness Studies</em>, vol. 33,
   no. 3–4, 2026, doi: 10.53765/20512201.33.3.078.'
+volume: '33'
+number: 3-4
 ---
