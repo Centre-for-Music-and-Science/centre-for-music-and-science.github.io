@@ -157,6 +157,22 @@ Publication detail pages also surface:
 - Related projects from `publications.projects`
 - Related apps from explore records that list the publication in `publications`
 - Related datasets from `publications.datasets`
+- Media coverage from optional `publications.media_coverage`
+
+Optional `media_coverage` items are hand-maintained maps:
+
+```yaml
+media_coverage:
+  - title: "Article title"   # required
+    url: "https://..."      # required
+    outlet: "Outlet name"   # optional
+    date: 2026-08-17        # optional
+```
+
+Build-time rules:
+
+- `media_coverage`, when set, must be a list of mappings
+- each item must include non-empty `title` and `url`
 
 ## Featured publication rules
 
@@ -199,6 +215,7 @@ Sections are omitted when data is absent:
 - no related publications => omit publications section
 - no featured publications => omit featured block
 - no leader image => omit that block
+- no media coverage => omit media coverage section
 
 No empty placeholder headings should be rendered.
 

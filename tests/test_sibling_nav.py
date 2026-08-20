@@ -57,14 +57,24 @@ class SiblingNavSmokeTests(HugoSiteSmokeTest):
 
     def test_news_newest_has_older_only(self):
         html = self._read(
-            "news/sempre-pgr-ecr-conference-report-2026/index.html"
+            "news/new-papers-mood-regulation-jazz-fingerprints-2026/index.html"
         )
         self.assertIn("Older", html)
         self.assertIn(
-            "/news/british-academy-postdoctoral-fellowships-2026/",
+            "/news/sempre-pgr-ecr-conference-report-2026/",
             html,
         )
         self.assertNotIn("Newer", html)
+
+    def test_new_papers_news_links_publications_and_coverage(self):
+        html = self._read(
+            "news/new-papers-mood-regulation-jazz-fingerprints-2026/index.html"
+        )
+        self.assertIn("/publications/tan-mood-regulation/", html)
+        self.assertIn("/publications/cheston-jazz-piano/", html)
+        self.assertIn("scientificamerican.com", html)
+        self.assertIn("phys.org/news/2026-08-iconic-jazz-musicians.html", html)
+        self.assertIn("iflscience.com", html)
 
     def test_news_oldest_has_newer_only(self):
         html = self._read("news/library-exhibition-2024/index.html")

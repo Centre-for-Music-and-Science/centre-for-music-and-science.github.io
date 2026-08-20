@@ -28,6 +28,24 @@ class PublicationPageSmokeTests(HugoSiteSmokeTest):
         self.assertIn("href=/explore/jazz-piano-styles/", html)
         self.assertIn("Jazz piano style explorer", html)
 
+    def test_publication_detail_shows_optional_media_coverage(self):
+        html = self._read("publications/cheston-jazz-piano/index.html")
+        self.assertIn("Media coverage", html)
+        self.assertIn("Scientific American", html)
+        self.assertIn(
+            "https://www.scientificamerican.com/article/ai-decodes-the-mathematical-fingerprints-of-famous-jazz-musicians-from-chick-corea-to-thelonious-monk/",
+            html,
+        )
+        self.assertIn("https://phys.org/news/2026-08-iconic-jazz-musicians.html", html)
+        self.assertIn(
+            "https://www.iflscience.com/jazz-musicians-leave-hidden-fingerprints-in-their-work-newly-trained-computer-models-can-identify-them-with-over-90-percent-accuracy-84409",
+            html,
+        )
+
+    def test_publication_detail_omits_media_coverage_when_unset(self):
+        html = self._read("publications/tan-mood-regulation/index.html")
+        self.assertNotIn("Media coverage", html)
+
 
 if __name__ == "__main__":
     unittest.main()
