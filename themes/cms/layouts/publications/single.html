@@ -39,6 +39,8 @@
         {{ .Content }}
       </div>
 
+      {{ partial "publication-media-coverage.html" . }}
+
       {{ $projectSlugs := default (slice) .Params.projects }}
       {{ $projects := partial "resolve-project-pages.html" (dict "slugs" $projectSlugs) }}
       {{ if gt (len $projects) 0 }}

@@ -82,6 +82,8 @@ Build-time guards:
 4. Set publication ownership links on the publication record itself:
    - `projects: [project-slug, ...]`
    - `methods: [method-slug, ...]`
+5. Optionally add `media_coverage` items for popular-media links on the
+   publication page.
 
 Build-time guard:
 
@@ -139,6 +141,25 @@ Publication detail pages also show:
 - Related projects from the publication's `projects` tags
 - Related apps from explore records that list the publication under `publications`
 - Related datasets from `datasets`
+- Media coverage from optional `media_coverage` items (omitted when unset)
+
+## Media coverage
+
+Optional popular-media links live on the publication record:
+
+```yaml
+media_coverage:
+  - title: "AI decodes the mathematical 'fingerprints' of famous jazz musicians, from Chick Corea to Thelonious Monk"
+    outlet: "Scientific American"
+    url: "https://www.scientificamerican.com/article/ai-decodes-the-mathematical-fingerprints-of-famous-jazz-musicians-from-chick-corea-to-thelonious-monk/"
+    date: 2026-08-17
+```
+
+Notes:
+
+- `title` and `url` are required; `outlet` and `date` are optional.
+- Items render on the publication page as a Media coverage section, in front-matter order.
+- Omit the field entirely when there is no coverage; do not leave an empty heading.
 
 ## Events workflow
 

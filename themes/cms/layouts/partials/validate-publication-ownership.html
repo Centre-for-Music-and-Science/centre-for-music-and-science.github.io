@@ -26,4 +26,22 @@
       {{- errorf "Publication ownership error: publication %s links to unknown project slug %q in publications.projects. Available projects: %s" $publicationPage.File.Path . $availableProjectList -}}
     {{- end -}}
   {{- end -}}
+
+  {{- if and (isset .Params "media_coverage") (not (reflect.IsSlice .Params.media_coverage)) -}}
+    {{- errorf "Publication error: %s media_coverage must be a list of items with title and url." .File.Path -}}
+  {{- end -}}
+  {{- range $index, $item := default (slice) .Params.media_coverage -}}
+    {{- if not (reflect.IsMap $item) -}}
+      {{- errorf "Publication error: %s media_coverage item %d must be a mapping with title and url." $publicationPage.File.Path $index -}}
+    {{- else -}}
+      {{- $title := strings.TrimSpace (printf "%v" (index $item "title")) -}}
+      {{- $url := strings.TrimSpace (printf "%v" (index $item "url")) -}}
+      {{- if or (eq $title "") (eq $title "<nil>") -}}
+        {{- errorf "Publication error: %s media_coverage item %d is missing title." $publicationPage.File.Path $index -}}
+      {{- end -}}
+      {{- if or (eq $url "") (eq $url "<nil>") -}}
+        {{- errorf "Publication error: %s media_coverage item %d is missing url." $publicationPage.File.Path $index -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
 {{- end -}}

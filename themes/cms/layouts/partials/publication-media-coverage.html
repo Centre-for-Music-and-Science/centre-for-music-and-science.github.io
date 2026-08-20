@@ -1,0 +1,36 @@
+{{/*
+  Optional popular-media links for a publication page.
+
+  Front matter:
+
+  media_coverage:
+    - title: "Article title"
+      outlet: "Outlet name"
+      url: "https://example.com/article"
+      date: 2026-08-17
+*/}}
+{{- $items := default (slice) .Params.media_coverage -}}
+{{- if gt (len $items) 0 -}}
+<section class="project-publications">
+  <h2 class="project-publications-heading">Media coverage</h2>
+  <ul class="project-publications-list">
+    {{- range $items -}}
+    <li>
+      <a href="{{ .url }}" target="_blank" rel="noopener">
+        <span class="project-pub-title">{{ .title }}</span>
+        {{- $meta := slice -}}
+        {{- with .outlet -}}
+          {{- $meta = $meta | append . -}}
+        {{- end -}}
+        {{- with .date -}}
+          {{- $meta = $meta | append (time.Format "2 January 2006" .) -}}
+        {{- end -}}
+        {{- if gt (len $meta) 0 -}}
+        <span class="project-pub-authors">{{ delimit $meta " · " }}</span>
+        {{- end -}}
+      </a>
+    </li>
+    {{- end -}}
+  </ul>
+</section>
+{{- end -}}

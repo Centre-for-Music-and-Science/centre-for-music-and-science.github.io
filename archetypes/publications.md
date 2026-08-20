@@ -13,5 +13,11 @@ bibtex: ""
 abstract: ""
 description: ""
 image: ""
+# Optional popular-media links shown on the publication page.
+# media_coverage:
+#   - title: "Article title"
+#     outlet: "Outlet name"
+#     url: "https://example.com/article"
+#     date: 2026-08-17
 ---
 

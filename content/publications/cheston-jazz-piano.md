@@ -36,4 +36,17 @@ link: https://doi.org/10.1038/s42256-026-01279-9
 volume: '8'
 number: '8'
 pages: 1261–1274
+media_coverage:
+  - title: "AI decodes the mathematical 'fingerprints' of famous jazz musicians, from Chick Corea to Thelonious Monk"
+    outlet: "Scientific American"
+    url: "https://www.scientificamerican.com/article/ai-decodes-the-mathematical-fingerprints-of-famous-jazz-musicians-from-chick-corea-to-thelonious-monk/"
+    date: 2026-08-17
+  - title: "Can computers learn what makes the most iconic jazz musicians stand out?"
+    outlet: "Phys.org"
+    url: "https://phys.org/news/2026-08-iconic-jazz-musicians.html"
+    date: 2026-08-17
+  - title: "Jazz musicians leave hidden fingerprints in their work – newly trained computer models can identify them with over 90 percent accuracy"
+    outlet: "IFLScience"
+    url: "https://www.iflscience.com/jazz-musicians-leave-hidden-fingerprints-in-their-work-newly-trained-computer-models-can-identify-them-with-over-90-percent-accuracy-84409"
+    date: 2026-08-19
 ---
