@@ -1,5 +1,22 @@
 # Agent notes
 
+## Preview the site when making changes
+
+When making content, layout, or theme changes, start a Hugo preview server so
+the organiser can review the result in the browser. Do this as soon as there
+is something to look at, and leave the server running.
+
+```bash
+hugo server -D --bind 0.0.0.0 --port 1313
+```
+
+`--bind 0.0.0.0` is required so cloud-agent port forwarding can reach the
+server. Future-dated content is already enabled in `hugo.toml`. Point the
+organiser at the specific pages you changed (for example a news post or
+publication page), not only the homepage.
+
+If Hugo is missing, install the extended edition as described in the README.
+
 ## Posting CMS seminars to external listings
 
 Use these procedures when posting CMS seminar events from `content/events/` to
