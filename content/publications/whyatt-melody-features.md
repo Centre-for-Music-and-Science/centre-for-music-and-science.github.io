@@ -1,49 +1,46 @@
 ---
-title: 'melody-features: A Python Package for Symbolic Melody Analysis'
-date: 2025-12-16
+title: Computational Features for Symbolic Melody Analysis
+date: 2026-08-19
 projects:
 - memory
 methods:
 - computational-cognitive-modelling
-# generated from bibtex; do not edit manually
-authors: Whyatt, D. M., & Harrison, P. M. C.
-journal: 'Conference: Digital Music Research Network 20'
 abstract: |
-  We introduce *melody-features*, an open-source Python package designed to consolidate 7 of the leading computational melody analysis toolboxes into a single common resource. In particular, we reimplement or wrap the following toolboxes:
-
-  - FANTASTIC (Müllensiefen, 2009)
-  - SIMILE/melsim (Frieler & Müllensiefen, 2004; Silas & Frieler, 2025)
-  - IDyOM (Pearce, 2005)
-  - jSymbolic (McKay & Fujinaga, 2006)
-  - MIDI Toolbox (Eerola & Toiviainen, 2004)
-  - Partitura (Cancino-Chacón et al., 2022)
-
-  We also implement various additional features that complement and/or extend the toolboxes above. The resulting package contains > 200 features covering many aspects of pitch and rhythm (see Table 1 for a summary; see https://github.com/dmwhyatt/melody-features for a full list). We anticipate that the resulting package should make it much easier for researchers to apply a diverse set of analysis approaches in diverse scenarios, including music cognition research, MIR, computational composition and music visualisation.
-
-  Though code written in Python is often slower than that of other languages, our implementation is designed to be efficient in terms of reusing computations and taking advantage of parallel processing. This makes many of our implementations equally as fast or even more performant than the reference implementations, especially through the use of the heavily optimised top-level `get_all_features()` function.
-
-  In our presentation, we will illustrate the use of the package with a generic MIR style classification task, predicting whether a given melody from the Essen Folksong Collection originates from Europe or China. We performed a logistic regression, trained using an 80/20 train/test split over 5 folds with an l2 regularisation penalty. This model achieved an accuracy of 98.97% across a balanced testing set of 874 melodies, only misclassifying 9 melodies, and produces a highly intuitive set of feature importances.
+  This paper addresses the general problem of extracting music-theoretic and
+  psychological features from symbolically encoded melodies. We review existing
+  melodic feature extraction toolboxes, enumerate their features, and organise
+  them into a common taxonomy. We then describe a new software library that
+  provides implementations of all of these features in a straightforward Python
+  package. We then demonstrate the combined feature set on the Essen Folksong
+  Collection, using the dataset to produce a series of style classification
+  models. These models help us answer key questions about the interpretability
+  and dimensionality of the feature set. Our results show excellent
+  classification accuracy using the full feature set, and promising performance
+  for an eight-dimensional factor-analytic solution that improves the
+  interpretability of the classifier. We distribute our new toolbox as an
+  open-source Python package, melody-features, which can easily be used in
+  various applications within music analysis, music psychology, and music
+  information retrieval.
 bibtex: |-
   @article{whyatt-melody-features,
     author = {Whyatt, D. M. and Harrison, P. M. C.},
-    title = {melody-features: A Python Package for Symbolic Melody Analysis},
-    journal = {Conference: Digital Music Research Network 20},
-    year = {2025},
-    url = {https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-20-Abstracts-15-Dec.pdf}
+    title = {Computational Features for Symbolic Melody Analysis},
+    journal = {arXiv},
+    year = {2026},
+    doi = {10.48550/arXiv.2608.19061}
   }
 # generated from bibtex; do not edit manually
-citation_apa: 'Whyatt, D. M., & Harrison, P. M. C. (2025). melody-features: A Python
-  Package for Symbolic Melody Analysis. <em>Conference: Digital Music Research Network
-  20</em>. https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-20-Abstracts-15-Dec.pdf'
-citation_mla: 'Whyatt, D. M. and P. M. C. Harrison. “Melody-features: A Python Package
-  for Symbolic Melody Analysis”. <em>Conference: Digital Music Research Network 20</em>,
-  2025, https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-20-Abstracts-15-Dec.pdf.'
-citation_chicago: 'Whyatt, D. M., and P. M. C. Harrison. 2025. “Melody-features: A
-  Python Package for Symbolic Melody Analysis”. <em>Conference: Digital Music Research
-  Network 20</em>. https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-20-Abstracts-15-Dec.pdf.'
-citation_ieee: '[1] D. M. Whyatt and P. M. C. Harrison, “melody-features: A Python
-  Package for Symbolic Melody Analysis”, <em>Conference: Digital Music Research Network
-  20</em>, 2025, [Online]. Available: https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-20-Abstracts-15-Dec.pdf'
-link: https://www.qmul.ac.uk/dmrn/media/dmrn/DMRN-20-Abstracts-15-Dec.pdf
+citation_apa: Whyatt, D. M., & Harrison, P. M. C. (2026). Computational Features for
+  Symbolic Melody Analysis. <em>arXiv</em>. https://doi.org/10.48550/arXiv.2608.19061
+citation_mla: Whyatt, D. M. and P. M. C. Harrison. “Computational Features for Symbolic
+  Melody Analysis”. <em>arXiv</em>, 2026, https://doi.org/10.48550/arXiv.2608.19061.
+citation_chicago: Whyatt, D. M., and P. M. C. Harrison. 2026. “Computational Features
+  for Symbolic Melody Analysis”. <em>arXiv</em>. https://doi.org/10.48550/arXiv.2608.19061.
+citation_ieee: '[1] D. M. Whyatt and P. M. C. Harrison, “Computational Features for
+  Symbolic Melody Analysis”, <em>arXiv</em>, 2026, doi: 10.48550/arXiv.2608.19061.'
+link: https://doi.org/10.48550/arXiv.2608.19061
+journal: arXiv
+doi: https://doi.org/10.48550/arXiv.2608.19061
+authors: Whyatt, D. M., & Harrison, P. M. C.
 ---
 
