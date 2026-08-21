@@ -109,6 +109,11 @@ class ApplicantsFunnelSmokeTests(HugoSiteSmokeTest):
         self.assertIn("Research topics", html)
         self.assertIn("/topics/computational-music-cognition/", html)
         self.assertIn("/applicants/", html)
+        # Equal-weight topics (style and popularity, both weight 2) sort by title.
+        self.assertLess(
+            html.index("/topics/computational-analysis-musical-style/"),
+            html.index("/topics/dynamics-of-music-popularity/"),
+        )
 
     def test_topic_detail_shows_related_projects_and_publications(self):
         html = self._read(
@@ -134,11 +139,20 @@ class ApplicantsFunnelSmokeTests(HugoSiteSmokeTest):
         self.assertIn("/people/daniel-mullensiefen/", html)
         self.assertIn("/people/harin-lee/", html)
 
+        popularity = self._read(
+            "topics/dynamics-of-music-popularity/index.html"
+        )
+        self.assertIn("/people/manuel-anglada-tort/", popularity)
+        self.assertIn("/people/daniel-mullensiefen/", popularity)
+        self.assertIn("/people/harin-lee/", popularity)
+        self.assertNotIn("/people/lars-seniuk/", popularity)
+
     def test_collaborator_people_are_not_listed_on_people_index(self):
         html = self._read("people/index.html")
         self.assertNotIn("/people/nori-jacoby/", html)
         self.assertNotIn("/people/daniel-mullensiefen/", html)
         self.assertNotIn("/people/lars-seniuk/", html)
+        self.assertNotIn("/people/manuel-anglada-tort/", html)
         # Detail pages still exist for linking from topics.
         self.assertTrue(
             (self.public / "people/nori-jacoby/index.html").is_file()

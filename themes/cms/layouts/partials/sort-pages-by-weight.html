@@ -1,0 +1,17 @@
+{{- /*
+  Sort pages by Params.weight (lower first), then by Title alphabetically.
+
+  Usage: {{ $pages = partial "sort-pages-by-weight.html" $pages }}
+*/ -}}
+{{- $pages := default (slice) . -}}
+{{- $keyed := slice -}}
+{{- range $pages -}}
+  {{- $weight := int (default 0 .Params.weight) -}}
+  {{- $key := printf "%010d\t%s" $weight .Title -}}
+  {{- $keyed = $keyed | append (dict "key" $key "page" .) -}}
+{{- end -}}
+{{- $sorted := slice -}}
+{{- range sort $keyed "key" -}}
+  {{- $sorted = $sorted | append .page -}}
+{{- end -}}
+{{- return $sorted -}}

@@ -16,7 +16,8 @@ class SiblingNavSmokeTests(HugoSiteSmokeTest):
         self.assertIn("Previous topic", html)
         self.assertIn("Next topic", html)
         self.assertIn("/topics/computational-music-cognition/", html)
-        self.assertIn("/topics/music-pleasure/", html)
+        # Same weight as this page; title sorts after "Computational analysis...".
+        self.assertIn("/topics/dynamics-of-music-popularity/", html)
         # Sibling nav sits after the body, before related projects/pubs.
         self.assertLess(
             html.index("sibling-nav"),

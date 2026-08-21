@@ -41,7 +41,7 @@
 
     {{ $allTopics := where .Site.RegularPages "Section" "topics" }}
     {{ $openTopics := partial "filter-open-topics.html" (dict "topics" $allTopics) }}
-    {{ $openTopics = sort $openTopics "Params.weight" }}
+    {{ $openTopics = partial "sort-pages-by-weight.html" $openTopics }}
     {{ partial "sibling-nav.html" (dict
       "pages" $openTopics
       "current" .

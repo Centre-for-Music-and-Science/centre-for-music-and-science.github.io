@@ -84,7 +84,7 @@ projects:               # optional links to portfolio project slugs
   - memory
 publications:           # optional links to publication slugs
   - lee-globalmood
-weight: 0
+weight: 0               # lower first; equal weights sort by title
 ```
 
 Relationship rules:
@@ -105,6 +105,8 @@ Relationship rules:
   projects).
 - Portfolio projects with no topic are not advertised for applications.
 - Hypothetical topics use a topic with no `projects` (until research exists in the portfolio).
+- Topic listings and sibling navigation sort by `weight` (lower first), then
+  alphabetically by title when weights are equal.
 
 Build-time rules:
 
