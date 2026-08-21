@@ -1,7 +1,7 @@
 ---
 title: "Music and pleasure"
 open: true
-weight: 3
+weight: 1.5
 supervisor: peter-harrison
 thumbnail: "/images/topics/dopamine.jpg"
 projects:
