@@ -49,4 +49,8 @@ media_coverage:
     outlet: "IFLScience"
     url: "https://www.iflscience.com/jazz-musicians-leave-hidden-fingerprints-in-their-work-newly-trained-computer-models-can-identify-them-with-over-90-percent-accuracy-84409"
     date: 2026-08-19
+  - title: "AI models can identify iconic jazz pianists based on their recordings, while also revealing their 'musical fingerprints'"
+    outlet: "MusicRadar"
+    url: "https://www.musicradar.com/music-tech/ai-models-can-identify-iconic-jazz-pianists-based-on-their-recordings-while-also-revealing-their-musical-fingerprints"
+    date: 2026-08-25
 ---

@@ -41,6 +41,11 @@ class PublicationPageSmokeTests(HugoSiteSmokeTest):
             "https://www.iflscience.com/jazz-musicians-leave-hidden-fingerprints-in-their-work-newly-trained-computer-models-can-identify-them-with-over-90-percent-accuracy-84409",
             html,
         )
+        self.assertIn("MusicRadar", html)
+        self.assertIn(
+            "https://www.musicradar.com/music-tech/ai-models-can-identify-iconic-jazz-pianists-based-on-their-recordings-while-also-revealing-their-musical-fingerprints",
+            html,
+        )
 
     def test_publication_detail_omits_media_coverage_when_unset(self):
         html = self._read("publications/tan-mood-regulation/index.html")
